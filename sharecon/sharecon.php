@@ -17,7 +17,9 @@ function sharecon_unload(){
 
 function sharecon_module(){}
 
-function sharecon_content(){
+function qrator_photo_mod_init(&$a,&$b) {}
+
+function sharecon_content(&a){
 	$output = <<< SB
 	
 	<table style='border:1 solid black;'><tr>
@@ -27,5 +29,7 @@ function sharecon_content(){
 	</tr></table>
 	
 SB;
+
+	return $output;
 }
 ?>
