@@ -8,25 +8,7 @@ function sharecon_unload(){
 }
 
 function test(){
-	logger('randplace invoked');
 
-	if(! local_channel())   /* non-zero if this is a logged in user of this system */
-		return;
-
-	if(local_channel() != $item['uid'])    /* Does this person own the post? */
-		return;
-
-	if(($item['parent']) || (! is_item_normal($item))) {
-		/* If the item has a parent, or is not "normal", this is a comment or something else, not a status post. */
-		return;
-	}
-
-	/* Retrieve our personal config setting */
-
-	$active = get_pconfig(local_channel(), 'randplace', 'enable');
-
-	if(! $active)
-		return;
 	/**
 	 *
 	 * OK, we're allowed to do our stuff.
