@@ -10,6 +10,7 @@
 
 
 function sharingecon_load() {
+	head_add_css('/addon/sharingecon/bootstrap_sharecon.css');
 }
 function sharingecon_unload() {
 }
