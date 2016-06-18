@@ -16,7 +16,7 @@ function addNewShare(){
 	
 	$server = "localhost";
 	$user = "root";
-	$password = "";
+	$password = "dbroot";
 	$dbname = "hz_sharecon";
 	
 	$conn = new mysqli($server, $user, $password, $dbname);
@@ -46,7 +46,7 @@ function loadShares(){
 	
 	$server = "localhost";
 	$user = "root";
-	$password = "";
+	$password = "dbroot";
 	$dbname = "hz_sharecon";
 	
 	$conn = new mysqli($server, $user, $password, $dbname);
