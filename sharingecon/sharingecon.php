@@ -22,7 +22,7 @@ function sharingecon_module() {}
 function sharingecon_content(&$a) {
 
 
-//return file_get_contents("main_page");
-return "TEST";
+return file_get_contents("main_page.html");
+//return "TEST";
 
 }
