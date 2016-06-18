@@ -1,48 +1,88 @@
+<script src="main_js.js" type="text/javascript"></script>
+<link href="bootstrap_sharecon.css" rel="stylesheet" type="text/css">
+
 <div class="col-md-12">
 	<h1>Sharing Economy Plugin</h1>
 	<ul class="nav nav-justified nav-tabs" role="tablist">
-	  <li role="presentation" class="active">
-		<a href="#my_sharings" role="tab" data-toggle="tab">My Sharings<br></a>
-	  </li>
-	  <li class="" role="presentation">
-		<a href="#find_sharings" data-toggle="tab">Find Sharings<br></a>
-	  </li>
-	</ul>
+		<li role="presentation" class="active">
+			<a href="#tab-my-shares" role="tab" data-toggle="tab">My Shares<br></a>
+		</li>
+		 <li class="" role="presentation">
+			<a href="#tab-find-shares" data-toggle="tab">Find Shares<br></a>
+		 </li>
+		</ul>
 	<div class="tab-content">
-	  <div role="tabpanel" class="tab-pane active" id="my_sharings">
-		<div class="page-header">
-		  <h1>My Shares</h1>
-		</div>
-		<div class="col-md-2">
-		  <div class="btn-group btn-group-vertical">
-			<a href="#" class="btn btn-default">Add new Share</a>
-			<div class="btn-group">
-			  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Order By <span class="fa fa-caret-down"></span></a>
-			  <ul class="dropdown-menu" role="menu">
-				<li>
-				  <a href="#">Name</a>
-				</li>
-				<li>
-				  <a href="#">Date</a>
-				</li>
-			  </ul>
+		<div role="tabpanel" class="tab-pane active" id="tab-my-shares">
+			<div class="page-header">
+				<h1>My Shares</h1>
 			</div>
-		  </div>
+			<div class="col-md-2">
+				<div class="btn-group btn-group-vertical btn-group-vertical-justified">
+					<a href="#" class="btn btn-default" data-toggle="modal" data-target="#modal_addNewShare">Add new Share</a>
+					<div class="btn-group">
+						<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Order By <span class="fa fa-caret-down"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a href="#" onclick="test();">Name</a>
+							</li>
+							<li>
+								<a href="#">Date</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10">Test Content</div>
 		</div>
-		<div class="col-md-10">Test Content</div>
-	  </div>
-	  <div class="tab-pane" role="tabpanel" id="find_sharings">
-		<div class="page-header">
-		  <h1>Find Shares</h1>
+		<div class="tab-pane" role="tabpanel" id="tab-find-shares">
+			<div class="page-header">
+				<h1>Find Shares</h1>
+			</div>
+			<div class="col-md-2">
+				<div class="btn-group btn-group-vertical btn-group-vertical-justified">
+					<a href="#" class="btn btn-default">Left</a>
+					<a href="#" class="btn btn-default">Middle</a>
+					<a href="#" class="btn btn-default">Right</a>
+				</div>
+			</div>
+			<div class="col-md-10" id="tab-find-shares-content">Test Content</div>
 		</div>
-		<div class="col-md-2">
-		  <div class="btn-group btn-group-vertical">
-			<a href="#" class="btn btn-default">Left</a>
-			<a href="#" class="btn btn-default">Middle</a>
-			<a href="#" class="btn btn-default">Right</a>
-		  </div>
+	</div>
+</div>
+
+
+<!-- Modal for entering new object -->
+<div class="modal fade" id="modal_addNewShare">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Add new Share</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" role="form" id="form_addNewShare">
+					<div class="form-group">
+						<div class="col-sm-2">
+							<label for="inputTitle" class="control-label">Title</label>
+						</div>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="inputTitle" id="inputTitle" placeholder="Name of the Object">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2">
+							<label for="inputShortDesc" class="control-label">Short Description</label>
+						</div>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="inputShortDesc" id="inputShortDesc" placeholder="Short Description of the Object">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a class="btn btn-default" data-dismiss="modal">Close</a>
+				<button type="submit" class="btn btn-primary" id="btn_addNewShare">Save changes</a>
+			</div>
 		</div>
-		<div class="col-md-10">Test Content</div>
-	  </div>
 	</div>
 </div>
