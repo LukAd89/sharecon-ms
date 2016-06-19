@@ -4,14 +4,12 @@ function test(){
 	console.log("This is a Test");
 }
 
-$(function(){
+$(document).ready(function(){
 	/* Called when Submit button of Add New Share form is clicked */
 	$("#btn_addNewShare").click(function(){
 		addNewShare();
 	});
-});
 
-$(function(){
 	$('[href=#tab-find-shares]').on('shown.bs.tab', function(event){
 		loadShares();
 	});
