@@ -51,9 +51,9 @@ function loadShares(){
 		dataType : "json",
 		data : {function : "loadShares"},
 		success : function(data){
-			console.log("returned: " + data);
+			console.log("returned: ");
 			console.log(data);
-			console.log(jQuery.parseJSON( '{ "name": "John" }' ));
+			console.log(jQuery.parseJSON(data));
 			var jsonObj = jQuery.parseJSON(data);
 			
 			$('#tab-find-shares-content').html("");

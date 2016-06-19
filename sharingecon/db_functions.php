@@ -47,11 +47,11 @@ function loadShares(){
 	
     $json[] = array
     (
-        array(
+        "0" => array(
 			'Title' => 'T1',
 			'ShortDesc' => 'SD1'
 		),
-		array(
+		"1" => array(
 			'Title' => 'T2',
 			'ShortDesc' => 'SD2'
 		)
