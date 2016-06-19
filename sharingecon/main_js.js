@@ -50,8 +50,9 @@ function loadShares(){
 					'</div>');
 			}
 		},
-		error : function(){
-			console.log("error");
+		error: function(xhr, status, error) {
+			var err = JSON.parse(xhr.responseText);
+			alert(err.Message);
 		}
 	});
 }
