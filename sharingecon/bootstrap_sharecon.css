@@ -2,7 +2,7 @@
     width:100%;
 }
 
-.panel-share-object{
+#tab-find-shares-content .panel{
 	border: 1px solid #ddd;
 	border-radius; 4px;
 }
