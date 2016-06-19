@@ -47,7 +47,14 @@ function loadShares(){
 	
     $json[] = array
     (
-        'message' => 'Not Requested'
+        array(
+			'Title' => 'T1',
+			'ShortDesc' => 'SD1'
+		),
+		array(
+			'Title' => 'T2',
+			'ShortDesc' => 'SD2'
+		)
     );
 	echo json_encode($json);
 	return;
