@@ -18,7 +18,7 @@ $(document).ready(function(){
 function addNewShare(){
 	$.ajax({
 		type : "POST",
-		url : "db_functions.php",
+		url : "sharingecon/db_functions.php",
 		data : $("#form_addNewShare").serialize() + "&function=addNewShare",
 		success : function(msg){
 			console.log(msg);
@@ -33,7 +33,7 @@ function addNewShare(){
 function loadShares(){
 	$.ajax({
 		type : "POST",
-		url : "db_functions.php",
+		url : "sharingecon/db_functions.php",
 		data : {function : "loadShares"},
 		success : function(msg){
 			var jsonObj = jQuery.parseJSON(msg);
