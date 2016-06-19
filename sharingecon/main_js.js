@@ -50,9 +50,9 @@ function loadShares(){
 		url : "addon/sharingecon/db_functions.php",
 		dataType : "json",
 		data : {function : "loadShares"},
-		success : function(msg){
-			console.log(msg);
-			var jsonObj = jQuery.parseJSON(msg);
+		success : function(data){
+			console.log("returned: " + data);
+			var jsonObj = jQuery.parseJSON('{"Title":"T1", "ShortDesc":""SD1"}');
 			
 			$('#tab-find-shares-content').html("");
 			
