@@ -43,11 +43,14 @@ function addNewShare(){
 }
 
 function loadShares(){
+	header('Content-Type: application/json');
 	
     $json[] = array
     (
         'message' => 'Not Requested'
     );
+	echo json_encode($json);
+	return;
 	
 	$server = "localhost";
 	$user = "root";
