@@ -81,7 +81,7 @@ function loadShares(){
 	}
 	else { echo "";}
 
-	$result->close();
+	//$result->close();
 	$conn->close();
 }
 ?>
