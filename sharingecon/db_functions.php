@@ -11,8 +11,6 @@ if (isset($_POST['function'])) {
 function addNewShare(){
 	$title = strip_tags($_POST['inputTitle']);
 	$shortdesc = strip_tags($_POST['inputShortDesc']);
-		
-	//return($title . $shortdesc);
 	
 	$server = "localhost";
 	$user = "root";
@@ -42,7 +40,6 @@ function loadShares(){
     (
         'message' => 'Not Requested'
     );
-	//return json_encode($json);
 	
 	$server = "localhost";
 	$user = "root";

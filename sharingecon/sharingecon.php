@@ -10,20 +10,17 @@
 
 
 function sharingecon_load() {
-	head_add_css('/addon/sharingecon/bootstrap_sharecon.css');
 }
 function sharingecon_unload() {
 }
 
+function sharingecon_init(){
+}
 
 function sharingecon_module() {}
 
 
 
 function sharingecon_content(&$a) {
-
-
-return file_get_contents("http://localhost/addon/sharingecon/main_page.html");
-//return "TEST";
-
+	return file_get_contents("http://localhost/addon/sharingecon/main_page.html");
 }
