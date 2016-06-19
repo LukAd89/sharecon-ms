@@ -53,8 +53,8 @@ function loadShares(){
 		success : function(data){
 			console.log("returned: ");
 			console.log(data);
-			console.log(jQuery.parseJSON('[{"Title":"T1","ShortDesc":"SD1"},{"Title":"T2","ShortDesc":"SD2"}]'));
-			var jsonObj = data[0]; //jQuery.parseJSON(data[0]);
+			//console.log(jQuery.parseJSON('[{"Title":"T1","ShortDesc":"SD1"},{"Title":"T2","ShortDesc":"SD2"}]'));
+			var jsonObj = data; //jQuery.parseJSON(data[0]);
 			
 			$('#tab-find-shares-content').html("");
 			
