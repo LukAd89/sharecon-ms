@@ -53,7 +53,8 @@ function loadShares(){
 		success : function(data){
 			console.log("returned: " + data);
 			console.log(data);
-			var jsonObj = jQuery.parseJSON('{"Title":"T1", "ShortDesc":""SD1"}');
+			console.log(jQuery.parseJSON(data));
+			var jsonObj = jQuery.parseJSON(data);
 			
 			$('#tab-find-shares-content').html("");
 			
