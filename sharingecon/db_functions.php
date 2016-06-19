@@ -71,7 +71,7 @@ function loadShares(){
 	}
 	
 	$resArray = array();
-	$sql_query = "SELECT * FROM sharedobjects";
+	$sql_query = "SELECT * FROM sharedObjects";
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
