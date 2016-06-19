@@ -9,11 +9,11 @@ function test_ajax_json(){
 		url : "addon/sharingecon/db_functions.php",
 		dataType: "json",
 		data : {test : true},
-		success : function(msg){
-			console.log(msg);
+		success : function(data){
+			console.log(data);
 		},
 		error: function(xhr, options, error) {
-			alert(xhr.responseText);
+			alert("error:" + xhr.responseText);	
 		}
 	});
 }
