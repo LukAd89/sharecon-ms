@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['test'])){
-	echo {test:"wahr"};
+	echo "{test:'wahr'}";
 	return;
 }
 
