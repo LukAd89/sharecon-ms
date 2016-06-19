@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['test'])){
-	echo "TEST";
+	echo {test:"wahr"};
 	return;
 }
 
@@ -12,9 +12,7 @@ if (isset($_POST['function'])) {
 	else if($_POST['function'] == "loadShares"){
 		echo loadShares();
 	}
-	else if($_POST['function'] == "test"){
-		echo "TEST";
-	}
+	return;
 }
 
 function addNewShare(){

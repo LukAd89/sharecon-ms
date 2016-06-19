@@ -3,10 +3,11 @@
 function test(){
 	console.log("This is a Test");
 }
-function test_ajax(){
+function test_ajax_json(){
 	$.ajax({
 		type : "POST",
 		url : "addon/sharingecon/db_functions.php",
+		dataType: "json",
 		data : {test : true},
 		success : function(msg){
 			console.log(msg);
