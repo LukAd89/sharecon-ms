@@ -1,6 +1,7 @@
 <?php
 
 if(isset($_POST['test'])){
+	header('Content-Type: application/json');
 	echo "{test:'wahr'}";
 	return;
 }
