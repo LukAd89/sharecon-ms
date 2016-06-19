@@ -61,6 +61,7 @@ function loadShares(){
 		}
 		echo json_encode($resArray);
 	}
+	else { echo "";}
 
 	$result->close();
 	$conn->close();
