@@ -34,6 +34,7 @@ function loadShares(){
 	$.ajax({
 		type : "POST",
 		url : "sharingecon/db_functions.php",
+		dataType : "json";
 		data : {function : "loadShares"},
 		success : function(msg){
 			console.log(msg);
