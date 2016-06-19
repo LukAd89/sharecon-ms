@@ -54,7 +54,7 @@ function loadShares(){
 			console.log("returned: ");
 			console.log(data);
 			console.log(jQuery.parseJSON('[{"Title":"T1","ShortDesc":"SD1"},{"Title":"T2","ShortDesc":"SD2"}]'));
-			/*var jsonObj = jQuery.parseJSON(data);
+			var jsonObj = data; //jQuery.parseJSON(data);
 			
 			$('#tab-find-shares-content').html("");
 			
@@ -64,7 +64,7 @@ function loadShares(){
 					'<div class="panel-body"><div class="media"><div class="media-left"><img class="media-object" src="standard.png" alt="..."></div><div class="media-body"><div class="well">' + jsonObj[i].ShortDesc + '</div></div></div></div>' + 
 					'<div class="panel-footer"><div class="row"></div></div>' + 
 					'</div>');
-			}*/
+			}
 		},
 		error: function(xhr, options, error) {
 			alert(xhr.responseText);
