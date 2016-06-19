@@ -12,8 +12,8 @@ function test_ajax_json(){
 		success : function(msg){
 			console.log(msg);
 		},
-		error : function(){
-			console.log("error");
+		error: function(xhr, options, error) {
+			alert(xhr.responseText);
 		}
 	});
 }
