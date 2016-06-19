@@ -19,7 +19,6 @@ function test_ajax_json(){
 }
 
 $(document).ready(function(){
-	/* Called when Submit button of Add New Share form is clicked */
 	$("#btn_addNewShare").click(function(){
 		addNewShare();
 	});
@@ -51,9 +50,6 @@ function loadShares(){
 		dataType : "json",
 		data : {function : "loadShares"},
 		success : function(data){
-			console.log("returned: ");
-			console.log(data);
-			//console.log(jQuery.parseJSON('[{"Title":"T1","ShortDesc":"SD1"},{"Title":"T2","ShortDesc":"SD2"}]'));
 			var jsonObj = data; //jQuery.parseJSON(data[0]);
 			
 			$('#tab-find-shares-content').html("");

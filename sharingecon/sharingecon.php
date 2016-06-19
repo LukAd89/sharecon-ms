@@ -10,14 +10,22 @@
 
 
 function sharingecon_load() {
+	register_hook('sharingecon_mod_content', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_content');
 }
 function sharingecon_unload() {
+	unregister_hook('sharingecon_mod_content', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_content');
 }
 
 function sharingecon_init(){
 	head_add_css('addon/sharingecon/bootstrap_sharecon.css');
 	//head_add_js('addon/sharingecon/main_js.js');
 }
+
+function sharingecon_mod_content(&$a, &$b){
+	echo var_dump(App::$module);
+	//App::$layout['region_aside'] .= 'hallihallo';
+}
+
 
 function sharingecon_module() {}
 
