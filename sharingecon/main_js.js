@@ -36,6 +36,7 @@ function loadShares(){
 		url : "sharingecon/db_functions.php",
 		data : {function : "loadShares"},
 		success : function(msg){
+			console.log(msg);
 			var jsonObj = jQuery.parseJSON(msg);
 			
 			$('#tab-find-shares-content').html("");
