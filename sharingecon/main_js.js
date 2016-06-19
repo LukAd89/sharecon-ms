@@ -6,7 +6,7 @@ function test(){
 function test_ajax(){
 	$.ajax({
 		type : "POST",
-		url : "db_functions.php",
+		url : "addon/sharingecon/db_functions.php",
 		data : {test : true},
 		success : function(msg){
 			console.log(msg);
