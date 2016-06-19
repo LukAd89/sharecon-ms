@@ -15,6 +15,8 @@ function sharingecon_unload() {
 }
 
 function sharingecon_init(){
+	head_add_css('addon/sharingecon/bootstrap_sharecon.css');
+	head_add_js('addon/sharingecon/main_js.js');
 }
 
 function sharingecon_module() {}
