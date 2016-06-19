@@ -22,8 +22,7 @@ function sharingecon_init(){
 }
 
 function sharingecon_mod_content(&$a, &$b){
-	echo var_dump(App::$module);
-	//App::$layout['region_aside'] .= 'hallihallo';
+	App::$layout['region_aside'] = file_get_contents("http://localhost/addon/sharingecon/main_aside_left.html");
 }
 
 
