@@ -6,6 +6,9 @@ if (isset($_POST['function'])) {
 	else if($_POST['function'] == "loadShares"){
 		echo loadShares();
 	}
+	else if($_POST['function'] == "test"){
+		echo "TEST";
+	}
 }
 
 function addNewShare(){
