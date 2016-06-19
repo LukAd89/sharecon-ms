@@ -1,8 +1,5 @@
 <?php
 
-echo "TEST";
-return;
-
 if (isset($_POST['function'])) {
 	if($_POST['function'] == "addNewShare"){
 		echo addNewShare();

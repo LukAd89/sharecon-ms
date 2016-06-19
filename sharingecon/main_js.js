@@ -33,7 +33,7 @@ function addNewShare(){
 function loadShares(){
 	$.ajax({
 		type : "POST",
-		url : "sharingecon/db_functions.php",
+		url : "192.168.1.101/addon/sharingecon/db_functions.php",
 		dataType : "json",
 		data : {function : "loadShares"},
 		success : function(msg){
