@@ -3,6 +3,19 @@
 function test(){
 	console.log("This is a Test");
 }
+function test_ajax(){
+	$.ajax({
+		type : "POST",
+		url : "db_functions.php",
+		data : {test : true},
+		success : function(msg){
+			console.log(msg);
+		},
+		error : function(){
+			console.log("error");
+		}
+	});
+}
 
 $(document).ready(function(){
 	/* Called when Submit button of Add New Share form is clicked */
@@ -33,7 +46,7 @@ function addNewShare(){
 function loadShares(){
 	$.ajax({
 		type : "POST",
-		url : "192.168.1.101/addon/sharingecon/db_functions.php",
+		url : "addon/sharingecon/db_functions.php",
 		dataType : "json",
 		data : {function : "loadShares"},
 		success : function(msg){
