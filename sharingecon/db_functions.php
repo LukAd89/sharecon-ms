@@ -1,9 +1,7 @@
 <?php
 
-if(isset($_POST['test']){
-	echo "TEST";
-	return;
-}
+echo "TEST";
+return;
 
 if (isset($_POST['function'])) {
 	if($_POST['function'] == "addNewShare"){
