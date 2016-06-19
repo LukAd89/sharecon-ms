@@ -45,7 +45,7 @@ function addNewShare(){
 function loadShares(){
 	header('Content-Type: application/json');
 	
-    $json[] = array
+    /*$json[] = array
     (
         "0" => array(
 			'Title' => 'T1',
@@ -57,7 +57,7 @@ function loadShares(){
 		)
     );
 	echo json_encode($json);
-	return;
+	return;*/
 	
 	$server = "localhost";
 	$user = "root";
