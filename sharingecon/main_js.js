@@ -57,7 +57,7 @@ function loadShares(){
 			for(i=0; i<jsonObj.length; i++){
 				$('#tab-find-shares-content').append('<div class="panel panel-default panel-share-object">' + 
 					'<div class="panel-heading">' + jsonObj[i].Title + '</div>' + 
-					'<div class="panel-body"><div class="media"><div class="media-left"><img class="media-object" src="sharecon/standard.png" alt="..."></div><div class="media-body"><div class="well">' + jsonObj[i].ShortDesc + '</div></div></div></div>' + 
+					'<div class="panel-body"><div class="media"><div class="media-left"><img class="media-object thumbnail" src="addon/sharecon/standard.png" alt="..."></div><div class="media-body"><div class="well">' + jsonObj[i].ShortDesc + '</div></div></div></div>' + 
 					'<div class="panel-footer"><div class="row"></div></div>' + 
 					'</div>');
 			}
