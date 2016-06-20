@@ -7,16 +7,16 @@ if(isset($_POST['test'])){
 }
 
 if (isset($_POST['function'])) {
-	if($_POST['function'] == "addNewShare"){
-		echo addNewShare();
+	if($_POST['function'] == "add_new_share"){
+		echo add_new_share();
 	}
-	else if($_POST['function'] == "loadShares"){
-		echo loadShares();
+	else if($_POST['function'] == "load_shares"){
+		echo load_shares();
 	}
 	return;
 }
 
-function addNewShare(){
+function add_new_share(){
 	$title = strip_tags($_POST['inputTitle']);
 	$shortdesc = strip_tags($_POST['inputShortDesc']);
 	
@@ -42,22 +42,8 @@ function addNewShare(){
 	$conn->close();
 }
 
-function loadShares(){
+function load_shares(){
 	header('Content-Type: application/json');
-	
-    /*$json[] = array
-    (
-        "0" => array(
-			'Title' => 'T1',
-			'ShortDesc' => 'SD1'
-		),
-		"1" => array(
-			'Title' => 'T2',
-			'ShortDesc' => 'SD2'
-		)
-    );
-	echo json_encode($json);
-	return;*/
 	
 	$server = "localhost";
 	$user = "root";
@@ -83,5 +69,9 @@ function loadShares(){
 
 	//$result->close();
 	$conn->close();
+}
+
+function load_share_details($id){
+	echo "hallo";
 }
 ?>

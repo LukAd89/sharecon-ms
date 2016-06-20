@@ -32,7 +32,7 @@ function addNewShare(){
 	$.ajax({
 		type : "POST",
 		url : "sharingecon/db_functions.php",
-		data : $("#form_addNewShare").serialize() + "&function=addNewShare",
+		data : $("#form_add_new_share").serialize() + "&function=add_new_share",
 		success : function(msg){
 			console.log(msg);
 			$("#modal_addNewShare").modal('hide');
@@ -48,7 +48,7 @@ function loadShares(){
 		type : "POST",
 		url : "addon/sharingecon/db_functions.php",
 		dataType : "json",
-		data : {function : "loadShares"},
+		data : {function : "load_shares"},
 		success : function(data){
 			var jsonObj = data; //jQuery.parseJSON(data[0]);
 			
@@ -58,7 +58,7 @@ function loadShares(){
 				$('#tab-find-shares-content').append('<div class="panel panel-default panel-share-object">' + 
 					'<div class="panel-heading"><h4>' + jsonObj[i].Title + '</h4></div>' + 
 					'<div class="panel-body"><div class="media"><div class="media-left"><img class="media-object thumbnail" src="addon/sharingecon/standard.png" alt="..."></div><div class="media-body"><div class="well">' + jsonObj[i].ShortDesc + '</div></div></div></div>' + 
-					'<div class="panel-footer"><div class="row"><div class="col-md-12"><div class="btn-group"><a href="sharingecon/viewshare' + jsonObj[i].ID + '" type="button" class="btn btn-default pull-right"><span class="glyphicon glyphicon-info-sign"></span> More Details</a><button type="button" class="btn btn-default pull-right"><span class="glyphicon glyphicon-envelope"></span> Write Message</button></div></div></div></div>' + 
+					'<div class="panel-footer"><div class="row"><div class="col-md-12"><div class="btn-group"><a href="sharingecon/viewshare/' + jsonObj[i].ID + '" type="button" class="btn btn-default pull-right"><span class="glyphicon glyphicon-info-sign"></span> More Details</a><button type="button" class="btn btn-default pull-right"><span class="glyphicon glyphicon-envelope"></span> Write Message</button></div></div></div></div>' + 
 					'</div>');
 			}
 		},
