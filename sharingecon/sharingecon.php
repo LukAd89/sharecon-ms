@@ -12,7 +12,7 @@
 if(argc() > 1){
 	switch(argv(1)){
 		case 'viewshare':
-			$this->view_share_details(argv(2));
+			view_share_details(argv(2));
 			break;
 	}
 }
