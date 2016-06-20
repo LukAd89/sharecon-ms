@@ -67,11 +67,34 @@ function load_shares(){
 	}
 	else { echo "";}
 
-	//$result->close();
 	$conn->close();
 }
 
 function load_share_details($id){
-	return "hallo";
+	header('Content-Type: application/json');
+	
+	$server = "localhost";
+	$user = "root";
+	$password = "dbroot";
+	$dbname = "hz_sharecon";
+	
+	$conn = new mysqli($server, $user, $password, $dbname);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$resArray = array();
+	$sql_query = "SELECT * FROM sharedObjects WHERE ID=" . $id;
+	
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+				$resArray[] = $row;
+		}
+		return json_encode($resArray);
+	}
+	else { return "";}
+
+	$conn->close();
 }
 ?>

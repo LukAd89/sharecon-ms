@@ -34,7 +34,7 @@ function sharingecon_content(&$a) {
 				$siteContent .= file_get_contents("http://localhost/addon/sharingecon/main_page.html");
 				break;
 			case 'viewshare':
-				$siteContent .= view_share_details(argv(2));
+				$siteContent .= var_dump(view_share_details(argv(2)));
 				break;
 			default:
 				$siteContent .= "TEST";
