@@ -72,6 +72,6 @@ function load_shares(){
 }
 
 function load_share_details($id){
-	echo "hallo";
+	return "hallo";
 }
 ?>
