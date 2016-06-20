@@ -55,7 +55,8 @@ function view_share_details($id){
 	$content = file_get_contents("http://localhost/addon/sharingecon/share_details.html");
 	
 	$values = array(
-		'{$id}'       => $share_data['ID']
+		'{$title}'	=> $share_data['Title'],
+		'{$shortdesc}'		=> $share_data['ShortDesc']
 	);
 	return strtr($content, $values);
 }
