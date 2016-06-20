@@ -55,6 +55,10 @@ function view_share_details($id){
 	//echo var_dump($share_data);
 	//return "<div>${id}</div>";
 	$content = file_get_contents("http://localhost/addon/sharingecon/share_details.html");
-	echo var_dump(strtr($content, $share_data));
+	
+	$values = array(
+		'{$id}'       => $share_data['ID']
+	)
+	echo var_dump(strtr($content, $value));
 	return $content;
 }
