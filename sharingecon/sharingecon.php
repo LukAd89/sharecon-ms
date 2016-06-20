@@ -26,16 +26,18 @@ function sharingecon_init(){
 function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
+	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
+	
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'main':
-				$siteContent = file_get_contents("http://localhost/addon/sharingecon/main_page.html");
+				$siteContent .= file_get_contents("http://localhost/addon/sharingecon/main_page.html");
 				break;
 			case 'viewshare':
-				$siteContent = view_share_details(argv(2));
+				$siteContent .= view_share_details(argv(2));
 				break;
 			default:
-				$siteContent = "TEST";
+				$siteContent .= "TEST";
 				break;
 		}
 	}
