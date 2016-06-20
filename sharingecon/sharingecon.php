@@ -8,9 +8,12 @@
  * Maintainer: none
  */
 
+$siteContent = "";
 
 if(argc() > 1){
 	switch(argv(1)){
+		case 'main':
+			$siteContent = file_get_contents("http://localhost/addon/sharingecon/main_aside_left.html");
 		case 'viewshare':
 			view_share_details(argv(2));
 			break;
@@ -31,7 +34,7 @@ function sharingecon_init(){
 function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
-	return file_get_contents("http://localhost/addon/sharingecon/main_page.html");
+	return $siteContent; //file_get_contents("http://localhost/addon/sharingecon/main_page.html");
 }
 
 function sharingecon_mod_content(&$a, &$b){
