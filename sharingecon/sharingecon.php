@@ -8,17 +8,9 @@
  * Maintainer: none
  */
 
-$siteContent = "";
 
-if(argc() > 1){
-	switch(argv(1)){
-		case 'main':
-			$siteContent = file_get_contents("http://localhost/addon/sharingecon/main_aside_left.html");
-		case 'viewshare':
-			view_share_details(argv(2));
-			break;
-	}
-}
+
+
 function sharingecon_load() {
 	register_hook('sharingecon_mod_content', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_content');
 }
@@ -34,6 +26,18 @@ function sharingecon_init(){
 function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
+	
+	$siteContent = "";
+	if(argc() > 1){
+		switch(argv(1)){
+			case 'main':
+				$siteContent = file_get_contents("http://localhost/addon/sharingecon/main_aside_left.html");
+				break;
+			case 'viewshare':
+				view_share_details(argv(2));
+				break;
+		}
+	}
 	return $siteContent; //file_get_contents("http://localhost/addon/sharingecon/main_page.html");
 }
 
