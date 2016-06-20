@@ -51,5 +51,7 @@ function sharingecon_mod_content(&$a, &$b){
 function view_share_details($id){
 	require_once('addon/sharingecon/db_functions.php');
 	
-	return load_share_details($id);
+	$share_data = load_share_details($id);
+	
+	return file_get_contents("http://localhost/addon/sharingecon/share_details.html");
 }

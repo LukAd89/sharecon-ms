@@ -91,7 +91,7 @@ function load_share_details($id){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
 		}
-		return $resArray;
+		return $resArray[0];
 	}
 	else { return "";}
 
