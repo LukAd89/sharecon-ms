@@ -26,8 +26,6 @@ function sharingecon_init(){
 function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
-	
-	$siteContent = "";
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'main':
@@ -35,6 +33,9 @@ function sharingecon_content(&$a) {
 				break;
 			case 'viewshare':
 				view_share_details(argv(2));
+				break;
+			default:
+				$siteContent = "TEST";
 				break;
 		}
 	}
