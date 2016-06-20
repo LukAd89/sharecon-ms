@@ -60,5 +60,5 @@ function view_share_details($id){
 		'{$id}'       => $share_data['ID']
 	);
 	echo var_dump(strtr($content, $values));
-	return $content;
+	return strtr($content, $values);
 }
