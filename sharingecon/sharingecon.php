@@ -51,7 +51,7 @@ function sharingecon_content(&$a) {
 				));
 				break;
 			case 'findshares':
-				$tabContent = get_shares_list();
+				$tabContent = "TEST"; //get_shares_list();
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => '',
 					'$tab2' => "active",
