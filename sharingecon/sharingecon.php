@@ -24,7 +24,9 @@ if(isset($_POST['function'])){
 			echo load_shares();
 			break;
 	}
-}}
+}
+else echo "TRARA";
+}
 
 function sharingecon_load() {}
 

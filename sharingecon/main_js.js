@@ -22,7 +22,8 @@ function test_ajax_json(){
 
 $(document).ready(function(){
 	$("#btn-add-new-share").click(function(){
-		addNewShare();
+		//addNewShare();
+		$("#form-add-new-share").submit();
 	});
 
 	$('[href=#tab-find-shares]').on('shown.bs.tab', function(event){
