@@ -45,11 +45,13 @@ function sharingecon_content(&$a) {
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
+				$tab1Content = get_shares_list(array('owner' => App::$channel['channel_guid']));
 				$tab2Content = get_shares_list();
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => 'active',
 					'$tab2' => '',
-					'tab2content' => $tab2Content
+					'$tab1Content' => $tab1Content,
+					'$tab2content' => $tab2Content
 				));
 				break;
 			case 'findshares':
@@ -57,7 +59,7 @@ function sharingecon_content(&$a) {
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => '',
 					'$tab2' => "active",
-					'tab2content' => $tab2Content
+					'$tab2content' => $tab2Content
 				));
 				break;
 			case 'viewshare':
@@ -73,15 +75,15 @@ function sharingecon_content(&$a) {
 		$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 			'$tab1' => 'active',
 			'$tab2' => '',
-			'tab2content' => $tab2Content
+			'$tab2content' => $tab2Content
 		));
 	}
 	
 	return $siteContent;
 }
 
-function get_shares_list(){
-	$data = load_shares();
+function get_shares_list($args){
+	$data = load_shares($args);
 	
 	$result = "";
 	for($i=0; $i<count($data); $i++){
