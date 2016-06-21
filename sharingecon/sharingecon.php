@@ -27,12 +27,11 @@ function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
 	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
-	return get_markup_template("main_page.tpl","addon/sharingecon/");
-	/*
+	
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'main':
-				$siteContent .= get_markup_template('main_page.tpl','addon/sharingecon/'); //file_get_contents("http://localhost/addon/sharingecon/main_page.html");
+				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array()); //file_get_contents("http://localhost/addon/sharingecon/main_page.html");
 				break;
 			case 'viewshare':
 				$siteContent .= view_share_details(argv(2));
