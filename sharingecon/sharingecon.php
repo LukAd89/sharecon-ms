@@ -15,6 +15,9 @@ if(isset($_POST['function'])){
 		case "add_new_share":
 			echo "geklappt";
 			break;
+		case "load_shares":
+			echo load_shares();
+			break;
 	}
 }
 

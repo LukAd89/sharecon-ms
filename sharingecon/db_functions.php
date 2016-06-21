@@ -6,7 +6,7 @@ if(isset($_POST['test'])){
 	return;
 }
 
-if (isset($_POST['function'])) {
+/*if (isset($_POST['function'])) {
 	if($_POST['function'] == "add_new_share"){
 		echo add_new_share();
 	}
@@ -14,10 +14,9 @@ if (isset($_POST['function'])) {
 		echo load_shares();
 	}
 	return;
-}
+}*/
 
 function add_new_share(){
-	require_once('sharingecon.php');
 	$title = strip_tags($_POST['input-title']);
 	$shortdesc = strip_tags($_POST['input-short-desc']);
 	
