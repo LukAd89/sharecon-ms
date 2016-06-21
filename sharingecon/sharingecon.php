@@ -8,8 +8,15 @@
  * Maintainer: none
  */
 
+include('db_functions.php');
 
-
+if(isset($_POST['function']){
+	switch($_POST['function']){
+		case "add_new_share":
+			echo "geklappt";
+			break;
+	}
+}
 
 function sharingecon_load() {}
 
