@@ -52,7 +52,6 @@
 							<input type="text" class="form-control" name="input-short-desc" id="input-short-desc" placeholder="Short Description of the Object">
 						</div>
 					</div>
-					<input type="submit" name="submit" value="OK" />
 				</form>
 			</div>
 			<div class="modal-footer">
