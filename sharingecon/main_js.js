@@ -1,7 +1,7 @@
 
 
 function test(){
-	$.post("addon/sharingecon/sharingecon.php", {function : "test"}, function(data){
+	$.post("addon/sharingecon/sharingecon.php", {test : "test"}, function(data){
 		console.log(data);
 	});
 }
@@ -22,7 +22,7 @@ function test_ajax_json(){
 
 $(document).ready(function(){
 	$("#btn-add-new-share").click(function(){
-		//addNewShare();
+		addNewShare();
 	});
 
 	$('[href=#tab-find-shares]').on('shown.bs.tab', function(event){

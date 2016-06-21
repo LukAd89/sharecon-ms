@@ -9,7 +9,11 @@
  */
 
 
-
+if(isset($_POST['test'])){
+	header('Content-Type: application/json');
+	echo '{"test":{"titel":"wahr"}}';
+	return;
+}
 
 function sharingecon_load() {
 	register_hook('sharingecon_mod_content', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_content');
