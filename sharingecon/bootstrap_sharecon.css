@@ -2,7 +2,12 @@
     width:100%;
 }
 
-#tab-find-shares-content .panel, #tab-my-shares-content .panel{
+#tab-find-shares-content .panel{
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+#tab-my-shares-content .panel{
 	border: 1px solid #ddd;
 	border-radius: 4px;
 }
