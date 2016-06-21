@@ -9,11 +9,7 @@
  */
 
 
-if(isset($_POST['test'])){
-	//header('Content-Type: application/json');
-	echo '{"test":{"titel":"wahr"}}';
-	return;
-}
+
 
 function sharingecon_load() {
 	register_hook('sharingecon_mod_content', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_content');
@@ -59,7 +55,11 @@ function get_current_App(){
 function sharingecon_post(&$a){
 	//echo "geklappt"; //$_POST['function'];
 	//App::$layout['region_aside'] = "<div>hallo</div>";
-	echo("asdasd");
+	if(isset($_POST['test'])){
+	//header('Content-Type: application/json');
+	echo '{"test":{"titel":"wahr"}}';
+	return;
+}
 }
 
 function view_share_details($id){
