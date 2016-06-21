@@ -82,7 +82,7 @@ function get_shares_list(){
 		$result .= $data[i]['Title'];
 	}
 	
-	return result;
+	return $result;
 }
 
 function view_share_details($id){
