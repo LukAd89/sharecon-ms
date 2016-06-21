@@ -27,7 +27,8 @@ function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
 	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
-	
+	return get_markup_template("main_page.tpl","addon/sharingecon/");
+	/*
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'main':
@@ -41,7 +42,7 @@ function sharingecon_content(&$a) {
 				break;
 		}
 	}
-	return $siteContent; //file_get_contents("http://localhost/addon/sharingecon/main_page.html");
+	return $siteContent; //file_get_contents("http://localhost/addon/sharingecon/main_page.html");*/
 }
 
 function sharingecon_mod_content(&$a, &$b){
