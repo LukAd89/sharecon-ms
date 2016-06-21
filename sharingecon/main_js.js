@@ -24,7 +24,7 @@ $(document).ready(function(){
 	});
 
 	$('[href=#tab-find-shares]').on('shown.bs.tab', function(event){
-		loadShares();
+		loadShares({range : "all"});
 	});
 });
 
@@ -44,12 +44,12 @@ function addNewShare(){
 	});
 }
 
-function loadShares(){
+function loadShares(args){
 	$.ajax({
 		type : "POST",
 		url : "addon/sharingecon/db_functions.php",
 		dataType : "json",
-		data : {function : "load_shares"},
+		data : {function : "load_shares", args : args},
 		success : function(data){
 			var jsonObj = data;
 			
