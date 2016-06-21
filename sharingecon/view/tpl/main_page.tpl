@@ -10,7 +10,7 @@
 		 </li>
 		</ul>
 	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane {{$tab1}}" id="tab-my-shares">
+		<div role="tabpanel" class="tab-pane {{$tab1}}" {{$d}} id="tab-my-shares">
 			<div class="page-header">
 				<h1>My Shares</h1>
 			</div>
@@ -26,7 +26,7 @@
 </div>
 
 
-<!-- Modal for entering new object -->
+
 <div class="modal fade" id="modal-add-new-share">
 	<div class="modal-dialog">
 		<div class="modal-content">

@@ -47,7 +47,8 @@ function sharingecon_content(&$a) {
 			case 'myshares':
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					"$tab1" => "active",
-					"$tab2" => ""
+					"$tab2" => "s",
+					"$d" => "asd"
 				));
 				break;
 			case 'findshares':
