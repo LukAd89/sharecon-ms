@@ -23,14 +23,12 @@ function sharingecon_init(){
 	//head_add_js('addon/sharingecon/main_js.js');
 }
 
-function sharingecon_post(){
-	echo("hallo");
-}
 function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
 	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
-	$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array());
+	
+	App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'main':
@@ -48,11 +46,7 @@ function sharingecon_content(&$a) {
 }
 
 function sharingecon_mod_content(&$a, &$b){
-	App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array()); //file_get_contents("http://localhost/addon/sharingecon/main_aside_left.html");
-}
-
-function get_current_App(){
-	return get_App();
+	//App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array()); //file_get_contents("http://localhost/addon/sharingecon/main_aside_left.html");
 }
 
 function view_share_details($id){
