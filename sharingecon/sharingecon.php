@@ -76,6 +76,7 @@ function sharingecon_content(&$a) {
 
 function get_shares_list(){
 	$data = array('Title' => 'Test'); //load_shares();
+	load_shares();
 	/*$result = "";
 	for($i=0; i<count($data); $i++){
 		$result .= $data[i]['Title'];
