@@ -52,16 +52,6 @@ function get_current_App(){
 	return get_App();
 }
 
-function sharingecon_post(&$a){
-	//echo "geklappt"; //$_POST['function'];
-	//App::$layout['region_aside'] = "<div>hallo</div>";
-	if(isset($_POST['test'])){
-	//header('Content-Type: application/json');
-	echo '{"test":{"titel":"wahr"}}';
-	return;
-}
-}
-
 function view_share_details($id){
 	require_once('addon/sharingecon/db_functions.php');
 	
