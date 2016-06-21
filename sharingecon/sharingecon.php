@@ -25,7 +25,14 @@ if(isset($_POST['function'])){
 			break;
 	}
 }
-else echo "TRARA";
+else {
+	$data = array(
+				"owner" => "1",
+				"title" => strip_tags($_POST['input-title']),
+				"shortdesc" => strip_tags($_POST['input-short-desc'])
+			);
+			echo add_new_share($data);
+}
 }
 
 function sharingecon_load() {}
