@@ -19,7 +19,7 @@ function test_ajax_json(){
 }
 
 $(document).ready(function(){
-	$("#btn_addNewShare").click(function(){
+	$("#btn-add-new-share").click(function(){
 		addNewShare();
 	});
 
@@ -29,21 +29,19 @@ $(document).ready(function(){
 });
 
 function addNewShare(){
-	console.log($("#form_add_new_share").serialize());
-	/*
+
 	$.ajax({
 		type : "POST",
 		url : "addon/sharingecon/db_functions.php",
-		data : $("#form_add_new_share").serialize() + "&function=add_new_share",
+		data : $("#form-add-new-share").serialize() + "&function=add_new_share",
 		success : function(msg){
 			console.log(msg);
-			$("#modal_addNewShare").modal('hide');
+			$("#modal-add-new-share").modal('hide');
 		},
 		error : function(){
 			console.log("error");
 		}
 	});
-	*/
 }
 
 function loadShares(){

@@ -27,7 +27,7 @@
 
 
 <!-- Modal for entering new object -->
-<div class="modal fade" id="modal_addNewShare">
+<div class="modal fade" id="modal-add-new-share">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -35,13 +35,13 @@
 				<h4 class="modal-title">Add new Share</h4>
 			</div>
 			<div class="modal-body">
-				<form class="form-horizontal" role="form" id="form_addNewShare">
+				<form class="form-horizontal" role="form" id="form-add-new-share">
 					<div class="form-group">
 						<div class="col-sm-2">
 							<label for="inputTitle" class="control-label">Title</label>
 						</div>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="inputTitle" id="inputTitle" placeholder="Name of the Object">
+							<input type="text" class="form-control" name="input-title" id="input-title" placeholder="Name of the Object">
 						</div>
 					</div>
 					<div class="form-group">
@@ -49,14 +49,14 @@
 							<label for="inputShortDesc" class="control-label">Short Description</label>
 						</div>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="inputShortDesc" id="inputShortDesc" placeholder="Short Description of the Object">
+							<input type="text" class="form-control" name="input-short-desc" id="input-short-desc" placeholder="Short Description of the Object">
 						</div>
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<a class="btn btn-default" data-dismiss="modal">Close</a>
-				<button type="submit" class="btn btn-primary" id="btn_addNewShare">Add Share</a>
+				<button type="submit" class="btn btn-primary" id="btn_add-new-share">Add Share</a>
 			</div>
 		</div>
 	</div>

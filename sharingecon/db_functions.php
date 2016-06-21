@@ -17,8 +17,8 @@ if (isset($_POST['function'])) {
 }
 
 function add_new_share(){
-	$title = strip_tags($_POST['inputTitle']);
-	$shortdesc = strip_tags($_POST['inputShortDesc']);
+	$title = strip_tags($_POST['input-title']);
+	$shortdesc = strip_tags($_POST['input-short-desc']);
 	
 	$server = "localhost";
 	$user = "root";
