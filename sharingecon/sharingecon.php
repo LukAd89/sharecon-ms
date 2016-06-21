@@ -46,14 +46,14 @@ function sharingecon_content(&$a) {
 		switch(argv(1)){
 			case 'myshares':
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
-					"class-tab1" => "active",
-					"class-tab2" => ""
+					"$class-tab1" => "active",
+					"$class-tab2" => ""
 				));
 				break;
 			case 'findshares':
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
-					"class-tab1" => "",
-					"class-tab2" => "active"
+					"$class-tab1" => "",
+					"$class-tab2" => "active"
 				));
 				break;
 			case 'viewshare':
