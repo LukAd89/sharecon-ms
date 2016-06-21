@@ -84,7 +84,7 @@ function sharingecon_content(&$a) {
 
 function get_shares_list($args){
 	$data = load_shares($args);
-	var_dump($args);
+	
 	$result = "";
 	for($i=0; $i<count($data); $i++){
 		$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
