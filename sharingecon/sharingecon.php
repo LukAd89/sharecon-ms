@@ -45,17 +45,18 @@ function sharingecon_content(&$a) {
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
+				$tab2Content = get_shares_list();
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => 'active',
 					'$tab2' => ''
 				));
 				break;
 			case 'findshares':
-				$tabContent = get_shares_list();
+				$tab2Content = get_shares_list();
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => '',
 					'$tab2' => "active",
-					'tab2content' => $tabContent
+					'tab2content' => $tab2Content
 				));
 				break;
 			case 'viewshare':
