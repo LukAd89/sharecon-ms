@@ -27,7 +27,7 @@ if(isset($_POST['function'])){
 }
 else {
 	$data = array(
-				"owner" => "1",
+				"owner" => App::$channel['channer_guid'],
 				"title" => strip_tags($_POST['input-title']),
 				"shortdesc" => strip_tags($_POST['input-short-desc'])
 			);
