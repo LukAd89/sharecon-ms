@@ -31,7 +31,7 @@ function add_new_share(){
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	echo var_dump(get_current_App());
+
 	//$owner = get_current_App()::$channel['channel_guid'];
 	$sql_query = ""; //INSERT INTO sharedObjects (title, shortdesc, Owner) VALUES ('" . $title . "', '" . $shortdesc . "', '" . $owner . "')";
 	
