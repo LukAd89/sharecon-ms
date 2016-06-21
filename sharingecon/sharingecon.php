@@ -27,7 +27,7 @@ function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
 	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
-	return get_markup_template("main_page.tpl","addon/sharingecon/");
+	return var_dump(get_markup_template("main_page.tpl","addon/sharingecon/"));
 	/*
 	if(argc() > 1){
 		switch(argv(1)){
