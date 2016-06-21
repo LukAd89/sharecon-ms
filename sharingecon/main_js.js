@@ -1,7 +1,9 @@
 
 
 function test(){
-	console.log("This is a Test");
+	$.post("addon/sharingecon/sharingecon.php", {function : "test"}, function(data){
+		console.log(data);
+	});
 }
 function test_ajax_json(){
 	$.ajax({
