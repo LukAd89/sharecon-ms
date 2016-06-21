@@ -49,7 +49,7 @@ function sharingecon_mod_content(&$a, &$b){
 }
 
 function get_current_App(){
-	return App;
+	return get_App();
 }
 
 function sharingecon_post(&$a){
