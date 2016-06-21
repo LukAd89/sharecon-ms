@@ -23,6 +23,9 @@ function sharingecon_init(){
 	//head_add_js('addon/sharingecon/main_js.js');
 }
 
+function sharingecon_post(){
+	echo("hallo");
+}
 function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
