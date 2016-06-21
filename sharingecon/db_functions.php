@@ -17,6 +17,8 @@ if (isset($_POST['function'])) {
 }
 
 function add_new_share(){
+	require_once('sharingecon.php');
+	
 	$title = strip_tags($_POST['input-title']);
 	$shortdesc = strip_tags($_POST['input-short-desc']);
 	
