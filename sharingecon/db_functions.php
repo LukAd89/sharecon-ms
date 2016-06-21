@@ -32,15 +32,15 @@ function add_new_share($data){
 	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, owner) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['owner'] . "')";
 	
 	if ($conn->query($sql_query) === TRUE) {
-		echo var_dump($data); //"New record created successfully";
+		return "New record created successfully";
 	} else {
-		echo "Error: " . $sql_query . "<br>" . $conn->error;
+		return "Error: " . $sql_query . "<br>" . $conn->error;
 	}
 
 	$conn->close();
 }
 
-function load_shares(){
+function load_shares($args){
 	$server = "localhost";
 	$user = "root";
 	$password = "dbroot";
