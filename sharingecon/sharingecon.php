@@ -37,7 +37,7 @@ function sharingecon_content(&$a) {
 				$siteContent .= view_share_details(argv(2));
 				break;
 			default:
-				$siteContent .= "TEST";
+				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array());
 				break;
 		}
 	}
@@ -54,9 +54,16 @@ function view_share_details($id){
 	$share_data = load_share_details($id);
 	$content = file_get_contents("http://localhost/addon/sharingecon/share_details.html");
 	
-	$values = array(
+	/*$values = array(
 		'{$title}'	=> $share_data['Title'],
 		'{$shortdesc}'		=> $share_data['ShortDesc']
 	);
-	return strtr($content, $values);
+	return strtr($content, $values);*/
+	
+	$content = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
+		'$title'	=> $share_data['Title'],
+		'$shortdesc'		=> $share_data['ShortDesc']
+		));
+	
+	return $content;
 }
