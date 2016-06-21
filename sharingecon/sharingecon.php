@@ -10,7 +10,7 @@
 
 include('db_functions.php');
 
-if(isset($_POST['function']){
+if(isset($_POST['function'])){
 	switch($_POST['function']){
 		case "add_new_share":
 			echo "geklappt";
