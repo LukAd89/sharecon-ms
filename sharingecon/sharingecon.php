@@ -44,8 +44,17 @@ function sharingecon_content(&$a) {
 	App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
 	if(argc() > 1){
 		switch(argv(1)){
-			case 'main':
-				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array());
+			case 'myshares':
+				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
+					"class-tab1" => "active",
+					"class-tab2" => ""
+				));
+				break;
+			case 'findshares':
+				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
+					"class-tab1" => "",
+					"class-tab2" => "active"
+				));
 				break;
 			case 'viewshare':
 				$siteContent .= view_share_details(argv(2));
@@ -56,6 +65,7 @@ function sharingecon_content(&$a) {
 		}
 	}
 	else $siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array());
+	
 	return $siteContent;
 }
 
