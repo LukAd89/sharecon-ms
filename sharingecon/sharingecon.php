@@ -77,14 +77,12 @@ function sharingecon_content(&$a) {
 function get_shares_list(){
 	$data = load_shares();
 	
-	//var_dump(load_shares());
-	/*$result = "";
-	for($i=0; i<count($data); $i++){
+	$result = "";
+	for($i=0; $i<count($data); $i++){
 		$result .= $data[i]['Title'];
 	}
 	
-	return result;*/
-	return $data[0]['Title'];
+	return result;
 }
 
 function view_share_details($id){
