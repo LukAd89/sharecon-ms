@@ -56,10 +56,8 @@ function load_shares($args){
 	$sql_query = "SELECT * FROM sharedObjects";
 	
 	if(isset($args['owner'])){
-		echo "TRUE";
 		$sql_query .= " WHERE owner = '" . $args['owner'] . "'";
 	}
-	else echo "FALSE";
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {

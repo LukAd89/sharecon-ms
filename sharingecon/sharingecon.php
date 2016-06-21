@@ -46,6 +46,7 @@ function sharingecon_content(&$a) {
 		switch(argv(1)){
 			case 'myshares':
 				$tab1Content = get_shares_list(array('owner' => App::$channel['channel_guid']));
+				var_dump($tab1Content);
 				$tab2Content = get_shares_list(null);
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => 'active',
@@ -84,7 +85,7 @@ function sharingecon_content(&$a) {
 
 function get_shares_list($args){
 	$data = load_shares($args);
-	var_dump($data);
+
 	$result = "";
 	for($i=0; $i<count($data); $i++){
 		$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
