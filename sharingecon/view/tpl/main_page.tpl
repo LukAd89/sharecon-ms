@@ -14,7 +14,7 @@
 			<div class="page-header">
 				<h1>My Shares</h1>
 			</div>
-			<div class="col-md-12">{{$tab1content}}</div>
+			<div class="col-md-12" id="tab-my-shares-content">{{$tab1content}}</div>
 		</div>
 		<div class="tab-pane {{$tab2}}" role="tabpanel" id="tab-find-shares">
 			<div class="page-header">
