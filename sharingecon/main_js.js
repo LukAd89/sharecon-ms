@@ -8,7 +8,7 @@ function test(){
 function test_ajax_json(){
 	$.ajax({
 		type : "POST",
-		url : "addon/sharingecon/db_functions.php",
+		url : "addon/sharingecon/sharingecon.php",
 		dataType: "json",
 		data : {test : true},
 		success : function(data){
@@ -49,9 +49,9 @@ function addNewShare(){
 function loadShares(args){
 	$.ajax({
 		type : "POST",
-		url : "addon/sharingecon/db_functions.php",
+		url : "addon/sharingecon/sharingecon.php",
 		dataType : "json",
-		data : {function : "load_shares", args : args},
+		data : {function : "load_shares"},
 		success : function(data){
 			var jsonObj = data;
 			
