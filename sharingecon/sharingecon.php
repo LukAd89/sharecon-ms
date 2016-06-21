@@ -13,9 +13,11 @@
 
 function sharingecon_load() {
 	register_hook('sharingecon_mod_content', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_content');
+	register_hook('sharingecon_mod_post', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_post');
 }
 function sharingecon_unload() {
 	unregister_hook('sharingecon_mod_content', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_content');
+	unregister_hook('sharingecon_mod_post', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_post');
 }
 
 function sharingecon_init(){
@@ -46,6 +48,10 @@ function sharingecon_content(&$a) {
 
 function sharingecon_mod_content(&$a, &$b){
 	App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array()); //file_get_contents("http://localhost/addon/sharingecon/main_aside_left.html");
+}
+
+function sharingecon_mod_post(&$a){
+	echo $_POST['function'];
 }
 
 function view_share_details($id){
