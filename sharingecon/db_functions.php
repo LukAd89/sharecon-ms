@@ -41,8 +41,6 @@ function add_new_share($data){
 }
 
 function load_shares(){
-	header('Content-Type: application/json');
-	
 	$server = "localhost";
 	$user = "root";
 	$password = "dbroot";
