@@ -51,9 +51,11 @@ function sharingecon_content(&$a) {
 				));
 				break;
 			case 'findshares':
+				$tabContent = get_shares_list();
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => '',
-					'$tab2' => "active"
+					'$tab2' => "active",
+					'tab2content' => $tabContent
 				));
 				break;
 			case 'viewshare':
@@ -70,6 +72,16 @@ function sharingecon_content(&$a) {
 	));
 	
 	return $siteContent;
+}
+
+function get_shares_list(){
+	$data = load_shares();
+	$result = "";
+	for($i=0; i<count($data); $i++){
+		$result .= $data[i]['Title'];
+	}
+	
+	return result;
 }
 
 function view_share_details($id){

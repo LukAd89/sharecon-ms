@@ -61,9 +61,10 @@ function load_shares(){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
 		}
-		echo json_encode($resArray);
+		//echo json_encode($resArray);
+		return $resArray;
 	}
-	else { echo "";}
+	else return null; //{ echo "";}
 
 	$conn->close();
 }
