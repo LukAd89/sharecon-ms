@@ -48,7 +48,7 @@ function sharingecon_mod_content(&$a, &$b){
 	App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array()); //file_get_contents("http://localhost/addon/sharingecon/main_aside_left.html");
 }
 
-function sharingecon_post(){
+function sharingecon_post($a){
 	echo "geklappt"; //$_POST['function'];
 }
 
