@@ -10,7 +10,7 @@
 
 
 if(isset($_POST['test'])){
-	header('Content-Type: application/json');
+	//header('Content-Type: application/json');
 	echo '{"test":{"titel":"wahr"}}';
 	return;
 }
