@@ -1,1 +1,1 @@
-<div>{$title} {$shortdesc}</div>
+<div>{{$title}} {{$shortdesc}}</div>
