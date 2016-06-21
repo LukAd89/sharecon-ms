@@ -32,8 +32,8 @@ function add_new_share(){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$owner = App::$channel['channel_guid'];
-	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, Owner) VALUES ('" . $title . "', '" . $shortdesc . "', '" . $owner . "')";
+	$owner = get_current_App()::$channel['channel_guid'];
+	$sql_query = ""; //INSERT INTO sharedObjects (title, shortdesc, Owner) VALUES ('" . $title . "', '" . $shortdesc . "', '" . $owner . "')";
 	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";

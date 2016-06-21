@@ -34,7 +34,7 @@ function addNewShare(){
 
 	$.ajax({
 		type : "POST",
-		url : "addon/sharingecon/sharingecon.php",
+		url : "addon/sharingecon/db_functions.php",
 		data : $("#form-add-new-share").serialize() + "&function=add_new_share",
 		success : function(msg){
 			console.log(msg);
