@@ -50,10 +50,7 @@ function sharingecon_mod_content(&$a, &$b){
 
 function sharingecon_post(&$a){
 	echo "geklappt"; //$_POST['function'];
-}
-
-function get_App(){
-	return App;
+	App::$layout['region_aside'] = "<div>hallo</div>";
 }
 
 function view_share_details($id){
