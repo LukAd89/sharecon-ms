@@ -13,11 +13,9 @@
 
 function sharingecon_load() {
 	register_hook('sharingecon_mod_content', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_content');
-	register_hook('sharingecon_mod_post', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_post');
 }
 function sharingecon_unload() {
 	unregister_hook('sharingecon_mod_content', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_content');
-	unregister_hook('sharingecon_mod_post', 'addon/sharingecon/sharingecon.php', 'sharingecon_mod_post');
 }
 
 function sharingecon_init(){
