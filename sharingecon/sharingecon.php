@@ -79,9 +79,11 @@ function get_shares_list(){
 	
 	$result = "";
 	for($i=0; $i<count($data); $i++){
-		$result .= $data[$i]['Title'];
+		$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
+		'$title' => $data[$i]['Title'],
+		'$shortdesc' => $data[$i]['ShortDesc']
+		));
 	}
-	var_dump($result);
 	return $result;
 }
 
