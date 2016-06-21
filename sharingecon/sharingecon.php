@@ -13,7 +13,12 @@ include('db_functions.php');
 if(isset($_POST['function'])){
 	switch($_POST['function']){
 		case "add_new_share":
-			echo "geklappt";
+			$data = array(
+				"owner" => "1",
+				"title" = strip_tags($_POST['input-title']),
+				"shortdesc" = strip_tags($_POST['input-short-desc'])
+			);
+			echo add_new_share($data);
 			break;
 		case "load_shares":
 			echo load_shares();

@@ -16,9 +16,7 @@ if(isset($_POST['test'])){
 	return;
 }*/
 
-function add_new_share(){
-	$title = strip_tags($_POST['input-title']);
-	$shortdesc = strip_tags($_POST['input-short-desc']);
+function add_new_share($data){
 	
 	$server = "localhost";
 	$user = "root";
@@ -30,9 +28,8 @@ function add_new_share(){
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-
-	//$owner = get_current_App()::$channel['channel_guid'];
-	$sql_query = ""; //INSERT INTO sharedObjects (title, shortdesc, Owner) VALUES ('" . $title . "', '" . $shortdesc . "', '" . $owner . "')";
+	
+	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, Owner) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['owner'] . "')";
 	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";
