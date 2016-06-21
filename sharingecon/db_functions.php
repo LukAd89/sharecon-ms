@@ -32,7 +32,7 @@ function add_new_share($data){
 	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, owner) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['owner'] . "')";
 	
 	if ($conn->query($sql_query) === TRUE) {
-		echo var_dump($owner); //"New record created successfully";
+		echo var_dump($data); //"New record created successfully";
 	} else {
 		echo "Error: " . $sql_query . "<br>" . $conn->error;
 	}
