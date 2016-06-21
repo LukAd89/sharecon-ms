@@ -31,7 +31,7 @@ function sharingecon_content(&$a) {
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'main':
-				$siteContent .= file_get_contents("http://localhost/addon/sharingecon/main_page.html");
+				$siteContent .= get_markup_template('hubwall_form.tpl','addon/hubwall/'); //file_get_contents("http://localhost/addon/sharingecon/main_page.html");
 				break;
 			case 'viewshare':
 				$siteContent .= view_share_details(argv(2));
