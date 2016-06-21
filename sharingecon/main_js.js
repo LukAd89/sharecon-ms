@@ -1,5 +1,5 @@
 
-
+/*
 function test(){
 	$.post("addon/sharingecon/sharingecon.php", {test : "test"}, function(data){
 		console.log(data);
@@ -19,16 +19,17 @@ function test_ajax_json(){
 		}
 	});
 }
-
+*/
 $(document).ready(function(){
 	$("#btn-add-new-share").click(function(){
 		$("#form-add-new-share").submit();
 		$("#modal-add-new-share").modal('hide');
 	});
-
+	/*
 	$('[href=#tab-find-shares]').on('shown.bs.tab', function(event){
-		//loadShares({range : "all"});
+		loadShares({range : "all"});
 	});
+	*/
 });
 
 /*
