@@ -29,6 +29,8 @@ $(document).ready(function(){
 });
 
 function addNewShare(){
+	console.log($("#form_add_new_share").serialize());
+	/*
 	$.ajax({
 		type : "POST",
 		url : "addon/sharingecon/db_functions.php",
@@ -41,6 +43,7 @@ function addNewShare(){
 			console.log("error");
 		}
 	});
+	*/
 }
 
 function loadShares(){
