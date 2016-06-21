@@ -10,6 +10,7 @@
 
 include('db_functions.php');
 
+function sharingecon_post(){
 if(isset($_POST['function'])){
 	switch($_POST['function']){
 		case "add_new_share":
@@ -24,7 +25,7 @@ if(isset($_POST['function'])){
 			echo load_shares();
 			break;
 	}
-}
+}}
 
 function sharingecon_load() {}
 
