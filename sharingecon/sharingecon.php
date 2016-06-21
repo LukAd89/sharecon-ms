@@ -15,8 +15,8 @@ if(isset($_POST['function'])){
 		case "add_new_share":
 			$data = array(
 				"owner" => "1",
-				"title" = strip_tags($_POST['input-title']),
-				"shortdesc" = strip_tags($_POST['input-short-desc'])
+				"title" => strip_tags($_POST['input-title']),
+				"shortdesc" => strip_tags($_POST['input-short-desc'])
 			);
 			echo add_new_share($data);
 			break;
