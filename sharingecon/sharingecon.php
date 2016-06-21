@@ -81,7 +81,7 @@ function get_shares_list(){
 	for($i=0; $i<count($data); $i++){
 		$result .= $data[i]['Title'];
 	}
-	
+	var_dump($result);
 	return $result;
 }
 
