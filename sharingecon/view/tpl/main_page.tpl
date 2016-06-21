@@ -10,7 +10,7 @@
 		 </li>
 		</ul>
 	<div class="tab-content">
-		<div role="tabpanel" class="{{$tab1}}" id="tab-my-shares">
+		<div role="tabpanel" class="tab-pane {{$tab1}}" id="tab-my-shares">
 			<div class="page-header">
 				<h1>My Shares</h1>
 			</div>

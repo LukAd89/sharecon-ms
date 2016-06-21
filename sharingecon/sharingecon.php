@@ -46,14 +46,14 @@ function sharingecon_content(&$a) {
 		switch(argv(1)){
 			case 'myshares':
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
-					"$tab1" => 'active',
-					"$tab2" => ''
+					'$tab1' => 'active',
+					'$tab2' => ''
 				));
 				break;
 			case 'findshares':
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
-					"$tab1" => "",
-					"$tab2" => "active"
+					'$tab1' => '',
+					'$tab2' => "active"
 				));
 				break;
 			case 'viewshare':
@@ -65,8 +65,8 @@ function sharingecon_content(&$a) {
 		}
 	}
 	else $siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
-		"$tab1" => "active",
-		"$tab2" => ""
+		'$tab1' => 'active',
+		'$tab2' => ''
 	));
 	
 	return $siteContent;
