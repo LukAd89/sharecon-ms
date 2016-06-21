@@ -56,7 +56,7 @@
 			</div>
 			<div class="modal-footer">
 				<a class="btn btn-default" data-dismiss="modal">Close</a>
-				<button type="submit" class="btn btn-primary" id="btn_addNewShare">Save changes</a>
+				<button type="submit" class="btn btn-primary" id="btn_addNewShare">Add Share</a>
 			</div>
 		</div>
 	</div>

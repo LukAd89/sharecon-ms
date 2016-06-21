@@ -31,7 +31,7 @@ function add_new_share(){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = "INSERT INTO sharedobjects (title, shortdesc) VALUES ('" . $title . "', '" . $shortdesc . "')";
+	$sql_query = "INSERT INTO sharedObjects (title, shortdesc) VALUES ('" . $title . "', '" . $shortdesc . "')";
 	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";

@@ -31,7 +31,7 @@ $(document).ready(function(){
 function addNewShare(){
 	$.ajax({
 		type : "POST",
-		url : "sharingecon/db_functions.php",
+		url : "addon/sharingecon/db_functions.php",
 		data : $("#form_add_new_share").serialize() + "&function=add_new_share",
 		success : function(msg){
 			console.log(msg);
@@ -50,7 +50,7 @@ function loadShares(){
 		dataType : "json",
 		data : {function : "load_shares"},
 		success : function(data){
-			var jsonObj = data; //jQuery.parseJSON(data[0]);
+			var jsonObj = data;
 			
 			$('#tab-find-shares-content').html("");
 			
