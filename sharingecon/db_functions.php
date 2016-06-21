@@ -15,7 +15,7 @@ if(isset($_POST['test'])){
 	}
 	return;
 }*/
-
+/*
 function add_new_share($data){
 	
 	$server = "localhost";
@@ -38,7 +38,7 @@ function add_new_share($data){
 	}
 
 	$conn->close();
-}
+}*/
 
 function load_shares(){
 	header('Content-Type: application/json');
