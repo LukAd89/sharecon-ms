@@ -55,7 +55,6 @@ function get_current_App(){
 function sharingecon_post(&$a){
 	//echo "geklappt"; //$_POST['function'];
 	//App::$layout['region_aside'] = "<div>hallo</div>";
-	head_add_css('addon/sharingecon/bootstrap_sharecon.css');
 	echo("asdasd");
 }
 

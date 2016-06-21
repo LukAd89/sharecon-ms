@@ -35,7 +35,7 @@
 				<h4 class="modal-title">Add new Share</h4>
 			</div>
 			<div class="modal-body">
-				<form class="form-horizontal" role="form" id="form-add-new-share">
+				<form class="form-horizontal" role="form" id="form-add-new-share" action="sharingecon" method="post">
 					<div class="form-group">
 						<div class="col-sm-2">
 							<label for="inputTitle" class="control-label">Title</label>
