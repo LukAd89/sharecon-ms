@@ -14,7 +14,7 @@ if(isset($_POST['function'])){
 	switch($_POST['function']){
 		case "add_new_share":
 			$data = array(
-				"owner" => App::$channel['channer_guid'],
+				"owner" => App::$channel['channel_guid'],
 				"title" => strip_tags($_POST['input-title']),
 				"shortdesc" => strip_tags($_POST['input-short-desc'])
 			);
