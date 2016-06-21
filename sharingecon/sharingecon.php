@@ -51,7 +51,7 @@ function sharingecon_mod_content(&$a, &$b){
 }
 
 function sharingecon_mod_post(&$a){
-	echo $_POST['function'];
+	echo "geklappt"; //$_POST['function'];
 }
 
 function view_share_details($id){
