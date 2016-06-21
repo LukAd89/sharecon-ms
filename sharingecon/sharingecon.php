@@ -49,8 +49,9 @@ function sharingecon_mod_content(&$a, &$b){
 }
 
 function sharingecon_post(&$a){
-	echo "geklappt"; //$_POST['function'];
+	//echo "geklappt"; //$_POST['function'];
 	App::$layout['region_aside'] = "<div>hallo</div>";
+	echo("asdasd");
 }
 
 function view_share_details($id){
