@@ -9,7 +9,7 @@
  */
 
 include('db_functions.php');
-
+function sharingecon_post(&$a){
 if(isset($_POST['function'])){
 	switch($_POST['function']){
 		case "add_new_share":
@@ -24,7 +24,7 @@ if(isset($_POST['function'])){
 			echo load_shares();
 			break;
 	}
-}
+}}
 
 function sharingecon_load() {}
 
@@ -54,30 +54,6 @@ function sharingecon_content(&$a) {
 		}
 	}
 	return $siteContent;
-}
-
-function add_new_share($data){
-	
-	$server = "localhost";
-	$user = "root";
-	$password = "dbroot";
-	$dbname = "hz_sharecon";
-	
-	$conn = new mysqli($server, $user, $password, $dbname);
-	
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	
-	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, Owner) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['owner'] . "')";
-	
-	if ($conn->query($sql_query) === TRUE) {
-		echo "New record created successfully";
-	} else {
-		echo "Error: " . $sql_query . "<br>" . $conn->error;
-	}
-
-	$conn->close();
 }
 
 function view_share_details($id){
