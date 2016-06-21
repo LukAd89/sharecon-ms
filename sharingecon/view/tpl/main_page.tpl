@@ -52,11 +52,12 @@
 							<input type="text" class="form-control" name="input-short-desc" id="input-short-desc" placeholder="Short Description of the Object">
 						</div>
 					</div>
+					<button type="submit" class="btn btn-primary" id="btn-add-new-share">Add Share</button>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<a class="btn btn-default" data-dismiss="modal">Close</a>
-				<button type="submit" class="btn btn-primary" id="btn-add-new-share">Add Share</a>
+				<button type="submit" class="btn btn-primary" id="btn-add-new-share">Add Share</button>
 			</div>
 		</div>
 	</div>
