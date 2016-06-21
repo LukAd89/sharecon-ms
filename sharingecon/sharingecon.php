@@ -9,30 +9,23 @@
  */
 
 include('db_functions.php');
+
 function sharingecon_post(&$a){
-if(isset($_POST['function'])){
-	switch($_POST['function']){
-		case "add_new_share":
-			$data = array(
-				"owner" => App::$channel['channel_guid'],
-				"title" => strip_tags($_POST['input-title']),
-				"shortdesc" => strip_tags($_POST['input-short-desc'])
-			);
-			echo add_new_share($data);
-			break;
-		case "load_shares":
-			echo load_shares();
-			break;
+	if(isset($_POST['input-function'])){
+		switch($_POST['input-function']){
+			case "add-new-share":
+				$data = array(
+					"owner" => App::$channel['channel_guid'],
+					"title" => strip_tags($_POST['input-title']),
+					"shortdesc" => strip_tags($_POST['input-short-desc'])
+				);
+				echo add_new_share($data);
+				break;
+			case "load-shares":
+				echo load_shares();
+				break;
+		}
 	}
-}
-else {
-	$data = array(
-				"owner" => App::get_channel()['channel_guid'],
-				"title" => strip_tags($_POST['input-title']),
-				"shortdesc" => strip_tags($_POST['input-short-desc'])
-			);
-			echo add_new_share($data);
-}
 }
 
 function sharingecon_load() {}

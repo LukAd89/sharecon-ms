@@ -53,7 +53,7 @@ function loadShares(args){
 		type : "POST",
 		url : "addon/sharingecon/sharingecon.php",
 		dataType : "json",
-		data : {function : "load_shares"},
+		data : {function : "load-shares"},
 		success : function(data){
 			var jsonObj = data;
 			

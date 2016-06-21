@@ -36,6 +36,7 @@
 			</div>
 			<div class="modal-body">
 				<form class="form-horizontal" role="form" id="form-add-new-share" action="sharingecon" method="post">
+					<input type="hidden" name="input-function" value="add-new-share">
 					<div class="form-group">
 						<div class="col-sm-2">
 							<label for="inputTitle" class="control-label">Title</label>
