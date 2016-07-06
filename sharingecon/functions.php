@@ -98,6 +98,6 @@ function load_share_details($id){
 }
 
 function write_message($rec, $subject, $body){
-	var_dump($rec);
+	send_message(null, $rec, $body,$subject);
 }
 ?>
