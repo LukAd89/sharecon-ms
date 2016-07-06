@@ -39,7 +39,7 @@
 					<input type="hidden" name="input-function" value="add-new-share">
 					<div class="form-group">
 						<div class="col-sm-2">
-							<label for="inputTitle" class="control-label">Title</label>
+							<label for="input-title" class="control-label">Title</label>
 						</div>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" name="input-title" id="input-title" placeholder="Name of the Object">
@@ -47,7 +47,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-2">
-							<label for="inputShortDesc" class="control-label">Short Description</label>
+							<label for="input-short-desc" class="control-label">Short Description</label>
 						</div>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" name="input-short-desc" id="input-short-desc" placeholder="Short Description of the Object">

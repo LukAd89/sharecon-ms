@@ -27,3 +27,38 @@
 		</div>
 	</div> 
 </div>
+
+<div class="modal fade" id="modal-write-message">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Write Message to Owner</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" role="form" id="form-write-message" action="" method="">
+					<div class="form-group">
+						<div class="col-sm-2">
+							<label for="input-subject" class="control-label">Subject</label>
+						</div>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="input-subject" id="input-subject" placeholder="Subject">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2">
+							<label for="input-body" class="control-label">Body</label>
+						</div>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="input-body" id="input-body" placeholder="">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a class="btn btn-default" data-dismiss="modal">Close</a>
+				<button type="" class="btn btn-primary" id="btn-send-message">Send</button>
+			</div>
+		</div>
+	</div>
+</div>

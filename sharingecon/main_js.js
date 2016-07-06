@@ -25,12 +25,21 @@ $(document).ready(function(){
 		$("#form-add-new-share").submit();
 		$("#modal-add-new-share").modal('hide');
 	});
+	
+	$("#btn-send-message").click(function(){
+		
+		$("#modal-write-message").modal('hide');
+	});
 	/*
 	$('[href=#tab-find-shares]').on('shown.bs.tab', function(event){
 		loadShares({range : "all"});
 	});
 	*/
 });
+
+function writeMessage(){
+	
+}
 
 /*
 function addNewShare(){

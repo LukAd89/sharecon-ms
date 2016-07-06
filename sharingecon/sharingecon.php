@@ -15,7 +15,7 @@ function sharingecon_post(&$a){
 		switch($_POST['input-function']){
 			case "add-new-share":
 				$data = array(
-					"owner" => App::$channel['channel_guid'],
+					"owner" => App::$channel['channel_hash'],
 					"title" => strip_tags($_POST['input-title']),
 					"shortdesc" => strip_tags($_POST['input-short-desc'])
 				);
