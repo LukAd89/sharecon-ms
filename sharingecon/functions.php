@@ -1,5 +1,8 @@
 <?php
 
+require_once('include/message.php');
+require_once('addon/sharingecon/sharingecon.php');
+
 if(isset($_POST['test'])){
 	header('Content-Type: application/json');
 	echo '{"test":{"titel":"wahr"}}';
@@ -98,7 +101,6 @@ function load_share_details($id){
 }
 
 function write_message($rec, $subject, $body){
-	require_once(z_root() . '/include/message.php');
 	send_message(null, $rec, $body,$subject);
 }
 ?>
