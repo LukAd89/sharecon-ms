@@ -10,7 +10,7 @@
 //set_include_path(get_include_path() . PATH_SEPARATOR . "/var/www/html/"); //dirname(__FILE__)."/../");
 
 require_once('include/enotify.php');
-require_once('functions.php');
+/*require_once('functions.php');
 //require_once('include/message.php');
 
 function sharingecon_post(&$a){
@@ -38,11 +38,11 @@ function sharingecon_unload() {}
 function sharingecon_init(){
 	head_add_css('addon/sharingecon/bootstrap_sharecon.css');
 }
-
+*/
 function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
-	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
+	/*$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
 	
 	App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
 	if(argc() > 1){
@@ -81,10 +81,10 @@ function sharingecon_content(&$a) {
 			'$tab2content' => $tab2Content
 		));
 	}
-	
-	return $siteContent;
+	*/
+	return "hallo";//$siteContent;
 }
-
+/*
 function get_shares_list($args){
 	$data = load_shares($args);
 
@@ -124,5 +124,4 @@ function write_message($rec, $subject, $body){
 		require_once($_SERVER['DOCUMENT_ROOT'] . '/include/message.php');
 		send_message(0, null, "body", "subject");
 }
-
-?>
+*/
