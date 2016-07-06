@@ -82,7 +82,7 @@ function sharingecon_content(&$a) {
 		));
 	}
 	*/
-	return "hallo";//$siteContent;
+	return App::get_hostname();//$siteContent;
 }
 /*
 function get_shares_list($args){
