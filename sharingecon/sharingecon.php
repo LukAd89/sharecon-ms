@@ -11,7 +11,7 @@
 
 //require_once('include/enotify.php');
 require_once('functions.php');
-require_once('include/message.php');
+include('include/message.php');
 
 function sharingecon_post(&$a){
 	if(isset($_POST['input-function'])){
@@ -57,7 +57,7 @@ function get_shares_list($args){
 }
 
 function view_share_details($id){
-	require_once('addon/sharingecon/functions.php');
+	//require_once('addon/sharingecon/functions.php');
 	
 	$share_data = load_share_details($id);
 	$content = file_get_contents("http://localhost/addon/sharingecon/share_details.html");
@@ -69,7 +69,7 @@ function view_share_details($id){
 	
 	return $content;
 }
-
+/*
 if (isset($_POST['function'])) {
 	if($_POST['function'] == "write_message"){
 		write_message(null, null, null);
@@ -79,7 +79,7 @@ if (isset($_POST['function'])) {
 function write_message($rec, $subject, $body){
 		message::send_message(0, null, "body", "subject");
 }
-
+*/
 
 function sharingecon_content(&$a) {
 	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
