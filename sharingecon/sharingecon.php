@@ -11,7 +11,7 @@
 
 //require_once('include/enotify.php');
 require_once('functions.php');
-require_once('/var/www/html/include/message.php');
+require_once('include/message.php');
 
 function sharingecon_post(&$a){
 	if(isset($_POST['input-function'])){
@@ -26,6 +26,10 @@ function sharingecon_post(&$a){
 				break;
 			case "load-shares":
 				echo load_shares();
+				break;
+			
+			case "write-message":
+				echo "WRITE";
 				break;
 		}
 	}

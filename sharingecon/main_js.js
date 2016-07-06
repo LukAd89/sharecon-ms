@@ -27,11 +27,12 @@ $(document).ready(function(){
 	});
 	
 	$("#btn-send-message").click(function(){
-		$.ajax({
+		/*$.ajax({
 			type : "POST",
 			url : "addon/sharingecon/sharingecon.php",
 			data : $("#form-write-message").serialize() + "&function=write_message",
-		})
+		})*/
+		$("#form-write-message").submit();
 		$("#modal-write-message").modal('hide');
 	});
 	
