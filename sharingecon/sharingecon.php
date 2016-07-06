@@ -9,6 +9,7 @@
  */
 //set_include_path(get_include_path() . PATH_SEPARATOR . "/var/www/html/"); //dirname(__FILE__)."/../");
 include('functions.php');
+require_once('include/enotify.php');
 //require_once('include/message.php');
 
 function sharingecon_post(&$a){
