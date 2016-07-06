@@ -112,6 +112,7 @@ function view_share_details($id){
 }
 
 if (isset($_POST['function'])) {
+	require_once('include/message.php');
 	if($_POST['function'] == "write_message"){
 	//function write_message($rec, $subject, $body){
 		send_message(null, $_POST['input-message-recipient'], "body", "subject");
