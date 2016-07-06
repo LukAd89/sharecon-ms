@@ -12,7 +12,7 @@
 //require_once('include/enotify.php');
 //require_once('functions.php');
 //require_once('include/message.php');
-/*
+
 function sharingecon_post(&$a){
 	if(isset($_POST['input-function'])){
 		switch($_POST['input-function']){
@@ -30,7 +30,7 @@ function sharingecon_post(&$a){
 		}
 	}
 }
-*/
+
 function sharingecon_load() {}
 
 function sharingecon_unload() {}
