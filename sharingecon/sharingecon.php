@@ -122,7 +122,7 @@ function sharingecon_content(&$a) {
 			'$tab2content' => $tab2Content
 		));
 	}
-	*/
+	
 	require_once('include/enotify.php');
 	return $siteContent;
 }
