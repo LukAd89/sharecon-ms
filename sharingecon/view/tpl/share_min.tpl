@@ -37,20 +37,21 @@
 			</div>
 			<div class="modal-body">
 				<form class="form-horizontal" role="form" id="form-write-message" action="" method="">
+					<input type="hidden" name="input-message-recipient" value="{{$ownerid}}">
 					<div class="form-group">
 						<div class="col-sm-2">
-							<label for="input-subject" class="control-label">Subject</label>
+							<label for="input-message-subject" class="control-label">Subject</label>
 						</div>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="input-subject" id="input-subject" placeholder="Subject">
+							<input type="text" class="form-control" name="input-message-subject" id="input-message-subject" placeholder="Subject">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-2">
-							<label for="input-body" class="control-label">Body</label>
+							<label for="input-message-body" class="control-label">Body</label>
 						</div>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="input-body" id="input-body" placeholder="">
+							<input type="text" class="form-control" name="input-message-body" id="input-message-body" placeholder="">
 						</div>
 					</div>
 				</form>

@@ -8,7 +8,7 @@
  * Maintainer: none
  */
 
-include('db_functions.php');
+include('functions.php');
 
 function sharingecon_post(&$a){
 	if(isset($_POST['input-function'])){
@@ -88,8 +88,10 @@ function get_shares_list($args){
 	$result = "";
 	for($i=0; $i<count($data); $i++){
 		$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
+		'$shareid' => $data[$i]['ID'],
 		'$title' => $data[$i]['Title'],
-		'$shortdesc' => $data[$i]['ShortDesc']
+		'$shortdesc' => $data[$i]['ShortDesc'],
+		'$ownerid' => $data[$i]['Owner']
 		));
 	}
 	return $result;

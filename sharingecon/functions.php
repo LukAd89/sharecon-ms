@@ -6,15 +6,13 @@ if(isset($_POST['test'])){
 	return;
 }
 
-/*if (isset($_POST['function'])) {
-	if($_POST['function'] == "add_new_share"){
-		echo add_new_share();
+if (isset($_POST['function'])) {
+	if($_POST['function'] == "write_message"){
+		echo write_message($_POST['input-message-recipient'], $_POST['input-message-subject'], $_POST['input-message-body']);
 	}
-	else if($_POST['function'] == "load_shares"){
-		echo load_shares();
-	}
+
 	return;
-}*/
+}
 
 function add_new_share($data){
 	
@@ -97,5 +95,9 @@ function load_share_details($id){
 	else { return "";}
 
 	$conn->close();
+}
+
+function write_message($rec, $subject, $body){
+	var_dump($rec);
 }
 ?>
