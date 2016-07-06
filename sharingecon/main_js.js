@@ -38,7 +38,7 @@ $(document).ready(function(){
 	$('#modal-write-message').on('show.bs.modal', function(e) {
 		$('#input_message-recipient').val($(e.relatedTarget).data('recipient'));
 		console.log($(e.relatedTarget).data('recipient'));
-	}
+	});
 	
 	/*
 	$('[href=#tab-find-shares]').on('shown.bs.tab', function(event){
