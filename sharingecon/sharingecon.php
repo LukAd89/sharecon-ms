@@ -69,7 +69,7 @@ function view_share_details($id){
 	
 	return $content;
 }
-/*
+
 if (isset($_POST['function'])) {
 	if($_POST['function'] == "write_message"){
 		write_message(null, null, null);
@@ -77,10 +77,9 @@ if (isset($_POST['function'])) {
 }
 
 function write_message($rec, $subject, $body){
-		require_once($_SERVER['DOCUMENT_ROOT'] . '/include/message.php');
-		send_message(0, null, "body", "subject");
+		message::send_message(0, null, "body", "subject");
 }
-*/
+
 
 function sharingecon_content(&$a) {
 	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
