@@ -29,7 +29,7 @@ $(document).ready(function(){
 	$("#btn-send-message").click(function(){
 		$.ajax({
 			type : "POST",
-			url : "addon/sharingecon/functions.php",
+			url : "addon/sharingecon/sharingecon.php",
 			data : $("#form-write-message").serialize() + "&function=write_message",
 		})
 		$("#modal-write-message").modal('hide');

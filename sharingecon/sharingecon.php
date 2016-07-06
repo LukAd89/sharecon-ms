@@ -110,3 +110,12 @@ function view_share_details($id){
 	
 	return $content;
 }
+
+if (isset($_POST['function'])) {
+	if($_POST['function'] == "write_message"){
+	//function write_message($rec, $subject, $body){
+		send_message(null, $_POST['input-message-recipient'], "body", "subject");
+	}
+}
+
+?>
