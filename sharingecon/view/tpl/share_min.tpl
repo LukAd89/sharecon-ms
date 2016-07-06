@@ -19,7 +19,7 @@
 					<a href="sharingecon/viewshare/{{$shareid}}" type="button" class="btn btn-default pull-right">
 						<span class="glyphicon glyphicon-info-sign"></span> More Details
 					</a>
-					<button type="button" class="btn btn-default pull-right">
+					<button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#modal-write-message">
 						<span class="glyphicon glyphicon-envelope"></span> Write Message
 					</button>
 				</div>
