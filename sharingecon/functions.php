@@ -10,7 +10,7 @@ if(isset($_POST['test'])){
 
 if (isset($_POST['function'])) {
 	if($_POST['function'] == "write_message"){
-		echo write_message($_POST['input-message-recipient'], $_POST['input-message-subject'], $_POST['input-message-body']);
+		//echo write_message($_POST['input-message-recipient'], $_POST['input-message-subject'], $_POST['input-message-body']);
 	}
 
 	return;
