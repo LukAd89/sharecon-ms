@@ -3,7 +3,7 @@
 //set_include_path(get_include_path() . PATH_SEPARATOR . "/var/www/html/");
 //include('include/message.php');
 //require_once('addon/sharingecon/sharingecon.php');
-
+/*
 if(isset($_POST['test'])){
 	header('Content-Type: application/json');
 	echo '{"test":{"titel":"wahr"}}';
@@ -16,7 +16,7 @@ if (isset($_POST['function'])) {
 	}
 
 	return;
-}
+}*/
 
 function add_new_share($data){
 	
