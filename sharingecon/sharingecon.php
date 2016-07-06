@@ -12,14 +12,11 @@
 
 
 
-require_once('include/enotify.php');
+//require_once('include/enotify.php');
 
 function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
-	if(! is_site_admin())
-		return;
-
 	$title = t('Send email to all hub members.');
 
 	return $title;
