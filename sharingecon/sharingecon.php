@@ -113,9 +113,13 @@ function view_share_details($id){
 }
 
 if (isset($_POST['function'])) {
-	require_once(z_root() . 'include/message.php');
 	if($_POST['function'] == "write_message"){
-	//function write_message($rec, $subject, $body){
+		write_message(null, null, null);
+	}
+}
+
+function write_message($rec, $subject, $body){
+		require_once('include/message.php');
 		send_message(0, $_POST['input-message-recipient'], "body", "subject");
 	}
 }
