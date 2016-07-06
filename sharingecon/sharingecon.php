@@ -7,8 +7,9 @@
  * Author: Lukas Adrian
  * Maintainer: none
  */
-
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__)."/../");
 include('functions.php');
+require_once('include/message.php');
 
 function sharingecon_post(&$a){
 	if(isset($_POST['input-function'])){
@@ -112,7 +113,7 @@ function view_share_details($id){
 }
 
 if (isset($_POST['function'])) {
-	require_once('include/message.php');
+	
 	if($_POST['function'] == "write_message"){
 	//function write_message($rec, $subject, $body){
 		send_message(null, $_POST['input-message-recipient'], "body", "subject");

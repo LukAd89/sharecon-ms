@@ -1,6 +1,8 @@
 <?php
 
-
+//set_include_path(get_include_path() . PATH_SEPARATOR . "/var/www/html/");
+//include('include/message.php');
+//require_once('addon/sharingecon/sharingecon.php');
 
 if(isset($_POST['test'])){
 	header('Content-Type: application/json');
@@ -10,7 +12,7 @@ if(isset($_POST['test'])){
 
 if (isset($_POST['function'])) {
 	if($_POST['function'] == "write_message"){
-		//echo write_message($_POST['input-message-recipient'], $_POST['input-message-subject'], $_POST['input-message-body']);
+		echo write_message($_POST['input-message-recipient'], $_POST['input-message-subject'], $_POST['input-message-body']);
 	}
 
 	return;
