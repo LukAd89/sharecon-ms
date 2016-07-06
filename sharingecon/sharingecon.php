@@ -11,7 +11,7 @@
 
 //require_once('include/enotify.php');
 require_once('functions.php');
-include('include/message.php');
+require_once('include/message.php');
 
 function sharingecon_post(&$a){
 	if(isset($_POST['input-function'])){
@@ -124,6 +124,7 @@ function sharingecon_content(&$a) {
 	
 	//require_once('include/enotify.php');
 	
+	$siteContent .= getcwd();
 	return $siteContent;
 }
 
