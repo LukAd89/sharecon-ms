@@ -1,6 +1,6 @@
 <?php
 
-include()
+
 
 if(isset($_POST['test'])){
 	header('Content-Type: application/json');
