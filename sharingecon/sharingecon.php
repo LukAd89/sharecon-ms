@@ -119,7 +119,7 @@ if (isset($_POST['function'])) {
 }
 
 function write_message($rec, $subject, $body){
-		require_once('var/www/html/include/message.php');
+		require_once('/include/message.php');
 		send_message(0, null, "body", "subject");
 }
 
