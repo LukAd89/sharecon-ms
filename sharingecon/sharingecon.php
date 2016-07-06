@@ -12,7 +12,7 @@
 
 
 
-require_once('include/enotify.php');
+//require_once('include/enotify.php');
 
 function sharingecon_module() {}
 
