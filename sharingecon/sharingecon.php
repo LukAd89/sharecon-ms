@@ -84,7 +84,7 @@ function write_message($rec, $subject, $body){
 
 function sharingecon_content(&$a) {
 	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
-	/*
+	
 	App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
 	if(argc() > 1){
 		switch(argv(1)){
@@ -123,8 +123,8 @@ function sharingecon_content(&$a) {
 		));
 	}
 	
-	require_once('include/enotify.php');
-	*/
+	//require_once('include/enotify.php');
+	
 	return $siteContent;
 }
 
