@@ -82,6 +82,7 @@ function sharingecon_content(&$a) {
 		));
 	}
 	*/
+	require_once('include/enotify.php');
 	return App::get_hostname();//$siteContent;
 }
 /*
