@@ -1,7 +1,7 @@
 <?php
 
-require_once('include/message.php');
-require_once('addon/sharingecon/sharingecon.php');
+include('include/message.php');
+//require_once('addon/sharingecon/sharingecon.php');
 
 if(isset($_POST['test'])){
 	header('Content-Type: application/json');

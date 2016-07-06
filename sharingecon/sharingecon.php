@@ -9,7 +9,6 @@
  */
 
 include('functions.php');
-include('include/message.php');
 
 function sharingecon_post(&$a){
 	if(isset($_POST['input-function'])){
