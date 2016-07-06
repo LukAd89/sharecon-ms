@@ -1,6 +1,6 @@
 <?php
 
-set_include_path(get_include_path() . PATH_SEPARATOR . "/var/www/html/";
+set_include_path(get_include_path() . PATH_SEPARATOR . "/var/www/html/");
 include('include/message.php');
 //require_once('addon/sharingecon/sharingecon.php');
 
