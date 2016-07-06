@@ -11,7 +11,7 @@
 
 //require_once('include/enotify.php');
 require_once('functions.php');
-require_once('include/message.php');
+require_once('/var/www/html/include/message.php');
 
 function sharingecon_post(&$a){
 	if(isset($_POST['input-function'])){
