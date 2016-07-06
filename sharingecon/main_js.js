@@ -34,6 +34,12 @@ $(document).ready(function(){
 		})
 		$("#modal-write-message").modal('hide');
 	});
+	
+	$('#modal-write-message').on('show.bs.modal', function(e) {
+		$('#input_message-recipient').value = $(e.relatedTarget).data('recipient');
+		console.log($(e.relatedTarget).data('recipient'));
+	}
+	
 	/*
 	$('[href=#tab-find-shares]').on('shown.bs.tab', function(event){
 		loadShares({range : "all"});

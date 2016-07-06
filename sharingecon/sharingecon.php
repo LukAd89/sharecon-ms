@@ -98,7 +98,7 @@ function get_shares_list($args){
 }
 
 function view_share_details($id){
-	require_once('addon/sharingecon/db_functions.php');
+	require_once('addon/sharingecon/functions.php');
 	
 	$share_data = load_share_details($id);
 	$content = file_get_contents("http://localhost/addon/sharingecon/share_details.html");
