@@ -17,8 +17,7 @@ require_once('include/enotify.php');
 function sharingecon_module() {}
 
 function sharingecon_content(&$a) {
-	$title = t('Send email to all hub members.');
 
-	return $title;
+	return "hello";
 
 }
