@@ -98,7 +98,7 @@ function load_share_details($id){
 }
 
 function write_message($rec, $subject, $body){
-	require_once('include/message.php');
+	require_once('../include/message.php');
 	send_message(null, $rec, $body,$subject);
 }
 ?>
