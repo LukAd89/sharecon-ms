@@ -1,6 +1,6 @@
 <?php
 
-include('include/message.php');
+include('/var/www/html/include/message.php');
 //require_once('addon/sharingecon/sharingecon.php');
 
 if(isset($_POST['test'])){
