@@ -9,7 +9,7 @@
  */
 //set_include_path(get_include_path() . PATH_SEPARATOR . "/var/www/html/"); //dirname(__FILE__)."/../");
 
-require_once('include/enotify.php');
+//require_once('include/enotify.php');
 /*require_once('functions.php');
 //require_once('include/message.php');
 
