@@ -7,9 +7,8 @@
  * Author: Lukas Adrian
  * Maintainer: none
  */
-//set_include_path(get_include_path() . PATH_SEPARATOR . "/var/www/html/"); //dirname(__FILE__)."/../");
 
-//require_once('include/enotify.php');
+ 
 require_once('functions.php');
 require_once('include/message.php');
 
@@ -30,7 +29,6 @@ function sharingecon_post(&$a){
 			
 			case "write-message":
 				$recipient = getShareOwner($_POST['input-message-shareid']);
-				var_dump($recipient);
 				write_message($recipient, $_POST['input-message-subject'], $_POST['input-message-body']);
 				break;
 		}
@@ -73,13 +71,7 @@ function view_share_details($id){
 	
 	return $content;
 }
-/*
-if (isset($_POST['function'])) {
-	if($_POST['function'] == "write_message"){
-		write_message(null, null, null);
-	}
-}
-*/
+
 function write_message($rec, $subject, $body){
 		echo $rec . $subject . $body;
 		send_message(null, $rec, $body, $subject);
@@ -127,9 +119,6 @@ function sharingecon_content(&$a) {
 		));
 	}
 	
-	//require_once('include/enotify.php');
-	
-	$siteContent .= getcwd();
 	return $siteContent;
 }
 

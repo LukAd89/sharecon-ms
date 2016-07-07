@@ -1,8 +1,6 @@
 <?php
 
-//set_include_path(get_include_path() . PATH_SEPARATOR . "/var/www/html/");
-//include('include/message.php');
-//require_once('addon/sharingecon/sharingecon.php');
+
 /*
 if(isset($_POST['test'])){
 	header('Content-Type: application/json');
@@ -61,10 +59,9 @@ function load_shares($args){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
 		}
-		//echo json_encode($resArray);
 		return $resArray;
 	}
-	else return null; //{ echo "";}
+	else return null;
 
 	$conn->close();
 }
