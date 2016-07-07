@@ -96,7 +96,7 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'findshares':
-				$pageContent = get_shares_list(array('owner' => App::$channel['channel_hash']));
+				$pageContent = get_shares_list(array());
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => '',
 					'$tab2' => 'active',
@@ -120,13 +120,12 @@ function sharingecon_content(&$a) {
 		}
 	}
 	else{
-		$tab1Content = get_shares_list(array('owner' => App::$channel['channel_hash']));
-		$tab2Content = get_shares_list(null);
+		$pageContent = get_shares_list(array('owner' => App::$channel['channel_hash']));
 		$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 			'$tab1' => 'active',
 			'$tab2' => '',
-			'$tab1content' => $tab1Content,
-			'$tab2content' => $tab2Content
+			'$tab3' => '',
+			'$pagecontent' => $pageContent
 		));
 	}
 	
