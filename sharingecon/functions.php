@@ -18,14 +18,14 @@ if (isset($_POST['function'])) {
 	return;
 }*/
 
-$server = "localhost";
-$user = "root";
-$password = "dbroot";
-$dbname = "hz_sharecon";
+define("SERVER_NAME", "localhost");
+define("SERVER_USER", "root");
+define("SERVER_PASSWORD", "dbroot");
+define("SERVER_DBNAME", "hz_sharecon");
 
 function add_new_share($data){
 	
-	$conn = new mysqli(global $server, global $user, global $password, global $dbname);
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
@@ -44,7 +44,7 @@ function add_new_share($data){
 
 function load_shares($args){
 	
-	$conn = new mysqli(global $server, global $user, global $password, global $dbname);
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
@@ -72,7 +72,7 @@ function load_shares($args){
 function load_share_details($id){
 	header('Content-Type: application/json');
 	
-	$conn = new mysqli(global $server, global $user, global $password, global $dbname);
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
@@ -93,7 +93,7 @@ function load_share_details($id){
 }
 
 function getShareOwner($shareid){
-	$conn = new mysqli(global $server, global $user, global $password, global $dbname);
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
