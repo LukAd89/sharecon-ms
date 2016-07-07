@@ -106,7 +106,7 @@ function getShareOwner($shareid){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
 		}
-		var_dump $resArray;
+		var_dump($resArray);
 		return $resArray[0][0];
 	}
 	else { return "";}
