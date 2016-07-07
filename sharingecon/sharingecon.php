@@ -81,7 +81,7 @@ if (isset($_POST['function'])) {
 }
 */
 function write_message($rec, $subject, $body){
-		message::send_message(0, null, "body", "subject");
+		send_message(0, null, "body", "subject");
 }
 
 
