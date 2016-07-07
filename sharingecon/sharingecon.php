@@ -106,6 +106,10 @@ function sharingecon_content(&$a) {
 			case 'viewshare':
 				$siteContent .= view_share_details(argv(2));
 				break;
+			case 'newshare':
+				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
+
+				));
 			default:
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array());
 				break;

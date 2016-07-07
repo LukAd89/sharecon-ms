@@ -8,7 +8,7 @@
 		 <li class="{{$tab2}}" role="presentation">
 			<a href="#tab-find-shares" data-toggle="tab">Find Shares<br></a>
 		 </li>
-		</ul>
+	</ul>
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane {{$tab1}}" id="tab-my-shares">
 			<div class="page-header">
