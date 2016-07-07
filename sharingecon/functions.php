@@ -69,7 +69,7 @@ function load_shares($args){
 	$conn->close();
 }
 
-function load_share_details($id){
+function load_share_details($shareid){
 	header('Content-Type: application/json');
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
@@ -79,7 +79,7 @@ function load_share_details($id){
 	}
 	
 	$resArray = array();
-	$sql_query = "SELECT * FROM sharedObjects WHERE ID=" . $id;
+	$sql_query = "SELECT * FROM sharedObjects WHERE ID=" . $shareid;
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -100,7 +100,7 @@ function getShareOwner($shareid){
 	}
 	
 	$resArray = array();
-	$sql_query = "SELECT * FROM sharedObjects WHERE ID=" . $id;
+	$sql_query = "SELECT * FROM sharedObjects WHERE ID=" . $shareid;
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
