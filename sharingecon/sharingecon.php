@@ -111,7 +111,18 @@ function sharingecon_content(&$a) {
 				
 			case 'newshare':
 				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
-
+					'$title' => 'Add new Share',
+					'$function' => 'add-new-share',
+					'$submitbutton' => 'Add Share'
+				));
+				break;
+			
+			case 'editshare':
+				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
+					'$title' => 'Edit Share',
+					'$function' => 'edit-share',
+					'$additional' => '<input type="hidden" name="input-function" value="'. argv(2) . '">',
+					'$submitbutton' => 'Submit changes'
 				));
 				break;
 			default:

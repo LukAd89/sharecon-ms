@@ -3,13 +3,14 @@
 	<hr>
 	<div class="panel panel-default panel-share-object"> 
 		<div class="panel-heading">
-			<h4 class="modal-title">Add new Share</h4>
+			<h4 class="panel-title">{{$title}}</h4>
 		</div>
 		
 		<form class="form-horizontal" role="form" id="form-add-new-share" action="sharingecon" method="post">
 		
 			<div class="panel-body">
-				<input type="hidden" name="input-function" value="add-new-share">
+				<input type="hidden" name="input-function" value="{{$function}}">
+				{{$additional}}
 				<div class="form-group">
 					<label for="input-title" class="control-label">Title</label>
 					<input type="text" class="form-control" name="input-title" id="input-title" placeholder="Name of the Object">
@@ -26,7 +27,7 @@
 				<hr>
 				
 				<div class="form-group">
-					<label for="select-range" class="control-label">Short Description</label>
+					<label for="select-range" class="control-label">Make Object visible by</label>
 					<select class="form-control" name="select-range" id="select-range">
 						<option>Everybody</option>
 						<option>Friends only</option>
@@ -36,7 +37,7 @@
 			
 			</div>
 			<div class="panel-footer">
-				<button type="submit" class="btn btn-primary" id="btn-add-new-share">Add Share</button>
+				<button type="submit" class="btn btn-primary" id="btn-add-new-share">{{$submitbutton}}</button>
 			</div>
 		
 		</form>
