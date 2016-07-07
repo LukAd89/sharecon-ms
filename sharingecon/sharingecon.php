@@ -29,8 +29,8 @@ function sharingecon_post(&$a){
 				break;
 			
 			case "write-message":
-				echo "WRITE";
 				$recipient = getShareOwner($_POST['input-message-shareid']);
+				var_dump($recipient);
 				write_message($recipient, $_POST['input-message-subject'], $_POST['input-message-body']);
 				break;
 		}
