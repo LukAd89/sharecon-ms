@@ -51,9 +51,9 @@ function get_shares_list($args){
 	$result = "";
 	for($i=0; $i<count($data); $i++){
 		$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
-		'$shareid' => $data[$i]['ID'],
-		'$title' => $data[$i]['Title'],
-		'$shortdesc' => $data[$i]['ShortDesc']
+		'$shareid' 		=> $data[$i]['ID'],
+		'$title' 		=> $data[$i]['Title'],
+		'$shortdesc' 	=> $data[$i]['ShortDesc']
 		));
 	}
 	return $result;
@@ -62,11 +62,10 @@ function get_shares_list($args){
 function view_share_details($shareid){
 	
 	$share_data = load_share_details($shareid);
-	$content = file_get_contents("http://localhost/addon/sharingecon/share_details.html");
 	
 	$content = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
-		'$title'	=> $share_data['Title'],
-		'$shortdesc'		=> $share_data['ShortDesc']
+		'$title'		=> $share_data['Title'],
+		'$shortdesc'	=> $share_data['ShortDesc']
 		));
 	
 	return $content;
