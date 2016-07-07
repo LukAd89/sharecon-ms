@@ -32,6 +32,8 @@ function sharingecon_post(&$a){
 				write_message($recipient, $_POST['input-message-subject'], $_POST['input-message-body']);
 				break;
 		}
+		header("Location: " . $_SERVER['REQUEST_URI']);
+		exit();
 	}
 }
 

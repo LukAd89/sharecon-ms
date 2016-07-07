@@ -3,13 +3,12 @@
 	<hr>
 	<div class="panel panel-default panel-share-object"> 
 		<div class="panel-heading">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			<h4 class="modal-title">Add new Share</h4>
 		</div>
 		
 		<form class="form-horizontal" role="form" id="form-add-new-share" action="sharingecon" method="post">
 		
-		<div class="panel-body">
+			<div class="panel-body">
 				<input type="hidden" name="input-function" value="add-new-share">
 				<div class="form-group">
 					<label for="input-title" class="control-label">Title</label>
@@ -35,10 +34,10 @@
 				</div>
 				
 			
-		</div>
-		<div class="panel-footer">
-			<button type="submit" class="btn btn-primary" id="btn-add-new-share">Add Share</button>
-		</div>
+			</div>
+			<div class="panel-footer">
+				<button type="submit" class="btn btn-primary" id="btn-add-new-share">Add Share</button>
+			</div>
 		
 		</form>
 		
