@@ -6,7 +6,7 @@
 			<a href="sharingecon/myshares">My Shares<br></a>
 		</li>
 		 <li class="{{$tab2}}" role="presentation">
-			<a href="sharingecon/myshares">Find Shares<br></a>
+			<a href="sharingecon/findshares">Find Shares<br></a>
 		 </li>
 		 <li class="{{$tab3}}" role="presentation">
 			<a href="sharingecon/requests">Find Requests<br></a>

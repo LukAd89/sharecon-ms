@@ -94,19 +94,21 @@ function sharingecon_content(&$a) {
 					'$pagecontent' => $pageContent
 				));
 				break;
+				
 			case 'findshares':
-				$tab1Content = get_shares_list(array('owner' => App::$channel['channel_hash']));
-				$tab2Content = get_shares_list(null);
+				$pageContent = get_shares_list(array('owner' => App::$channel['channel_hash']));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => '',
 					'$tab2' => 'active',
-					'$tab1content' => $tab1Content,
-					'$tab2content' => $tab2Content
+					'$tab3' => '',
+					'$pagecontent' => $pageContent
 				));
 				break;
+				
 			case 'viewshare':
 				$siteContent .= view_share_details(argv(2));
 				break;
+				
 			case 'newshare':
 				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
 
