@@ -10,7 +10,6 @@
 		<form class="form-horizontal" role="form" id="form-add-new-share" action="sharingecon" method="post">
 		
 		<div class="panel-body">
-			
 				<input type="hidden" name="input-function" value="add-new-share">
 				<div class="form-group">
 					<label for="input-title" class="control-label">Title</label>
@@ -38,7 +37,6 @@
 			
 		</div>
 		<div class="panel-footer">
-			<a class="btn btn-default" data-dismiss="modal">Close</a>
 			<button type="submit" class="btn btn-primary" id="btn-add-new-share">Add Share</button>
 		</div>
 		

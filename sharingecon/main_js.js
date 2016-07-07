@@ -21,11 +21,11 @@ function test_ajax_json(){
 }
 */
 $(document).ready(function(){
-	$("#btn-add-new-share").click(function(){
+	/*$("#btn-add-new-share").click(function(){
 		$("#form-add-new-share").submit();
 		$("#modal-add-new-share").modal('hide');
 	});
-	
+	*/
 	$("#btn-send-message").click(function(){
 		$("#form-write-message").submit();
 		$("#modal-write-message").modal('hide');
