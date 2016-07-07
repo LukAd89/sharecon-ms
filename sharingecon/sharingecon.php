@@ -81,7 +81,8 @@ if (isset($_POST['function'])) {
 }
 */
 function write_message($rec, $subject, $body){
-		send_message(0, $rec, $body, $subject);
+		echo $rec . $subject . $body;
+		send_message(null, $rec, $body, $subject);
 }
 
 
