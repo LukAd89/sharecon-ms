@@ -13,6 +13,11 @@
 require_once('functions.php');
 require_once('include/message.php');
 
+$server = "localhost";
+$user = "root";
+$password = "dbroot";
+$dbname = "hz_sharecon";
+
 function sharingecon_post(&$a){
 	if(isset($_POST['input-function'])){
 		switch($_POST['input-function']){
