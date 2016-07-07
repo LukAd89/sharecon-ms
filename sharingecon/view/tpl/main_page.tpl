@@ -35,7 +35,7 @@
 			</div>
 			<div class="modal-body">
 				<form class="form-horizontal" role="form" id="form-write-message" action="sharingecon" method="post">
-					<input type="hidden" name="input-message-recipient" id="input_message-recipient" value="">
+					<input type="hidden" name="input-message-shareid" id="input-message-shareid" value="">
 					<input type="hidden" name="input-function" value="write-message">
 					<div class="form-group">
 						<div class="col-sm-2">

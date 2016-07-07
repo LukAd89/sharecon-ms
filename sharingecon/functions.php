@@ -17,13 +17,12 @@ if (isset($_POST['function'])) {
 
 	return;
 }*/
+$server = "localhost";
+$user = "root";
+$password = "dbroot";
+$dbname = "hz_sharecon";
 
 function add_new_share($data){
-	
-	$server = "localhost";
-	$user = "root";
-	$password = "dbroot";
-	$dbname = "hz_sharecon";
 	
 	$conn = new mysqli($server, $user, $password, $dbname);
 	
@@ -43,10 +42,6 @@ function add_new_share($data){
 }
 
 function load_shares($args){
-	$server = "localhost";
-	$user = "root";
-	$password = "dbroot";
-	$dbname = "hz_sharecon";
 	
 	$conn = new mysqli($server, $user, $password, $dbname);
 	
@@ -76,11 +71,6 @@ function load_shares($args){
 function load_share_details($id){
 	header('Content-Type: application/json');
 	
-	$server = "localhost";
-	$user = "root";
-	$password = "dbroot";
-	$dbname = "hz_sharecon";
-	
 	$conn = new mysqli($server, $user, $password, $dbname);
 	
 	if ($conn->connect_error) {
@@ -101,5 +91,25 @@ function load_share_details($id){
 	$conn->close();
 }
 
+function getShareOwner($shareid){
+	$conn = new mysqli($server, $user, $password, $dbname);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$resArray = array();
+	$sql_query = "SELECT Owner FROM sharedObjects WHERE ID=" . $id;
+	
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+				$resArray[] = $row;
+		}
+		return $resArray[0][0];
+	}
+	else { return "";}
+
+	$conn->close();
+}
 
 ?>

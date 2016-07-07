@@ -30,6 +30,8 @@ function sharingecon_post(&$a){
 			
 			case "write-message":
 				echo "WRITE";
+				$recipient = getShareOwner($_POST['input-message-sharid']);
+				write_message($recipient, $_POST['input-message-subject'], $_POST['input-message-body']);
 				break;
 		}
 	}
@@ -53,8 +55,7 @@ function get_shares_list($args){
 		$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
 		'$shareid' => $data[$i]['ID'],
 		'$title' => $data[$i]['Title'],
-		'$shortdesc' => $data[$i]['ShortDesc'],
-		'$ownerid' => $data[$i]['Owner']
+		'$shortdesc' => $data[$i]['ShortDesc']
 		));
 	}
 	return $result;
@@ -78,11 +79,11 @@ if (isset($_POST['function'])) {
 		write_message(null, null, null);
 	}
 }
-
+*/
 function write_message($rec, $subject, $body){
 		message::send_message(0, null, "body", "subject");
 }
-*/
+
 
 function sharingecon_content(&$a) {
 	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
