@@ -17,10 +17,10 @@ if (isset($_POST['function'])) {
 
 	return;
 }*/
-$server = "localhost";
-$user = "root";
-$password = "dbroot";
-$dbname = "hz_sharecon";
+global $server = "localhost";
+global $user = "root";
+global $password = "dbroot";
+global $dbname = "hz_sharecon";
 
 function add_new_share($data){
 	
