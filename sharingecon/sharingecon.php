@@ -110,6 +110,7 @@ function sharingecon_content(&$a) {
 				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
 
 				));
+				break;
 			default:
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array());
 				break;
