@@ -74,7 +74,7 @@ function toggleShare(id, newstate){
 		type : "POST",
 		url : "addon/sharingecon/functions.php",
 		data : {"function" : "toggle_share",
-			"id" : id),
+			"id" : id,
 			"state" : newstate)
 		},
 		success : function(msg){
