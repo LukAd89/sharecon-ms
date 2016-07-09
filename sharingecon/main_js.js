@@ -45,7 +45,6 @@ $(document).ready(function(){
 			},
 			success : function(msg){
 				location.reload();
-				$.jGrowl("Share set to", { sticky: false, theme: 'info', life: 10000 });
 			}
 		});
 	});
@@ -59,7 +58,6 @@ $(document).ready(function(){
 			},
 			success : function(msg){
 				location.reload();
-				$.jGrowl("Share successfully deleted", { sticky: false, theme: 'info', life: 10000 });
 			}
 		});
 	});

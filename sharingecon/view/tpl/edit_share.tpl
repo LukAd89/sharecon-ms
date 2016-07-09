@@ -1,12 +1,12 @@
 <div class="col-md-12">
 	<h1>Sharing Economy Plugin</h1>
 	<hr>
-	<div class="panel panel-default panel-share-object"> 
+	<div class="panel panel-default" id="panel-wholepage"> 
 		<div class="panel-heading">
 			<h4 class="panel-title">{{$title}}</h4>
 		</div>
 		
-		<form class="form-horizontal" role="form" id="form-add-new-share" action="sharingecon" method="post">
+		<form class="" role="form" id="form-add-new-share" action="sharingecon" method="post">
 		
 			<div class="panel-body">
 				<input type="hidden" name="input-function" value="{{$function}}">
