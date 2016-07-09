@@ -75,7 +75,7 @@ function toggleShare(id, newstate){
 		url : "addon/sharingecon/functions.php",
 		data : {"function" : "toggle_share",
 			"id" : id,
-			"state" : newstate)
+			"state" : newstate
 		},
 		success : function(msg){
 			location.reload();
