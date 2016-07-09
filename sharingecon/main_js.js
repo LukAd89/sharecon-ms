@@ -69,8 +69,18 @@ $(document).ready(function(){
 	*/
 });
 
-function writeMessage(){
-	
+function toggleShare(id, newstate){
+	$.ajax({
+		type : "POST",
+		url : "addon/sharingecon/functions.php",
+		data : {"function" : "toggle_share",
+			"id" : id),
+			"state" : newstate)
+		},
+		success : function(msg){
+			location.reload();
+		}
+	});
 }
 
 /*
