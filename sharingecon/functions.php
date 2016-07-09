@@ -1,5 +1,10 @@
 <?php
 
+define("SERVER_NAME", "localhost");
+define("SERVER_USER", "root");
+define("SERVER_PASSWORD", "dbroot");
+define("SERVER_DBNAME", "hz_sharecon");
+
 if (isset($_POST['function'])) {
 	if($_POST['function'] == "toggle_share"){
 		toggleShare($_POST['id'], $_POST['state']);
@@ -7,11 +12,6 @@ if (isset($_POST['function'])) {
 
 	return;
 }
-
-define("SERVER_NAME", "localhost");
-define("SERVER_USER", "root");
-define("SERVER_PASSWORD", "dbroot");
-define("SERVER_DBNAME", "hz_sharecon");
 
 function add_new_share($data){
 	
