@@ -20,6 +20,16 @@
 					<button name="btn-delete-share" type="button" class="btn btn-default" data-id="{{$shareid}}">Delete</button>
 					<button name="btn-toggle-share" type="button" class="btn btn-default" data-id="{{$shareid}}" data-state="{{$btntoggle}}">{{$btntoggletext}}</button>
 				</div>
+				<div class="form-group field checkbox pull-right">
+					<label for="active-toggle-{{$shareid}}">Share active</label>
+					<div class="pull-right">
+						<input type="checkbox" onchange="console.log(this.checked ? 0 : 1)" checked="checked" value="1" id="active-toggle-{{$shareid}}" name="active-toggle-{{$shareid}}">
+						<label for="active-toggle-{{$shareid}}" class="switchlabel">
+							<span data-off="Off" data-on="On" class="onoffswitch-inner"></span>
+							<span class="onoffswitch-switch"></span>
+						</label>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div> 
