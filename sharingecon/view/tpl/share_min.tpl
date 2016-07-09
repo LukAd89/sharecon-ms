@@ -15,7 +15,7 @@
 	<div class="panel-footer">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="btn-group">
+				<div class="btn-group {{$hidden}}">
 					<a href="sharingecon/viewshare/{{$shareid}}" type="button" class="btn btn-default pull-right">
 						<span class="glyphicon glyphicon-info-sign"></span> More Details
 					</a>
@@ -23,6 +23,7 @@
 						<span class="glyphicon glyphicon-envelope"></span> Write Message
 					</button>
 				</div>
+				{{$ownerbtngroup}}
 			</div>
 		</div>
 	</div> 

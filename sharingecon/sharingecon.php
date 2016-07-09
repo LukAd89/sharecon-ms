@@ -52,11 +52,22 @@ function get_shares_list($args){
 
 	$result = "";
 	for($i=0; $i<count($data); $i++){
-		$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
-		'$shareid' 		=> $data[$i]['ID'],
-		'$title' 		=> $data[$i]['Title'],
-		'$shortdesc' 	=> $data[$i]['ShortDesc']
-		));
+		if($args['ownerview']){
+			$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
+			'$shareid' 		=> $data[$i]['ID'],
+			'$title' 		=> $data[$i]['Title'],
+			'$shortdesc' 	=> $data[$i]['ShortDesc'],
+			'$hidden'		=> 'hidden',
+			'$ownerbtngroup' => '<div class="btn-group"><a href="sharingecon/editshare/' . $data[$i]['ID'] . '" type="button" class="btn btn-default">Edit</a><button id="btn-delete-share" type="button" class="btn btn-default">Delete</button></div>'
+			));
+		}
+		else{
+			$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
+			'$shareid' 		=> $data[$i]['ID'],
+			'$title' 		=> $data[$i]['Title'],
+			'$shortdesc' 	=> $data[$i]['ShortDesc']
+			));
+		}
 	}
 	return $result;
 }
@@ -86,7 +97,10 @@ function sharingecon_content(&$a) {
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
-				$pageContent = get_shares_list(array('owner' => App::$channel['channel_hash']));
+				$pageContent = get_shares_list(array(
+					'owner' => App::$channel['channel_hash'],
+					'ownerview' => true
+					));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => 'active',
 					'$tab2' => '',
