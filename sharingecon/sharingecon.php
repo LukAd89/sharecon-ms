@@ -85,7 +85,8 @@ function view_share_details($shareid){
 	
 	$content = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
 		'$title'		=> $share_data['Title'],
-		'$shortdesc'	=> $share_data['ShortDesc']
+		'$sharebody'	=> $share_data['LongDesc'],
+		'$shareid'		=> $shareid
 		));
 	
 	return $content;
