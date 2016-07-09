@@ -53,18 +53,16 @@ function get_shares_list($args){
 	$result = "";
 	for($i=0; $i<count($data); $i++){
 		if($args['ownerview']){
-			$status='active';
-			$statustext='Deactivate';
+			$status='';
 			
-			if($data[$i]['Status']==1){
-				$status='inactive';
-				$statustext='Activate';
+			if($data[$i]['Status']==0){
+				$status='checked="checked"';
 			}
 			$result .= replace_macros(get_markup_template('share_min_owner.tpl','addon/sharingecon/'), array(
 			'$shareid' 		=> $data[$i]['ID'],
 			'$title' 		=> $data[$i]['Title'],
 			'$shortdesc' 	=> $data[$i]['ShortDesc'],
-			'$btntoggle'	=> $status,
+			'$checked'		=> $status,
 			'$btntoggletext' => $statustext
 			));
 		}
