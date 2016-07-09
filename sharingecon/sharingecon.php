@@ -101,7 +101,6 @@ function write_message($rec, $subject, $body){
 function sharingecon_content(&$a) {
 	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
 	
-	App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
@@ -113,6 +112,9 @@ function sharingecon_content(&$a) {
 					'$tab1' => 'active',
 					'$pagecontent' => $pageContent
 				));
+				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+					'$filterhidden' => 'hidden'
+					));
 				break;
 				
 			case 'findshares':
@@ -121,10 +123,14 @@ function sharingecon_content(&$a) {
 					'$tab2' => 'active',
 					'$pagecontent' => $pageContent
 				));
+				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
 				break;
 				
 			case 'viewshare':
 				$siteContent .= view_share_details(argv(2));
+				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+					'$filterhidden' => 'hidden'
+				));
 				break;
 				
 			case 'newshare':
@@ -132,6 +138,9 @@ function sharingecon_content(&$a) {
 					'$title' => 'Add new Share',
 					'$function' => 'add-new-share',
 					'$submitbutton' => 'Add Share'
+				));
+				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+					'$filterhidden' => 'hidden'
 				));
 				break;
 			
@@ -146,9 +155,15 @@ function sharingecon_content(&$a) {
 					'$longdescvalue' => $data['LongDesc'],
 					'$submitbutton' => 'Submit changes'
 				));
+				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+					'$filterhidden' => 'hidden'
+				));
 				break;
 			default:
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array());
+				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+					'$filterhidden' => 'hidden'
+				));
 				break;
 		}
 	}
