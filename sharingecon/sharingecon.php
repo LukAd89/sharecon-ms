@@ -135,10 +135,14 @@ function sharingecon_content(&$a) {
 				break;
 			
 			case 'editshare':
-				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
+				$data = load_share_details(argv(2));
+				$siteContent .= replace_macros(get_markup_template('edit_share.tpl','addon/sharingecon/'), array(
 					'$title' => 'Edit Share',
 					'$function' => 'edit-share',
 					'$additional' => '<input type="hidden" name="input-function" value="'. argv(2) . '">',
+					'$titlevalue' => $data['Title'],
+					'$shortdescvalue' => $data['ShortDesc'],
+					'$longdescvalue' => $data['LongDesc'],
 					'$submitbutton' => 'Submit changes'
 				));
 				break;
