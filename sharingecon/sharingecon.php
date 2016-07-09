@@ -53,12 +53,12 @@ function get_shares_list($args){
 	$result = "";
 	for($i=0; $i<count($data); $i++){
 		if($args['ownerview']){
-			$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
+			$result .= replace_macros(get_markup_template('share_min_owner.tpl','addon/sharingecon/'), array(
 			'$shareid' 		=> $data[$i]['ID'],
 			'$title' 		=> $data[$i]['Title'],
 			'$shortdesc' 	=> $data[$i]['ShortDesc'],
-			'$hidden'		=> 'hidden',
-			'$ownerbtngroup' => '<div class="btn-group"><a href="sharingecon/editshare/' . $data[$i]['ID'] . '" type="button" class="btn btn-default">Edit</a><button id="btn-delete-share" type="button" class="btn btn-default">Delete</button></div>'
+			'$btntoggle'	=> 'active',
+			'$btntoggletext' => 'Deactivate Share'
 			));
 		}
 		else{
@@ -103,8 +103,6 @@ function sharingecon_content(&$a) {
 					));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => 'active',
-					'$tab2' => '',
-					'$tab3' => '',
 					'$pagecontent' => $pageContent
 				));
 				break;
@@ -112,9 +110,7 @@ function sharingecon_content(&$a) {
 			case 'findshares':
 				$pageContent = get_shares_list(array());
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
-					'$tab1' => '',
 					'$tab2' => 'active',
-					'$tab3' => '',
 					'$pagecontent' => $pageContent
 				));
 				break;
@@ -148,8 +144,6 @@ function sharingecon_content(&$a) {
 		$pageContent = get_shares_list(array('owner' => App::$channel['channel_hash']));
 		$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 			'$tab1' => 'active',
-			'$tab2' => '',
-			'$tab3' => '',
 			'$pagecontent' => $pageContent
 		));
 	}

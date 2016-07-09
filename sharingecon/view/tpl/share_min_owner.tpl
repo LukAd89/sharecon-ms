@@ -16,12 +16,9 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="btn-group">
-					<a href="sharingecon/viewshare/{{$shareid}}" type="button" class="btn btn-default pull-right">
-						<span class="glyphicon glyphicon-info-sign"></span> More Details
-					</a>
-					<button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#modal-write-message" data-id="{{$shareid}}">
-						<span class="glyphicon glyphicon-envelope"></span> Write Message
-					</button>
+					<a href="sharingecon/editshare/{{$shareid}}" type="button" class="btn btn-default">Edit</a>
+					<button id="btn-delete-share" type="button" class="btn btn-default">Delete</button>
+					<button id="btn-toggle-share" type="button" class="btn btn-default" data-state="{{$btntoggle}}">{{$btntoggletext}}</button>
 				</div>
 			</div>
 		</div>
