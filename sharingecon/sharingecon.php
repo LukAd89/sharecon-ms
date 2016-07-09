@@ -56,7 +56,7 @@ function get_shares_list($args){
 			$status='active';
 			$statustext='Deactivate';
 			
-			if($data['Status']==1){
+			if($data[$i]['Status']==1){
 				$status='inactive';
 				$statustext='Activate';
 			}
