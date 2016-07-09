@@ -35,6 +35,20 @@ $(document).ready(function(){
 		$('#input-message-shareid').val($(e.relatedTarget).data('id'));
 	});
 	
+	$("#btn-toggle-share").click(function(){
+		$.ajax({
+			type : "POST",
+			url : "addon/sharingecon/functions.php",
+			data : {function : "toggle_share",
+				id : $(this).attr('data-id'),
+				state : $(this).attr('data-state')
+			},
+			success : function(msg){
+				console.log(msg);
+			}
+		});
+	});
+	
 	/*
 	$('[href=#tab-find-shares]').on('shown.bs.tab', function(event){
 		loadShares({range : "all"});

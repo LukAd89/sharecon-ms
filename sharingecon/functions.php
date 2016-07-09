@@ -1,20 +1,12 @@
 <?php
 
-
-/*
-if(isset($_POST['test'])){
-	header('Content-Type: application/json');
-	echo '{"test":{"titel":"wahr"}}';
-	return;
-}
-
 if (isset($_POST['function'])) {
-	if($_POST['function'] == "write_message"){
-		echo write_message($_POST['input-message-recipient'], $_POST['input-message-subject'], $_POST['input-message-body']);
+	if($_POST['function'] == "toggle_share"){
+		toggleShare($_POST['id'], $_POST['state']);
 	}
 
 	return;
-}*/
+}
 
 define("SERVER_NAME", "localhost");
 define("SERVER_USER", "root");
@@ -108,6 +100,10 @@ function getShareOwner($shareid){
 	else { return "";}
 
 	$conn->close();
+}
+
+function toggleShare($id, $state){
+	
 }
 
 ?>

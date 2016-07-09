@@ -18,7 +18,7 @@
 				<div class="btn-group">
 					<a href="sharingecon/editshare/{{$shareid}}" type="button" class="btn btn-default">Edit</a>
 					<button id="btn-delete-share" type="button" class="btn btn-default">Delete</button>
-					<button id="btn-toggle-share" type="button" class="btn btn-default" data-state="{{$btntoggle}}">{{$btntoggletext}}</button>
+					<button id="btn-toggle-share" type="button" class="btn btn-default" data-id="{{$shareid}}" data-state="{{$btntoggle}}">{{$btntoggletext}}</button>
 				</div>
 			</div>
 		</div>
