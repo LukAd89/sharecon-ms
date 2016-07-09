@@ -14,13 +14,15 @@
 	</div>
 	<div class="panel-footer">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-6">
 				<div class="btn-group">
 					<a href="sharingecon/editshare/{{$shareid}}" type="button" class="btn btn-default">Edit</a>
 					<button name="btn-delete-share" type="button" class="btn btn-default" data-id="{{$shareid}}">Delete</button>
 					<button name="btn-toggle-share" type="button" class="btn btn-default" data-id="{{$shareid}}" data-state="{{$btntoggle}}">{{$btntoggletext}}</button>
 				</div>
-				<div class="form-group field checkbox pull-right">
+			</div>
+			<div class="col-md-6 pull right">
+				<div class="form-group field checkbox">
 					<label for="active-toggle-{{$shareid}}">Share active</label>
 					<div class="pull-right">
 						<input type="checkbox" onchange="console.log(this.checked ? 0 : 1)" checked="checked" value="1" id="active-toggle-{{$shareid}}" name="active-toggle-{{$shareid}}">
