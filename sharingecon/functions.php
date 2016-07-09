@@ -103,7 +103,24 @@ function getShareOwner($shareid){
 }
 
 function toggleShare($id, $state){
+	$newstate = 1;
+	if($state == 1) $newstate = 0;
 	
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = "UPDATE sharedObjects SET State=" . $newstate . " WHERE ID=" . $id;
+	
+	if ($conn->query($sql_query) === TRUE) {
+		return "Query successfull";
+	} else {
+		return "Error: " . $sql_query . "<br>" . $conn->error;
+	}
+
+	$conn->close();
 }
 
 ?>
