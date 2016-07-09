@@ -9,7 +9,7 @@ if (isset($_POST['function'])) {
 	if($_POST['function'] == "toggle_share"){
 		toggleShare($_POST['id'], $_POST['state']);
 	}
-	else if($_POST['function'] == "toggle_share"){
+	else if($_POST['function'] == "delete_share"){
 		deleteShare($_POST['id']);
 	}
 
