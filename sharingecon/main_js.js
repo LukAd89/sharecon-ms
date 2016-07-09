@@ -70,6 +70,7 @@ $(document).ready(function(){
 });
 
 function toggleShare(id, newstate){
+	console.log(newstate);
 	$.ajax({
 		type : "POST",
 		url : "addon/sharingecon/functions.php",
