@@ -19,9 +19,13 @@
 			
 			</div>
 			<div class="panel-footer">
-				<button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#modal-write-message" data-id="{{$shareid}}">
-					<span class="glyphicon glyphicon-envelope"></span> Write Message
-				</button>
+				<div class="row">
+					<div class="col-md-12">
+						<button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#modal-write-message" data-id="{{$shareid}}">
+							<span class="glyphicon glyphicon-envelope"></span> Write Message
+						</button>
+					</div>
+				</div>
 			</div>
 		
 	</div>
