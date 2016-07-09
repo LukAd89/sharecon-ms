@@ -106,8 +106,6 @@ function getShareOwner($shareid){
 }
 
 function toggleShare($id, $state){
-	$newstate = 1;
-	if(strcmp($state, "inactive") == 0) $newstate = 0;
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
@@ -115,7 +113,7 @@ function toggleShare($id, $state){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = "UPDATE sharedObjects SET Status=" . $newstate . " WHERE ID=" . $id;
+	$sql_query = "UPDATE sharedObjects SET Status=" . $state . " WHERE ID=" . $id;
 	
 	if ($conn->query($sql_query) === TRUE) {
 		return "Query successfull";
