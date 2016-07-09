@@ -44,7 +44,7 @@ $(document).ready(function(){
 				state : $(this).attr('data-state')
 			},
 			success : function(msg){
-				console.log(msg);
+				location.reload();
 			}
 		});
 	});
