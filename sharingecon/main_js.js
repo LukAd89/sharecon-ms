@@ -49,6 +49,19 @@ $(document).ready(function(){
 		});
 	});
 	
+	$("button[name='btn-delete-share']").click(function(){
+		$.ajax({
+			type : "POST",
+			url : "addon/sharingecon/functions.php",
+			data : {function : "delete_share",
+				id : $(this).attr('data-id')
+			},
+			success : function(msg){
+				location.reload();
+			}
+		});
+	});
+	
 	/*
 	$('[href=#tab-find-shares]').on('shown.bs.tab', function(event){
 		loadShares({range : "all"});

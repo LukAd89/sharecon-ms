@@ -9,6 +9,9 @@ if (isset($_POST['function'])) {
 	if($_POST['function'] == "toggle_share"){
 		toggleShare($_POST['id'], $_POST['state']);
 	}
+	else if($_POST['function'] == "toggle_share"){
+		deleteShare($_POST['id']);
+	}
 
 	return;
 }
@@ -113,6 +116,24 @@ function toggleShare($id, $state){
 	}
 	
 	$sql_query = "UPDATE sharedObjects SET Status=" . $newstate . " WHERE ID=" . $id;
+	
+	if ($conn->query($sql_query) === TRUE) {
+		return "Query successfull";
+	} else {
+		return "Error: " . $sql_query . "<br>" . $conn->error;
+	}
+
+	$conn->close();
+}
+
+function deleteShare($id){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = "DELETE FROM sharedObjects WHERE ID=" . $id;
 	
 	if ($conn->query($sql_query) === TRUE) {
 		return "Query successfull";
