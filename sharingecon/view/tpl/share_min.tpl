@@ -23,6 +23,14 @@
 						<span class="glyphicon glyphicon-envelope"></span> Write Message
 					</button>
 				</div>
+				<div class="form-group field checkbox">
+					<div class="pull-right">
+						<input type="checkbox" onchange="console.log(this.checked ? 0 : 1))" {{$checked}} value="1" id="fav-toggle-{{$shareid}}" name="fav-toggle-{{$shareid}}">
+						<label for="fav-toggle-{{$shareid}}">
+							FAV
+						</label>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div> 
