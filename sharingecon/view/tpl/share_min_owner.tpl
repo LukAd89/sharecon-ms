@@ -21,9 +21,8 @@
 					<button name="btn-toggle-share" type="button" class="btn btn-default" data-id="{{$shareid}}" data-state="{{$btntoggle}}">{{$btntoggletext}}</button>
 				</div>
 			</div>
-			<div class="col-md-6 pull right">
+			<div class="col-md-6">
 				<div class="form-group field checkbox">
-					<label for="active-toggle-{{$shareid}}">Share active</label>
 					<div class="pull-right">
 						<input type="checkbox" onchange="console.log(this.checked ? 0 : 1)" checked="checked" value="1" id="active-toggle-{{$shareid}}" name="active-toggle-{{$shareid}}">
 						<label for="active-toggle-{{$shareid}}" class="switchlabel">
