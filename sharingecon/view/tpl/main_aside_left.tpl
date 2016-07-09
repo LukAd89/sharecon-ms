@@ -15,6 +15,18 @@
 			</ul>
 		</div>
 	</div>
+	<div class="{{$filterhidden}}">
+		<div class="form-group field checkbox" id="globaldir_container">
+			<label for="filter-favsonly">Show Favorites only</label>
+			<div class="pull-right">
+				<input type="checkbox" onchange="console.log(this.checked ? 0 : 1)" checked="checked" value="1" id="filter-favsonly" name="filter-favsonly">
+				<label for="filter-favsonly" class="switchlabel">
+					<span data-off="Off" data-on="On" class="onoffswitch-inner"></span>
+					<span class="onoffswitch-switch"></span>
+				</label>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!--
