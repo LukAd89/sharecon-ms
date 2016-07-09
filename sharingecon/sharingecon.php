@@ -159,6 +159,7 @@ function sharingecon_content(&$a) {
 		));
 	}
 	
+	$siteContent .= '<div id="jGrowl" class="top-right jGrowl">';
 	return $siteContent;
 }
 
