@@ -83,6 +83,20 @@ function toggleShare(id, newstate){
 	});
 }
 
+function toggleFav(id, newstate){
+	$.ajax({
+		type : "POST",
+		url : "addon/sharingecon/functions.php",
+		data : {"function" : "toggle_fav",
+			"id" : id,
+			"state" : newstate
+		},
+		success : function(msg){
+			location.reload();
+		}
+	});
+}
+
 /*
 function addNewShare(){
 
