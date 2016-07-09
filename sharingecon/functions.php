@@ -104,7 +104,7 @@ function getShareOwner($shareid){
 
 function toggleShare($id, $state){
 	$newstate = 1;
-	if($state == 1) $newstate = 0;
+	if(strcmp($state, "inactive") == 0) $newstate = 0;
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
