@@ -35,7 +35,7 @@ $(document).ready(function(){
 		$('#input-message-shareid').val($(e.relatedTarget).data('id'));
 	});
 	
-	$("#btn-toggle-share").click(function(){
+	$("button[name='btn-toggle-share']").click(function(){
 		$.ajax({
 			type : "POST",
 			url : "addon/sharingecon/functions.php",
