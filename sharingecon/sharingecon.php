@@ -3,7 +3,7 @@
 /**
  * Name: Sharing Economy
  * Description: Desc will follow
- * Version: 0.1
+ * Version: 0.2
  * Author: Lukas Adrian
  * Maintainer: none
  */
