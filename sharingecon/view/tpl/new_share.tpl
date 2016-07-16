@@ -35,11 +35,9 @@
 				
 			
 			</div>
-			<div class="panel-footer">
-				<button class="btn btn-primary" id="btn-add-new-share" onClick="addNewShare();">{{$submitbutton}}</button>
-			</div>
-		
 		</form>
-		
+		<div class="panel-footer">
+			<button class="btn btn-primary" id="btn-add-new-share" onClick="addNewShare();">{{$submitbutton}}</button>
+		</div>
 	</div>
 </div>
