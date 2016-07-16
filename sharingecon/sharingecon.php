@@ -25,7 +25,7 @@ function sharingecon_post(&$a){
 					'shortdesc' => strip_tags($_POST['input-short-desc']),
 					'longdesc' => strip_tags($_POST['text-long-desc'])
 				);
-				add_new_share($data);
+				//add_new_share($data);
 				//header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 			case 'load-shares':
