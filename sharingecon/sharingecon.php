@@ -11,14 +11,13 @@
  
 require_once('functions.php');
 require_once('include/message.php');
-Logger('SHARINGECON opened');
+
 function sharingecon_post(&$a){
-	Logger('POST got');
+	
 	if(isset($_POST['action'])){
 		Logger('POST got action');
 		switch($_POST['action']){
 			case 'add-new-share':
-				Logger('POST add got');
 				$data = array(
 					'owner' => App::$channel['channel_hash'],
 					'title' => strip_tags($_POST['input-title']),
