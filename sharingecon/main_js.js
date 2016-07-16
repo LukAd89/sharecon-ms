@@ -21,6 +21,9 @@ function test_ajax_json(){
 }
 */
 $(document).ready(function(){
+	if(window.location.hash)
+		$.jGrowl("New Share was successfully added", { sticky: false, theme: 'info', life: 2000 });
+	
 	$("#btn-add-new-share").click(function(){
 		addNewShare();
 	});
@@ -106,8 +109,7 @@ function addNewShare(){
 		url : "sharingecon",
 		data : $("#form-add-new-share").serialize(),
 		success : function(msg){
-			location.href = "sharingecon/myshares";
-			$.jGrowl("New Share was successfully added", { sticky: false, theme: 'info', life: 2000 });
+			location.href = "sharingecon/myshares#messagesent";
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.responseText);
