@@ -10,7 +10,6 @@
 
  
 require_once('functions.php');
-require_once('include/message.php');
 
 function sharingecon_post(&$a){
 	
@@ -31,8 +30,7 @@ function sharingecon_post(&$a){
 				break;
 			
 			case 'write-message':
-				$recipient = getShareOwner($_POST['input-message-shareid']);
-				write_message($recipient, $_POST['input-message-subject'], $_POST['input-message-body']);
+				write_message($_POST['input-message-subject'], $_POST['input-message-body']);
 				break;
 				
 			case 'toggle-share':

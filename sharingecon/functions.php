@@ -144,8 +144,10 @@ function deleteShare($id){
 	$conn->close();
 }
 
-function write_message($rec, $subject, $body){
-	send_message(null, $rec, $body, $subject);
+function write_message($subject, $body){
+	require_once('include/message.php');
+	$recipient = getShareOwner($_POST['input-message-shareid']);
+	send_message(null, $recipient, $body, $subject);
 }
 
 
