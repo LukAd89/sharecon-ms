@@ -21,11 +21,10 @@ function test_ajax_json(){
 }
 */
 $(document).ready(function(){
-	/*$("#btn-add-new-share").click(function(){
-		$("#form-add-new-share").submit();
-		$("#modal-add-new-share").modal('hide');
+	$("#btn-add-new-share").click(function(){
+		addNewShare();
 	});
-	*/
+	
 	$("#btn-send-message").click(function(){
 		$("#form-write-message").submit();
 		$("#modal-write-message").modal('hide');
@@ -98,16 +97,15 @@ function toggleFav(id, newstate){
 	});
 }
 
-/*
+
 function addNewShare(){
 
 	$.ajax({
 		type : "POST",
-		url : "addon/sharingecon/sharingecon.php",
-		data : $("#form-add-new-share").serialize() + "&function=add_new_share",
+		url : "sharingecon",
+		data : $("#form-add-new-share").serialize(),
 		success : function(msg){
-			console.log(msg);
-			$("#modal-add-new-share").modal('hide');
+			
 		},
 		error : function(){
 			console.log("error");
@@ -115,6 +113,7 @@ function addNewShare(){
 	});
 }
 
+/*
 function loadShares(args){
 	$.ajax({
 		type : "POST",

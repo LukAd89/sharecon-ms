@@ -142,7 +142,7 @@ function sharingecon_content(&$a) {
 			case 'newshare':
 				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
 					'$title' => 'Add new Share',
-					'$function' => 'add-new-share',
+					'$action' => 'add-new-share',
 					'$submitbutton' => 'Add Share'
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
@@ -154,7 +154,7 @@ function sharingecon_content(&$a) {
 				$data = load_share_details(argv(2));
 				$siteContent .= replace_macros(get_markup_template('edit_share.tpl','addon/sharingecon/'), array(
 					'$title' => 'Edit Share',
-					'$function' => 'edit-share',
+					'$action' => 'edit-share',
 					'$additional' => '<input type="hidden" name="action" value="'. argv(2) . '">',
 					'$titlevalue' => $data['Title'],
 					'$shortdescvalue' => $data['ShortDesc'],
