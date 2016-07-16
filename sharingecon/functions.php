@@ -38,11 +38,11 @@ function add_new_share($data){
 }
 
 function uploadImage($file){
-	echo print_r($file);
+	
 	if($file['error'] != UPLOAD_ERR_OK)
 		exit('ERROR UPLOADING FILE');
-	echo 'works';
-	move_uploaded_file($file['tmp_name'], 'uploads/images/' . $file['name']);
+	
+	echo move_uploaded_file($file['tmp_name'], 'uploads/images/' . $file['name']);
 }
 
 function load_shares($args){
