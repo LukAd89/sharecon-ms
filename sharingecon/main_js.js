@@ -39,7 +39,7 @@ $(document).ready(function(){
 		$.ajax({
 			type : "POST",
 			url : "sharingecon",
-			data : {action : "toggle_share",
+			data : {action : "toggle-share",
 				id : $(this).attr('data-id'),
 				state : $(this).attr('data-state')
 			},
@@ -53,7 +53,7 @@ $(document).ready(function(){
 		$.ajax({
 			type : "POST",
 			url : "sharingecon",
-			data : {action : "delete_share",
+			data : {action : "delete-share",
 				id : $(this).attr('data-id')
 			},
 			success : function(msg){
