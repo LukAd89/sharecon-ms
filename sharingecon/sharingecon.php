@@ -13,8 +13,9 @@ require_once('functions.php');
 require_once('include/message.php');
 
 function sharingecon_post(&$a){
+	Logger('POST got');
 	if(isset($_POST['action'])){
-		Logger('POST got');
+		Logger('POST got action');
 		switch($_POST['action']){
 			case 'add-new-share':
 				Logger('POST add got');
