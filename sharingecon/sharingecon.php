@@ -17,6 +17,7 @@ function sharingecon_post(&$a){
 		Logger('POST got action');
 		switch($_POST['action']){
 			case 'add-new-share':
+				print_r($_FILES);
 				uploadImage($_FILES['input-image']);
 				$data = array(
 					'owner' => App::$channel['channel_hash'],
@@ -25,7 +26,7 @@ function sharingecon_post(&$a){
 					'longdesc' => strip_tags($_POST['text-long-desc'])
 				);
 				add_new_share($data);
-				header("Location: " . $_SERVER['REQUEST_URI']);
+				//header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 			case 'load-shares':
 				echo load_shares();
