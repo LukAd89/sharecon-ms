@@ -9,7 +9,7 @@
 		<form class="" role="form" id="form-add-new-share" action="sharingecon" method="post">
 		
 			<div class="panel-body">
-				<input type="hidden" name="input-function" value="{{$function}}">
+				<input type="hidden" name="action" value="{{$function}}">
 				{{$additional}}
 				<div class="form-group">
 					<label for="input-title" class="control-label">Title</label>

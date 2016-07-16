@@ -8,7 +8,7 @@
 		
 		
 			<div class="panel-body">
-				<input type="hidden" name="input-function" value="{{$function}}">
+				<input type="hidden" name="action" value="{{$function}}">
 				<div>
 					{{$sharebody}}
 				</div>
@@ -43,7 +43,7 @@
 				<div class="modal-body">
 					
 						<input type="hidden" name="input-message-shareid" id="input-message-shareid" value="">
-						<input type="hidden" name="input-function" value="write-message">
+						<input type="hidden" name="action" value="write-message">
 						<div class="form-group">
 							<div class="col-sm-2">
 								<label for="input-message-subject" class="control-label">Subject</label>

@@ -13,9 +13,9 @@ require_once('functions.php');
 require_once('include/message.php');
 
 function sharingecon_post(&$a){
-	if(isset($_POST['input-function'])){
-		switch($_POST['input-function']){
-			case "add-new-share":
+	if(isset($_POST['action'])){
+		switch($_POST['action']){
+			case 'add-new-share':
 				$data = array(
 					"owner" => App::$channel['channel_hash'],
 					"title" => strip_tags($_POST['input-title']),
@@ -23,13 +23,21 @@ function sharingecon_post(&$a){
 				);
 				echo add_new_share($data);
 				break;
-			case "load-shares":
+			case 'load-shares':
 				echo load_shares();
 				break;
 			
-			case "write-message":
+			case 'write-message':
 				$recipient = getShareOwner($_POST['input-message-shareid']);
 				write_message($recipient, $_POST['input-message-subject'], $_POST['input-message-body']);
+				break;
+				
+			case 'toggle-share':
+				toggleShare($_POST['id'], $_POST['state']);
+				break;
+				
+			case 'delete-share':
+				deleteShare($_POST['id']);
 				break;
 		}
 		header("Location: " . $_SERVER['REQUEST_URI']);
@@ -43,6 +51,7 @@ function sharingecon_unload() {}
 
 function sharingecon_init(){
 	head_add_css('addon/sharingecon/bootstrap_sharecon.css');
+	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/main_js.js"></script>'."\r\n";
 }
 
 function sharingecon_module() {}
@@ -97,8 +106,7 @@ function write_message($rec, $subject, $body){
 
 
 function sharingecon_content(&$a) {
-	$siteContent = '<script src="addon/sharingecon/main_js.js" type="text/javascript"></script>';
-	
+
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
@@ -147,7 +155,7 @@ function sharingecon_content(&$a) {
 				$siteContent .= replace_macros(get_markup_template('edit_share.tpl','addon/sharingecon/'), array(
 					'$title' => 'Edit Share',
 					'$function' => 'edit-share',
-					'$additional' => '<input type="hidden" name="input-function" value="'. argv(2) . '">',
+					'$additional' => '<input type="hidden" name="action" value="'. argv(2) . '">',
 					'$titlevalue' => $data['Title'],
 					'$shortdescvalue' => $data['ShortDesc'],
 					'$longdescvalue' => $data['LongDesc'],

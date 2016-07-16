@@ -38,8 +38,8 @@ $(document).ready(function(){
 	$("button[name='btn-toggle-share']").click(function(){
 		$.ajax({
 			type : "POST",
-			url : "addon/sharingecon/functions.php",
-			data : {function : "toggle_share",
+			url : "sharingecon",
+			data : {action : "toggle_share",
 				id : $(this).attr('data-id'),
 				state : $(this).attr('data-state')
 			},
@@ -52,8 +52,8 @@ $(document).ready(function(){
 	$("button[name='btn-delete-share']").click(function(){
 		$.ajax({
 			type : "POST",
-			url : "addon/sharingecon/functions.php",
-			data : {function : "delete_share",
+			url : "sharingecon",
+			data : {action : "delete_share",
 				id : $(this).attr('data-id')
 			},
 			success : function(msg){
