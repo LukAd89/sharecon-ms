@@ -11,7 +11,7 @@
  
 require_once('functions.php');
 require_once('include/message.php');
-
+Logger('SHARINGECON opened');
 function sharingecon_post(&$a){
 	Logger('POST got');
 	if(isset($_POST['action'])){
@@ -25,7 +25,7 @@ function sharingecon_post(&$a){
 					'shortdesc' => strip_tags($_POST['input-short-desc']),
 					'longdesc' => strip_tags($_POST['text-long-desc'])
 				);
-				echo add_new_share($data);
+				add_new_share($data);
 				exit();
 			case 'load-shares':
 				echo load_shares();
