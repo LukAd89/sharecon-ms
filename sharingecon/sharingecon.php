@@ -14,9 +14,10 @@ require_once('include/message.php');
 
 function sharingecon_post(&$a){
 	if(isset($_POST['action'])){
+		Logger('POST got');
 		switch($_POST['action']){
 			case 'add-new-share':
-				Logger('POST got');
+				Logger('POST add got');
 				$data = array(
 					'owner' => App::$channel['channel_hash'],
 					'title' => strip_tags($_POST['input-title']),
