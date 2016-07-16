@@ -107,9 +107,10 @@ function addNewShare(){
 		success : function(msg){
 			
 		},
-		error : function(){
-			console.log("error");
-		}
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status);
+	        console.log(thrownError);
+	    }
 	});
 }
 
