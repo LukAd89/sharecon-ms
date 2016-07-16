@@ -19,7 +19,7 @@ if (isset($_POST['function'])) {
 */
 
 function add_new_share($data){
-	
+	Logger('add new share started');
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {

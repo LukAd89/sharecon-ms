@@ -23,7 +23,7 @@ function sharingecon_post(&$a){
 					'longdesc' => strip_tags($_POST['text-long-desc'])
 				);
 				echo add_new_share($data);
-				break;
+				exit();
 			case 'load-shares':
 				echo load_shares();
 				break;
