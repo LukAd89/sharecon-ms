@@ -106,7 +106,8 @@ function addNewShare(){
 		url : "sharingecon",
 		data : $("#form-add-new-share").serialize(),
 		success : function(msg){
-			
+			location.href = "sharingecon/myshares";
+			$.jGrowl("New Share was successfully added", { sticky: false, theme: 'info', life: 2000 });
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.responseText);
@@ -122,7 +123,7 @@ function sendMessage(){
 		data : $("#form-write-message").serialize(),
 		success : function(msg){
 			//location.reload();
-			$.jGrowl("Message sent", { sticky: false, theme: 'info', life: 10000 });
+			$.jGrowl("Message sent", { sticky: false, theme: 'info', life: 2000 });
 		}
 	});
 }
