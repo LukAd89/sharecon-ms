@@ -36,7 +36,7 @@
 			
 			</div>
 			<div class="panel-footer">
-				<button type="submit" class="btn btn-primary" id="btn-add-new-share">{{$submitbutton}}</button>
+				<button type="submit" class="btn btn-primary" id="btn-add-new-share" onClick="addNewShare();">{{$submitbutton}}</button>
 			</div>
 		
 		</form>
