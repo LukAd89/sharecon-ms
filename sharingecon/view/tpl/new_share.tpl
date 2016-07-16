@@ -6,7 +6,7 @@
 			<h4 class="panel-title">{{$title}}</h4>
 		</div>
 		
-		<form class="" role="form" id="form-add-new-share">
+		<form class="" role="form" id="form-add-new-share" action="sharingecon" method="post">
 		
 			<div class="panel-body">
 				<input type="hidden" name="action" value="{{$action}}">
