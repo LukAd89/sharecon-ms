@@ -41,7 +41,7 @@ function sharingecon_post(&$a){
 				deleteShare($_POST['id']);
 				break;
 		}
-		header("Location: " . $_SERVER['REQUEST_URI']);
+		//header("Location: " . $_SERVER['REQUEST_URI']);
 		exit();
 	}
 }
