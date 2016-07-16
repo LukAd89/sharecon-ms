@@ -4,7 +4,7 @@ define("SERVER_NAME", "localhost");
 define("SERVER_USER", "root");
 define("SERVER_PASSWORD", "dbroot");
 define("SERVER_DBNAME", "hz_sharecon");
-
+define ('SITE_ROOT', realpath(dirname(__FILE__)));
 /*
 if (isset($_POST['function'])) {
 	if($_POST['function'] == "toggle_share"){
@@ -42,7 +42,7 @@ function uploadImage($file){
 	if($file['error'] != UPLOAD_ERR_OK)
 		exit('ERROR UPLOADING FILE');
 	
-	echo move_uploaded_file($file['tmp_name'], z_root() . '/addon/sharingecon/uploads/images/' . $file['name']);
+	echo move_uploaded_file($file['tmp_name'], SITE_ROOT . '/uploads/images/' . $file['name']);
 }
 
 function load_shares($args){
