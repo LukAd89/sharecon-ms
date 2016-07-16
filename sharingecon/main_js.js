@@ -26,7 +26,8 @@ $(document).ready(function(){
 	});
 	
 	$("#btn-send-message").click(function(){
-		$("#form-write-message").submit();
+		//$("#form-write-message").submit();
+		sendMessage();
 		$("#modal-write-message").modal('hide');
 	});
 	
@@ -111,6 +112,17 @@ function addNewShare(){
 			console.log(xhr.responseText);
 	        console.log(thrownError);
 	    }
+	});
+}
+
+function sendMessage(){
+	$.ajax({
+		type : "POST",
+		url : "sharingecon",
+		data : $("#form-write-message").serialize(),
+		success : function(msg){
+			//location.reload();
+		}
 	});
 }
 

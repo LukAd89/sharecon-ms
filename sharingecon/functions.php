@@ -144,4 +144,9 @@ function deleteShare($id){
 	$conn->close();
 }
 
+function write_message($rec, $subject, $body){
+	send_message(null, $rec, $body, $subject);
+}
+
+
 ?>

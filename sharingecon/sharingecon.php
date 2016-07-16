@@ -102,12 +102,6 @@ function view_share_details($shareid){
 	return $content;
 }
 
-function write_message($rec, $subject, $body){
-		echo $rec . $subject . $body;
-		send_message(null, $rec, $body, $subject);
-}
-
-
 function sharingecon_content(&$a) {
 
 	if(argc() > 1){
