@@ -35,6 +35,7 @@ $(document).ready(function(){
 		$('#input-message-shareid').val($(e.relatedTarget).data('id'));
 	});
 	
+	/*
 	$("button[name='btn-toggle-share']").click(function(){
 		$.ajax({
 			type : "POST",
@@ -47,7 +48,7 @@ $(document).ready(function(){
 				location.reload();
 			}
 		});
-	});
+	});*/
 	
 	$("button[name='btn-delete-share']").click(function(){
 		$.ajax({
@@ -72,8 +73,8 @@ $(document).ready(function(){
 function toggleShare(id, newstate){
 	$.ajax({
 		type : "POST",
-		url : "addon/sharingecon/functions.php",
-		data : {"function" : "toggle_share",
+		url : "sharingecon",
+		data : {"action" : "toggle-share",
 			"id" : id,
 			"state" : newstate
 		},
@@ -86,8 +87,8 @@ function toggleShare(id, newstate){
 function toggleFav(id, newstate){
 	$.ajax({
 		type : "POST",
-		url : "addon/sharingecon/functions.php",
-		data : {"function" : "toggle_fav",
+		url : "sharingecon",
+		data : {"function" : "toggle-fav",
 			"id" : id,
 			"state" : newstate
 		},
