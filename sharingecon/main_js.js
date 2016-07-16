@@ -122,6 +122,7 @@ function sendMessage(){
 		data : $("#form-write-message").serialize(),
 		success : function(msg){
 			//location.reload();
+			$.jGrowl("Message sent", { sticky: false, theme: 'info', life: 10000 });
 		}
 	});
 }
