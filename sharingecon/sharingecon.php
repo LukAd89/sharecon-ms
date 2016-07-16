@@ -17,6 +17,7 @@ function sharingecon_post(&$a){
 		Logger('POST got action');
 		switch($_POST['action']){
 			case 'add-new-share':
+				uploadImage($_FILES['input-image']);
 				$data = array(
 					'owner' => App::$channel['channel_hash'],
 					'title' => strip_tags($_POST['input-title']),

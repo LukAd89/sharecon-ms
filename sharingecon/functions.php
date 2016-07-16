@@ -19,7 +19,7 @@ if (isset($_POST['function'])) {
 */
 
 function add_new_share($data){
-	Logger('add new share started');
+	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
@@ -35,6 +35,13 @@ function add_new_share($data){
 	}
 
 	$conn->close();
+}
+
+function uploadImage($file){
+	if($file['error'] != UPLOAD_ERR_OK)
+		exit('ERROR UPLOADING FILE');
+	
+	move_uploaded_file($file['tmp_name'], 'uploads/images/' . $file['name']);
 }
 
 function load_shares($args){
@@ -149,6 +156,8 @@ function write_message($subject, $body){
 	$recipient = getShareOwner($_POST['input-message-shareid']);
 	send_message(null, $recipient, $body, $subject);
 }
+
+
 
 
 ?>
