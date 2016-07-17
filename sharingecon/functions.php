@@ -47,10 +47,10 @@ function uploadImage($file){
 	
 	if ($file['size'] > 1000000)
 		return false;
-	Logger($file['tmp_name']);
-	Logger(pathinfo($file['tmp_name']));
-		Logger(pathinfo($file['tmp_name'],PATHINFO_EXTENSION));
-	if(pathinfo($file['tmp_name'],PATHINFO_EXTENSION) != "jpg")
+	Logger($file['name']);
+	Logger(pathinfo($file['name']));
+		Logger(pathinfo($file['name'],PATHINFO_EXTENSION));
+	if(pathinfo($file['name'],PATHINFO_EXTENSION) != "jpg")
 		return false;
 	
 	$filename = uniqid();
