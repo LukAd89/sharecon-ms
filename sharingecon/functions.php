@@ -26,7 +26,7 @@ function add_new_share($data){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, owner) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['owner'] . "')";
+	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, owner) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['imagename'] . "', '" . $data['owner'] . "')";
 	
 	if ($conn->query($sql_query) === TRUE) {
 		return "New record created successfully";
@@ -39,10 +39,23 @@ function add_new_share($data){
 
 function uploadImage($file){
 	
-	if($file['error'] != UPLOAD_ERR_OK)
-		exit('ERROR UPLOADING FILE');
+	if (!isset($file['error']) || is_array($file['error']))
+		return false;
 	
-	echo move_uploaded_file($file['tmp_name'], SITE_ROOT . '/uploads/images/' . $file['name']);
+	if($file['error'] != UPLOAD_ERR_OK)
+		return false;
+	
+	if ($file['size'] > 1000000)
+		return false;
+	
+	if(pathinfo($file['tmp_name'],PATHINFO_EXTENSION) != "jpg")
+		return false;
+	
+	$filename = uniqid();
+	if(move_uploaded_file($file['tmp_name'], SITE_ROOT . '/uploads/images/' . $filename))
+		return filename;
+	else
+		return false;
 }
 
 function load_shares($args){

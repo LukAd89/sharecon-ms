@@ -17,14 +17,19 @@ function sharingecon_post(&$a){
 		Logger('POST got action');
 		switch($_POST['action']){
 			case 'add-new-share':
-				echo uploadImage($_FILES['input-image']);
+				$filename = uploadImage($_FILES['input-image']);
+				
+				if(!$filename)
+					$filename = 'default.jpg';
+				
 				$data = array(
 					'owner' => App::$channel['channel_hash'],
 					'title' => strip_tags($_POST['input-title']),
 					'shortdesc' => strip_tags($_POST['input-short-desc']),
-					'longdesc' => strip_tags($_POST['text-long-desc'])
+					'longdesc' => strip_tags($_POST['text-long-desc']),
+					'imagename' => $filename
 				);
-				//add_new_share($data);
+				add_new_share($data);
 				//header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 			case 'load-shares':
