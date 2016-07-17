@@ -47,15 +47,13 @@ function uploadImage($file){
 	
 	if ($file['size'] > 1000000)
 		return false;
-	Logger($file['name']);
-	Logger(pathinfo($file['name']));
-		Logger(pathinfo($file['name'],PATHINFO_EXTENSION));
+	
 	if(pathinfo($file['name'],PATHINFO_EXTENSION) != "jpg")
 		return false;
 	
 	$filename = uniqid();
 	if(move_uploaded_file($file['tmp_name'], SITE_ROOT . '/uploads/images/' . $filename))
-		return filename;
+		return $filename;
 	else
 		return false;
 }
