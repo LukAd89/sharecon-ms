@@ -14,7 +14,6 @@ require_once('functions.php');
 function sharingecon_post(&$a){
 	
 	if(isset($_POST['action'])){
-		Logger('POST got action');
 		switch($_POST['action']){
 			case 'add-new-share':
 				$filename = uploadImage($_FILES['input-image']);

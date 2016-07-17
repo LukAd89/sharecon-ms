@@ -41,16 +41,16 @@ function uploadImage($file){
 	
 	if (!isset($file['error']) || is_array($file['error']))
 		return false;
-	Logger('1');
+	
 	if($file['error'] != UPLOAD_ERR_OK)
 		return false;
-		Logger('2');
+	
 	if ($file['size'] > 1000000)
 		return false;
-		Logger('3');
+		Logger(pathinfo($file['tmp_name'],PATHINFO_EXTENSION));
 	if(pathinfo($file['tmp_name'],PATHINFO_EXTENSION) != "jpg")
 		return false;
-		Logger('4');
+	
 	$filename = uniqid();
 	if(move_uploaded_file($file['tmp_name'], SITE_ROOT . '/uploads/images/' . $filename))
 		return filename;
