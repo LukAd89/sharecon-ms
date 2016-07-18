@@ -3,13 +3,13 @@
 	<hr>
 	<div class="panel panel-default" id="panel-wholepage"> 
 		<div class="panel-heading">
-			<h4 class="panel-title">{{$title}}</h4>
+			<h4 class="panel-title">Add New Share</h4>
 		</div>
 		
 		<form class="" role="form" id="form-add-new-share" action="sharingecon" method="post" enctype="multipart/form-data">
 		
 			<div class="panel-body">
-				<input type="hidden" name="action" value="{{$action}}">
+				<input type="hidden" name="action" value="new-share">
 				<div class="form-group">
 					<label for="input-title" class="control-label">Title</label>
 					<input type="text" class="form-control" name="input-title" id="input-title" placeholder="Name of the Object">
@@ -36,12 +36,10 @@
 						<option value="friends">Friends only</option>
 					</select>
 				</div>
-				
-			
 			</div>
 		</form>
 		<div class="panel-footer">
-			<button type="button" class="btn btn-primary" id="btn-add-new-share">{{$submitbutton}}</button>
+			<button type="button" class="btn btn-primary" id="btn-add-new-share">Submit</button>
 		</div>
 	</div>
 </div>

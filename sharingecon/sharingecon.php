@@ -29,7 +29,7 @@ function sharingecon_post(&$a){
 					'imagename' => $filename
 				);
 				add_new_share($data);
-				//header("Location: " . $_SERVER['REQUEST_URI']);
+				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 			case 'load-shares':
 				echo load_shares();
@@ -78,15 +78,15 @@ function get_shares_list($args){
 			'$shareid' 		=> $data[$i]['ID'],
 			'$title' 		=> $data[$i]['Title'],
 			'$shortdesc' 	=> $data[$i]['ShortDesc'],
-			'$checked'		=> $status,
-			'$btntoggletext' => $statustext
+			'$checked'		=> $statuss
 			));
 		}
 		else{
 			$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
 			'$shareid' 		=> $data[$i]['ID'],
 			'$title' 		=> $data[$i]['Title'],
-			'$shortdesc' 	=> $data[$i]['ShortDesc']
+			'$shortdesc' 	=> $data[$i]['ShortDesc'],
+			'$imagename'	=> $data[$i]['Imagename']					
 			));
 		}
 	}
@@ -142,9 +142,7 @@ function sharingecon_content(&$a) {
 				
 			case 'newshare':
 				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
-					'$title' => 'Add new Share',
-					'$action' => 'add-new-share',
-					'$submitbutton' => 'Add Share'
+					
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 					'$filterhidden' => 'hidden'
@@ -154,13 +152,10 @@ function sharingecon_content(&$a) {
 			case 'editshare':
 				$data = load_share_details(argv(2));
 				$siteContent .= replace_macros(get_markup_template('edit_share.tpl','addon/sharingecon/'), array(
-					'$title' => 'Edit Share',
-					'$action' => 'edit-share',
 					'$additional' => '<input type="hidden" name="action" value="'. argv(2) . '">',
 					'$titlevalue' => $data['Title'],
 					'$shortdescvalue' => $data['ShortDesc'],
-					'$longdescvalue' => $data['LongDesc'],
-					'$submitbutton' => 'Submit changes'
+					'$longdescvalue' => $data['LongDesc']
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 					'$filterhidden' => 'hidden'

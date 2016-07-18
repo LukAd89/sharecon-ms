@@ -5,7 +5,7 @@
 	<div class="panel-body">
 		<div class="media">
 			<div class="media-left">
-				<img class="media-object thumbnail" src="addon/sharingecon/standard.png" alt="...">
+				<img class="media-object thumbnail share-thumbnail" src="addon/sharingecon/uploads/images/{{$imagename}}" alt="...">
 			</div>
 			<div class="media-body">
 				<div class="well">{{$shortdesc}}</div>
