@@ -40,9 +40,10 @@ function sharingecon_post(&$a){
 					'longdesc' => strip_tags($_POST['text-long-desc']),
 				);
 				add_new_request($data);
-				header("Location: " . $_SERVER['REQUEST_URI']);
-				exit();
-					
+				//header("Location: " . $_SERVER['REQUEST_URI']);
+				//exit();
+				break;
+				
 			case 'load-shares':
 				echo load_shares();
 				break;
