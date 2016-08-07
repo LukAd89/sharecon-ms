@@ -145,6 +145,7 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'requests':
+				echo 'rrr: ' . $SHARE_TYPE_OFFER;
 				$pageContent = get_shares_list(array(
 					'type' => $SHARE_TYPE_OFFER
 				));
