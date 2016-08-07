@@ -69,14 +69,16 @@ function get_shares_list($args){
 
 	$result = "";
 	for($i=0; $i<count($data); $i++){
+		
+		if($data[$i]['Imagename'] === NULL){
+			$data[$i]['Imagename'] ='default.jpg';
+		}
+		
 		if($args['ownerview']){
 			$status='';
 			
 			if($data[$i]['Status']==0){
 				$status='checked="checked"';
-			}
-			if($data[$i]['Imagename'] === NULL){
-				$data[$i]['Imagename'] ='default.jpg';
 			}
 			
 			$result .= replace_macros(get_markup_template('share_min_owner.tpl','addon/sharingecon/'), array(
