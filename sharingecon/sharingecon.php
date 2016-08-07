@@ -17,7 +17,6 @@ function sharingecon_post(&$a){
 		
 		switch($_POST['action']){
 			case 'add-new-share':
-				Logger('starte add new');
 				$filename = uploadImage($_FILES['input-image']);
 				
 				if(!$filename)
@@ -28,7 +27,8 @@ function sharingecon_post(&$a){
 					'title' => strip_tags($_POST['input-title']),
 					'shortdesc' => strip_tags($_POST['input-short-desc']),
 					'longdesc' => strip_tags($_POST['text-long-desc']),
-					'imagename' => $filename
+					'imagename' => $filename,
+					'visibility' => strip_tags($_POST['select-visibility'])
 				);
 				add_new_share($data);
 				header("Location: " . $_SERVER['REQUEST_URI']);

@@ -27,7 +27,7 @@ function add_new_share($data){
 	}
 	Logger(print_r($data));
 	
-	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, owner, type, visibility) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['imagename'] . "', '" . $data['owner'] . "', 0, '" . $data['select-visibility'] . "')";
+	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, owner, type, visibility) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['imagename'] . "', '" . $data['owner'] . "', 0, '" . $data['visibility'] . "')";
 	
 	if ($conn->query($sql_query) === TRUE) {
 		return "New record created successfully";
