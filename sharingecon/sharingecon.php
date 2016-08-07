@@ -70,9 +70,9 @@ function get_shares_list($args){
 	$result = "";
 	for($i=0; $i<count($data); $i++){
 		
-		//if($data[$i]['Imagename'] === NULL){
+		if($data[$i]['Imagename'] === NULL){
 			$data[$i]['Imagename'] ='default.jpg';
-		//}
+		}
 		
 		if($args['ownerview']){
 			$status='';
@@ -85,6 +85,7 @@ function get_shares_list($args){
 			'$shareid' 		=> $data[$i]['ID'],
 			'$title' 		=> $data[$i]['Title'],
 			'$shortdesc' 	=> $data[$i]['ShortDesc'],
+			'$imagename'	=> $data[$i]['Imagename'],
 			'$checked'		=> $status
 			));
 		}
