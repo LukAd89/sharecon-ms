@@ -22,6 +22,8 @@ function test_ajax_json(){
 */
 $(document).ready(function(){
 	
+	nlp = window.nlp_compromise;
+	
 	$("#btn-add-new-share").click(function(){
 		//addNewShare();
 		$("#form-add-new-share").submit();
@@ -138,8 +140,6 @@ function sendMessage(){
 }
 
 function reloadTags(){
-	nlp = window.nlp_compromise;
-	
 	var inputstr = "This is a text as an example.";
 	var tags = "";
 	var inputterms = nlp.text(inputstr).terms();
