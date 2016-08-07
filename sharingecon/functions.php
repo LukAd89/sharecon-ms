@@ -73,7 +73,7 @@ function load_shares($args){
 		$sql_query .= " WHERE type = '" . $args['type'] . "'";
 	}
 	else{
-		$sql_query .= " WHERE type = '2'";
+		$sql_query .= " WHERE type = '0'";
 	}
 	
 	if(isset($args['owner'])){
