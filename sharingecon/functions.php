@@ -69,8 +69,15 @@ function load_shares($args){
 	$resArray = array();
 	$sql_query = "SELECT * FROM sharedObjects";
 	
+	if(isset($args['type'])){
+		$sql_query .= " WHERE type = '" . $args['type'] . "'";
+	}
+	else{
+		$sql_query .= " WHERE type = '2'";
+	}
+	
 	if(isset($args['owner'])){
-		$sql_query .= " WHERE owner = '" . $args['owner'] . "'";
+		$sql_query .= " AND owner = '" . $args['owner'] . "'";
 	}
 	
 	if($result = $conn->query($sql_query)){

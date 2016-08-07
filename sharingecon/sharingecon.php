@@ -10,6 +10,7 @@
 
  
 require_once('functions.php');
+require_once('constants.php');
 
 function sharingecon_post(&$a){
 	
@@ -78,7 +79,7 @@ function get_shares_list($args){
 			'$shareid' 		=> $data[$i]['ID'],
 			'$title' 		=> $data[$i]['Title'],
 			'$shortdesc' 	=> $data[$i]['ShortDesc'],
-			'$checked'		=> $statuss
+			'$checked'		=> $status
 			));
 		}
 		else{
@@ -125,7 +126,9 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'findshares':
-				$pageContent = get_shares_list(array());
+				$pageContent = get_shares_list(array(
+					'type' => $SHARE_TYPE_OFFER
+				));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab2' => 'active',
 					'$pagecontent' => $pageContent
@@ -133,6 +136,16 @@ function sharingecon_content(&$a) {
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
 				break;
 				
+			case 'requests':
+				$pageContent = get_shares_list(array(
+					'type' => $SHARE_TYPE_OFFER
+				));
+				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
+						'$tab3' => 'active',
+						'$pagecontent' => $pageContent
+				));
+				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
+				break;
 			case 'viewshare':
 				$siteContent .= view_share_details(argv(2));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
