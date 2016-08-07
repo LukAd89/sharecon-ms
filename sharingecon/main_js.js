@@ -140,14 +140,16 @@ function sendMessage(){
 }
 
 function reloadTags(){
-	var inputstr = "This is a text as an example.";
-	var tags = "";
+	var inputstr = "This is a test text text as an example.";
+	var tags = [];
 	var inputterms = nlp.text(inputstr).terms();
 	
 	for(i=0; i<inputterms.length; i++){
-		if(inputterms[i].tag == "Noun")
-			tags = tags + ", " + inputterms[i].normal;
-		console.log(tags);
+		if(inputterms[i].tag == "Noun"){
+			var newEntry = inputterms[i].normal;
+			if(jQuery.inArray(newEntry, tags) == -1)
+				tags.push(newEntry);
+		}
 	}
 	$("#input-tags").val(tags);
 }
