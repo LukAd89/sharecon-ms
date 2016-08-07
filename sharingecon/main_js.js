@@ -140,7 +140,8 @@ function sendMessage(){
 }
 
 function reloadTags(){
-	var inputstr = "This is a test text text as an example.";
+	//var inputstr = "This is an example text text as an example.";
+	var inputstr = $("#input-title").val();
 	var tags = [];
 	var inputterms = nlp.text(inputstr).terms();
 	
