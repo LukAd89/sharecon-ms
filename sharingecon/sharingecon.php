@@ -29,7 +29,8 @@ function sharingecon_post(&$a){
 					'imagename' => $filename
 				);
 				add_new_share($data);
-				header("Location: " . $_SERVER['REQUEST_URI']);
+				print_r($_SERVER);
+				//header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 				
 			case 'add-new-request':
@@ -40,8 +41,8 @@ function sharingecon_post(&$a){
 					'longdesc' => strip_tags($_POST['text-long-desc']),
 				);
 				add_new_request($data);
-				//header("Location: " . $_SERVER['REQUEST_URI']);
-				//exit();
+				header("Location: " . $_SERVER['REQUEST_URI']);
+				exit();
 				break;
 				
 			case 'load-shares':
