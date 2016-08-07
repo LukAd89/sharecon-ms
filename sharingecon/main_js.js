@@ -147,8 +147,9 @@ function reloadTags(){
 	for(i=0; i<inputterms.length; i++){
 		if(inputterms[i].tag == "Noun")
 			tags = tags + ", " + inputterms[i].normal;
+		console.log(tags);
 	}
-	$("#dinput-tags").val(tags);
+	$("#input-tags").val(tags);
 }
 
 /*
