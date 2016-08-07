@@ -14,7 +14,7 @@ require_once('functions.php');
 function sharingecon_post(&$a){
 	
 	if(isset($_POST['action'])){
-		Logger($_POST[action]);
+		
 		switch($_POST['action']){
 			case 'add-new-share':
 				Logger('starte add new');
@@ -31,7 +31,6 @@ function sharingecon_post(&$a){
 					'imagename' => $filename
 				);
 				add_new_share($data);
-				Logger('kurz vor ende');
 				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 				
