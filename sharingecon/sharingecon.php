@@ -16,6 +16,7 @@ function sharingecon_post(&$a){
 	if(isset($_POST['action'])){
 		switch($_POST['action']){
 			case 'add-new-share':
+				Logger('starte add new');
 				$filename = uploadImage($_FILES['input-image']);
 				
 				if(!$filename)
@@ -29,8 +30,8 @@ function sharingecon_post(&$a){
 					'imagename' => $filename
 				);
 				add_new_share($data);
-				print_r($_SERVER);
-				//header("Location: " . $_SERVER['REQUEST_URI']);
+				Logger('kurz vor ende');
+				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 				
 			case 'add-new-request':
