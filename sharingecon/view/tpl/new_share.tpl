@@ -30,11 +30,21 @@
 				<hr>
 				
 				<div class="form-group">
-					<label for="select-range" class="control-label">Make Object visible for</label>
-					<select class="form-control" name="select-range" id="select-range">
-						<option value="everybody">Everybody</option>
-						<option value="friends">Friends only</option>
+					<label for="select-visibility" class="control-label">Make Object visible for</label>
+					<select class="form-control" name="select-visibility" id="select-visibility">
+						<option value="0">Everybody</option>
+						<option value="1">Friends only</option>
 					</select>
+				</div>
+				
+				<hr>
+				
+				<div class="form-group">
+					<label for="input-tags" class="control-label">Tags</label>
+					<input type="text" class="form-control" name="input-tags" id="input-tags" placeholder="">
+					<button type="button" class="btn" id="btn-reload-tags">
+						<span class="glyphicon glyphicon-refresh"></span>
+					</button>
 				</div>
 			</div>
 		</form>
