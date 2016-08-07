@@ -14,6 +14,7 @@ require_once('functions.php');
 function sharingecon_post(&$a){
 	
 	if(isset($_POST['action'])){
+		Logger($_POST[action]);
 		switch($_POST['action']){
 			case 'add-new-share':
 				Logger('starte add new');
