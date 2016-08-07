@@ -48,9 +48,9 @@ function add_new_request($data){
 	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, owner, type) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['owner'] . "', 1)";
 
 	if ($conn->query($sql_query) === TRUE) {
-		return "New record created successfully";
+		echo "New record created successfully";
 	} else {
-		return "Error: " . $sql_query . "<br>" . $conn->error;
+		echo "Error: " . $sql_query . "<br>" . $conn->error;
 	}
 
 	$conn->close();
