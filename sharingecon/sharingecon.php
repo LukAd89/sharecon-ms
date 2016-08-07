@@ -70,7 +70,7 @@ function get_shares_list($args){
 	$result = "";
 	for($i=0; $i<count($data); $i++){
 		
-		echo $data[$i]['Imagename'];
+		echo 'namell: ' . $data[$i]['Imagename'];
 		if($data[$i]['Imagename'] === NULL){
 			$data[$i]['Imagename'] ='default.jpg';
 		}
