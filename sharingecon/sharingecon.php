@@ -168,6 +168,15 @@ function sharingecon_content(&$a) {
 					'$filterhidden' => 'hidden'
 				));
 				break;
+				
+			case 'newrequest':
+				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
+					
+				));
+				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+						'$filterhidden' => 'hidden'
+				));
+				break;
 			
 			case 'editshare':
 				$data = load_share_details(argv(2));
