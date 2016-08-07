@@ -214,11 +214,21 @@ function sharingecon_content(&$a) {
 				break;
 		}
 	}
+	
 	else{
-		$pageContent = get_shares_list(array('owner' => App::$channel['channel_hash']));
+		$pageContent = get_shares_list(array(
+			'owner' => App::$channel['channel_hash'],
+			'ownerview' => true,
+			'type' => 2
+			));
+		
 		$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 			'$tab1' => 'active',
 			'$pagecontent' => $pageContent
+		));
+		
+		App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+			'$filterhidden' => 'hidden'
 		));
 	}
 	
