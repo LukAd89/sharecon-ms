@@ -68,7 +68,7 @@ function load_shares($args){
 	
 	$resArray = array();
 	$sql_query = "SELECT * FROM sharedObjects";
-	
+	echo 'test: ' . $args['type'];
 	if(isset($args['type'])){
 		if($args['type'] == $SHARE_TYPE_BOTH){
 			$sql_query .= " WHERE type = '" . $SHARE_TYPE_OFFER . "' OR type = '" . $SHARE_TYPE_REQUEST . "'";
