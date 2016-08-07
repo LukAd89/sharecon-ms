@@ -75,6 +75,10 @@ function get_shares_list($args){
 			if($data[$i]['Status']==0){
 				$status='checked="checked"';
 			}
+			if(is_null($data[$i]['imagename'])){
+				$data[$i]['imagename'] ='default.jpg';
+			}
+			
 			$result .= replace_macros(get_markup_template('share_min_owner.tpl','addon/sharingecon/'), array(
 			'$shareid' 		=> $data[$i]['ID'],
 			'$title' 		=> $data[$i]['Title'],
