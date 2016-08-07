@@ -146,6 +146,7 @@ function reloadTags(){
 	var inputterms = nlp.text(inputstr).terms();
 	
 	for(i=0; i<inputterms.length; i++){
+		console.log(inputterms[i]);
 		if(inputterms[i].tag == "Noun"){
 			var newEntry = inputterms[i].normal;
 			console.log(newEntry + " : " + jQuery.inArray(newEntry, tags));
