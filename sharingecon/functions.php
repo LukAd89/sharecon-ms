@@ -25,7 +25,7 @@ function add_new_share($data){
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	
+	Logger($data);
 	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, owner, type, visibility) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['imagename'] . "', '" . $data['owner'] . "', 0, '" . $data['select-visibility'] . "')";
 	
 	if ($conn->query($sql_query) === TRUE) {
