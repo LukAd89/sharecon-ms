@@ -9,7 +9,7 @@
 		<form class="" role="form" id="form-add-new-share" action="sharingecon" method="post" enctype="multipart/form-data">
 		
 			<div class="panel-body">
-				<input type="hidden" name="action" value="new-share">
+				<input type="hidden" name="action" value="add-new-share">
 				<div class="form-group">
 					<label for="input-title" class="control-label">Title</label>
 					<input type="text" class="form-control" name="input-title" id="input-title" placeholder="Name of the Object">
