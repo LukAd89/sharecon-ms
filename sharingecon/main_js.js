@@ -148,6 +148,7 @@ function reloadTags(){
 	for(i=0; i<inputterms.length; i++){
 		if(inputterms[i].tag == "Noun"){
 			var newEntry = inputterms[i].normal;
+			console.log(newEntry + " : " + jQuery.inArray(newEntry, tags));
 			if(jQuery.inArray(newEntry, tags) == -1)
 				tags.push(newEntry);
 		}
