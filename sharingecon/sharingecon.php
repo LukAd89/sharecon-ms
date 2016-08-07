@@ -31,6 +31,18 @@ function sharingecon_post(&$a){
 				add_new_share($data);
 				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
+				
+			case 'add-new-request':
+				$data = array(
+					'owner' => App::$channel['channel_hash'],
+					'title' => strip_tags($_POST['input-title']),
+					'shortdesc' => strip_tags($_POST['input-short-desc']),
+					'longdesc' => strip_tags($_POST['text-long-desc']),
+				);
+				add_new_request($data);
+				header("Location: " . $_SERVER['REQUEST_URI']);
+				exit();
+					
 			case 'load-shares':
 				echo load_shares();
 				break;
@@ -170,7 +182,7 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'newrequest':
-				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
+				$siteContent .= replace_macros(get_markup_template('new_request.tpl','addon/sharingecon/'), array(
 					
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(

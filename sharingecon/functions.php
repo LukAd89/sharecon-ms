@@ -26,8 +26,27 @@ function add_new_share($data){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, owner) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['imagename'] . "', '" . $data['owner'] . "')";
+	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, owner, type) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['imagename'] . "', '" . $data['owner'] . "', 0)";
 	
+	if ($conn->query($sql_query) === TRUE) {
+		return "New record created successfully";
+	} else {
+		return "Error: " . $sql_query . "<br>" . $conn->error;
+	}
+
+	$conn->close();
+}
+
+function add_new_request($data){
+
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, owner, type) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['owner'] . "', 1)";
+
 	if ($conn->query($sql_query) === TRUE) {
 		return "New record created successfully";
 	} else {

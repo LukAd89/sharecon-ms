@@ -27,8 +27,11 @@ $(document).ready(function(){
 		$("#form-add-new-share").submit();
 	});
 	
+	$("#btn-add-new-request").click(function(){
+		$("#form-add-new-request").submit();
+	});
+	
 	$("#btn-edit-share").click(function(){
-		//addNewShare();
 		$("#form-add-new-share").submit();
 	});
 	
