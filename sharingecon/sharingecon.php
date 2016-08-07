@@ -10,7 +10,6 @@
 
  
 require_once('functions.php');
-include('constants.php');
 
 function sharingecon_post(&$a){
 	
@@ -122,7 +121,7 @@ function sharingecon_content(&$a) {
 				$pageContent = get_shares_list(array(
 					'owner' => App::$channel['channel_hash'],
 					'ownerview' => true,
-					'type' => $SHARE_TYPE_BOTH
+					'type' => 2
 					));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => 'active',
@@ -135,7 +134,7 @@ function sharingecon_content(&$a) {
 				
 			case 'findshares':
 				$pageContent = get_shares_list(array(
-					'type' => $SHARE_TYPE_OFFER
+					'type' => 0
 				));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab2' => 'active',
@@ -145,9 +144,8 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'requests':
-				echo 'rrr: ' . $SHARE_TYPE_OFFER;
 				$pageContent = get_shares_list(array(
-					'type' => $SHARE_TYPE_OFFER
+					'type' => 1
 				));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 						'$tab3' => 'active',
