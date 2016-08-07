@@ -114,7 +114,8 @@ function sharingecon_content(&$a) {
 			case 'myshares':
 				$pageContent = get_shares_list(array(
 					'owner' => App::$channel['channel_hash'],
-					'ownerview' => true
+					'ownerview' => true,
+					'type' => $SHARE_TYPE_BOTH
 					));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab1' => 'active',

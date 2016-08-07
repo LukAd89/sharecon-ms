@@ -1,4 +1,5 @@
 <?php 
 	$SHARE_TYPE_OFFER = 0;
 	$SHARE_TYPE_REQUEST = 1;
+	$SHARE_TYPE_BOTH = 2;
 ?>
