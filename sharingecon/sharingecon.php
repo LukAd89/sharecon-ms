@@ -10,7 +10,7 @@
 
  
 require_once('functions.php');
-require_once('constants.php');
+include('constants.php');
 
 function sharingecon_post(&$a){
 	
