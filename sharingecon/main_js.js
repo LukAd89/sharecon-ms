@@ -41,6 +41,10 @@ $(document).ready(function(){
 		$("#modal-write-message").modal('hide');
 	});
 	
+	$("#btn-reload-tags").click(function(){
+		reloadTags();
+	});
+	
 	$('#modal-write-message').on('show.bs.modal', function(e) {
 		$('#input-message-shareid').val($(e.relatedTarget).data('id'));
 	});
@@ -131,6 +135,20 @@ function sendMessage(){
 			$.jGrowl("Message sent", { sticky: false, theme: 'info', life: 2000 });
 		}
 	});
+}
+
+function reloadTags(){
+	nlp = window.nlp_compromise;
+	
+	var inputstr = "This is a text as an example.";
+	var tags = "";
+	var inputterms = nlp.text(inputstr).terms();
+	
+	for(i=0; i<inputterms.length; i++){
+		if(inputterms[i].tag == "Noun")
+			tags = tags + ", " + inputterms[i].normal;
+	}
+	$("#dinput-tags").val(tags);
 }
 
 /*
