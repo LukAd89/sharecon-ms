@@ -36,7 +36,7 @@ function add_new_share($data){
 	
 	$share_id = $conn->insert_id;
 	
-	$sql_query = 'INSERT INTO shareTags (shareID, tags) VALUES (' . $share_id . ',' . $data['tags'] . ')';
+	$sql_query = "INSERT INTO shareTags (shareID, tags) VALUES (" . $share_id . ", '" . $data['tags'] . "')";
 	Logger($sql_query);
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";
