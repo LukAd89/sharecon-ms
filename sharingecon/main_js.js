@@ -141,15 +141,13 @@ function sendMessage(){
 
 function reloadTags(){
 	//var inputstr = "This is an example text text as an example.";
-	var inputstr = $("#input-title").val();
+	var inputstr = $("#input-title").val() + ". " + $("#input-short-desc").val();
 	var tags = [];
 	var inputterms = nlp.text(inputstr).terms();
 	
 	for(i=0; i<inputterms.length; i++){
-		console.log(inputterms[i]);
 		if(inputterms[i].tag == "Noun"){
 			var newEntry = inputterms[i].normal;
-			console.log(newEntry + " : " + jQuery.inArray(newEntry, tags));
 			if(jQuery.inArray(newEntry, tags) == -1)
 				tags.push(newEntry);
 		}

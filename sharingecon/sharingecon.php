@@ -28,7 +28,8 @@ function sharingecon_post(&$a){
 					'shortdesc' => strip_tags($_POST['input-short-desc']),
 					'longdesc' => strip_tags($_POST['text-long-desc']),
 					'imagename' => $filename,
-					'visibility' => strip_tags($_POST['select-visibility'])
+					'visibility' => strip_tags($_POST['select-visibility']),
+					'tags' => strip_tags($_POST['input-tags'])
 				);
 				add_new_share($data);
 				header("Location: " . $_SERVER['REQUEST_URI']);
@@ -40,6 +41,8 @@ function sharingecon_post(&$a){
 					'title' => strip_tags($_POST['input-title']),
 					'shortdesc' => strip_tags($_POST['input-short-desc']),
 					'longdesc' => strip_tags($_POST['text-long-desc']),
+					'visibility' => strip_tags($_POST['select-visibility']),
+					'tags' => strip_tags($_POST['input-tags'])
 				);
 				add_new_request($data);
 				header("Location: " . $_SERVER['REQUEST_URI']);

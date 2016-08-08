@@ -33,6 +33,16 @@
 						<option value="friends" {{$selfr}}>Friends only</option>
 					</select>
 				</div>
+				
+				<hr>
+				
+				<div class="form-group">
+					<label for="input-tags" class="control-label">Tags</label>
+					<input type="text" class="form-control" name="input-tags" id="input-tags" placeholder="">
+					<button type="button" class="btn" id="btn-reload-tags">
+						<span class="glyphicon glyphicon-refresh"></span>
+					</button>
+				</div>
 			</div>
 		</form>
 		<div class="panel-footer">

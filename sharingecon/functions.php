@@ -33,7 +33,17 @@ function add_new_share($data){
 	} else {
 		return "Error: " . $sql_query . "<br>" . $conn->error;
 	}
-
+	
+	$share_id = $conn->insert_id;
+	
+	$sql_query = 'INSERT INTO shareTags (shareID, tags) VALUES (' . $share_id . ',' . $data['tags'] . ')';
+	
+	if ($conn->query($sql_query) === TRUE) {
+		return "New record created successfully";
+	} else {
+		return "Error: " . $sql_query . "<br>" . $conn->error;
+	}
+	
 	$conn->close();
 }
 
