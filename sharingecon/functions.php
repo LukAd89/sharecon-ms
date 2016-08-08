@@ -29,7 +29,7 @@ function add_new_share($data){
 	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, owner, type, visibility) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['imagename'] . "', '" . $data['owner'] . "', 0, '" . $data['visibility'] . "')";
 	
 	if ($conn->query($sql_query) === TRUE) {
-		return "New record created successfully";
+		echo "New record created successfully";
 	} else {
 		return "Error: " . $sql_query . "<br>" . $conn->error;
 	}
@@ -39,7 +39,7 @@ function add_new_share($data){
 	$sql_query = 'INSERT INTO shareTags (shareID, tags) VALUES (' . $share_id . ',' . $data['tags'] . ')';
 	Logger($sql_query);
 	if ($conn->query($sql_query) === TRUE) {
-		return "New record created successfully";
+		echo "New record created successfully";
 	} else {
 		return "Error: " . $sql_query . "<br>" . $conn->error;
 	}
