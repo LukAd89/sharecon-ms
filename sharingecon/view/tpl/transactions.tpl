@@ -23,8 +23,10 @@
     	<thead>
 			<tr>
 				<th>Share Object</th>
-				<th>Customer</th>
-				<th>Status</th>
+				<th>Owner</th>
+				<th>Lend on</th>
+				<th>Lend until</th>
+				<th>Rating</th>
 				<th>Action</th>
 			</tr>
 		</thead>
