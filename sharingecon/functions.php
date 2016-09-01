@@ -211,6 +211,25 @@ function write_message($subject, $body){
 	send_message(null, $recipient, $body, $subject);
 }
 
+function load_enquiries(){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = "SELECT * FROM enquiries";
+	
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+				$resArray[] = $row;
+		}
+		return $resArray;
+	}
+	else { return "";}
+	
+	$conn->close();
+}
 
 
 
