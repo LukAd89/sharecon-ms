@@ -225,7 +225,7 @@ function sharingecon_content(&$a) {
 					$tablebodypast .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . $row["OwnerID"] . '</td>' . '<td>' . $row["LendingStart"] . '</td>' . '<td>' . $row["LendingEnd"] . '</td>' . '<td>' . $row["Rating"] . '</td>' . '<td>KLICK</td></tr>';
 				}
 				
-				$siteContent .= replace_macros(get_markup_template('enquiries.tpl','addon/sharingecon/'), array(
+				$siteContent .= replace_macros(get_markup_template('transactions.tpl','addon/sharingecon/'), array(
 					'$tablebodyenq' => $tablebodyenq
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
