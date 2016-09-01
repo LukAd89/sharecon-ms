@@ -5,6 +5,7 @@
 		<div class="btn-group btn-group-vertical btn-group-vertical-justified">
 			<a href="sharingecon/newshare" class="btn btn-default">Add new Share</a>
 			<a href="sharingecon/newrequest" class="btn btn-default">Add new Request</a>
+			<a href="sharingecon/enquiries" class="btn btn-default">See enquiries</a>
 			<div class="btn-group">
 				<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Order By <span class="fa fa-caret-down"></span></a>
 				<ul class="dropdown-menu" role="menu">
