@@ -226,8 +226,10 @@ function sharingecon_content(&$a) {
 				}
 				
 				$siteContent .= replace_macros(get_markup_template('transactions.tpl','addon/sharingecon/'), array(
-					'$tablebodyenq' => $tablebodyenq
+					'$tablebodyenq' => $tablebodyenq,
+					'$tablebodypast' => $tablebodypast
 				));
+				
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 						'$filterhidden' => 'hidden'
 				));
