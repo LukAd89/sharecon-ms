@@ -211,14 +211,22 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'enquiries':
-				$data = load_enquiries();
-				$tablebody = "";
-				foreach($data as $row){
-					$tablebody .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . $row["OwnerID"] . '</td>' . '<td>' . $row["CustomerID"] . '</td>' . '<td>KLICK</td>';
+				$tablebodyenq = "";
+				$tablebodypast = "";
+				
+				$dataenq = load_enquiries();
+				$datapast = load_transactions();
+				
+				foreach($dataenq as $row){
+					$tablebodyenq .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . $row["OwnerID"] . '</td>' . '<td>' . $row["CustomerID"] . '</td>' . '<td>KLICK</td></tr>';
+				}
+				
+				foreach($datapast as $row){
+					$tablebodypast .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . $row["OwnerID"] . '</td>' . '<td>' . $row["LendingStart"] . '</td>' . '<td>' . $row["LendingEnd"] . '</td>' . '<td>' . $row["Rating"] . '</td>' . '<td>KLICK</td></tr>';
 				}
 				
 				$siteContent .= replace_macros(get_markup_template('enquiries.tpl','addon/sharingecon/'), array(
-					'$tablebody' => $tablebody
+					'$tablebodyenq' => $tablebodyenq
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 						'$filterhidden' => 'hidden'

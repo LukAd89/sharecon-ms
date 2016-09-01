@@ -231,6 +231,26 @@ function load_enquiries(){
 	$conn->close();
 }
 
+function load_transactions(){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql_query = "SELECT * FROM transactions";
+
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$resArray[] = $row;
+		}
+		return $resArray;
+	}
+	else { return "";}
+
+	$conn->close();
+}
+
 
 
 ?>
