@@ -212,8 +212,13 @@ function sharingecon_content(&$a) {
 				
 			case 'enquiries':
 				$data = load_enquiries();
+				$tablebody = "";
+				foreach($data as $row){
+					$tablebody .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . $row["OwnerID"] . '</td>' . '<td>' . $row["CustomerID"] . '</td>' . '<td>KLICK</td>';
+				}
+				
 				$siteContent .= replace_macros(get_markup_template('enquiries.tpl','addon/sharingecon/'), array(
-					'$tablebody' => var_dump($data)
+					'$tablebody' => var_dump($tablebody)
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 						'$filterhidden' => 'hidden'
