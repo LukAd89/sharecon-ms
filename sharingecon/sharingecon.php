@@ -218,7 +218,7 @@ function sharingecon_content(&$a) {
 				}
 				
 				$siteContent .= replace_macros(get_markup_template('enquiries.tpl','addon/sharingecon/'), array(
-					'$tablebody' => var_dump($tablebody)
+					'$tablebody' => $tablebody
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 						'$filterhidden' => 'hidden'
