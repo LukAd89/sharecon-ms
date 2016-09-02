@@ -222,10 +222,13 @@ function sharingecon_content(&$a) {
 					switch($row["Status"]){
 						case 0:
 							$tablebodyenq .= '<td>Open</td><td><button class="btn btn-xs btn-primary">Accept</td></tr>';
+							break;
 						case 1:
 							$tablebodyenq .= '<td>Lend to customer</td><td><button class="btn btn-xs btn-success">Got Back</td></tr>';
+							break;
 						case 2:
 							$tablebodyenq .= '<td>Lend to other one</td><td><button class="btn btn-xs btn-danger disabled">Accept</td></tr>';
+							break;
 					}
 				}
 				
