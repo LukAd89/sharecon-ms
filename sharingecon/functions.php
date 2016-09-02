@@ -264,7 +264,7 @@ function manage_Enquiry($id){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$resArray[] = $row;
 		}
-		$curStatus = $resArray[0];
+		$curStatus = $resArray[0]["Status"];
 	}
 	Logger($curStatus);
 	switch($curStatus){
