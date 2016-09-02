@@ -64,6 +64,10 @@ function sharingecon_post(&$a){
 			case 'delete-share':
 				deleteShare($_POST['id']);
 				break;
+				
+			case 'manage-enquiry':
+				manage_Enquiry($_POST['id']);
+				break;
 		}
 		//header("Location: " . $_SERVER['REQUEST_URI']);
 		exit();

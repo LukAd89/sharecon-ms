@@ -251,6 +251,33 @@ function load_transactions(){
 	$conn->close();
 }
 
+function manage_Enquiry($id){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql_query = "SELECT Status FROM enquiries WHERE ID = " . $id;
+
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$resArray[] = $row;
+		}
+		$curStatus = $resArray[0];
+	}
+	
+	switch($curStatus){
+		case 0:
+			$sql_query = "UPDATE enquiries SET Status = 1 WHERE ID = " . $id;
+			$conn->query($sql_query);
+			$sql_query = "UPDATE enquiries SET Status = 2 WHERE ID <> " . $id;
+			$conn->query($sql_query);
+			break;
+	}
+
+	$conn->close();
+}
 
 
 ?>

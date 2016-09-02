@@ -104,7 +104,7 @@ function toggleFav(id, newstate){
 	$.ajax({
 		type : "POST",
 		url : "sharingecon",
-		data : {"function" : "toggle-fav",
+		data : {"action" : "toggle-fav",
 			"id" : id,
 			"state" : newstate
 		},
@@ -181,3 +181,16 @@ function loadShares(args){
 	});
 }
 */
+
+function manageEnquiry(enqid){
+	$.ajax({
+		type : "POST",
+		url : "sharingecon",
+		data : {"action" : "manage-enquiry",
+			"id" : "enqid"
+		},
+		success : function(msg){
+			location.href = "sharingecon/enquiries";
+		}
+	});
+}
