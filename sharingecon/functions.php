@@ -272,6 +272,7 @@ function manage_Enquiry($id){
 			$sql_query = 'UPDATE enquiries SET Status = 1 WHERE ID = ' . $id;
 			$conn->query($sql_query);
 			$sql_query = 'UPDATE enquiries SET Status = 2 WHERE ID <> ' . $id . 'AND ObjectID = ' . $resArray[0]["ObjectID"];
+			Logger($sql_query);
 			$conn->query($sql_query);
 			$sql_query = 'INSERT INTO transactions ("ObjectID", "OwnerID", "CustomerID", "LendingStart") VALUES (' . 
 				$resArray[0]["ObjectID"] . ',' .
