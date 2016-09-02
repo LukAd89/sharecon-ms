@@ -277,7 +277,7 @@ function manage_Enquiry($id){
 				$resArray[0]["ObjectID"] . ',' .
 				$resArray[0]["OwnerID"] . ',' .
 				$resArray[0]["CustomerID"] . ',' .
-				now() . ')';
+				'CURRENT_TIMESTAMP)';
 			$conn->query($sql_query);
 			break;
 	}
