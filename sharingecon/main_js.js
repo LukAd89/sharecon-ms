@@ -187,7 +187,7 @@ function manageEnquiry(enqid){
 		type : "POST",
 		url : "sharingecon",
 		data : {"action" : "manage-enquiry",
-			"id" : "enqid"
+			"id" : enqid
 		},
 		success : function(msg){
 			location.href = "sharingecon/enquiries";
