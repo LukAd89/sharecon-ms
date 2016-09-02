@@ -258,7 +258,7 @@ function manage_Enquiry($id){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = "SELECT Status FROM enquiries WHERE ID = " . $id;
+	$sql_query = 'SELECT Status FROM enquiries WHERE ID = ' . $id;
 
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -269,9 +269,15 @@ function manage_Enquiry($id){
 	Logger($curStatus);
 	switch($curStatus){
 		case 0:
-			$sql_query = "UPDATE enquiries SET Status = 1 WHERE ID = " . $id;
+			$sql_query = 'UPDATE enquiries SET Status = 1 WHERE ID = ' . $id;
 			$conn->query($sql_query);
-			$sql_query = "UPDATE enquiries SET Status = 2 WHERE ID <> " . $id;
+			$sql_query = 'UPDATE enquiries SET Status = 2 WHERE ID <> ' . $id . 'AND ObjectID = ' . $resArray[0]["ObjectID"];
+			$conn->query($sql_query);
+			$sql_query = 'INSERT INTO transactions ("ObjectID", "OwnerID", "CustomerID", "LendingStart") VALUES (' . 
+				$resArray[0]["ObjectID"] . ',' .
+				$resArray[0]["OwnerID"] . ',' .
+				$resArray[0]["CustomerID"] . ',' .
+				now() . ')';
 			$conn->query($sql_query);
 			break;
 	}
