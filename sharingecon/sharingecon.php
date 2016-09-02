@@ -221,13 +221,13 @@ function sharingecon_content(&$a) {
 					$tablebodyenq .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . $row["CustomerID"] . '</td>';// . '<td>' . $row["Status"] . '</td>' . '<td>KLICK</td></tr>';
 					switch($row["Status"]){
 						case 0:
-							$tablebodyenq .= '<td>Open</td><td><button class="btn btn-xs btn-primary">Accept</td></tr>';
+							$tablebodyenq .= '<td>Open</td><td><button class="btn btn-xs btn-primary" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
 							break;
 						case 1:
-							$tablebodyenq .= '<td>Lend to customer</td><td><button class="btn btn-xs btn-success">Got Back</td></tr>';
+							$tablebodyenq .= '<td>Lend to customer</td><td><button class="btn btn-xs btn-success" onclick="manageEnquiry(' . $row["ID"] . ')">Got Back</td></tr>';
 							break;
 						case 2:
-							$tablebodyenq .= '<td>Lend to other one</td><td><button class="btn btn-xs btn-danger disabled">Accept</td></tr>';
+							$tablebodyenq .= '<td>Lend to other one</td><td><button class="btn btn-xs btn-danger disabled" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
 							break;
 					}
 				}
