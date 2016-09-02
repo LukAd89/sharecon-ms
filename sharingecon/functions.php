@@ -266,7 +266,7 @@ function manage_Enquiry($id){
 		}
 		$curStatus = $resArray[0];
 	}
-	
+	Logger($curStatus);
 	switch($curStatus){
 		case 0:
 			$sql_query = "UPDATE enquiries SET Status = 1 WHERE ID = " . $id;
