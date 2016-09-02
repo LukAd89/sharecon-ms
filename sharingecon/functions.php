@@ -253,7 +253,7 @@ function load_transactions(){
 
 function manage_Enquiry($id){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
-
+	Logger($id);
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
