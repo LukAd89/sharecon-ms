@@ -218,7 +218,15 @@ function sharingecon_content(&$a) {
 				$datapast = load_transactions();
 				
 				foreach($dataenq as $row){
-					$tablebodyenq .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . $row["OwnerID"] . '</td>' . '<td>' . $row["CustomerID"] . '</td>' . '<td>KLICK</td></tr>';
+					$tablebodyenq .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . $row["CustomerID"] . '</td>';// . '<td>' . $row["Status"] . '</td>' . '<td>KLICK</td></tr>';
+					switch($row["Status"]){
+						case 0:
+							$tablebodyenq .= '<td>Open</td><td><button class="btn btn-xs btn-primary">Accept</td></tr>';
+						case 1:
+							$tablebodyenq .= '<td>Lend to customer</td><td><button class="btn btn-xs btn-success">Got Back</td></tr>';
+						case 2:
+							$tablebodyenq .= '<td>Lend to other one</td><td><button class="btn btn-xs btn-danger disabled">Accept</td></tr>';
+					}
 				}
 				
 				foreach($datapast as $row){
