@@ -81,7 +81,7 @@ function sharingecon_unload() {}
 function sharingecon_init(){
 	head_add_css('addon/sharingecon/bootstrap_sharecon.css');
 	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/main_js.js"></script>'."\r\n";
-	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/test/nlp_compromise.min.js"></script>'."\r\n";
+	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/nlp_compromise.min.js"></script>'."\r\n";
 }
 
 function sharingecon_module() {}
