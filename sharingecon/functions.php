@@ -275,9 +275,9 @@ function manage_Enquiry($id){
 			$conn->query($sql_query);
 			
 			$sql_query = 'INSERT INTO transactions (ObjectID, OwnerID, CustomerID, LendingStart) VALUES (' . 
-				$resArray[0]["ObjectID"] . ',' .
-				$resArray[0]["OwnerID"] . ',' .
-				$resArray[0]["CustomerID"] . ',' .
+				$resArray[0]["ObjectID"] . ', "' .
+				$resArray[0]["OwnerID"] . '", "' .
+				$resArray[0]["CustomerID"] . '", ' .
 				'CURRENT_TIMESTAMP)';
 			$conn->query($sql_query);
 			
