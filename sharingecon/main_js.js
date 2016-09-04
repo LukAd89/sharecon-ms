@@ -41,7 +41,7 @@ $(document).ready(function(){
 		//$("#form-write-message").submit();
 		sendMessage();
 		$("#modal-write-message").modal('hide');
-		manageEnquiry(-1);
+		addEnquiry($("#form-write-message #input-message-shareid").val());
 	});
 	
 	$("#btn-reload-tags").click(function(){
