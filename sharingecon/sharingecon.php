@@ -72,6 +72,10 @@ function sharingecon_post(&$a){
 			case 'add-enquiry':
 				add_Enquiry($_POST['id'], App::$channel['channel_hash']);
 				break;
+				
+			case 'set-rating':
+				set_rating($_POST['rating'], $_POST['rating']);
+				break;
 		}
 		//header("Location: " . $_SERVER['REQUEST_URI']);
 		exit();
@@ -243,7 +247,7 @@ function sharingecon_content(&$a) {
 				foreach($datapast as $row){
 					$tablebodypast .= '<tr><td>' . getObjectTitle($row["ObjectID"]) . '</td>' . '<td>' . getChannelName($row["OwnerID"]) . '</td>' . '<td>' . $row["LendingStart"] . '</td>' . '<td>' . $row["LendingEnd"] . '</td>' . '<td>' . $row["Rating"] . '</td>';
 					
-					$tablebodypast .= '<td><button class=btn btn-primary btn-xs" data-id="1" data-target="#modal-set-rating" data-toggle="modal">Rate</button></td></tr>';
+					$tablebodypast .= '<td><button class="btn btn-primary btn-xs" data-id="1" data-target="#modal-set-rating" data-toggle="modal">Rate</button></td></tr>';
 				}
 				
 				$siteContent .= replace_macros(get_markup_template('transactions.tpl','addon/sharingecon/'), array(

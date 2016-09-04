@@ -44,7 +44,7 @@
 				<h4 class="modal-title">Rate Sharing Object</h4>
 			</div>
 			<div class="modal-body">
-				<form class="form-horizontal" role="form" id="form-set-rating" action="sharingecon" method="post">
+				<form class="form-horizontal" role="form" id="form-set-rating" action="" method="post">
 					<input type="hidden" name="input-rating-transid" id="input-rating-transid" value="">
 					<input type="hidden" name="action" value="set-rating">
 					<div class="form-group">

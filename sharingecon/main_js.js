@@ -52,6 +52,15 @@ $(document).ready(function(){
 		$('#input-message-shareid').val($(e.relatedTarget).data('id'));
 	});
 	
+	$("#btn-set-rating").click(function(){
+		setRating();
+		$("#modal-write-message").modal('hide');
+	});
+	
+	$('#modal-set-rating').on('show.bs.modal', function(e) {
+		$('#input-rating-transid').val($(e.relatedTarget).data('id'));
+	});
+	
 	/*
 	$("button[name='btn-toggle-share']").click(function(){
 		$.ajax({
@@ -205,6 +214,20 @@ function addEnquiry(objid){
 		},
 		success : function(msg){
 			//location.href = "sharingecon/findshares";
+		}
+	});
+}
+
+function setRating(){
+	$.ajax({
+		type : "POST",
+		url : "sharingecon",
+		data : {"action" : "set-rating",
+			"transid" : $("#input-rating-transid").val(),
+			"rating" : $("#select-rating").val()
+		},
+		success : function(msg){
+			location.href = "sharingecon/enquiries";
 		}
 	});
 }
