@@ -4,6 +4,7 @@ define("SERVER_NAME", "localhost");
 define("SERVER_USER", "root");
 define("SERVER_PASSWORD", "dbroot");
 define("SERVER_DBNAME", "hz_sharecon");
+define("SERVER_HUB_DBNAME", "hubzilla");
 define ('SITE_ROOT', realpath(dirname(__FILE__)));
 /*
 if (isset($_POST['function'])) {
@@ -321,6 +322,23 @@ function add_Enquiry($id, $customerid){
 	$conn->query($sql_query);
 	
 	$conn->close();
+}
+
+function getChannelName($channelid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_HUB_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'SELECT channel_name FROM channel WHERE channel_hash = "' . $channelid . '"';
+	if($result = $conn->query($sql_query)){
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$conn->close();
+		return $row["channel_name"];
+	}
+	$conn->close();
+	return;
 }
 
 ?>

@@ -226,7 +226,7 @@ function sharingecon_content(&$a) {
 				$datapast = load_transactions();
 				
 				foreach($dataenq as $row){
-					$tablebodyenq .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . $row["CustomerID"] . '</td>';// . '<td>' . $row["Status"] . '</td>' . '<td>KLICK</td></tr>';
+					$tablebodyenq .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . getChannelName($row["CustomerID"]) . '</td>';// . '<td>' . $row["Status"] . '</td>' . '<td>KLICK</td></tr>';
 					switch($row["Status"]){
 						case 0:
 							$tablebodyenq .= '<td>Open</td><td><button class="btn btn-xs btn-primary" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
@@ -241,7 +241,7 @@ function sharingecon_content(&$a) {
 				}
 				
 				foreach($datapast as $row){
-					$tablebodypast .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . $row["OwnerID"] . '</td>' . '<td>' . $row["LendingStart"] . '</td>' . '<td>' . $row["LendingEnd"] . '</td>' . '<td>' . $row["Rating"] . '</td>' . '<td>KLICK</td></tr>';
+					$tablebodypast .= '<tr><td>' . $row["ObjectID"] . '</td>' . '<td>' . getChannelName($row["OwnerID"]) . '</td>' . '<td>' . $row["LendingStart"] . '</td>' . '<td>' . $row["LendingEnd"] . '</td>' . '<td>' . $row["Rating"] . '</td>' . '<td>KLICK</td></tr>';
 				}
 				
 				$siteContent .= replace_macros(get_markup_template('transactions.tpl','addon/sharingecon/'), array(
