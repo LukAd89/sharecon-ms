@@ -308,10 +308,9 @@ function add_Enquiry($id, $customerid){
 	}
 	
 	$sql_query = 'SELECT * FROM enquiries WHERE ObjectID = ' . $id . ' AND CustomerID = "' . $customerid . '"';
-	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
-		Logger($results->num_rows);
-		if($results->num_rows === 0)
+		Logger($result->num_rows);
+		if($result->num_rows === 0)
 			return;
 	}
 	
