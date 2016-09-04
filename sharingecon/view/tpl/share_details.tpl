@@ -8,15 +8,17 @@
 		
 		
 			<div class="panel-body">
-				<input type="hidden" name="action" value="{{$function}}">
+				<div>
+					<img src="addon/sharingecon/standard.png" class="img-responsive center-block" alt="Responsive image">
+				</div>
+				<hr>
 				<div>
 					{{$sharebody}}
 				</div>
 				<hr>
 				<div>
-					<img src="addon/sharingecon/standard.png" class="img-responsive center-block" alt="Responsive image">
+					{{$rating}}
 				</div>
-			
 			</div>
 			<div class="panel-footer">
 				<div class="row">
@@ -64,7 +66,7 @@
 				</div>
 				<div class="modal-footer">
 					<a class="btn btn-default" data-dismiss="modal">Close</a>
-					<button type="" class="btn btn-primary" id="btn-send-message">Send</button>
+					<button type="button" class="btn btn-primary" id="btn-send-message">Send</button>
 				</div>
 			</form>
 		</div>

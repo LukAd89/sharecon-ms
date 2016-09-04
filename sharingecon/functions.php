@@ -388,4 +388,21 @@ function set_Rating($transid, $rating){
 	$conn->close();
 }
 
+function getAvgRating($objectid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'SELECT AVG(Rating) FROM Transactions WHERE ObjectID = ' . $objectid ;
+	if($result = $conn->query($sql_query)){
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$conn->close();
+		return $row[0];
+	}
+	$conn->close();
+	return;
+}
+
 ?>
