@@ -307,7 +307,7 @@ function add_Enquiry($id, $customerid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT * FROM enquiries WHERE ID = ' . $id . ' AND CustomerID = "' . $customerid . '"';
+	$sql_query = 'SELECT * FROM enquiries WHERE ObjectID = ' . $id . ' AND CustomerID = "' . $customerid . '"';
 	if($result = $conn->query($sql_query)){
 		if($results->num_rows === 0)
 			return;
