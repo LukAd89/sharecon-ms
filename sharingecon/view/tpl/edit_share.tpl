@@ -28,9 +28,9 @@
 				
 				<div class="form-group">
 					<label for="select-range" class="control-label">Make Object visible by</label>
-					<select class="form-control" name="select-range" id="select-range">
-						<option value="0" {{$seleb}}>Everybody</option>
-						<option value="1" {{$selfr}}>Friends only</option>
+					<select class="form-control" name="select-visibility" id="select-visibility">
+						<option value="0">Everybody</option>
+						<option value="1">Friends only</option>
 					</select>
 				</div>
 				

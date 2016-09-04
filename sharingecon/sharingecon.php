@@ -60,6 +60,8 @@ function sharingecon_post(&$a){
 					'tags' => strip_tags($_POST['input-tags'])
 				);
 				editShare($data);
+				header("Location: " . $_SERVER['REQUEST_URI']);
+				exit();
 				break;
 				
 			case 'load-shares':

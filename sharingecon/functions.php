@@ -68,7 +68,21 @@ function add_new_request($data){
 }
 
 function editShare($data){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'UPDATE sharedObjects SET Title = "' . $data["title"] . '", ShortDesc = "' . $data["shortdesc"] . '", LongDesc = "' . $data["longdesc"] . '", Visibility = ' . $data["visibility"];
+	
+	if ($conn->query($sql_query) === TRUE) {
+		echo "New record created successfully";
+	} else {
+		echo "Error: " . $sql_query . "<br>" . $conn->error;
+	}
+	
+	$conn->close();
 }
 
 function uploadImage($file){
