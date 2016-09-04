@@ -395,7 +395,7 @@ function getAvgRating($objectid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT AVG(Rating) FROM Transactions WHERE ObjectID = ' . $objectid ;
+	$sql_query = 'SELECT AVG(Rating) FROM transactions WHERE ObjectID = ' . $objectid ;
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$conn->close();
