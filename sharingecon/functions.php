@@ -365,7 +365,7 @@ function set_Rating($transid, $rating){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'UPDATE transactions SET Rating = ' . $rating . ' WHERE ID = ' . $transid ;
+	$sql_query = 'UPDATE transactions SET Rating = ' . $rating . ' WHERE ID = ' . $transid  . ' AND Rating IS NULL';
 	$conn->query($sql_query);
 	$conn->close();
 }
