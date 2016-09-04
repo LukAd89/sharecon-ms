@@ -300,6 +300,8 @@ function manage_Enquiry($id){
 }
 
 function add_Enquiry($id, $customerid){
+	Logger('ADD ENQ' . $id . '  :  ' . $customerid);
+	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 
 	if ($conn->connect_error) {
@@ -308,6 +310,7 @@ function add_Enquiry($id, $customerid){
 	
 	$ownerid = getShareOwner($id); 
 	$sql_query = 'INSERT INTO enquiries (ObjectID, OwnerID, CustomerID, Status) VALUES (' . $id . ', ' . $ownerid . ', ' . $customerid . ', 0)';
+	Logger($sql_query);
 	$conn->query($sql_query);
 	
 	$conn->close();
