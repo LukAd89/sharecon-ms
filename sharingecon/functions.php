@@ -402,7 +402,7 @@ function getAvgRating($objectid){
 		return $row[0];
 	}
 	$conn->close();
-	return;
+	return 0;
 }
 
 ?>
