@@ -74,7 +74,7 @@ function sharingecon_post(&$a){
 				break;
 				
 			case 'set-rating':
-				set_rating($_POST['rating'], $_POST['rating']);
+				set_rating($_POST['transid'], $_POST['rating']);
 				break;
 		}
 		//header("Location: " . $_SERVER['REQUEST_URI']);

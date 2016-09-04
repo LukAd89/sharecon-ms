@@ -358,4 +358,16 @@ function getObjectTitle($objectid){
 	return;
 }
 
+function set_Rating($transid, $rating){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'UPDATE transactions SET Rating = ' . $rating . ' WHERE ID = ' . $transid ;
+	$conn->query($sql_query);
+	$conn->close();
+}
+
 ?>
