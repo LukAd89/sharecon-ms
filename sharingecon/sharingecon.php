@@ -68,6 +68,10 @@ function sharingecon_post(&$a){
 			case 'manage-enquiry':
 				manage_Enquiry($_POST['id']);
 				break;
+			
+			case 'add-enquiry':
+				add_Enquiry($_POST['id'], App::$channel['channel_hash']);
+				break;
 		}
 		//header("Location: " . $_SERVER['REQUEST_URI']);
 		exit();

@@ -41,6 +41,7 @@ $(document).ready(function(){
 		//$("#form-write-message").submit();
 		sendMessage();
 		$("#modal-write-message").modal('hide');
+		manageEnquiry(-1);
 	});
 	
 	$("#btn-reload-tags").click(function(){
@@ -191,6 +192,19 @@ function manageEnquiry(enqid){
 		},
 		success : function(msg){
 			location.href = "sharingecon/enquiries";
+		}
+	});
+}
+
+function addEnquiry(objid){
+	$.ajax({
+		type : "POST",
+		url : "sharingecon",
+		data : {"action" : "add-enquiry",
+			"id" : objid
+		},
+		success : function(msg){
+			location.href = "sharingecon/findshares";
 		}
 	});
 }

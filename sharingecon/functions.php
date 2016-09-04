@@ -253,11 +253,11 @@ function load_transactions(){
 
 function manage_Enquiry($id){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
-	Logger($id);
+	
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-
+	
 	$sql_query = 'SELECT * FROM enquiries WHERE ID = ' . $id;
 
 	if($result = $conn->query($sql_query)){
@@ -266,26 +266,51 @@ function manage_Enquiry($id){
 		}
 		$curStatus = $resArray[0]["Status"];
 	}
-	Logger($curStatus);
+	
 	switch($curStatus){
 		case 0:
 			$sql_query = 'UPDATE enquiries SET Status = 1 WHERE ID = ' . $id;
 			$conn->query($sql_query);
 			$sql_query = 'UPDATE enquiries SET Status = 2 WHERE ID <> ' . $id . ' AND ObjectID = ' . $resArray[0]["ObjectID"];
-			Logger($sql_query);
 			$conn->query($sql_query);
+			
 			$sql_query = 'INSERT INTO transactions (ObjectID, OwnerID, CustomerID, LendingStart) VALUES (' . 
 				$resArray[0]["ObjectID"] . ',' .
 				$resArray[0]["OwnerID"] . ',' .
 				$resArray[0]["CustomerID"] . ',' .
 				'CURRENT_TIMESTAMP)';
-			Logger($sql_query);
 			$conn->query($sql_query);
+			
+			break;
+			
+		case 1:
+			$sql_query = 'UPDATE enquiries SET Status = 0 WHERE ID <> ' . $id . ' AND ObjectID = ' . $resArray[0]["ObjectID"];
+			$conn->query($sql_query);
+			
+			$sql_query = 'UPDATE transactions SET LendingEnd = CURRENT_TIMESTAMP WHERE ObjectID = ' . $resArray[0]["ObjectID"] . ' AND LendingEnd = NULL';
+			$conn->query($sql_query);
+			
+			$sql_query = 'DELETE FROM enquiries WHERE ID = ' . $id;
+			$conn->query($sql_query);
+			
 			break;
 	}
 
 	$conn->close();
 }
 
+function add_Enquiry($id, $customerid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$ownerid = getShareOwner($id); 
+	$sql_query = 'INSERT INTO enquiries (ObjectID, OwnerID, CustomerID, Status) VALUES (' . $id . ', ' . $ownerid . ', ' . $customerid . ', 0)';
+	$conn->query($sql_query);
+	
+	$conn->close();
+}
 
 ?>
