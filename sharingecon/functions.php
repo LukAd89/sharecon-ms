@@ -279,6 +279,7 @@ function manage_Enquiry($id){
 				$resArray[0]["OwnerID"] . '", "' .
 				$resArray[0]["CustomerID"] . '", ' .
 				'CURRENT_TIMESTAMP)';
+			Logger($sql_query);
 			$conn->query($sql_query);
 			
 			break;
