@@ -204,7 +204,7 @@ function addEnquiry(objid){
 			"id" : objid
 		},
 		success : function(msg){
-			location.href = "sharingecon/findshares";
+			//location.href = "sharingecon/findshares";
 		}
 	});
 }
