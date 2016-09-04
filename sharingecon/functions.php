@@ -67,6 +67,10 @@ function add_new_request($data){
 	$conn->close();
 }
 
+function editShare($data){
+	
+}
+
 function uploadImage($file){
 	
 	if (!isset($file['error']) || is_array($file['error']))

@@ -49,6 +49,19 @@ function sharingecon_post(&$a){
 				exit();
 				break;
 				
+			case 'edit-share':
+				$data = array(
+					'shareid' => strip_tags($_POST['shareid']),
+					'title' => strip_tags($_POST['input-title']),
+					'shortdesc' => strip_tags($_POST['input-short-desc']),
+					'longdesc' => strip_tags($_POST['text-long-desc']),
+					'imagename' => $filename,
+					'visibility' => strip_tags($_POST['select-visibility']),
+					'tags' => strip_tags($_POST['input-tags'])
+				);
+				editShare($data);
+				break;
+				
 			case 'load-shares':
 				echo load_shares();
 				break;
@@ -212,7 +225,7 @@ function sharingecon_content(&$a) {
 			case 'editshare':
 				$data = load_share_details(argv(2));
 				$siteContent .= replace_macros(get_markup_template('edit_share.tpl','addon/sharingecon/'), array(
-					'$additional' => '<input type="hidden" name="action" value="'. argv(2) . '">',
+					'$additional' => '<input type="hidden" name="shareid" value="'. argv(2) . '">',
 					'$titlevalue' => $data['Title'],
 					'$shortdescvalue' => $data['ShortDesc'],
 					'$longdescvalue' => $data['LongDesc']

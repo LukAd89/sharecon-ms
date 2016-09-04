@@ -17,7 +17,7 @@
 				</div>
 				<div class="form-group">
 					<label for="input-short-desc" class="control-label">Short Description</label>
-					<input type="text" class="form-control" name="input-short-desc" i="input-short-desc" placeholder="Short Description of the Object" value="{{$shortdescvalue}}">
+					<input type="text" class="form-control" name="input-short-desc" id="input-short-desc" placeholder="Short Description of the Object" value="{{$shortdescvalue}}">
 				</div>
 				<div class="form-group">
 					<label for="text-long-desc" class="control-label">Detailed Description</label>
@@ -29,8 +29,8 @@
 				<div class="form-group">
 					<label for="select-range" class="control-label">Make Object visible by</label>
 					<select class="form-control" name="select-range" id="select-range">
-						<option value="everybody" {{$seleb}}>Everybody</option>
-						<option value="friends" {{$selfr}}>Friends only</option>
+						<option value="0" {{$seleb}}>Everybody</option>
+						<option value="1" {{$selfr}}>Friends only</option>
 					</select>
 				</div>
 				

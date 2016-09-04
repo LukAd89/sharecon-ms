@@ -34,7 +34,7 @@ $(document).ready(function(){
 	});
 	
 	$("#btn-edit-share").click(function(){
-		$("#form-add-new-share").submit();
+		$("#form-edit-share").submit();
 	});
 	
 	$("#btn-send-message").click(function(){
