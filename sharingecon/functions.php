@@ -279,7 +279,6 @@ function manage_Enquiry($id){
 				$resArray[0]["OwnerID"] . '", "' .
 				$resArray[0]["CustomerID"] . '", ' .
 				'CURRENT_TIMESTAMP)';
-			Logger($sql_query);
 			$conn->query($sql_query);
 			
 			break;
@@ -288,12 +287,11 @@ function manage_Enquiry($id){
 			$sql_query = 'UPDATE enquiries SET Status = 0 WHERE ID <> ' . $id . ' AND ObjectID = ' . $resArray[0]["ObjectID"];
 			$conn->query($sql_query);
 			
-			$sql_query = 'UPDATE transactions SET LendingEnd = CURRENT_TIMESTAMP WHERE ObjectID = ' . $resArray[0]["ObjectID"] . ' AND LendingEnd = NULL';
-			Logger($sql_query);
+			$sql_query = 'UPDATE transactions SET LendingEnd = CURRENT_TIMESTAMP WHERE ObjectID = ' . $resArray[0]["ObjectID"] . ' AND LendingEnd IS NULL';
 			$conn->query($sql_query);
 			
 			$sql_query = 'DELETE FROM enquiries WHERE ID = ' . $id;
-			//$conn->query($sql_query);
+			$conn->query($sql_query);
 			
 			break;
 	}
@@ -302,7 +300,6 @@ function manage_Enquiry($id){
 }
 
 function add_Enquiry($id, $customerid){
-	Logger('ADD ENQ' . $id . '  :  ' . $customerid);
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 
@@ -310,9 +307,14 @@ function add_Enquiry($id, $customerid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
+	$sql_query = 'SELECT * FROM enquiries WHERE ID = ' . $id . ' AND CustomerID = "' . $customerid . '"';
+	if($result = $conn->query($sql_query)){
+		if($results->num_rows === 0)
+			return;
+	}
+	
 	$ownerid = getShareOwner($id); 
 	$sql_query = 'INSERT INTO enquiries (ObjectID, OwnerID, CustomerID, Status) VALUES (' . $id . ', "' . $ownerid . '", "' . $customerid . '", 0)';
-	Logger($sql_query);
 	$conn->query($sql_query);
 	
 	$conn->close();
