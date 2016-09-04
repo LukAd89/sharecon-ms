@@ -289,10 +289,11 @@ function manage_Enquiry($id){
 			$conn->query($sql_query);
 			
 			$sql_query = 'UPDATE transactions SET LendingEnd = CURRENT_TIMESTAMP WHERE ObjectID = ' . $resArray[0]["ObjectID"] . ' AND LendingEnd = NULL';
+			Logger($sql_query);
 			$conn->query($sql_query);
 			
 			$sql_query = 'DELETE FROM enquiries WHERE ID = ' . $id;
-			$conn->query($sql_query);
+			//$conn->query($sql_query);
 			
 			break;
 	}
