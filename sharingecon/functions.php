@@ -334,6 +334,7 @@ function getChannelName($channelid){
 	$sql_query = 'SELECT channel_name FROM channel WHERE channel_hash = "' . $channelid . '"';
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
+		Logger('NAME: ' . $sql_query . '  :  ' . $row);
 		$conn->close();
 		return $row["channel_name"];
 	}
