@@ -310,8 +310,10 @@ function add_Enquiry($id, $customerid){
 	$sql_query = 'SELECT * FROM enquiries WHERE ObjectID = ' . $id . ' AND CustomerID = "' . $customerid . '"';
 	if($result = $conn->query($sql_query)){
 		Logger($result->num_rows);
-		if($result->num_rows === 0)
+		if($result->num_rows > 0){
+			$conn->close();
 			return;
+		}
 	}
 	
 	$ownerid = getShareOwner($id); 
