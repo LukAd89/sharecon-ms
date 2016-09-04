@@ -334,9 +334,25 @@ function getChannelName($channelid){
 	$sql_query = 'SELECT channel_name FROM channel WHERE channel_hash = "' . $channelid . '"';
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
-		Logger('NAME: ' . $sql_query . '  :  ' . $row);
 		$conn->close();
 		return $row["channel_name"];
+	}
+	$conn->close();
+	return;
+}
+
+function getObjectTitle($objectid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'SELECT Title FROM sharedObjects WHERE ID = ' . $objectid ;
+	if($result = $conn->query($sql_query)){
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$conn->close();
+		return $row["Title"];
 	}
 	$conn->close();
 	return;
