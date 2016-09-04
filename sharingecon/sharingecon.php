@@ -201,7 +201,7 @@ function sharingecon_content(&$a) {
 				break;
 			case 'viewshare':
 				$share_data = load_share_details(argv(2));
-				$rating = getAvgRating(arv(2));
+				$rating = getAvgRating(argv(2));
 				$siteContent = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
 						'$title'		=> $share_data['Title'],
 						'$sharebody'	=> $share_data['LongDesc'],
