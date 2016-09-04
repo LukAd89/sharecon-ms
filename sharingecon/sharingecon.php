@@ -205,7 +205,7 @@ function sharingecon_content(&$a) {
 				$siteContent = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
 						'$title'		=> $share_data['Title'],
 						'$sharebody'	=> $share_data['LongDesc'],
-						'$shareid'		=> arv(2)
+						'$shareid'		=> argv(2)
 				));
 				
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
