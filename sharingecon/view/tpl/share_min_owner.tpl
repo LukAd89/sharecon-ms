@@ -1,4 +1,4 @@
-<div class="panel panel-default panel-share-object"> 
+<div class="panel panel-default panel-share-object" style="display:{{$display}}> 
 	<div class="panel-heading">
 		<h4>{{$title}}</h4>
 	</div>

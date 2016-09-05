@@ -98,6 +98,10 @@ $(document).ready(function(){
 		loadShares({range : "all"});
 	});
 	*/
+	
+	$("#pager li a").click(function(){
+		console.log($(this).html().valueOf() - 1);
+	});
 });
 
 function toggleShare(id, newstate){
