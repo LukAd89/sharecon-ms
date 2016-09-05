@@ -175,7 +175,7 @@ function get_ShareOwner($shareid){
 	}
 	
 	$resArray = array();
-	$sql_query = "SELECT owner FROM sharedObjects WHERE ID=" . $shareid;
+	$sql_query = "SELECT OwnderID FROM sharedObjects WHERE ID=" . $shareid;
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -228,7 +228,6 @@ function delete_Share($id){
 function write_Message($subject, $body){
 	require_once('include/message.php');
 	$recipient = get_ShareOwner($_POST['input-message-shareid']);
-	Logger($recipient . '  :  ' . $_POST['input-message-shareid']);
 	send_message(null, $recipient, $body, $subject);
 }
 
