@@ -23,6 +23,7 @@ function test_ajax_json(){
 $(document).ready(function(){
 	
 	nlp = window.nlp_compromise;
+	var maxResPerPage = 1;
 	
 	$("#btn-add-new-share").click(function(){
 		//addNewShare();
@@ -101,6 +102,11 @@ $(document).ready(function(){
 	
 	$("#pager li a").click(function(){
 		console.log($(this).html().valueOf() - 1);
+		var start = $(this).html().valueOf() - 1;
+		var end = start + maxResPerPage;
+		
+		$("#tab-my-shares-content").children().css("display", "none");
+		$("#tab-my-shares-content").children().slice(start,end).css("display", "none");
 	});
 });
 
