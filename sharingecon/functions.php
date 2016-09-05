@@ -175,7 +175,7 @@ function get_ShareOwner($shareid){
 	}
 	
 	$resArray = array();
-	$sql_query = "SELECT OwnderID FROM sharedObjects WHERE ID=" . $shareid;
+	$sql_query = "SELECT OwnerID FROM sharedObjects WHERE ID=" . $shareid;
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
