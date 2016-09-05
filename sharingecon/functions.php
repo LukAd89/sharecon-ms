@@ -258,7 +258,7 @@ function load_Transactions(){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = "SELECT * FROM transactions";
+	$sql_query = "SELECT transactions.*, sharedObjects.Owner FROM transactions, sharedObjects";
 
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
