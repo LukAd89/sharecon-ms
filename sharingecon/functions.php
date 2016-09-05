@@ -457,7 +457,7 @@ function set_Location($channelid, $adress){
 }
 
 function get_Distance($customerid, $shareid){
-	$customerlocation = get_Location($channelid);
+	$customerlocation = get_Location($customerid);
 	if($customerlocation == -1){
 		return "NO LOCATION SET";
 	}
