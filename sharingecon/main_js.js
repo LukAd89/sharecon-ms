@@ -106,7 +106,7 @@ $(document).ready(function(){
 		var end = start + maxResPerPage;
 		
 		$("#pager .active").removeClass("active");
-		$(this).addClass("active");
+		$(this).parent().addClass("active");
 		
 		$("#tab-my-shares-content").children().css("display", "none");
 		$("#tab-my-shares-content").children().slice(start,end).css("display", "block");
