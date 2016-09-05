@@ -122,8 +122,8 @@ function get_shares_list($args){
 	$result = "";
 	
 	for($i=0; $i<count($data); $i++){
-		if($i = $maxResPerPage)
-			$display = 'block';
+		if($i == $maxResPerPage)
+			$display = 'none';
 		
 		if($data[$i]['Imagename'] === NULL || $data[$i]['Imagename'] == ''){
 			$data[$i]['Imagename'] ='default.jpg';
@@ -161,7 +161,7 @@ function get_shares_list($args){
 		$result .= '<li><a href="#">' . $i+1 . '</a></li>';
 	}
 	$result .= '</ul>';
-	Logger($result);
+	
 	return $result;
 }
 
