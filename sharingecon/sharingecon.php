@@ -123,7 +123,7 @@ function get_shares_list($args){
 	
 	for($i=0; $i<count($data); $i++){
 		if($i = $maxResPerPage)
-			$display = 'none';
+			$display = 'block';
 		
 		if($data[$i]['Imagename'] === NULL || $data[$i]['Imagename'] == ''){
 			$data[$i]['Imagename'] ='default.jpg';
