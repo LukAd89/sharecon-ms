@@ -455,4 +455,8 @@ function set_Location($channelid, $adress){
 	$conn->query($sql_query);
 	$conn->close();
 }
+
+function get_Distance($customerid, $shareid){
+	return "SUCCCESS";
+}
 ?>

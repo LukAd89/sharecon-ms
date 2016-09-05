@@ -95,6 +95,9 @@ function sharingecon_post(&$a){
 			case 'set-location':
 				set_Location(App::$channel['channel_hash'], $_POST['adress']);
 				break;
+			case 'get-distance':
+				echo get_Distance(App::$channel['channel_hash'], $_POST['shareid']);
+				break;
 		}
 		//header("Location: " . $_SERVER['REQUEST_URI']);
 		exit();

@@ -264,15 +264,14 @@ function setLocation(){
 }
 
 function getDistance(shareid){
-	/*$.ajax({
+	$.ajax({
 		type : "POST",
 		url : "sharingecon",
 		data : {"action" : "get-distance",
 			"id" : shareid
 		},
 		success : function(msg){
-			
+			$("#distance").text(msg);
 		}
-	});*/
-	$("#distance").text(shareid);
+	});
 }
