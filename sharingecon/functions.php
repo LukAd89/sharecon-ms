@@ -477,7 +477,7 @@ function get_Distance($customerid, $shareid){
 	}
 	
 	$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . urlencode($customerlocation) . '&destinations=' . urlencode($objectlocation) . '&key=' . GOOGLEAPI_KEY;
-	Logger($url);
+	
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
@@ -486,8 +486,9 @@ function get_Distance($customerid, $shareid){
 	));
 	$curlresult = curl_exec($curl);
 	curl_close($curl);
-	//return var_dump(json_decode($curlresult, true));;
-	Logger($curlresult);
-	return ;
+	
+	$jsonresult = json_decode($curlresult, true);
+	
+	return var_dump($jsonresult);
 }
 ?>
