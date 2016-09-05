@@ -248,7 +248,7 @@ function load_Enquiries(){
 		return $resArray;
 	}
 	$conn->close();
-	return null;
+	return [];
 }
 
 function load_Transactions(){
@@ -262,13 +262,14 @@ function load_Transactions(){
 
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			Logger($row);
 			$resArray[] = $row;
 		}
+		$conn->close();
 		return $resArray;
 	}
-	else { return "";}
-
 	$conn->close();
+	return [];
 }
 
 function manage_Enquiry($id){
