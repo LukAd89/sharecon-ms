@@ -153,14 +153,15 @@ function get_shares_list($args){
 				'$imagename'	=> $data[$i]['Imagename']					
 			));
 		}
-		
-		//ADD PAGINATION NAV
-		$result .=  '<ul class="pagination">';
-		for($i=0; $i<count($data); $i+=5){
-			$result .= '<li><a href="#">' . $i+1 . '</a></li>';
-		}
-		$result .= '</ul>';
 	}
+	
+	//ADD PAGINATION NAV
+	$result .=  '<ul class="pagination">';
+	for($i=0; $i<count($data); $i+=5){
+		$result .= '<li><a href="#">' . $i+1 . '</a></li>';
+	}
+	$result .= '</ul>';
+	
 	return $result;
 }
 
