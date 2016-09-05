@@ -451,7 +451,7 @@ function set_Location($channelid, $adress){
 		$sql_query = 'INSERT INTO locations (ChannelID, Adress) VALUES ("' . $channelid . '","' . $adress . '")';
 	}
 	else{
-		$sql_query = 'UPDATE locations SET Adress ="' . $adress . '" WHERE ChannelID = ' . $channelid;
+		$sql_query = 'UPDATE locations SET Adress ="' . $adress . '" WHERE ChannelID = "' . $channelid . '"';
 	}
 	Logger($sql_query);
 	$conn->query($sql_query);
