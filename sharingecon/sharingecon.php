@@ -124,6 +124,11 @@ function get_shares_list($args){
 	
 	$result = "";
 	
+	foreach($data as $dataval){
+		$shareids[] = $dataval['ID'];
+	}
+	get_Distances($shareids);
+	
 	for($i=0; $i<count($data); $i++){
 		if($i == $maxResPerPage)
 			$display = 'none';
@@ -153,7 +158,8 @@ function get_shares_list($args){
 				'$shareid' 		=> $data[$i]['ID'],
 				'$title' 		=> $data[$i]['Title'],
 				'$shortdesc' 	=> $data[$i]['ShortDesc'],
-				'$imagename'	=> $data[$i]['Imagename']					
+				'$imagename'	=> $data[$i]['Imagename'],
+				'$distance'		=> $distances[$i]
 			));
 		}
 	}

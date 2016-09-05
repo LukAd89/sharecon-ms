@@ -491,4 +491,8 @@ function get_Distance($customerid, $shareid){
 	
 	return $jsonresult['rows'][0]['elements'][0]['distance']['text'];
 }
+
+function get_Distances($shareids){
+	return "SUCCESS";
+}
 ?>

@@ -11,6 +11,9 @@
 				<div class="well">{{$shortdesc}}</div>
 			</div>
 		</div>
+		<div>
+			{{$distance}}
+		</div>
 	</div>
 	<div class="panel-footer">
 		<div class="row">
