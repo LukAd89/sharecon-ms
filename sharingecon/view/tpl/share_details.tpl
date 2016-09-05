@@ -22,6 +22,16 @@
 				<div>
 					{{$ratinglatest}}
 				</div>
+				<hr>
+				<div>
+					<span>Distance to you:</span>
+					<span id="distance"></span>
+					<script>
+					$(function() {
+						$("#distance").text("hello");
+					}
+					</script>
+				</div>
 			</div>
 			<div class="panel-footer">
 				<div class="row">
