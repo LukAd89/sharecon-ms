@@ -258,11 +258,10 @@ function load_Transactions(){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = "SELECT transactions.*, sharedObjects.Owner FROM transactions, sharedObjects WHERE transactions.ObjectID = sharedObjects.ID";
+	$sql_query = "SELECT transactions.*, sharedObjects.OwnerID FROM transactions, sharedObjects WHERE transactions.ObjectID = sharedObjects.ID";
 
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-			Logger(var_dump($row));
 			$resArray[] = $row;
 		}
 		$conn->close();
