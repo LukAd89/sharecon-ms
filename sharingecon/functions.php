@@ -489,7 +489,6 @@ function get_Distance($customerid, $shareid){
 	
 	$jsonresult = json_decode($curlresult, true);
 	
-	//return var_dump($jsonresult['rows'][0]['elements']);
 	return $jsonresult['rows'][0]['elements'][0]['distance']['text'];
 }
 ?>

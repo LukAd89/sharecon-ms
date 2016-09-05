@@ -140,7 +140,6 @@ function get_shares_list($args){
 			}
 			
 			$result .= replace_macros(get_markup_template('share_min_owner.tpl','addon/sharingecon/'), array(
-				'$display'		=> $display,
 				'$shareid' 		=> $data[$i]['ID'],
 				'$title' 		=> $data[$i]['Title'],
 				'$shortdesc' 	=> $data[$i]['ShortDesc'],
@@ -160,11 +159,13 @@ function get_shares_list($args){
 	}
 	
 	//ADD PAGINATION NAV
-	$result .=  '<ul class="pagination" id="pager">';
-	for($k=0; ($k*$maxResPerPage)<count($data); $k++){
-		$result .= '<li><a href="javascript:void(0)">' . ($k+1) . '</a></li>';
+	if(!$args['ownerview']){
+		$result .=  '<ul class="pagination" id="pager">';
+		for($k=0; ($k*$maxResPerPage)<count($data); $k++){
+			$result .= '<li><a href="javascript:void(0)">' . ($k+1) . '</a></li>';
+		}
+		$result .= '</ul>';
 	}
-	$result .= '</ul>';
 	
 	return $result;
 }
