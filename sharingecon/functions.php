@@ -420,14 +420,34 @@ function get_LatestRatings($objectid){
 	return $resArray;
 }
 
-function set_Location($adress){
+function get_Location($channelid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	$row = "";
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = ' . $channelid . ')';
+	$result = $conn->query($sql_query);
+	$row->fetch_array(MYSQLI_ASSOC)['Adress'];
+	$conn->close();
+	
+	return result;
+}
+
+function set_Location($channelid, $adress){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'REPLACE INTO locations (ChannelID, Adress) VALUES (' . $channelid . ',' . $adress . ')';
+	if(get_Location($channelid) === ''){
+		$sql_query = 'INSERT INTO locations (ChannelID, Adress) VALUES (' . $channelid . ',' . $adress . ')';
+	}
+	else{
+		$sql_query = 'UPDATE locations SET Adress =' . $adress . ' WHERE ChannelID = ' . $channelid . ')';
+	}
 	$conn->query($sql_query);
 	$conn->close();
 }
