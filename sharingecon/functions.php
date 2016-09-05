@@ -334,8 +334,7 @@ function add_Enquiry($id, $customerid){
 		}
 	}
 	
-	$ownerid = get_ShareOwner($id); 
-	$sql_query = 'INSERT INTO enquiries (ObjectID, CustomerID, Status) VALUES (' . $id . ', "' . $ownerid . '", "' . $customerid . '", 0)';
+	$sql_query = 'INSERT INTO enquiries (ObjectID, CustomerID, Status) VALUES (' . $id . ', "' . $customerid . '", 0)';
 	$conn->query($sql_query);
 	
 	$conn->close();
