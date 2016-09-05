@@ -21,8 +21,8 @@
 	</div>
 	<div class="widget {{$filterhidden}}">
 		<div class="form-group-vertical">
-			<input type="text" id="filter-location" name="filter-location">
-			<button type="button" class="btn btn-xs pull-right" id="btn-set-location" placeholder="Enter Adress">Go</button>
+			<input type="text" id="filter-location" name="filter-location" placeholder="Enter Adress" class="form-control">
+			<button type="button" class="btn" id="btn-set-location">Go</button>
 		</div>
 		<div class="form-group field checkbox">
 			<label for="filter-favsonly">Show Favorites only</label>
