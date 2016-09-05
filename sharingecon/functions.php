@@ -422,17 +422,21 @@ function get_LatestRatings($objectid){
 
 function get_Location($channelid){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
-	$row = "";
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 
 	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = ' . $channelid . ')';
 	$result = $conn->query($sql_query);
-	$row->fetch_array(MYSQLI_ASSOC)['Adress'];
+	if($result->num_rows > 0){
+		$conn->close();
+		return '';
+	}
+	
+	$row->fetch_array(MYSQLI_ASSOC);
 	$conn->close();
 	
-	return result;
+	return $row['Adress'];
 }
 
 function set_Location($channelid, $adress){
