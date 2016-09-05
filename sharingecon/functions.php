@@ -412,7 +412,7 @@ function get_LatestRatings($objectid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT DATEDIFF(LendingEnd, LendingStart) + 1 AS Timespan, Rating FROM transactions WHERE ObjectID = ' . $objectid . ' AND LendingEnd IS NOT NULL LIMIT 5';
+	$sql_query = 'SELECT LendingStart, LendingEnd, DATEDIFF(LendingEnd, LendingStart) + 1 AS Timespan, Rating FROM transactions WHERE ObjectID = ' . $objectid . ' AND LendingEnd IS NOT NULL LIMIT 5';
 	if($result = $conn->query($sql_query)){
 	while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$resArray[] = $row;

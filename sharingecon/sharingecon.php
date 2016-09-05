@@ -204,9 +204,9 @@ function sharingecon_content(&$a) {
 				$ratingavg = get_AvgRating(argv(2));
 				$ratinglatest = get_LatestRatings(argv(2));
 				
-				$ratinglatesttable = '<table><thead><tr><th>Days of Lending</th><th>Rating</th></tr></thead><tbody>';
+				$ratinglatesttable = '<table class="table"><thead><tr><th>Lend On</th><th>Brought Back On</th><th>Days of Lending</th><th>Rating</th></tr></thead><tbody>';
 				foreach($ratinglatest as $entry){
-					$ratinglatesttable .= '<tr><td>' . $entry["Timespan"] . '</td><td>' . $entry["Rating"] . '</td></tr>';
+					$ratinglatesttable .= '<tr><td>' . $entry["LendingStart"] . '</td><td>' . $entry["LEndingEnd"] . '</td><td>' . $entry["Timespan"] . '</td><td>' . $entry["Rating"] . '</td></tr>';
 				}
 				$ratinglatesttable .= '</tbody></table>';
 				
