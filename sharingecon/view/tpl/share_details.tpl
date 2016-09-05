@@ -29,7 +29,7 @@
 					<script>
 					$(function() {
 						$("#distance").text("hello");
-					}
+					});
 					</script>
 				</div>
 			</div>
