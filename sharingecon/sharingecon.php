@@ -204,11 +204,11 @@ function sharingecon_content(&$a) {
 				$ratingavg = get_AvgRating(argv(2));
 				$ratinglatest = get_LatestRatings(argv(2));
 				
-				$ratinglatesttable = '<table><tr><th>Days of Lending</th><th>Rating</th></tr>';
+				$ratinglatesttable = '<table><thead><tr><th>Days of Lending</th><th>Rating</th></tr></thead><tbody>';
 				foreach($ratinglatest as $entry){
 					$ratinglatesttable .= '<tr><td>' . $entry["Timespan"] . '</td><td>' . $entry["Rating"] . '</td></tr>';
 				}
-				$ratinglatesttable .= '</table>';
+				$ratinglatesttable .= '</tbody></table>';
 				
 				$siteContent = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
 						'$title'		=> $share_data['Title'],
