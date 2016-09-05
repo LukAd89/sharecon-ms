@@ -127,7 +127,7 @@ function get_shares_list($args){
 	foreach($data as $dataval){
 		$shareids[] = $dataval['ID'];
 	}
-	get_Distances($shareids);
+	$distances = get_Distances($shareids);
 	
 	for($i=0; $i<count($data); $i++){
 		if($i == $maxResPerPage)

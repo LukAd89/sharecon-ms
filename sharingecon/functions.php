@@ -493,6 +493,8 @@ function get_Distance($customerid, $shareid){
 }
 
 function get_Distances($shareids){
+	$distances[] = "1";
+	$distances[] = "2";
 	return "SUCCESS";
 }
 ?>
