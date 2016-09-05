@@ -457,6 +457,24 @@ function set_Location($channelid, $adress){
 }
 
 function get_Distance($customerid, $shareid){
+	$customerlocation = get_Location($channelid);
+	if($customerlocation == -1){
+		return "NO LOCATION SET";
+	}
+	
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'SELECT Location FROM sharedObjects WHERE ID = ' . $shareid;
+	
+	if($result = $conn->query($sql_query)){
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$conn->close();
+		return $customerlocation . $row['Location'];
+	}
 	return "SUCCCESS";
 }
 ?>
