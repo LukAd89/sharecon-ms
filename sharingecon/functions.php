@@ -228,7 +228,7 @@ function delete_Share($id){
 function write_Message($subject, $body){
 	require_once('include/message.php');
 	$recipient = get_ShareOwner($_POST['input-message-shareid']);
-	Logger($recipient);
+	Logger($recipient . '  :  ' . $_POST['input-message-shareid']);
 	send_message(null, $recipient, $body, $subject);
 }
 
