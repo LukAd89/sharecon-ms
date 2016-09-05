@@ -129,8 +129,8 @@ function load_Shares($args){
 		$sql_query .= " WHERE type = '0'";
 	}
 	
-	if(isset($args['owner'])){
-		$sql_query .= " AND owner = '" . $args['owner'] . "'";
+	if(isset($args['ownerid'])){
+		$sql_query .= " AND OwnderID = '" . $args['ownerid'] . "'";
 	}
 	
 	if($result = $conn->query($sql_query)){

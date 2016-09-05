@@ -165,7 +165,7 @@ function sharingecon_content(&$a) {
 		switch(argv(1)){
 			case 'myshares':
 				$pageContent = get_shares_list(array(
-					'owner' => App::$channel['channel_hash'],
+					'ownerid' => App::$channel['channel_hash'],
 					'ownerview' => true,
 					'type' => 2
 					));
