@@ -427,6 +427,7 @@ function get_Location($channelid){
 	}
 
 	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = ' . $channelid . ')';
+	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		if($result->num_rows > 0){
 			$row = $result->fetch_array(MYSQLI_ASSOC);
@@ -435,8 +436,8 @@ function get_Location($channelid){
 		}
 		
 		$conn->close();
-		return -1;
 	}
+	return -1;
 }
 
 function set_Location($channelid, $adress){
