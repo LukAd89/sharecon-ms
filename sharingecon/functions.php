@@ -12,14 +12,14 @@ if (isset($_POST['function'])) {
 		toggleShare($_POST['id'], $_POST['state']);
 	}
 	else if($_POST['function'] == "delete_share"){
-		deleteShare($_POST['id']);
+		delete_Share($_POST['id']);
 	}
 
 	return;
 }
 */
 
-function add_new_share($data){
+function add_NewShare($data){
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
@@ -48,7 +48,7 @@ function add_new_share($data){
 	$conn->close();
 }
 
-function add_new_request($data){
+function add_NewRequest($data){
 
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 
@@ -67,7 +67,7 @@ function add_new_request($data){
 	$conn->close();
 }
 
-function editShare($data){
+function edit_Share($data){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
@@ -85,7 +85,7 @@ function editShare($data){
 	$conn->close();
 }
 
-function uploadImage($file){
+function upload_Image($file){
 	
 	if (!isset($file['error']) || is_array($file['error']))
 		return false;
@@ -106,7 +106,7 @@ function uploadImage($file){
 		return false;
 }
 
-function load_shares($args){
+function load_Shares($args){
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
@@ -143,7 +143,7 @@ function load_shares($args){
 	$conn->close();
 }
 
-function load_share_details($shareid){
+function load_ShareDetails($shareid){
 	header('Content-Type: application/json');
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
@@ -166,7 +166,7 @@ function load_share_details($shareid){
 	$conn->close();
 }
 
-function getShareOwner($shareid){
+function get_ShareOwner($shareid){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
@@ -187,7 +187,7 @@ function getShareOwner($shareid){
 	$conn->close();
 }
 
-function toggleShare($id, $state){
+function toggle_Share($id, $state){
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
@@ -206,7 +206,7 @@ function toggleShare($id, $state){
 	$conn->close();
 }
 
-function deleteShare($id){
+function delete_Share($id){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
@@ -224,13 +224,13 @@ function deleteShare($id){
 	$conn->close();
 }
 
-function write_message($subject, $body){
+function write_Message($subject, $body){
 	require_once('include/message.php');
-	$recipient = getShareOwner($_POST['input-message-shareid']);
+	$recipient = get_ShareOwner($_POST['input-message-shareid']);
 	send_message(null, $recipient, $body, $subject);
 }
 
-function load_enquiries(){
+function load_Enquiries(){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
@@ -250,7 +250,7 @@ function load_enquiries(){
 	$conn->close();
 }
 
-function load_transactions(){
+function load_Transactions(){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 
 	if ($conn->connect_error) {
@@ -328,21 +328,20 @@ function add_Enquiry($id, $customerid){
 	
 	$sql_query = 'SELECT * FROM enquiries WHERE ObjectID = ' . $id . ' AND CustomerID = "' . $customerid . '"';
 	if($result = $conn->query($sql_query)){
-		Logger($result->num_rows);
 		if($result->num_rows > 0){
 			$conn->close();
 			return;
 		}
 	}
 	
-	$ownerid = getShareOwner($id); 
+	$ownerid = get_ShareOwner($id); 
 	$sql_query = 'INSERT INTO enquiries (ObjectID, OwnerID, CustomerID, Status) VALUES (' . $id . ', "' . $ownerid . '", "' . $customerid . '", 0)';
 	$conn->query($sql_query);
 	
 	$conn->close();
 }
 
-function getChannelName($channelid){
+function get_ChannelName($channelid){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_HUB_DBNAME);
 	
 	if ($conn->connect_error) {
@@ -359,7 +358,7 @@ function getChannelName($channelid){
 	return;
 }
 
-function getObjectTitle($objectid){
+function get_ObjectTitle($objectid){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
@@ -388,7 +387,7 @@ function set_Rating($transid, $rating){
 	$conn->close();
 }
 
-function getAvgRating($objectid){
+function get_AvgRating($objectid){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {

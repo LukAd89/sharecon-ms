@@ -17,7 +17,7 @@ function sharingecon_post(&$a){
 		
 		switch($_POST['action']){
 			case 'add-new-share':
-				$filename = uploadImage($_FILES['input-image']);
+				$filename = upload_Image($_FILES['input-image']);
 				
 				if(!$filename)
 					$filename = 'default.jpg';
@@ -31,7 +31,7 @@ function sharingecon_post(&$a){
 					'visibility' => strip_tags($_POST['select-visibility']),
 					'tags' => strip_tags($_POST['input-tags'])
 				);
-				add_new_share($data);
+				add_NewShare($data);
 				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 				
@@ -44,7 +44,7 @@ function sharingecon_post(&$a){
 					'visibility' => strip_tags($_POST['select-visibility']),
 					'tags' => strip_tags($_POST['input-tags'])
 				);
-				add_new_request($data);
+				add_NewRequest($data);
 				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 				break;
@@ -59,25 +59,25 @@ function sharingecon_post(&$a){
 					'visibility' => strip_tags($_POST['select-visibility']),
 					'tags' => strip_tags($_POST['input-tags'])
 				);
-				editShare($data);
+				edit_Share($data);
 				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 				break;
 				
 			case 'load-shares':
-				echo load_shares();
+				echo load_Shares();
 				break;
 			
 			case 'write-message':
-				write_message($_POST['input-message-subject'], $_POST['input-message-body']);
+				write_Message($_POST['input-message-subject'], $_POST['input-message-body']);
 				break;
 				
 			case 'toggle-share':
-				toggleShare($_POST['id'], $_POST['state']);
+				toggle_Share($_POST['id'], $_POST['state']);
 				break;
 				
 			case 'delete-share':
-				deleteShare($_POST['id']);
+				delete_Share($_POST['id']);
 				break;
 				
 			case 'manage-enquiry':
@@ -110,7 +110,7 @@ function sharingecon_init(){
 function sharingecon_module() {}
 
 function get_shares_list($args){
-	$data = load_shares($args);
+	$data = load_Shares($args);
 
 	$result = "";
 	for($i=0; $i<count($data); $i++){
@@ -146,9 +146,9 @@ function get_shares_list($args){
 	return $result;
 }
 
-function view_share_details($shareid){
+/*function view_share_details($shareid){
 	
-	$share_data = load_share_details($shareid);
+	$share_data = load_ShareDetails($shareid);
 	
 	$content = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
 		'$title'		=> $share_data['Title'],
@@ -157,7 +157,7 @@ function view_share_details($shareid){
 		));
 	
 	return $content;
-}
+}*/
 
 function sharingecon_content(&$a) {
 
@@ -200,8 +200,8 @@ function sharingecon_content(&$a) {
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
 				break;
 			case 'viewshare':
-				$share_data = load_share_details(argv(2));
-				$rating = getAvgRating(argv(2));
+				$share_data = load_ShareDetails(argv(2));
+				$rating = get_AvgRating(argv(2));
 				$siteContent = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
 						'$title'		=> $share_data['Title'],
 						'$sharebody'	=> $share_data['LongDesc'],
@@ -233,7 +233,7 @@ function sharingecon_content(&$a) {
 				break;
 			
 			case 'editshare':
-				$data = load_share_details(argv(2));
+				$data = load_ShareDetails(argv(2));
 				$siteContent .= replace_macros(get_markup_template('edit_share.tpl','addon/sharingecon/'), array(
 					'$additional' => '<input type="hidden" name="shareid" value="'. argv(2) . '">',
 					'$titlevalue' => $data['Title'],
@@ -249,11 +249,11 @@ function sharingecon_content(&$a) {
 				$tablebodyenq = "";
 				$tablebodypast = "";
 				
-				$dataenq = load_enquiries();
-				$datapast = load_transactions();
+				$dataenq = load_Enquiries();
+				$datapast = load_Transactions();
 				
 				foreach($dataenq as $row){
-					$tablebodyenq .= '<tr><td>' . getObjectTitle($row["ObjectID"]) . '</td>' . '<td>' . getChannelName($row["CustomerID"]) . '</td>';// . '<td>' . $row["Status"] . '</td>' . '<td>KLICK</td></tr>';
+					$tablebodyenq .= '<tr><td>' . get_ObjectTitle($row["ObjectID"]) . '</td>' . '<td>' . get_ChannelName($row["CustomerID"]) . '</td>';// . '<td>' . $row["Status"] . '</td>' . '<td>KLICK</td></tr>';
 					switch($row["Status"]){
 						case 0:
 							$tablebodyenq .= '<td>Open</td><td><button class="btn btn-xs btn-primary" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
@@ -268,7 +268,7 @@ function sharingecon_content(&$a) {
 				}
 				
 				foreach($datapast as $row){
-					$tablebodypast .= '<tr><td>' . getObjectTitle($row["ObjectID"]) . '</td>' . '<td>' . getChannelName($row["OwnerID"]) . '</td>' . '<td>' . $row["LendingStart"] . '</td>' . '<td>' . $row["LendingEnd"] . '</td>' . '<td>' . $row["Rating"] . '</td>';
+					$tablebodypast .= '<tr><td>' . get_ObjectTitle($row["ObjectID"]) . '</td>' . '<td>' . get_ChannelName($row["OwnerID"]) . '</td>' . '<td>' . $row["LendingStart"] . '</td>' . '<td>' . $row["LendingEnd"] . '</td>' . '<td>' . $row["Rating"] . '</td>';
 					if($row["Rating"] > 0)
 						$tablebodypast .= '<td><button class="btn btn-xs disabled">Rate</button></td></tr>';
 					else
