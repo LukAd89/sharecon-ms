@@ -28,6 +28,17 @@
 					<span id="distance"></span>
 					<script>
 					$(function() {
+						$.ajax({
+							type : "POST",
+							url : "sharingecon",
+							data : {"action" : "set-rating",
+								"transid" : $("#input-rating-transid").val(),
+								"rating" : $("#select-rating").val()
+							},
+							success : function(msg){
+								location.href = "sharingecon/enquiries";
+							}
+						});
 						$("#distance").text("hello");
 					});
 					</script>

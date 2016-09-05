@@ -115,9 +115,15 @@ function sharingecon_module() {}
 
 function get_shares_list($args){
 	$data = load_Shares($args);
-
+	
+	$maxResPerPage = 5;
+	$display = 'block';
+	
 	$result = "";
+	
 	for($i=0; $i<count($data); $i++){
+		if($i = $maxResPerPage)
+			$display = 'none';
 		
 		if($data[$i]['Imagename'] === NULL || $data[$i]['Imagename'] == ''){
 			$data[$i]['Imagename'] ='default.jpg';
@@ -131,21 +137,29 @@ function get_shares_list($args){
 			}
 			
 			$result .= replace_macros(get_markup_template('share_min_owner.tpl','addon/sharingecon/'), array(
-			'$shareid' 		=> $data[$i]['ID'],
-			'$title' 		=> $data[$i]['Title'],
-			'$shortdesc' 	=> $data[$i]['ShortDesc'],
-			'$imagename'	=> $data[$i]['Imagename'],
-			'$checked'		=> $status
+				'$shareid' 		=> $data[$i]['ID'],
+				'$title' 		=> $data[$i]['Title'],
+				'$shortdesc' 	=> $data[$i]['ShortDesc'],
+				'$imagename'	=> $data[$i]['Imagename'],
+				'$checked'		=> $status
 			));
 		}
 		else{
 			$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
-			'$shareid' 		=> $data[$i]['ID'],
-			'$title' 		=> $data[$i]['Title'],
-			'$shortdesc' 	=> $data[$i]['ShortDesc'],
-			'$imagename'	=> $data[$i]['Imagename']					
+				'$display'		=> $display,
+				'$shareid' 		=> $data[$i]['ID'],
+				'$title' 		=> $data[$i]['Title'],
+				'$shortdesc' 	=> $data[$i]['ShortDesc'],
+				'$imagename'	=> $data[$i]['Imagename']					
 			));
 		}
+		
+		//ADD PAGINATION NAV
+		$result .=  '<ul class="pagination">';
+		for($i=0; $i<count($data); $i+=5){
+			$result .= '<li><a href="#">' . $i+1 . '</a></li>';
+		}
+		$result .= '</ul>';
 	}
 	return $result;
 }
