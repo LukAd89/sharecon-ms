@@ -485,7 +485,7 @@ function get_Distance($customerid, $shareid){
 			CURLOPT_URL => $url
 	));
 	$curlresult = curl_exec($curl);
-	return var_dump(json_decode($result, true));;
-	return $url;
+	curl_close($curl);
+	return var_dump(json_decode($curlresult, true));;
 }
 ?>
