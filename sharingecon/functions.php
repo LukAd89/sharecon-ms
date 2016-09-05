@@ -472,9 +472,11 @@ function get_Distance($customerid, $shareid){
 	
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$objectlocation = $row["Location"];
 		$conn->close();
-		return $customerlocation . $row['Location'];
 	}
-	return "SUCCCESS";
+	
+	$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . $customerlocation . '&destinations=' . $objectlocation;
+	return $url;
 }
 ?>
