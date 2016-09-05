@@ -428,13 +428,14 @@ function get_Location($channelid){
 
 	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = ' . $channelid . ')';
 	if($result = $conn->query($sql_query)){
-		if($result->num_rows == 0){
+		if($result->num_rows > 0){
+			$row = $result->fetch_array(MYSQLI_ASSOC);
 			$conn->close();
-			return -1;
+			return $row['Adress'];
 		}
-		$row = $result->fetch_array(MYSQLI_ASSOC);
+		
 		$conn->close();
-		return $row['Adress'];
+		return -1;
 	}
 }
 
@@ -449,7 +450,7 @@ function set_Location($channelid, $adress){
 		$sql_query = 'INSERT INTO locations (ChannelID, Adress) VALUES (' . $channelid . ',' . $adress . ')';
 	}
 	else{
-		$sql_query = 'UPDATE locations SET Adress =' . $adress . ' WHERE ChannelID = ' . $channelid . ')';
+		$sql_query = 'UPDATE locations SET Adress =' . $adress . ' WHERE ChannelID = ' . $channelid;
 	}
 	Logger($sql_query);
 	$conn->query($sql_query);
