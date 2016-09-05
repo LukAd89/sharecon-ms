@@ -451,7 +451,7 @@ function set_Location($channelid, $adress){
 	else{
 		$sql_query = 'UPDATE locations SET Adress =' . $adress . ' WHERE ChannelID = ' . $channelid . ')';
 	}
-	var_dump($sql_query);
+	Logger($sql_query);
 	$conn->query($sql_query);
 	$conn->close();
 }
