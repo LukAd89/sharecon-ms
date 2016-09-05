@@ -499,7 +499,7 @@ function get_MultipleDistances($customerid, $shareids){
 	}
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
-	Logger('shareIDs: ' . $shareids);
+	
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
@@ -513,7 +513,7 @@ function get_MultipleDistances($customerid, $shareids){
 		}
 	}
 	$conn->close();
-	Logger('Locations: ' . var_dump($objectlocations));
+	
 	$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . urlencode($customerlocation) . '&destinations=';
 	
 	foreach($objectlocations as $objectlocation){
@@ -521,18 +521,17 @@ function get_MultipleDistances($customerid, $shareids){
 	}
 	$url .= '&key=' . GOOGLEAPI_KEY;
 	
-	Logger($url);
-	
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
 			CURLOPT_SSL_VERIFYPEER, false,
 			CURLOPT_URL => $url
 	));
-	//$curlresult = curl_exec($curl);
+	$curlresult = curl_exec($curl);
 	curl_close($curl);
 	
 	$jsonresult = json_decode($curlresult, true);
-	return 0;
+	$distances[] = $jsonresult;
+	return $distances;
 }
 ?>
