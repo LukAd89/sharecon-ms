@@ -116,7 +116,7 @@ function sharingecon_module() {}
 function get_shares_list($args){
 	$data = load_Shares($args);
 	
-	$maxResPerPage = 5;
+	$maxResPerPage = 1;
 	$display = 'block';
 	
 	$result = "";
@@ -158,7 +158,7 @@ function get_shares_list($args){
 	//ADD PAGINATION NAV
 	$result .=  '<ul class="pagination">';
 	for($k=0; $k<count($data); $k=$k+5){
-		$result .= '<li><a href="#">' . ($k+1) . '</a></li>';
+		$result .= '<li><a href="javascript:void(0)">' . ($k+1) . '</a></li>';
 	}
 	$result .= '</ul>';
 	
