@@ -20,10 +20,15 @@
 		</div>
 	</div>
 	<div class="widget {{$filterhidden}}">
+		<div class="form-group">
+			<label for="filter-location">My Address</label>
+			<input type="text" id="filter-location" name="filter-location">
+			<button type="button" class="btn btn-xs pull-right" id="btn-set-location">Go</button>
+		</div>
 		<div class="form-group field checkbox">
 			<label for="filter-favsonly">Show Favorites only</label>
 			<div class="pull-right">
-				<input type="checkbox" onchange="console.log(this.checked ? 0 : 1)" checked="checked" value="1" id="filter-favsonly" name="filter-favsonly">
+				<input type="checkbox" onchange="console.log(this.checked ? 0 : 1)" checked="checked" value="1" id="filter-f	avsonly" name="filter-favsonly">
 				<label for="filter-favsonly" class="switchlabel">
 					<span data-off="Off" data-on="On" class="onoffswitch-inner"></span>
 					<span class="onoffswitch-switch"></span>
