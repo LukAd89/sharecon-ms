@@ -426,7 +426,7 @@ function get_Location($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = ' . $channelid;
+	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = "' . $channelid . '"';
 	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		if($result->num_rows > 0){
