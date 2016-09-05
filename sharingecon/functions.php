@@ -531,7 +531,7 @@ function get_MultipleDistances($customerid, $shareids){
 	curl_close($curl);
 	
 	$jsonresult = json_decode($curlresult, true);
-	$distances[] = $jsonresult;
+	$distances[] = $jsonresult['rows'][0]['elements'][0]['distance']['text'];
 	return $distances;
 }
 ?>
