@@ -268,7 +268,7 @@ function getDistance(shareid){
 		type : "POST",
 		url : "sharingecon",
 		data : {"action" : "get-distance",
-			"id" : shareid
+			"shareid" : shareid
 		},
 		success : function(msg){
 			$("#distance").text(msg);
