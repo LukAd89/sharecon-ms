@@ -262,7 +262,7 @@ function load_Transactions(){
 
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-			Logger($row);
+			Logger(var_dump($row));
 			$resArray[] = $row;
 		}
 		$conn->close();
