@@ -477,6 +477,13 @@ function get_Distance($customerid, $shareid){
 	}
 	
 	$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . $customerlocation . '&destinations=' . $objectlocation;
-	return $url;
+	
+	$curl = curl_init();
+	curl_setopt_array($curl, array(
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_URL => $url
+	));
+	$curlresult = curl_exec($curl);
+	return $curlresult;
 }
 ?>
