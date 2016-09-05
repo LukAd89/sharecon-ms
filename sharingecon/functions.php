@@ -426,7 +426,7 @@ function get_Location($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = ' . $channelid . ')';
+	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = ' . $channelid;
 	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		if($result->num_rows > 0){
@@ -448,10 +448,10 @@ function set_Location($channelid, $adress){
 	}
 	Logger(get_Location($channelid));
 	if(get_Location($channelid) == -1){
-		$sql_query = 'INSERT INTO locations (ChannelID, Adress) VALUES (' . $channelid . ',' . $adress . ')';
+		$sql_query = 'INSERT INTO locations (ChannelID, Adress) VALUES ("' . $channelid . '","' . $adress . '")';
 	}
 	else{
-		$sql_query = 'UPDATE locations SET Adress =' . $adress . ' WHERE ChannelID = ' . $channelid;
+		$sql_query = 'UPDATE locations SET Adress ="' . $adress . '" WHERE ChannelID = ' . $channelid;
 	}
 	Logger($sql_query);
 	$conn->query($sql_query);
