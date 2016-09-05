@@ -433,7 +433,7 @@ function get_Location($channelid){
 		return '';
 	}
 	
-	$row->fetch_array(MYSQLI_ASSOC);
+	$row = $result->fetch_array(MYSQLI_ASSOC);
 	$conn->close();
 	
 	return $row['Adress'];
