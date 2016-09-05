@@ -516,7 +516,7 @@ function get_MultipleDistances($customerid, $shareids){
 	Logger('Locations: ' . var_dump($objectlocations));
 	$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . urlencode($customerlocation) . '&destinations=';
 	
-	foreach($objeclocations as $objectlocation){
+	foreach($objectlocations as $objectlocation){
 		$url .= urlencode($objectlocation) . '|';
 	}
 	$url .= '&key=' . GOOGLEAPI_KEY;
