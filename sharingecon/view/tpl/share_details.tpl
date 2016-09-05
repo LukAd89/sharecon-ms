@@ -17,7 +17,10 @@
 				</div>
 				<hr>
 				<div>
-					{{$rating}}
+					{{$ratingavg}}
+				</div>
+				<div>
+					{{$ratinglatest}}
 				</div>
 			</div>
 			<div class="panel-footer">

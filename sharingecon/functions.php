@@ -1,11 +1,12 @@
 <?php
 
-define("SERVER_NAME", "localhost");
-define("SERVER_USER", "root");
-define("SERVER_PASSWORD", "dbroot");
-define("SERVER_DBNAME", "hz_sharecon");
-define("SERVER_HUB_DBNAME", "hubzilla");
-define ('SITE_ROOT', realpath(dirname(__FILE__)));
+define('SERVER_NAME', "localhost");
+define('SERVER_USER', "root");
+define('SERVER_PASSWORD', "dbroot");
+define('SERVER_DBNAME', "hz_sharecon");
+define('SERVER_HUB_DBNAME', "hubzilla");
+define('SITE_ROOT', realpath(dirname(__FILE__)));
+define('GOOGLEAPI_KEY', 'AIzaSyDHMXzuvg32pFTh2XTvps89IoAOgzcaOzU');
 /*
 if (isset($_POST['function'])) {
 	if($_POST['function'] == "toggle_share"){
@@ -402,6 +403,23 @@ function get_AvgRating($objectid){
 	}
 	$conn->close();
 	return 0;
+}
+
+function get_LatestRatings($objectid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'SELECT DATEDIFF(LendingEnd, LendingStart) + 1 AS Timespan, Rating FROM transactions WHERE ObjectID = ' . $objectid . ' AND LendingEnd IS NOT NULL LIMIT 5';
+	if($result = $conn->query($sql_query)){
+	while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$resArray[] = $row;
+		}
+	}
+	$conn->close();
+	return $resArray;
 }
 
 ?>

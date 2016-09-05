@@ -201,12 +201,21 @@ function sharingecon_content(&$a) {
 				break;
 			case 'viewshare':
 				$share_data = load_ShareDetails(argv(2));
-				$rating = get_AvgRating(argv(2));
+				$ratingavg = get_AvgRating(argv(2));
+				$ratinglatest = get_LatestRatings(argv(2));
+				
+				$ratinglatesttable = '<table><tr><th>Days of Lending</th><th>Rating</th></tr>';
+				foreach($ratinglatest as $entry){
+					$ratinglatesttable .= '<tr><td>' . $entry["Timespan"] . '</td><td>' . $entry["Rating"] . '</td></tr>';
+				}
+				$ratinglatesttable .= '</table>';
+				
 				$siteContent = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
 						'$title'		=> $share_data['Title'],
 						'$sharebody'	=> $share_data['LongDesc'],
 						'$shareid'		=> argv(2),
-						'$rating'		=> 'Rating: ' . $rating . ' / 5'
+						'$ratingavg'	=> 'Overall Average Rating: ' . $ratingavg . ' / 5',
+						'$ratinglatest'	=> 'Latest Ratings:<br>' . $ratinglatesttable
 				));
 				
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
