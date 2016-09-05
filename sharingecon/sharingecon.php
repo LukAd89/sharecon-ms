@@ -159,6 +159,7 @@ function get_shares_list($args){
 	$result .=  '<ul class="pagination">';
 	Logger(count($data));
 	for($k=0; $k<count($data); $k=$k+5){
+		Logger('true');
 		$result .= '<li><a href="#">' . $k+1 . '</a></li>';
 	}
 	$result .= '</ul>';

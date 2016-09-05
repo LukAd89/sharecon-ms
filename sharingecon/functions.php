@@ -446,7 +446,6 @@ function set_Location($channelid, $adress){
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	Logger(get_Location($channelid));
 	if(get_Location($channelid) == -1){
 		$sql_query = 'INSERT INTO locations (ChannelID, Adress) VALUES ("' . $channelid . '","' . $adress . '")';
 	}
