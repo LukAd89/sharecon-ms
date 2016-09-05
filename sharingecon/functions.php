@@ -481,6 +481,7 @@ function get_Distance($customerid, $shareid){
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_SSL_VERIFYPEER, false,
 			CURLOPT_URL => $url
 	));
 	$curlresult = curl_exec($curl);
