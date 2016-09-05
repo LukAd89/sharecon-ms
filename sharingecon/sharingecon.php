@@ -157,8 +157,8 @@ function get_shares_list($args){
 	
 	//ADD PAGINATION NAV
 	$result .=  '<ul class="pagination">';
-	for($i=0; $i<count($data); $i+=5){
-		$result .= '<li><a href="#">' . $i+1 . '</a></li>';
+	for($k=0; $k<count($data); $k=$k+5){
+		$result .= '<li><a href="#">' . $k+1 . '</a></li>';
 	}
 	$result .= '</ul>';
 	
