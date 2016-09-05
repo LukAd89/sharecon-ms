@@ -262,3 +262,17 @@ function setLocation(){
 		}
 	});
 }
+
+function getDistance(shareid){
+	/*$.ajax({
+		type : "POST",
+		url : "sharingecon",
+		data : {"action" : "get-distance",
+			"id" : shareid
+		},
+		success : function(msg){
+			
+		}
+	});*/
+	$("#distance").text(shareid);
+}
