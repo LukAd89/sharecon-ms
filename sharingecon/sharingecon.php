@@ -127,7 +127,7 @@ function get_shares_list($args){
 	foreach($data as $dataval){
 		$shareids[] = $dataval['ID'];
 	}
-	$distances = get_Distances($shareids);
+	$distances = get_MultipleDistances(App::$channel['channel_hash'], $shareids);
 	
 	for($i=0; $i<count($data); $i++){
 		if($i == $maxResPerPage)

@@ -492,9 +492,47 @@ function get_Distance($customerid, $shareid){
 	return $jsonresult['rows'][0]['elements'][0]['distance']['text'];
 }
 
-function get_Distances($shareids){
-	$distances[] = "1";
-	$distances[] = "2";
-	return "SUCCESS";
+function get_MultipleDistances($customerid, $shareids){
+	$customerlocation = get_Location($customerid);
+	if($customerlocation == -1){
+		return "NO LOCATION SET";
+	}
+	
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	foreach($shareids as $shareid){
+		$sql_query = 'SELECT Location FROM sharedObjects WHERE ID = ' . $shareid;
+
+		if($result = $conn->query($sql_query)){
+			$row = $result->fetch_array(MYSQLI_ASSOC);
+			$objectlocations[] = $row["Location"];
+		}
+	}
+	$conn->close();
+	
+	$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . urlencode($customerlocation) . '&destinations=';
+	
+	foreach($objeclocations as $objectlocation){
+		$url .= urlencode($objectlocation) . '|';
+	}
+	$url .= '&key=' . GOOGLEAPI_KEY;
+	
+	Logger($url);
+	
+	$curl = curl_init();
+	curl_setopt_array($curl, array(
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_SSL_VERIFYPEER, false,
+			CURLOPT_URL => $url
+	));
+	//$curlresult = curl_exec($curl);
+	curl_close($curl);
+	
+	$jsonresult = json_decode($curlresult, true);
+	return 0;
 }
 ?>
