@@ -122,7 +122,7 @@ function get_shares_list($args){
 	$result = "";
 	
 	for($i=0; $i<count($data); $i++){
-		if($i == $maxResPerPage)
+		if($i >= $maxResPerPage)
 			$display = 'none';
 		
 		if($data[$i]['Imagename'] === NULL || $data[$i]['Imagename'] == ''){
