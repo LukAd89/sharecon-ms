@@ -412,7 +412,7 @@ function get_LatestRatings($objectid){
 	
 	$sql_query = 'SELECT LendingStart, LendingEnd, DATEDIFF(LendingEnd, LendingStart) + 1 AS Timespan, Rating FROM transactions WHERE ObjectID = ' . $objectid . ' AND LendingEnd IS NOT NULL LIMIT 5';
 	if($result = $conn->query($sql_query)){
-	while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$resArray[] = $row;
 		}
 	}
@@ -427,16 +427,15 @@ function get_Location($channelid){
 	}
 
 	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = ' . $channelid . ')';
-	$result = $conn->query($sql_query);
-	if($result->num_rows > 0){
+	if($result = $conn->query($sql_query)){
+		if($result->num_rows == 0){
+			$conn->close();
+			return '';
+		}
+		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$conn->close();
-		return '';
+		return $row['Adress'];
 	}
-	
-	$row = $result->fetch_array(MYSQLI_ASSOC);
-	$conn->close();
-	
-	return $row['Adress'];
 }
 
 function set_Location($channelid, $adress){
