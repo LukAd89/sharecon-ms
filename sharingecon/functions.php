@@ -108,7 +108,6 @@ function upload_Image($file){
 }
 
 function load_Shares($args){
-	var_dump($args);
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
@@ -130,7 +129,7 @@ function load_Shares($args){
 	}
 	
 	if(isset($args['ownerid'])){
-		$sql_query .= " AND OwnderID = '" . $args['ownerid'] . "'";
+		$sql_query .= " AND OwnerID = '" . $args['ownerid'] . "'";
 	}
 	
 	if($result = $conn->query($sql_query)){
