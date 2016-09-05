@@ -420,4 +420,15 @@ function get_LatestRatings($objectid){
 	return $resArray;
 }
 
+function set_Location($adress){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'REPLACE INTO locations (ChannelID, Adress) VALUES (' . $channelid . ',' . $adress . ')';
+	$conn->query($sql_query);
+	$conn->close();
+}
 ?>

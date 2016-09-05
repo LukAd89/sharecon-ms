@@ -89,7 +89,11 @@ function sharingecon_post(&$a){
 				break;
 				
 			case 'set-rating':
-				set_rating($_POST['transid'], $_POST['rating']);
+				set_Rating($_POST['transid'], $_POST['rating']);
+				break;
+				
+			case 'set-location':
+				set_Location(App::$channel['channel_hash'], $_POST['adress']);
 				break;
 		}
 		//header("Location: " . $_SERVER['REQUEST_URI']);

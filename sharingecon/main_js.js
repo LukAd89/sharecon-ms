@@ -61,6 +61,10 @@ $(document).ready(function(){
 		$('#input-rating-transid').val($(e.relatedTarget).data('id'));
 	});
 	
+	$("#btn-set-location").click(function(){
+		setLocation();
+	});
+	
 	/*
 	$("button[name='btn-toggle-share']").click(function(){
 		$.ajax({
@@ -228,6 +232,19 @@ function setRating(){
 		},
 		success : function(msg){
 			location.href = "sharingecon/enquiries";
+		}
+	});
+}
+
+function setLocation(){
+	$.ajax({
+		type : "POST",
+		url : "sharingecon",
+		data : {"action" : "set-location",
+			"adress" : $("#filter-location").val(),
+		},
+		success : function(msg){
+			location.href = "sharingecon/findshares";
 		}
 	});
 }
