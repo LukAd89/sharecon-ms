@@ -294,9 +294,8 @@ function manage_Enquiry($id){
 			$sql_query = 'UPDATE enquiries SET Status = 2 WHERE ID <> ' . $id . ' AND ObjectID = ' . $resArray[0]["ObjectID"];
 			$conn->query($sql_query);
 			
-			$sql_query = 'INSERT INTO transactions (ObjectID, OwnerID, CustomerID, LendingStart) VALUES (' . 
+			$sql_query = 'INSERT INTO transactions (ObjectID, CustomerID, LendingStart) VALUES (' . 
 				$resArray[0]["ObjectID"] . ', "' .
-				$resArray[0]["OwnerID"] . '", "' .
 				$resArray[0]["CustomerID"] . '", ' .
 				'CURRENT_TIMESTAMP)';
 			$conn->query($sql_query);
@@ -336,7 +335,7 @@ function add_Enquiry($id, $customerid){
 	}
 	
 	$ownerid = get_ShareOwner($id); 
-	$sql_query = 'INSERT INTO enquiries (ObjectID, OwnerID, CustomerID, Status) VALUES (' . $id . ', "' . $ownerid . '", "' . $customerid . '", 0)';
+	$sql_query = 'INSERT INTO enquiries (ObjectID, CustomerID, Status) VALUES (' . $id . ', "' . $ownerid . '", "' . $customerid . '", 0)';
 	$conn->query($sql_query);
 	
 	$conn->close();

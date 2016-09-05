@@ -206,7 +206,7 @@ function sharingecon_content(&$a) {
 				
 				$ratinglatesttable = '<table class="table"><thead><tr><th>Lend On</th><th>Brought Back On</th><th>Days of Lending</th><th>Rating</th></tr></thead><tbody>';
 				foreach($ratinglatest as $entry){
-					$ratinglatesttable .= '<tr><td>' . $entry["LendingStart"] . '</td><td>' . $entry["LEndingEnd"] . '</td><td>' . $entry["Timespan"] . '</td><td>' . $entry["Rating"] . '</td></tr>';
+					$ratinglatesttable .= '<tr><td>' . $entry["LendingStart"] . '</td><td>' . $entry["LendingEnd"] . '</td><td>' . $entry["Timespan"] . '</td><td>' . $entry["Rating"] . '</td></tr>';
 				}
 				$ratinglatesttable .= '</tbody></table>';
 				
