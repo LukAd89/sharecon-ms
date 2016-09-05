@@ -20,10 +20,9 @@
 		</div>
 	</div>
 	<div class="widget {{$filterhidden}}">
-		<div class="form-group">
-			<label for="filter-location">My Address</label>
+		<div class="form-group-vertical">
 			<input type="text" id="filter-location" name="filter-location">
-			<button type="button" class="btn btn-xs pull-right" id="btn-set-location">Go</button>
+			<button type="button" class="btn btn-xs pull-right" id="btn-set-location" placeholder="Enter Adress">Go</button>
 		</div>
 		<div class="form-group field checkbox">
 			<label for="filter-favsonly">Show Favorites only</label>
