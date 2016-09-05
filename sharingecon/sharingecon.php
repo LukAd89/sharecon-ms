@@ -190,7 +190,9 @@ function sharingecon_content(&$a) {
 					'$tab2' => 'active',
 					'$pagecontent' => $pageContent
 				));
-				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
+				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+					'$curlocation' => get_Location(App::$channel['channel_hash'])
+				));
 				break;
 				
 			case 'requests':

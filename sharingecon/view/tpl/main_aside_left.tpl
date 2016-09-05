@@ -21,7 +21,7 @@
 	</div>
 	<div class="widget {{$filterhidden}}">
 		<div class="form-group-vertical">
-			<input type="text" id="filter-location" name="filter-location" placeholder="Enter Adress" class="form-control">
+			<input type="text" id="filter-location" name="filter-location" placeholder="Enter Adress" class="form-control" value="{{$curlocation}}">
 			<button type="button" class="btn" id="btn-set-location">Go</button>
 		</div>
 		<div class="form-group field checkbox">
