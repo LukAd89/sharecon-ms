@@ -161,7 +161,7 @@ function get_shares_list($args){
 		$result .= '<li><a href="#">' . $i+1 . '</a></li>';
 	}
 	$result .= '</ul>';
-	
+	Logger($result);
 	return $result;
 }
 
