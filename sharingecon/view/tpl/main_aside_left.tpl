@@ -10,10 +10,10 @@
 				<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Order By <span class="fa fa-caret-down"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li>
-						<a href="#" onclick="test();">Name</a>
+						<a href="javascript:void(0);">Name</a>
 					</li>
 					<li>
-						<a href="#">Date</a>
+						<a href="javascript:void(0);">Distance</a>
 					</li>
 				</ul>
 			</div>
