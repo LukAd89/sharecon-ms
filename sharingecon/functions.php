@@ -244,11 +244,11 @@ function load_Enquiries(){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
 		}
+		$conn->close();
 		return $resArray;
 	}
-	else { return "";}
-	
 	$conn->close();
+	return null;
 }
 
 function load_Transactions(){
@@ -258,7 +258,7 @@ function load_Transactions(){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = "SELECT transactions.*, sharedObjects.Owner FROM transactions, sharedObjects";
+	$sql_query = "SELECT transactions.*, sharedObjects.Owner FROM transactions, sharedObjects WHERE transactions.ObjectID = sharedObjects.ID";
 
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
