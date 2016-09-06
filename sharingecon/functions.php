@@ -452,7 +452,7 @@ function set_Location($channelid, $adress){
 	else{
 		$sql_query = 'UPDATE locations SET Adress ="' . $adress . '" WHERE ChannelID = "' . $channelid . '"';
 	}
-	Logger($sql_query);
+	
 	$conn->query($sql_query);
 	$conn->close();
 }
@@ -537,5 +537,35 @@ function get_MultipleDistances($customerid, $shareids){
 		$distances[] = $singledistance['distance']['text'];
 	}
 	return $distances;
+}
+
+function get_ChannelGroups($channelid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_HUB_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql_query = 'SELECT group_member.gid, groups.gname FROM group_member, groups WHERE group_member.xchan = "' . $channelid;
+	
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+				$resArray[] = $row;
+		}
+		$conn->close();
+		return $resArray;
+	}
+	$conn->close();
+	return null;
+}
+
+function is_ChannelMemberOfGroup($channelid, $groupids){
+	$channelgroups = get_ChannelGroups($channelid);
+	
+	foreach($channelgroups as $group){
+		if(in_array($group['gid'], $groupids))
+			return true;
+	}
+	return false;
 }
 ?>

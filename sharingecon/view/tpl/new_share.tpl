@@ -37,6 +37,13 @@
 					</select>
 				</div>
 				
+				<div class="form-group" style="display:none;">
+					<label for="select-group" class="control-label">Select Group</label>
+					<select class="form-control" name="select-group" id="select-group">
+						{{$groups}}
+					</select>
+				</div>
+				
 				<hr>
 				
 				<div class="form-group">

@@ -256,8 +256,12 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'newshare':
+				$channelgroups = get_ChannelGroups(App::$channel['channel_hash']);
+				foreach($channelgroups as $item){
+					$groupselector .= '<option value="'. $item["gid"] .'">' . $item["gname"] . '</option>';
+				}
 				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
-					
+					'$groups'	=> $groupselector
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 					'$filterhidden' => 'hidden'
