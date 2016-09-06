@@ -131,7 +131,7 @@ function load_Shares($args){
 	if(isset($args['ownerid'])){
 		$sql_query .= " AND OwnerID = '" . $args['ownerid'] . "'";
 	}
-	
+	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
