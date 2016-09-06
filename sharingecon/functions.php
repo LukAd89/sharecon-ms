@@ -119,7 +119,7 @@ function load_Shares($args){
 	
 	if(isset($args['type'])){
 		if($args['type'] == 2){
-			$sql_query .= " WHERE type = 0 OR type = 1";
+			$sql_query .= " WHERE (type = 0 OR type = 1)";
 		}
 		else
 			$sql_query .= " WHERE type = '" . $args['type'] . "'";
@@ -131,7 +131,7 @@ function load_Shares($args){
 	if(isset($args['ownerid'])){
 		$sql_query .= " AND OwnerID = '" . $args['ownerid'] . "'";
 	}
-	Logger($sql_query);
+	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
