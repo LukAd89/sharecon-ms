@@ -39,7 +39,7 @@
 				
 				<div class="form-group" style="display:none;">
 					<label for="select-groups" class="control-label">Select Group</label>
-					<select class="form-control" name="select-groups" id="select-groups" size="5" multiple>
+					<select class="form-control" name="select-groups[]" id="select-groups" size="5" multiple>
 						{{$groups}}
 					</select>
 				</div>
