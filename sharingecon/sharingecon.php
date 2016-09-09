@@ -21,7 +21,7 @@ function sharingecon_post(&$a){
 				
 				if(!$filename)
 					$filename = 'default.jpg';
-				
+				Logger($_POST['select-groups']);
 				$data = array(
 					'owner' => App::$channel['channel_hash'],
 					'title' => strip_tags($_POST['input-title']),
@@ -29,7 +29,7 @@ function sharingecon_post(&$a){
 					'longdesc' => strip_tags($_POST['text-long-desc']),
 					'imagename' => $filename,
 					'visibility' => strip_tags($_POST['select-visibility']),
-					'groups'	=> strip_tags($_POST['select-groups']),
+					'groups'	=> $_POST['select-groups'],
 					'tags' => strip_tags($_POST['input-tags'])
 				);
 				add_NewShare($data);
