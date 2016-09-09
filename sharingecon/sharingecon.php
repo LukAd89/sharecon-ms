@@ -32,9 +32,11 @@ function sharingecon_post(&$a){
 					'groups'	=> $_POST['select-groups'],
 					'tags' => strip_tags($_POST['input-tags'])
 				);
-				add_NewShare($data);
-				header("Location: " . $_SERVER['REQUEST_URI']);
+				var_dump($_POST);
+				//add_NewShare($data);
+				//header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
+				break;
 				
 			case 'add-new-request':
 				$data = array(
