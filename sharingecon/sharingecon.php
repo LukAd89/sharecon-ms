@@ -29,6 +29,7 @@ function sharingecon_post(&$a){
 					'longdesc' => strip_tags($_POST['text-long-desc']),
 					'imagename' => $filename,
 					'visibility' => strip_tags($_POST['select-visibility']),
+					'groups'	=> strip_tags($_POST['select-groups']),
 					'tags' => strip_tags($_POST['input-tags'])
 				);
 				add_NewShare($data);
