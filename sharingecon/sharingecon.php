@@ -257,6 +257,7 @@ function sharingecon_content(&$a) {
 				
 			case 'newshare':
 				$channelgroups = get_ChannelGroups(App::$channel['channel_hash']);
+				var_dump($channelgroups);
 				foreach($channelgroups as $item){
 					$groupselector .= '<option value="'. $item["gid"] .'">' . $item["gname"] . '</option>';
 				}
