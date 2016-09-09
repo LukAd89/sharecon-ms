@@ -33,7 +33,8 @@ function add_NewShare($data){
 	}
 	$groups = substr($groups, 0, -1);
 	
-	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, ownerid, type, visibility, visiblefor) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['imagename'] . "', '" . $data['owner'] . "', 0, '" . $data['visibility'] . "', '" . $groups . "')";
+	//$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, ownerid, type, visibility, visiblefor, location, tags) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['imagename'] . "', '" . $data['owner'] . "', 0, '" . $data['visibility'] . "', '" . $groups . "')";
+	$sql_query = 'INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, ownerid, type, visibility, visiblefor, location, tags) VALUES ("' . $data['title'] . '", "' . $data['shortdesc'] . '", "' . $data['longdesc'] . '", "' . $data['imagename'] . '", "' . $data['owner'] . '", 0, "' . $data['visibility'] . '", "' . $groups . '", "' . $data['location'] . '", "' . $data['tags'] . '")';
 	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";

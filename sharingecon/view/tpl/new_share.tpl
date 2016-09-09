@@ -47,6 +47,13 @@
 				<hr>
 				
 				<div class="form-group">
+					<label for="input-location" class="control-label">Adress</label>
+					<input type="text" class="form-control" name="input-location" id="input-location" placeholder="Enter the adress where to find the object">
+				</div>
+				
+				<hr>
+				
+				<div class="form-group">
 					<label for="input-tags" class="control-label">Tags</label>
 					<input type="text" class="form-control" name="input-tags" id="input-tags" placeholder="">
 					<button type="button" class="btn" id="btn-reload-tags">
