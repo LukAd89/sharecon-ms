@@ -27,8 +27,8 @@ function add_NewShare($data){
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	Logger($data['select-groups']);
-	foreach($data['select-groups'] as $group){
+	Logger($data['groups']);
+	foreach($data['groups'] as $group){
 		$groups .= $group . '|';
 	}
 	$groups = substr($groups, 0, -1);
