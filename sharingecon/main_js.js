@@ -66,6 +66,15 @@ $(document).ready(function(){
 		setLocation();
 	});
 	
+	$("#select-visibility").change(function() {
+		if($("#select-visibility").val() == 1){
+			$("#select-groups").parent().show();
+		}
+		else{
+			$("#select-groups").parent().hide();
+		}
+	})
+	
 	/*
 	$("button[name='btn-toggle-share']").click(function(){
 		$.ajax({
