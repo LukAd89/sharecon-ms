@@ -106,7 +106,7 @@ function sharingecon_module() {}
 
 function get_shares_list($args){
 	$data = load_Shares($args);
-	
+	Logger(var_dump($data[0]));
 	$maxResPerPage = 1;
 	$display = 'block';
 	
