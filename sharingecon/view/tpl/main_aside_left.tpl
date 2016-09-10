@@ -6,28 +6,32 @@
 			<a href="sharingecon" class="btn btn-default">Main Page</a>
 			<a href="sharingecon/newshare" class="btn btn-default">Add new Share</a>
 			<a href="sharingecon/enquiries" class="btn btn-default">See enquiries</a>
-			<div class="btn-group">
-				<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Order By <span class="fa fa-caret-down"></span></a>
-				<ul class="dropdown-menu" role="menu">
-					<li>
-						<a href="javascript:void(0);">Name</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);">Distance</a>
-					</li>
-				</ul>
-			</div>
 		</div>
 	</div>
 	<div class="widget {{$filterhidden}}">
 		<div class="form-group-vertical">
+			<label for="filter-location">Set your own Location</label>
 			<input type="text" id="filter-location" name="filter-location" placeholder="Enter Adress" class="form-control" value="{{$curlocation}}">
 			<button type="button" class="btn" id="btn-set-location">Go</button>
+		</div>
+		<div class="btn-group">
+			<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Order By <span class="fa fa-caret-down"></span></a>
+			<ul class="dropdown-menu" role="menu">
+				<li>
+					<a href="javascript:void(0);">Name</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);">Distance</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);">Rating</a>
+				</li>
+			</ul>
 		</div>
 		<div class="form-group field checkbox">
 			<label for="filter-favsonly">Show Favorites only</label>
 			<div class="pull-right">
-				<input type="checkbox" onchange="console.log(this.checked ? 0 : 1)" checked="checked" value="1" id="filter-f	avsonly" name="filter-favsonly">
+				<input type="checkbox" onchange="console.log(this.checked ? 0 : 1)" checked="checked" value="1" id="filter-favsonly" name="filter-favsonly">
 				<label for="filter-favsonly" class="switchlabel">
 					<span data-off="Off" data-on="On" class="onoffswitch-inner"></span>
 					<span class="onoffswitch-switch"></span>

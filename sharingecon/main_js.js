@@ -110,7 +110,6 @@ $(document).ready(function(){
 	*/
 	
 	$("#pager li a").click(function(){
-		console.log($(this).html().valueOf() - 1);
 		var start = $(this).html().valueOf() - 1;
 		var end = start + maxResPerPage;
 		
