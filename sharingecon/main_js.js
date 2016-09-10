@@ -291,7 +291,7 @@ function orderBy(criteria){
 	newHref += "&filterfriends=";
 	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
 	
-	location.href = newHref;
+	//location.href = newHref;
 }
 
 function setFavoritesFilter(seton){
@@ -304,7 +304,7 @@ function setFavoritesFilter(seton){
 	newHref += "&filterfriends=";
 	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
 	
-	location.href = newHref;
+	//location.href = newHref;
 }
 
 function setFriendsFilter(seton){
@@ -318,5 +318,5 @@ function setFriendsFilter(seton){
 	newHref += "?filterfriends="
 	newHref +=  (seton) ? "1" : "0";
 	
-	location.href = newHref;
+	//location.href = newHref;
 }
