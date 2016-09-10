@@ -36,6 +36,13 @@ function get_SharesList($args){
 		$data[$i]['distance'] = $distances[$i];
 	}
 	
+	//ORDER BY DISTANCE IF WANTED
+	if(isset($args['orderby']) && $args['orderby'] == 2){
+		usort($data, function($a, $b){
+			return ($a['distance'] < $b['distance']) ? -1 : 1;
+		});
+	}
+	
 	for($i=0; $i<count($data); $i++){
 		if($i == $maxResPerPage)
 			$display = 'none';
@@ -214,7 +221,7 @@ function load_Shares($args){
 				$sql_query .= ' ORDER BY avgrating DESC';
 				break;
 			case 2:
-				$sql_query .= ' ORDER BY title';
+				//$sql_query .= ' ORDER BY title';
 				break;
 		}
 	}
