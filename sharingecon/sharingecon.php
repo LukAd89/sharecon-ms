@@ -156,7 +156,13 @@ function get_shares_list($args){
 			));
 		}
 		else{
-			$wellbody = 'Rating: ' . get_AvgRating($data[$i]['ID']) . '<br>Distance: ' . $distances[$i];
+			$wellbody = 'Rating: ' . get_AvgRating($data[$i]['ID']) . '<br>Distance: ';
+			if($distances == -1){
+				$wellbody .= 'You have to set your own location';
+			}
+			else{
+				$wellbody .= $distances[$i];
+			}
 			$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
 				'$display'		=> $display,
 				'$shareid' 		=> $data[$i]['ID'],

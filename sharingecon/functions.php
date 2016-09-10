@@ -448,7 +448,7 @@ function set_Location($channelid, $adress){
 function get_Distance($customerid, $shareid){
 	$customerlocation = get_Location($customerid);
 	if($customerlocation == -1){
-		return "NO LOCATION SET";
+		return -1;
 	}
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
@@ -484,7 +484,7 @@ function get_Distance($customerid, $shareid){
 function get_MultipleDistances($customerid, $shareids){
 	$customerlocation = get_Location($customerid);
 	if($customerlocation == -1){
-		return "NO LOCATION SET";
+		return -1;
 	}
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
