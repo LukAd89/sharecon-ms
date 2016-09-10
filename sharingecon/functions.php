@@ -204,18 +204,16 @@ function load_Shares($args){
 	if(isset($args['orderby'])){
 		switch($args['orderby']){
 			case 0:
-				$sql_query .= ' ORDER BY title';
+				$sql_query .= ' ORDER BY title ASC';
 				break;
 			case 1:
-				$sql_query .= ' ORDER BY avgrating';
+				$sql_query .= ' ORDER BY avgrating DESC';
 				break;
 			case 2:
 				$sql_query .= ' ORDER BY title';
 				break;
 		}
 	}
-	
-	Logger($sql_query);
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
