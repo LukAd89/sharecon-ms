@@ -227,7 +227,7 @@ function sharingecon_content(&$a) {
 				));
 				$channellocation = get_Location(App::$channel['channel_hash']);
 				if($channellocation == -1){
-					$channellocation = 'Set your own location';
+					$channellocation = '';
 				}
 				
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
