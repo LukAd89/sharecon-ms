@@ -223,6 +223,8 @@ function load_Shares($args){
 			case 2:
 				//$sql_query .= ' ORDER BY title';
 				break;
+			default:
+				break;
 		}
 	}
 	

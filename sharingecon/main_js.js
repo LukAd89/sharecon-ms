@@ -286,7 +286,7 @@ function getDistance(shareid){
 
 function orderBy(criteria){
 	if(criteria >= 0 && criteria <= 2)
-		location.href = "sharingecon/findshares?orderby=" + criteria;
+		location.href = window.location.pathname + "?orderby=" + criteria;
 }
 
 function setFavoritesFilter(seton){

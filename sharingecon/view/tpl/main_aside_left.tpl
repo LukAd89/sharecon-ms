@@ -25,17 +25,17 @@
 					<a href="javascript:orderBy(0);">Name</a>
 				</li>
 				<li>
-					<a href="javascript:orderBy(1);">Distance</a>
+					<a href="javascript:orderBy(1);">Rating</a>
 				</li>
 				<li>
-					<a href="javascript:orderBy(2);">Rating</a>
+					<a href="javascript:orderBy(2);">Distance</a>
 				</li>
 			</ul>
 		</div>
 		<div class="form-group field checkbox">
 			<label for="filter-favsonly">Show Favorites only</label>
 			<div class="pull-right">
-				<input type="checkbox" onchange="console.log(this.checked ? 0 : 1)" checked="checked" value="1" id="filter-favsonly" name="filter-favsonly">
+				<input type="checkbox" onchange="console.log(this.checked ? 0 : 1)" value="1" id="filter-favsonly" name="filter-favsonly">
 				<label for="filter-favsonly" class="switchlabel">
 					<span data-off="Off" data-on="On" class="onoffswitch-inner"></span>
 					<span class="onoffswitch-switch"></span>
