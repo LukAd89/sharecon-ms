@@ -292,7 +292,9 @@ function orderBy(criteria){
 function setFavoritesFilter(seton){
 	var newHref = window.location.pathname;
 	
-	newHref += "?filterfavs=";
+	newHref += "?orderby=";
+	newHref += $('#currentorder').val();
+	newHref += "&filterfavs=";
 	newHref += (seton) ? "1" : "0";
 	newHref += "&filterfriends=";
 	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
@@ -304,6 +306,8 @@ function setFriendsFilter(seton){
 	
 	var newHref = window.location.pathname;
 	
+	newHref += "?orderby=";
+	newHref += $('#currentorder').val();
 	newHref += "?filterfavs=";
 	newHref += ($('#filter-favsonly').is(':checked')) ? 1 : 0;
 	newHref += "?filterfriends="

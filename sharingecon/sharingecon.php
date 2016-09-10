@@ -153,7 +153,8 @@ function sharingecon_content(&$a) {
 				}
 				
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
-					'$curlocation' => $channellocation
+					'$curlocation'	=> $channellocation,
+					'$curorderby'	=> $_GET['orderby']
 				));
 				break;
 				
