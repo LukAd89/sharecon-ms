@@ -125,13 +125,16 @@ function add_NewShare($data){
 	}
 	$groups = substr($groups, 0, -1);
 	
-	$sql_query = 'INSERT INTO sharedObjects (title, description, imagename, ownerid, type, visibility, visiblefor, location, tags) VALUES ("' . $data['title'] . '", "' . $data['description'] . '", "' . $data['imagename'] . '", "' . $data['owner'] . '", "' . $data['type'] . '", "' . $data['visibility'] . '", "' . $groups . '", "' . $data['location'] . '", "' . $data['tags'] . '")';
+	$sql_query = 'INSERT INTO sharedObjects (title, description, imagename, ownerid, type, visibility, location, tags) VALUES ("' . $data['title'] . '", "' . $data['description'] . '", "' . $data['imagename'] . '", "' . $data['owner'] . '", "' . $data['type'] . '", "' . $data['visibility'] . '", "' . $data['location'] . '", "' . $data['tags'] . '")';
 	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";
 	} else {
 		return "Error: " . $sql_query . "<br>" . $conn->error;
 	}
+	
+	$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES (' . $conn->insert_id . ', "' . $groups . '")';
+	$conn->query($sql_query);
 	
 	//OLD. TAGS ARE NOW IN SHAREDOBJECTS TABLE
 	/*
@@ -146,6 +149,7 @@ function add_NewShare($data){
 	}
 	*/
 	$conn->close();
+	return;
 }
 
 function edit_Share($data){
@@ -674,5 +678,24 @@ function is_ChannelMemberOfGroup($channelid, $groupids){
 			return true;
 	}
 	return false;
+}
+
+function is_ChannelAllowedToView($channelid, $shareid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'SELECT Visibility, VisibleFor FROM sharedObjects WHERE ID = "' . $shareid . '"';
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$resArray[] = $row;
+		}
+		$conn->close();
+		return $resArray;
+	}
+	$conn->close();
+	return null;
 }
 ?>
