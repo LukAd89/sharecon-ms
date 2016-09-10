@@ -290,8 +290,8 @@ function orderBy(criteria){
 	newHref += ($('#filter-favsonly').is(':checked')) ? "1" : "0";
 	newHref += "&filterfriends=";
 	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
-	console.log(newHref);
-	//location.href = newHref;
+	
+	location.href = newHref;
 }
 
 function setFavoritesFilter(seton){
@@ -304,8 +304,7 @@ function setFavoritesFilter(seton){
 	newHref += "&filterfriends=";
 	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
 	
-	console.log(newHref);
-	//location.href = newHref;
+	location.href = newHref;
 }
 
 function setFriendsFilter(seton){
@@ -318,6 +317,6 @@ function setFriendsFilter(seton){
 	newHref += ($('#filter-favsonly').is(':checked')) ? "1" : "0";
 	newHref += "?filterfriends="
 	newHref +=  (seton) ? "1" : "0";
-	console.log(newHref);
-	//location.href = newHref;
+	
+	location.href = newHref;
 }
