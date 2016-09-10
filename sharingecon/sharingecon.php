@@ -12,7 +12,7 @@
 require_once('functions.php');
 
 function sharingecon_post(&$a){
-	
+	var_dump($_POST['test']);
 	if(isset($_POST['action'])){
 		
 		switch($_POST['action']){
