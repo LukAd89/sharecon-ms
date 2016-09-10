@@ -56,25 +56,6 @@ function add_NewShare($data){
 	$conn->close();
 }
 
-function add_NewRequest($data){
-
-	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
-
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-
-	$sql_query = "INSERT INTO sharedObjects (title, shortdesc, longdesc, owner, type) VALUES ('" . $data['title'] . "', '" . $data['shortdesc'] . "', '" . $data['longdesc'] . "', '" . $data['owner'] . "', 1)";
-
-	if ($conn->query($sql_query) === TRUE) {
-		echo "New record created successfully";
-	} else {
-		echo "Error: " . $sql_query . "<br>" . $conn->error;
-	}
-
-	$conn->close();
-}
-
 function edit_Share($data){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	

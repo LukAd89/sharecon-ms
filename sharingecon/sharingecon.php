@@ -39,20 +39,6 @@ function sharingecon_post(&$a){
 				exit();
 				break;
 				
-			case 'add-new-request':
-				$data = array(
-					'owner' => App::$channel['channel_hash'],
-					'title' => strip_tags($_POST['input-title']),
-					'shortdesc' => strip_tags($_POST['input-short-desc']),
-					'longdesc' => strip_tags($_POST['text-long-desc']),
-					'visibility' => strip_tags($_POST['select-visibility']),
-					'tags' => strip_tags($_POST['input-tags'])
-				);
-				add_NewRequest($data);
-				header("Location: " . $_SERVER['REQUEST_URI']);
-				exit();
-				break;
-				
 			case 'edit-share':
 				$data = array(
 					'shareid' => strip_tags($_POST['shareid']),
@@ -270,16 +256,6 @@ function sharingecon_content(&$a) {
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 					'$filterhidden' => 'hidden'
-				));
-				break;
-				
-			case 'newrequest':
-				
-				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
-					
-				));
-				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
-						'$filterhidden' => 'hidden'
 				));
 				break;
 			
