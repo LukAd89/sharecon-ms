@@ -12,7 +12,6 @@
 require_once('functions.php');
 
 function sharingecon_post(&$a){
-	var_dump($_POST['test']);
 	if(isset($_POST['action'])){
 		
 		switch($_POST['action']){
@@ -223,7 +222,7 @@ function sharingecon_content(&$a) {
 				));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab2' => 'active',
-					'$pagecontent' => $pageContent . 'TEST:' .  $_POST['test']
+					'$pagecontent' => $pageContent . 'TEST:' .  var_dump($_POST)
 				));
 				$channellocation = get_Location(App::$channel['channel_hash']);
 				if($channellocation == -1){
