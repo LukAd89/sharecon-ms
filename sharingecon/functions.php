@@ -32,7 +32,7 @@ function get_SharesList($args){
 	}
 	$distances = get_MultipleDistances(App::$channel['channel_hash'], $shareids);
 	for($i=0; $i<count($data); $i++){
-		$dataval[$i]['distance'] = $distances[$i];
+		$dataval[$i] -> distance = $distances[$i];
 	}
 	
 	for($i=0; $i<count($data); $i++){
