@@ -285,16 +285,8 @@ function getDistance(shareid){
 }
 
 function orderBy(criteria){
-	$.ajax({
-		type : "POST",
-		url : "sharingecon",
-		data : {"action" : "get-ordered-shares",
-			"orderby" : criteria
-		},
-		success : function(msg){
-			console.log("ordered");
-		}
-	});
+	if(criteria >= 0 && criteria <= 2)
+		location.href = "sharingecon/findshares?orderby=" + criteria;
 }
 
 function setFavoritesFilter(seton){

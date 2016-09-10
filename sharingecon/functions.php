@@ -20,6 +20,87 @@ if (isset($_POST['function'])) {
 }
 */
 
+function get_shares_list($args){
+	$data = load_Shares($args);
+	$maxResPerPage = 5;
+	$display = 'block';
+
+	$result = "";
+
+	foreach($data as $dataval){
+		$shareids[] = $dataval['ID'];
+	}
+	$distances = get_MultipleDistances(App::$channel['channel_hash'], $shareids);
+
+	for($i=0; $i<count($data); $i++){
+		if($i == $maxResPerPage)
+			$display = 'none';
+
+			if($data[$i]['Imagename'] === NULL || $data[$i]['Imagename'] == ''){
+				$data[$i]['Imagename'] ='default.jpg';
+			}
+
+			if($args['ownerview']){
+				$status='';
+				$wellbody = 'Type: ';
+					
+				if($data[$i]['Status']==0){
+					$status='checked="checked"';
+				}
+					
+				if($data[$i]['Type']==0){
+					$wellbody .= 'Offer';
+				}
+				else{
+					$wellbody .= 'Request';
+				}
+				$wellbody .= '<br>Visible for: ';
+				if($data[$i]['Visibility']==0){
+					$wellbody .= 'Everybody';
+				}
+				else{
+					$wellbody .= $data[$i]['visiblefor'];
+				}
+				$wellbody .= '<br>Location: ' . $data[$i]['Location'];
+					
+				$result .= replace_macros(get_markup_template('share_min_owner.tpl','addon/sharingecon/'), array(
+						'$shareid' 		=> $data[$i]['ID'],
+						'$title' 		=> $data[$i]['Title'],
+						'$imagename'	=> $data[$i]['Imagename'],
+						'$wellbody'		=> $wellbody,
+						'$checked'		=> $status
+				));
+			}
+			else{
+				$wellbody = 'Rating: ' . get_AvgRating($data[$i]['ID']) . '<br>Distance: ';
+				if($distances == -1){
+					$wellbody .= 'You have to set your own location';
+				}
+				else{
+					$wellbody .= $distances[$i];
+				}
+				$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
+						'$display'		=> $display,
+						'$shareid' 		=> $data[$i]['ID'],
+						'$title' 		=> $data[$i]['Title'],
+						'$imagename'	=> $data[$i]['Imagename'],
+						'$wellbody'		=> $wellbody
+				));
+			}
+	}
+
+	//ADD PAGINATION NAV
+	if(!$args['ownerview']){
+		$result .=  '<ul class="pagination" id="pager">';
+		for($k=0; ($k*$maxResPerPage)<count($data); $k++){
+			$result .= '<li><a href="javascript:void(0)">' . ($k+1) . '</a></li>';
+		}
+		$result .= '</ul>';
+	}
+
+	return $result;
+}
+
 function add_NewShare($data){
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
