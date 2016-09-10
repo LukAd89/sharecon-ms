@@ -23,6 +23,10 @@
 					<label for="text-long-desc" class="control-label">Detailed Description</label>
 					<textarea class="form-control" rows="5" name="text-long-desc" id="text-long-desc" placeholder="Detailed Description of the Object">{{$longdescvalue}}</textarea>
 				</div>
+				<div class="form-group">
+					<label for="input-image" class="control-label">Object Image</label>
+					<input type="file" class="form-control" name="input-image" id="input-image">
+				</div>
 				
 				<hr>
 				
@@ -31,6 +35,13 @@
 					<select class="form-control" name="select-visibility" id="select-visibility">
 						<option value="0">Everybody</option>
 						<option value="1">Friends only</option>
+					</select>
+				</div>
+				
+				<div class="form-group" style="display:none;">
+					<label for="select-groups" class="control-label">Select Group</label>
+					<select class="form-control" name="select-groups[]" id="select-groups" size="5" multiple>
+						{{$groups}}
 					</select>
 				</div>
 				

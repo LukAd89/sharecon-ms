@@ -10,17 +10,28 @@
 		
 			<div class="panel-body">
 				<input type="hidden" name="action" value="add-new-share">
+				
+				<div class="form-group">
+					<label for="select-type" class="control-label">Type of Insertion</label>
+					<select class="form-control" name="select-type" id="select-type">
+						<option value="0">Offer this Object to others</option>
+						<option value="1">Search for an Object</option>
+					</select>
+				</div>
+				
+				<hr>
+				
 				<div class="form-group">
 					<label for="input-title" class="control-label">Title</label>
-					<input type="text" class="form-control" name="input-title" id="input-title" placeholder="Name of the Object">
+					<input type="text" class="form-control" name="input-title" id="input-title" placeholder="What do You want to offer / search?">
 				</div>
 				<div class="form-group">
 					<label for="input-short-desc" class="control-label">Short Description</label>
-					<input type="text" class="form-control" name="input-short-desc" id="input-short-desc" placeholder="Short Description of the Object">
+					<input type="text" class="form-control" name="input-short-desc" id="input-short-desc" placeholder="Describe this Object in short">
 				</div>
 				<div class="form-group">
 					<label for="text-long-desc" class="control-label">Detailed Description</label>
-					<textarea class="form-control" rows="5" name="text-long-desc" id="text-long-desc" placeholder="Detailed Description of the Object"></textarea>
+					<textarea class="form-control" rows="5" name="text-long-desc" id="text-long-desc" placeholder="Give a detailed description of the Object"></textarea>
 				</div>
 				<div class="form-group">
 					<label for="input-image" class="control-label">Object Image</label>
@@ -48,7 +59,7 @@
 				
 				<div class="form-group">
 					<label for="input-location" class="control-label">Adress</label>
-					<input type="text" class="form-control" name="input-location" id="input-location" placeholder="Enter the adress where to find the object">
+					<input type="text" class="form-control" name="input-location" id="input-location" placeholder="Where to find the Object or You">
 				</div>
 				
 				<hr>

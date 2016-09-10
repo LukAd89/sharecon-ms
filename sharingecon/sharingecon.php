@@ -24,6 +24,7 @@ function sharingecon_post(&$a){
 				
 				$data = array(
 					'owner' => App::$channel['channel_hash'],
+					'type' => $_POST['select-type'],
 					'title' => strip_tags($_POST['input-title']),
 					'shortdesc' => strip_tags($_POST['input-short-desc']),
 					'longdesc' => strip_tags($_POST['text-long-desc']),
@@ -273,7 +274,8 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'newrequest':
-				$siteContent .= replace_macros(get_markup_template('new_request.tpl','addon/sharingecon/'), array(
+				
+				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
 					
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(

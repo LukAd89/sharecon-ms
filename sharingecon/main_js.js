@@ -68,10 +68,10 @@ $(document).ready(function(){
 	
 	$("#select-visibility").change(function() {
 		if($("#select-visibility").val() == 1){
-			$("#select-groups").parent().show();
+			$("#select-groups").parent().slideDown();
 		}
 		else{
-			$("#select-groups").parent().hide();
+			$("#select-groups").parent().slideUp();
 		}
 	})
 	
