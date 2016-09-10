@@ -222,7 +222,7 @@ function sharingecon_content(&$a) {
 				));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab2' => 'active',
-					'$pagecontent' => $pageContent . 'TEST:' .  var_dump($_POST)
+					'$pagecontent' => $pageContent . 'TEST:' .  var_dump($_GET)
 				));
 				$channellocation = get_Location(App::$channel['channel_hash']);
 				if($channellocation == -1){
