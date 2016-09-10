@@ -33,7 +33,7 @@ function add_NewShare($data){
 	}
 	$groups = substr($groups, 0, -1);
 	
-	$sql_query = 'INSERT INTO sharedObjects (title, shortdesc, longdesc, imagename, ownerid, type, visibility, visiblefor, location, tags) VALUES ("' . $data['title'] . '", "' . $data['shortdesc'] . '", "' . $data['longdesc'] . '", "' . $data['imagename'] . '", "' . $data['owner'] . '", "' . $data['type'] . '", "' . $data['visibility'] . '", "' . $groups . '", "' . $data['location'] . '", "' . $data['tags'] . '")';
+	$sql_query = 'INSERT INTO sharedObjects (title, description, imagename, ownerid, type, visibility, visiblefor, location, tags) VALUES ("' . $data['title'] . '", "' . $data['description'] . '", "' . $data['imagename'] . '", "' . $data['owner'] . '", "' . $data['type'] . '", "' . $data['visibility'] . '", "' . $groups . '", "' . $data['location'] . '", "' . $data['tags'] . '")';
 	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";
@@ -63,7 +63,7 @@ function edit_Share($data){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'UPDATE sharedObjects SET Title = "' . $data["title"] . '", ShortDesc = "' . $data["shortdesc"] . '", LongDesc = "' . $data["longdesc"] . '", Visibility = ' . $data["visibility"];
+	$sql_query = 'UPDATE sharedObjects SET Title = "' . $data["title"] . '", Description = "' . $data["description"] . '", Visibility = ' . $data["visibility"];
 	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";

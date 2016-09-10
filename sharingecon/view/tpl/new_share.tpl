@@ -26,11 +26,7 @@
 					<input type="text" class="form-control" name="input-title" id="input-title" placeholder="What do You want to offer / search?">
 				</div>
 				<div class="form-group">
-					<label for="input-short-desc" class="control-label">Short Description</label>
-					<input type="text" class="form-control" name="input-short-desc" id="input-short-desc" placeholder="Describe this Object in short">
-				</div>
-				<div class="form-group">
-					<label for="text-long-desc" class="control-label">Detailed Description</label>
+					<label for="text-long-desc" class="control-label">Description</label>
 					<textarea class="form-control" rows="5" name="text-long-desc" id="text-long-desc" placeholder="Give a detailed description of the Object"></textarea>
 				</div>
 				<div class="form-group">
