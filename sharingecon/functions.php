@@ -39,7 +39,7 @@ function get_SharesList($args){
 	//ORDER BY DISTANCE IF WANTED
 	if(isset($args['orderby']) && $args['orderby'] == 2){
 		usort($data, function($a, $b){
-			return (filter_var($a['distance'], FILTER_SANITIZE_NUMBER_FLOAT) < filter_var($b['distance'], FILTER_SANITIZE_NUMBER_FLOAT)) ? -1 : 1;
+			return ($a['distance'] < $b['distance']) ? -1 : 1;
 		});
 	}
 	
@@ -88,7 +88,7 @@ function get_SharesList($args){
 					$wellbody .= 'You have to set your own location';
 				}
 				else{
-					$wellbody .= $data[$i]['distance'];
+					$wellbody .= ($data[$i]['distance'] / 1000) . ' km';
 				}
 				$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
 						'$display'		=> $display,
@@ -584,7 +584,7 @@ function get_Distance($customerid, $shareid){
 	
 	$jsonresult = json_decode($curlresult, true);
 	
-	return $jsonresult['rows'][0]['elements'][0]['distance']['text'];
+	return $jsonresult['rows'][0]['elements'][0]['distance']['value'];
 }
 
 function get_MultipleDistances($customerid, $shareids){
@@ -628,7 +628,7 @@ function get_MultipleDistances($customerid, $shareids){
 	$jsonresult = json_decode($curlresult, true);
 	
 	foreach($jsonresult['rows'][0]['elements'] as $singledistance){
-		$distances[] = $singledistance['distance']['text'];
+		$distances[] = $singledistance['distance']['value'];
 	}
 	return $distances;
 }
