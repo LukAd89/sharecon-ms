@@ -290,17 +290,12 @@ function orderBy(criteria){
 }
 
 function setFavoritesFilter(seton){
-	console.log(seton);
 	var newHref = window.location.pathname;
 	
-	if(seton){
-		newHref += "?filterfavs=1";
-	}
-	else{
-		newHref +=  "?filterfavs=0";
-	}
-	
-	newHref += "&filterfriends=" + ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
+	newHref += "?filterfavs=";
+	newHref += (seton) ? "1" : "0";
+	newHref += "&filterfriends=";
+	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
 	
 	console.log(newHref);
 }
@@ -309,9 +304,10 @@ function setFriendsFilter(seton){
 	
 	var newHref = window.location.pathname;
 	
-	newHref += "?filterfavs=" + $('#filter-favsonly').is(':checked') ? 1 : 0;
-	
-	newHref += "?filterfriends=" + (seton) ? 1 : 0;
+	newHref += "?filterfavs=";
+	newHref += ($('#filter-favsonly').is(':checked')) ? 1 : 0;
+	newHref += "?filterfriends="
+	newHref +=  (seton) ? 1 : 0;
 	
 	console.log(newHref);
 }
