@@ -23,7 +23,7 @@ function test_ajax_json(){
 $(document).ready(function(){
 	
 	nlp = window.nlp_compromise;
-	var maxResPerPage = 1;
+	var maxResPerPage = 5;
 	
 	$("#btn-add-new-share").click(function(){
 		//addNewShare();
