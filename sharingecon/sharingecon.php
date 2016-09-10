@@ -142,6 +142,7 @@ function sharingecon_content(&$a) {
 				$pageContent = get_SharesList(array(
 					'type' => 0,
 					'channel' => App::$channel['channel_hash'],
+					'ownerview' => false,
 					'orderby' => $_GET['orderby'],
 					'filterfavs' => $_GET['filterfavs'],
 					'filterfriends' => $_GET['filterfriends']

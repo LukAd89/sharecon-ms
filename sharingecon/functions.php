@@ -212,11 +212,11 @@ function load_Shares($args){
 		$sql_query .= " AND type = '0'";
 	}
 	
-	if(isset($args['ownerid'])){
+	if(isset($args['ownerid']) && isset($args['ownerview']) && $args['ownerview'] == true){
 		$sql_query .= " AND OwnerID = '" . $args['ownerid'] . "'";
 	}
 	
-	if(isset($args['channel'])){
+	if(isset($args['ownerview']) && $args['ownerview']==false && isset($args['channel'])){
 		$sql_query .= " AND OwnerID <> '" . $args['channel'] . "'";
 	}
 	
