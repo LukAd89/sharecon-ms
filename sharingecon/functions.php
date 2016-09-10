@@ -220,6 +220,8 @@ function load_Shares($args){
 		$sql_query .= " AND OwnerID <> '" . $args['channel'] . "'";
 	}
 	
+	$sql_query .= 'AND (visibility = 0 OR visibility = 1 AND "' . $args['channel'] . '" IN (SELECT DISTINCT xchan from ' . SERVER_HUB_DBNAME . '.group_member WHERE gid IN VisibleFor))';
+	
 	if(isset($args['orderby'])){
 		switch($args['orderby']){
 			case 0:
