@@ -36,7 +36,7 @@
 		<div class="form-group field checkbox">
 			<label for="filter-favsonly">Show Favorites only</label>
 			<div class="pull-right">
-				<input type="checkbox" onchange="setFavoritesFilter(this.checked)" value="1" id="filter-favsonly" name="filter-favsonly">
+				<input type="checkbox" onchange="setFavoritesFilter(this.checked)" {{$filterfavschecked}} value="1" id="filter-favsonly" name="filter-favsonly">
 				<label for="filter-favsonly" class="switchlabel">
 					<span data-off="Off" data-on="On" class="onoffswitch-inner"></span>
 					<span class="onoffswitch-switch"></span>
@@ -46,7 +46,7 @@
 		<div class="form-group field checkbox">
 			<label for="filter-friendsonly">Show Friends only</label>
 			<div class="pull-right">
-				<input type="checkbox" onchange="setFriendsFilter(this.checked)" value="1" id="filter-friendsonly" name="filter-friendsonly">
+				<input type="checkbox" onchange="setFriendsFilter(this.checked)" {{$filterfriendschecked}} value="1" id="filter-friendsonly" name="filter-friendsonly">
 				<label for="filter-friendsonly" class="switchlabel">
 					<span data-off="Off" data-on="On" class="onoffswitch-inner"></span>
 					<span class="onoffswitch-switch"></span>
