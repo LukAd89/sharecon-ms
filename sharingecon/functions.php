@@ -20,7 +20,7 @@ if (isset($_POST['function'])) {
 }
 */
 
-function get_shares_list($args){
+function get_SharesList($args){
 	$data = load_Shares($args);
 	$maxResPerPage = 5;
 	$display = 'block';
@@ -31,7 +31,10 @@ function get_shares_list($args){
 		$shareids[] = $dataval['ID'];
 	}
 	$distances = get_MultipleDistances(App::$channel['channel_hash'], $shareids);
-
+	for($i=0; $i<count($data); $i++){
+		$dataval[$i]['distance'] = $distances[$i];
+	}
+	
 	for($i=0; $i<count($data); $i++){
 		if($i == $maxResPerPage)
 			$display = 'none';
@@ -77,7 +80,7 @@ function get_shares_list($args){
 					$wellbody .= 'You have to set your own location';
 				}
 				else{
-					$wellbody .= $distances[$i];
+					$wellbody .= $data[$i]['distance'];
 				}
 				$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
 						'$display'		=> $display,

@@ -124,7 +124,7 @@ function sharingecon_content(&$a) {
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
-				$pageContent = get_shares_list(array(
+				$pageContent = get_SharesList(array(
 					'ownerid' => App::$channel['channel_hash'],
 					'ownerview' => true,
 					'type' => 2
@@ -139,7 +139,7 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'findshares':
-				$pageContent = get_shares_list(array(
+				$pageContent = get_SharesList(array(
 					'type' => 0,
 					'orderby' => $_GET['orderby']
 				));
@@ -158,7 +158,7 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'requests':
-				$pageContent = get_shares_list(array(
+				$pageContent = get_SharesList(array(
 					'type' => 1
 				));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
@@ -267,7 +267,7 @@ function sharingecon_content(&$a) {
 	}
 	
 	else{
-		$pageContent = get_shares_list(array(
+		$pageContent = get_SharesList(array(
 			'ownerid' => App::$channel['channel_hash'],
 			'ownerview' => true,
 			'type' => 2
