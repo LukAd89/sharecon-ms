@@ -27,7 +27,7 @@
 				</div>
 				<div class="form-group">
 					<label for="text-long-desc" class="control-label">Description</label>
-					<textarea class="form-control" rows="5" name="text-long-desc" id="text-long-desc" placeholder="Give a detailed description of the Object"></textarea>
+					<textarea class="form-control" rows="5" name="text-description" id="text-long-desc" placeholder="Give a detailed description of the Object"></textarea>
 				</div>
 				<div class="form-group">
 					<label for="input-image" class="control-label">Object Image</label>

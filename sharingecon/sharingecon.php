@@ -42,7 +42,7 @@ function sharingecon_post(&$a){
 				$data = array(
 					'shareid' => strip_tags($_POST['shareid']),
 					'title' => strip_tags($_POST['input-title']),
-					'description' => strip_tags($_POST['text-desc']),
+					'description' => strip_tags($_POST['text-description']),
 					'imagename' => $filename,
 					'visibility' => strip_tags($_POST['select-visibility']),
 					'tags' => strip_tags($_POST['input-tags'])
@@ -127,15 +127,32 @@ function get_shares_list($args){
 		
 		if($args['ownerview']){
 			$status='';
+			$wellbody = 'Type: ';
 			
 			if($data[$i]['Status']==0){
 				$status='checked="checked"';
 			}
 			
+			if($data[i]['Type']==0){
+				$wellbody .= 'Offer';
+			}
+			else{
+				$wellbody .= 'Request';
+			}
+			$wellbody .= '<br>Visible for: ';
+			if($data[i]['Visibility']==0){
+				$wellbody .= 'Everybody';
+			}
+			else{
+				$wellbody .= $data[i]['visiblefor'];
+			}
+			$wellbody .= '<br>Location: ' . $data[i]['Location'];
+			
 			$result .= replace_macros(get_markup_template('share_min_owner.tpl','addon/sharingecon/'), array(
 				'$shareid' 		=> $data[$i]['ID'],
 				'$title' 		=> $data[$i]['Title'],
 				'$imagename'	=> $data[$i]['Imagename'],
+				'$wellbody'		=> $wellbody,
 				'$checked'		=> $status
 			));
 		}
@@ -230,7 +247,7 @@ function sharingecon_content(&$a) {
 				
 				$siteContent = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
 						'$title'		=> $share_data['Title'],
-						'$sharebody'	=> $share_data['LongDesc'],
+						'$sharebody'	=> $share_data['Description'],
 						'$shareid'		=> argv(2),
 						'$ratingavg'	=> 'Overall Average Rating: ' . $ratingavg . ' / 5',
 						'$ratinglatest'	=> 'Latest Ratings:<br>' . $ratinglatesttable
@@ -260,7 +277,7 @@ function sharingecon_content(&$a) {
 				$siteContent .= replace_macros(get_markup_template('edit_share.tpl','addon/sharingecon/'), array(
 					'$additional' => '<input type="hidden" name="shareid" value="'. argv(2) . '">',
 					'$titlevalue' => $data['Title'],
-					'$longdescvalue' => $data['Description']
+					'$descvalue' => $data['Description']
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 					'$filterhidden' => 'hidden'
