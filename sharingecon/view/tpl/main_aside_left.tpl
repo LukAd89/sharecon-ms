@@ -8,6 +8,8 @@
 			<a href="sharingecon/enquiries" class="btn btn-default">See enquiries</a>
 		</div>
 	</div>
+	<hr>
+	<label for="filter-location">Enter you Location</label>
 	<div class="widget {{$filterhidden}}">
 		<div class="input-group">
 			<input type="text" id="filter-location" name="filter-location" placeholder="Enter Adress" class="form-control" value="{{$curlocation}}">
@@ -15,7 +17,8 @@
 				<button type="button" class="btn btn-default" id="btn-set-location">Go</button>
 			</span>
 		</div>
-		<div class="btn-group">
+		<br>
+		<div class="btn-group btn-group-justified">
 			<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Order By <span class="fa fa-caret-down"></span></a>
 			<ul class="dropdown-menu" role="menu">
 				<li>
