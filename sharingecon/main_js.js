@@ -300,7 +300,7 @@ function setFavoritesFilter(seton){
 		newHref +=  "?filterfavs=0";
 	}
 	
-	newHref += "&filterfriends=" + $('#filter-friendsonly').is(':checked') ? 1 : 0;
+	newHref += "&filterfriends=" + ($('#filter-friendsonly').is(':checked')) ? 1 : 0;
 	
 	console.log(newHref);
 }
@@ -309,7 +309,7 @@ function setFriendsFilter(seton){
 	
 	var newHref = window.location.pathname;
 	
-	newHref += "?filterfavs=" + $('#filter-favssonly').is(':checked') ? 1 : 0;
+	newHref += "?filterfavs=" + $('#filter-favsonly').is(':checked') ? 1 : 0;
 	
 	newHref += "?filterfriends=" + (seton) ? 1 : 0;
 	
