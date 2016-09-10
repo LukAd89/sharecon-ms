@@ -285,8 +285,13 @@ function getDistance(shareid){
 }
 
 function orderBy(criteria){
-	if(criteria >= 0 && criteria <= 2)
-		location.href = window.location.pathname + "?orderby=" + criteria;
+	var newHref = window.location.pathname + "?orderby=" + criteria;
+	newHref += "?filterfavs=";
+	newHref += ($('#filter-favsonly').is(':checked')) ? "1" : "0";
+	newHref += "&filterfriends=";
+	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
+	
+	location.href = newHref;
 }
 
 function setFavoritesFilter(seton){
@@ -299,7 +304,7 @@ function setFavoritesFilter(seton){
 	newHref += "&filterfriends=";
 	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
 	
-	console.log(newHref);
+	location.href = newHref;
 }
 
 function setFriendsFilter(seton){
@@ -309,9 +314,9 @@ function setFriendsFilter(seton){
 	newHref += "?orderby=";
 	newHref += $('#currentorder').val();
 	newHref += "?filterfavs=";
-	newHref += ($('#filter-favsonly').is(':checked')) ? 1 : 0;
+	newHref += ($('#filter-favsonly').is(':checked')) ? "1" : "0";
 	newHref += "?filterfriends="
-	newHref +=  (seton) ? 1 : 0;
+	newHref +=  (seton) ? "1" : "0";
 	
-	console.log(newHref);
+	location.href = newHref;
 }

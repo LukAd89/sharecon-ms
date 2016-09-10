@@ -195,17 +195,21 @@ function load_Shares($args){
 	}
 	
 	$resArray = array();
-	$sql_query = "SELECT * FROM sharedObjects LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID";
+	$sql_query = "SELECT * FROM sharedObjects LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1";
+	
+	if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
+		$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
+	}
 	
 	if(isset($args['type'])){
 		if($args['type'] == 2){
-			$sql_query .= " WHERE (type = 0 OR type = 1)";
+			$sql_query .= " AND (type = 0 OR type = 1)";
 		}
 		else
-			$sql_query .= " WHERE type = '" . $args['type'] . "'";
+			$sql_query .= " AND type = '" . $args['type'] . "'";
 	}
 	else{
-		$sql_query .= " WHERE type = '0'";
+		$sql_query .= " AND type = '0'";
 	}
 	
 	if(isset($args['ownerid'])){
@@ -227,6 +231,7 @@ function load_Shares($args){
 				break;
 		}
 	}
+	Logger($sql_query);
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {

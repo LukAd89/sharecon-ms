@@ -141,7 +141,10 @@ function sharingecon_content(&$a) {
 			case 'findshares':
 				$pageContent = get_SharesList(array(
 					'type' => 0,
-					'orderby' => $_GET['orderby']
+					'channel' => App::$channel['channel_hash'],
+					'orderby' => $_GET['orderby'],
+					'filterfavs' => $_GET['filterfavs'],
+					'filterfriends' => $_GET['filterfriends']
 				));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab2' => 'active',
