@@ -301,6 +301,8 @@ function setFavoritesFilter(seton){
 	}
 	
 	newHref += "&filterfriends=" + $('#filter-friendsonly').is(':checked') ? 1 : 0;
+	
+	console.log(newHref);
 }
 
 function setFriendsFilter(seton){
@@ -310,4 +312,6 @@ function setFriendsFilter(seton){
 	newHref += "?filterfavs=" + $('#filter-favssonly').is(':checked') ? 1 : 0;
 	
 	newHref += "?filterfriends=" + (seton) ? 1 : 0;
+	
+	console.log(newHref);
 }
