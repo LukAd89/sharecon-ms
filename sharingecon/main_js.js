@@ -283,3 +283,24 @@ function getDistance(shareid){
 		}
 	});
 }
+
+function orderBy(criteria){
+	$.ajax({
+		type : "POST",
+		url : "sharingecon",
+		data : {"action" : "get-ordered-shares",
+			"orderby" : criteria
+		},
+		success : function(msg){
+			console.log("ordered");
+		}
+	});
+}
+
+function setFavoritesFilter(seton){
+	
+}
+
+function setFriendsFilter(seton){
+	
+}

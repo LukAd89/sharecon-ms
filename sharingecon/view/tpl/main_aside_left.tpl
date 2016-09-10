@@ -9,8 +9,8 @@
 		</div>
 	</div>
 	<hr>
-	<label for="filter-location">Enter you Location</label>
 	<div class="widget {{$filterhidden}}">
+		<label for="filter-location">Enter you Location</label>
 		<div class="input-group">
 			<input type="text" id="filter-location" name="filter-location" placeholder="Enter Adress" class="form-control" value="{{$curlocation}}">
 			<span class="input-group-btn">
@@ -22,13 +22,13 @@
 			<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Order By <span class="fa fa-caret-down"></span></a>
 			<ul class="dropdown-menu" role="menu">
 				<li>
-					<a href="javascript:void(0);">Name</a>
+					<a href="javascript:orderBy(0);">Name</a>
 				</li>
 				<li>
-					<a href="javascript:void(0);">Distance</a>
+					<a href="javascript:orderBy(1);">Distance</a>
 				</li>
 				<li>
-					<a href="javascript:void(0);">Rating</a>
+					<a href="javascript:orderBy(2);">Rating</a>
 				</li>
 			</ul>
 		</div>
