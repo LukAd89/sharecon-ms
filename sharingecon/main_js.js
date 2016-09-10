@@ -290,7 +290,7 @@ function orderBy(criteria){
 }
 
 function setFavoritesFilter(seton){
-	
+	console.log(seton);
 }
 
 function setFriendsFilter(seton){
