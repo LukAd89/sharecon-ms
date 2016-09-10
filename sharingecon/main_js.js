@@ -286,7 +286,7 @@ function getDistance(shareid){
 
 function orderBy(criteria){
 	var newHref = window.location.pathname + "?orderby=" + criteria;
-	newHref += "?filterfavs=";
+	newHref += "&filterfavs=";
 	newHref += ($('#filter-favsonly').is(':checked')) ? "1" : "0";
 	newHref += "&filterfriends=";
 	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
@@ -313,9 +313,9 @@ function setFriendsFilter(seton){
 	
 	newHref += "?orderby=";
 	newHref += $('#currentorder').val();
-	newHref += "?filterfavs=";
+	newHref += "&filterfavs=";
 	newHref += ($('#filter-favsonly').is(':checked')) ? "1" : "0";
-	newHref += "?filterfriends="
+	newHref += "&filterfriends="
 	newHref +=  (seton) ? "1" : "0";
 	
 	location.href = newHref;
