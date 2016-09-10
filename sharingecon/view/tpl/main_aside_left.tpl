@@ -19,7 +19,7 @@
 		</div>
 		<br>
 		<div class="btn-group btn-group-justified">
-			<input type="hidden" value="{{$currentorder}}" id="currentorder">
+			<input type="hidden" value="{{$curorderby}}" id="currentorder">
 			<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Order By <span class="fa fa-caret-down"></span></a>
 			<ul class="dropdown-menu" role="menu">
 				<li>
