@@ -225,8 +225,13 @@ function sharingecon_content(&$a) {
 					'$tab2' => 'active',
 					'$pagecontent' => $pageContent
 				));
+				$channellocation = get_Location(App::$channel['channel_hash']);
+				if($channellocation == -1){
+					$channellocation = 'Set your own location';
+				}
+				
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
-					'$curlocation' => get_Location(App::$channel['channel_hash'])
+					'$curlocation' => $channellocation
 				));
 				break;
 				
