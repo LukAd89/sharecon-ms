@@ -106,7 +106,6 @@ function sharingecon_module() {}
 
 function get_shares_list($args){
 	$data = load_Shares($args);
-	Logger(var_dump($data[0]));
 	$maxResPerPage = 1;
 	$display = 'block';
 	
@@ -133,21 +132,20 @@ function get_shares_list($args){
 				$status='checked="checked"';
 			}
 			
-			if($data[i]['Type']==0){
+			if($data[$i]['Type']==0){
 				$wellbody .= 'Offer';
 			}
 			else{
 				$wellbody .= 'Request';
 			}
 			$wellbody .= '<br>Visible for: ';
-			if($data[i]['Visibility']==0){
+			if($data[$i]['Visibility']==0){
 				$wellbody .= 'Everybody';
 			}
 			else{
-				$wellbody .= $data[i]['visiblefor'];
+				$wellbody .= $data[$i]['visiblefor'];
 			}
-			Logger('Location:' . $data[i]['Location']);
-			$wellbody .= '<br>Location: ' . $data[i]['Location'];
+			$wellbody .= '<br>Location: ' . $data[$i]['Location'];
 			
 			$result .= replace_macros(get_markup_template('share_min_owner.tpl','addon/sharingecon/'), array(
 				'$shareid' 		=> $data[$i]['ID'],
