@@ -184,7 +184,7 @@ function load_Shares($args){
 	}
 	
 	$resArray = array();
-	$sql_query = "SELECT * FROM sharedObjects";
+	$sql_query = "SELECT * FROM sharedObjects LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID";
 	
 	if(isset($args['type'])){
 		if($args['type'] == 2){
@@ -199,6 +199,20 @@ function load_Shares($args){
 	
 	if(isset($args['ownerid'])){
 		$sql_query .= " AND OwnerID = '" . $args['ownerid'] . "'";
+	}
+	
+	if(isset($args['orderby'])){
+		switch($args['orderby']){
+			case 0:
+				$sql_query .= ' ORDER BY title';
+				break;
+			case 1:
+				$sql_query .= ' ORDER BY avgrating';
+				break;
+			case 2:
+				$sql_query .= ' ORDER BY title';
+				break;
+		}
 	}
 	
 	if($result = $conn->query($sql_query)){
