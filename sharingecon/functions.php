@@ -39,7 +39,7 @@ function get_SharesList($args){
 	//ORDER BY DISTANCE IF WANTED
 	if(isset($args['orderby']) && $args['orderby'] == 2){
 		usort($data, function($a, $b){
-			return ($a['distance'] < $b['distance']) ? -1 : 1;
+			return (filter_var($a['distance'], FILTER_SANITIZE_NUMBER_FLOAT) < filter_var($b['distance'], FILTER_SANITIZE_NUMBER_FLOAT)) ? -1 : 1;
 		});
 	}
 	
