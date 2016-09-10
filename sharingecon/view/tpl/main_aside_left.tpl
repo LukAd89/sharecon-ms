@@ -9,10 +9,11 @@
 		</div>
 	</div>
 	<div class="widget {{$filterhidden}}">
-		<div class="form-group-vertical">
-			<label for="filter-location">Set your own Location</label>
+		<div class="input-group">
 			<input type="text" id="filter-location" name="filter-location" placeholder="Enter Adress" class="form-control" value="{{$curlocation}}">
-			<button type="button" class="btn" id="btn-set-location">Go</button>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default" id="btn-set-location">Go</button>
+			</span>
 		</div>
 		<div class="btn-group">
 			<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Order By <span class="fa fa-caret-down"></span></a>
