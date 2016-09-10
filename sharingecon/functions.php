@@ -216,6 +216,10 @@ function load_Shares($args){
 		$sql_query .= " AND OwnerID = '" . $args['ownerid'] . "'";
 	}
 	
+	if(isset($args['channel'])){
+		$sql_query .= " AND OwnerID <> '" . $args['channel'] . "'";
+	}
+	
 	if(isset($args['orderby'])){
 		switch($args['orderby']){
 			case 0:
