@@ -8,11 +8,8 @@
 				<img class="media-object thumbnail share-thumbnail" src="addon/sharingecon/uploads/images/{{$imagename}}" alt="...">
 			</div>
 			<div class="media-body">
-				<div class="well">{{$shortdesc}}</div>
+				<div class="well">{{$wellbody}}</div>
 			</div>
-		</div>
-		<div>
-			{{$distance}}
 		</div>
 	</div>
 	<div class="panel-footer">
