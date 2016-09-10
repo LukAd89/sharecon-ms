@@ -146,6 +146,7 @@ function get_shares_list($args){
 			else{
 				$wellbody .= $data[i]['visiblefor'];
 			}
+			Logger('Location:' . $data[i]['Location']);
 			$wellbody .= '<br>Location: ' . $data[i]['Location'];
 			
 			$result .= replace_macros(get_markup_template('share_min_owner.tpl','addon/sharingecon/'), array(
