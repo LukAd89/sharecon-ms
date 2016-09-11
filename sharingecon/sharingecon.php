@@ -142,7 +142,7 @@ function sharingecon_content(&$a) {
 			case 'findshares':
 				$pageContent = get_SharesList(array(
 					'type' => 0,
-					'channel' => local_channel,
+					'channel' => local_channel(),
 					'ownerview' => false,
 					'orderby' => $_GET['orderby'],
 					'filterfavs' => $_GET['filterfavs'],
