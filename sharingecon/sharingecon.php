@@ -133,6 +133,10 @@ function sharingecon_module() {}
 	return $content;
 }*/
 
+function sharingecon_plugin_admin_post(&$a){
+	Logger($_POST['action']);
+}
+
 function sharingecon_plugin_admin(&$a, &$o){
 	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/admin_js.js"></script>'."\r\n";
 	$tagTree = get_TagTree();

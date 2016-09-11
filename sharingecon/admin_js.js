@@ -45,7 +45,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type : "POST",
-			url : "sharingecon",
+			url : "admin/plugins/sharingecon",
 			data : {action : "edit-tag-branch",
 				"branch" : branch,
 				"parent" : parent,
