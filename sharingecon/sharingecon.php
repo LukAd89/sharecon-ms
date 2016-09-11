@@ -153,6 +153,13 @@ function sharingecon_plugin_admin(&$a, &$o){
 
 function sharingecon_content(&$a) {
 	Logger('CONTENT');
+	if(isset($_POST)){
+		Logger('CONTENT 2');
+		header("Location: " . $_SERVER['REQUEST_URI']);
+		exit();
+	}
+	Logger('CONTENT 3');
+		
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
