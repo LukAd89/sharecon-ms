@@ -5,6 +5,6 @@ $(document).ready(function(){
 });
 
 function addNewBranch(parentid){
-	$("#new-branch-dialog").dialog("open");
+	$("#new-branch-modal").modal("open");
 	console.log(parentid);
 }
