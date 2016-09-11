@@ -46,6 +46,8 @@ function get_SharesList($args){
 		});
 	}
 	
+	$favorites = get_ChannelFavorites($args['channel']);
+	var_dump($favorites);
 	for($i=0; $i<count($data); $i++){
 		if($i == $maxResPerPage)
 			$display = 'none';
@@ -86,8 +88,6 @@ function get_SharesList($args){
 				));
 			}
 			else{
-				$favorites = get_ChannelFavorites($args['channel']);
-				var_dump($favorites);
 				$wellbody = 'Rating: ' . get_AvgRating($data[$i]['ID']) . '<br>Distance: ';
 				if($distances == -1){
 					$wellbody .= 'You have to set your own location';
