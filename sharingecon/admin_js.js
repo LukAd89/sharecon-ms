@@ -4,9 +4,8 @@ $(document).ready(function(){
 		$('#input-branch-id').val(branchid);
 	});
 	
-	$('edit-branch-modal').on('show.bs.modal', function (e) {
+	$('#edit-branch-modal').on('show.bs.modal', function (e) {
 		var branchid = $(e.relatedTarget).data('branchid');
-		console.log(branchid);
 		$('#input-branch-id').val(branchid);
 		$('#input-parent').val($('#tr_' + branchid + ' .td_parent'));
 		$('#input-title').val($('#tr_' + branchid + ' .td_title'));
