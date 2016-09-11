@@ -352,7 +352,7 @@ function toggle_Favorite($objectid, $state){
 	else{
 		$sql_query = 'DELETE FROM favorites WHERE ChannelID = ' . local_channel() . ' AND ObjectID = ' . $objectid;
 	}
-	
+	Logger($sql_query);
 	if ($conn->query($sql_query) === TRUE) {
 		return "Query successfull";
 	} else {
