@@ -208,7 +208,7 @@ function load_Shares($args){
 	}
 	
 	else{
-		$sql_query = "SELECT * FROM sharedObjects LEFT JOIN visibilityRange ON sharedObjects.ID = visibilityRange.ObjectID LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1";
+		$sql_query = "SELECT sharedObjects.*, visibilityRange.VisibleFor, T.avgrating FROM sharedObjects LEFT JOIN visibilityRange ON sharedObjects.ID = visibilityRange.ObjectID LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1";
 		
 		if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
 			//$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
