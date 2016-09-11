@@ -34,10 +34,9 @@
 					<label for="input-tags" class="control-label">Tags</label>
 					<input id="input-tags" name="input-tags" type="text" class="form-control">
 				</div>
-				<button type="button" class="btn btn-primary" id="add-branch-submit">Submit</button>
 			</div>
 			<div class="modal-footer">
-	        	<button type="button" class="btn btn-primary">Submit</button>
+	        	<button type="button" class="btn btn-primary" id="new-branch-submit">Submit</button>
 	      	</div>
 		</div>
 	</div>
@@ -64,10 +63,9 @@
 					<label for="input-tags" class="control-label">Tags</label>
 					<input id="input-tags" name="input-tags" type="text" class="form-control">
 				</div>
-				<button type="button" class="btn btn-primary" id="edit-branch-submit">Submit</button>
 			</div>
 			<div class="modal-footer">
-	        	<button type="button" class="btn btn-primary">Submit</button>
+	        	<button type="button" class="btn btn-primary" id="edit-branch-submit">Submit</button>
 	      	</div>
 		</div>
 	</div>
@@ -83,7 +81,6 @@
 			<div class="modal-body">
 				<input class="hidden" id="input-branch-id" name="input-branch-id">
 				Do You really want to delete this Branch?
-				<button type="button" class="btn btn-primary" id="delete-branch-submit">Submit</button>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
