@@ -305,7 +305,7 @@ function sharingecon_content(&$a) {
 		}
 	}
 	
-	/*else{
+	else{
 		$pageContent = get_SharesList(array(
 			'ownerid' => local_channel(),
 			'ownerview' => true,
@@ -320,7 +320,7 @@ function sharingecon_content(&$a) {
 		App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 			'$filterhidden' => 'hidden'
 		));
-	}*/
+	}
 	
 	return $siteContent;
 }
