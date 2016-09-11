@@ -30,7 +30,7 @@ function get_SharesList($args){
 	foreach($data as $dataval){
 		$shareids[] = $dataval['ID'];
 	}
-	$distances = get_MultipleDistances(App::$channel['channel_hash'], $shareids);
+	$distances = get_MultipleDistances(local_channel(), $shareids);
 	
 	for($i=0; $i<count($data); $i++){
 		$data[$i]['distance'] = $distances[$i];
@@ -199,10 +199,11 @@ function load_Shares($args){
 	}
 	
 	$resArray = array();
-	$sql_query = "SELECT * FROM sharedObjects LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1";
+	$sql_query = "	";
 	
 	if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
-		$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
+		//$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
+		$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT channel_id FROM ' . SERVER_HUB_DBNAME . '.channel RIGHT JOIN ' . SERVER_HUB_DBNAME . '.group_member ON channel_hash = xchan WHERE WHERE gid IN (SELECT DISTINCT id FROM ' . SERVER_HUB_DBNAME . '.groups WHERE uid = ' . $args['channel'] . '))';
 	}
 	
 	if(isset($args['type'])){
@@ -284,14 +285,30 @@ function get_ShareOwner($shareid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$resArray = array();
 	$sql_query = "SELECT OwnerID FROM sharedObjects WHERE ID=" . $shareid;
 	
 	if($result = $conn->query($sql_query)){
-		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-				$resArray[] = $row;
-		}
-	return $resArray[0]['OwnerID'];
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		return $row['OwnerID'];
+	}
+	else { return "";}
+
+	$conn->close();
+}
+
+function get_ChannelHash($channelid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_HUB_DBNAME);
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql_query = "SELECT channel_hash FROM channel WHERE channel_id=" . $channelid;
+
+	if($result = $conn->query($sql_query)){
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+
+		return $row['channel_id'];
 	}
 	else { return "";}
 
@@ -337,7 +354,7 @@ function delete_Share($id){
 
 function write_Message($subject, $body){
 	require_once('include/message.php');
-	$recipient = get_ShareOwner($_POST['input-message-shareid']);
+	$recipient = get_ChannelHash(get_ShareOwner($_POST['input-message-shareid']));
 	send_message(null, $recipient, $body, $subject);
 }
 
@@ -436,7 +453,7 @@ function add_Enquiry($id, $customerid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT * FROM enquiries WHERE ObjectID = ' . $id . ' AND CustomerID = "' . $customerid . '"';
+	$sql_query = 'SELECT * FROM enquiries WHERE ObjectID = ' . $id . ' AND CustomerID = ' . $customerid . '';
 	if($result = $conn->query($sql_query)){
 		if($result->num_rows > 0){
 			$conn->close();
@@ -444,7 +461,7 @@ function add_Enquiry($id, $customerid){
 		}
 	}
 	
-	$sql_query = 'INSERT INTO enquiries (ObjectID, CustomerID, Status) VALUES (' . $id . ', "' . $customerid . '", 0)';
+	$sql_query = 'INSERT INTO enquiries (ObjectID, CustomerID, Status) VALUES (' . $id . ', ' . $customerid . ', 0)';
 	$conn->query($sql_query);
 	
 	$conn->close();
@@ -457,7 +474,7 @@ function get_ChannelName($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT channel_name FROM channel WHERE channel_hash = "' . $channelid . '"';
+	$sql_query = 'SELECT channel_name FROM channel WHERE channel_id = "' . $channelid . '"';
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$conn->close();
@@ -536,7 +553,7 @@ function get_Location($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = "' . $channelid . '"';
+	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = ' . $channelid;
 
 	if($result = $conn->query($sql_query)){
 		if($result->num_rows > 0){
@@ -615,14 +632,18 @@ function get_MultipleDistances($customerid, $shareids){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
+	$sql_query = 'SELECT Location FROM sharedObjects WHERE id IN (';
 	foreach($shareids as $shareid){
-		$sql_query = 'SELECT Location FROM sharedObjects WHERE ID = ' . $shareid;
-
-		if($result = $conn->query($sql_query)){
-			$row = $result->fetch_array(MYSQLI_ASSOC);
-			$objectlocations[] = $row["Location"];
-		}
+		$sql_query .= $shareid . ',';
 	}
+	$sql_query = substr($sql_query, 0, -1);
+	$sql_query .= ')';
+
+	if($result = $conn->query($sql_query)){
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$objectlocations[] = $row["Location"];
+	}
+	
 	$conn->close();
 	
 	$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . urlencode($customerlocation) . '&destinations=';
@@ -649,15 +670,20 @@ function get_MultipleDistances($customerid, $shareids){
 	return $distances;
 }
 
-function get_ChannelGroups($channelid){
+function get_ChannelGroups($channelid, $isowner){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_HUB_DBNAME);
 	
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = 'SELECT group_member.gid, groups.gname FROM group_member, groups WHERE group_member.xchan = "' . $channelid . '" AND group_member.gid = groups.id';
-	
+	//$sql_query = 'SELECT group_member.gid, groups.gname FROM group_member, groups WHERE group_member.xchan = "' . $channelid . '" AND group_member.gid = groups.id';
+	if($isowner){
+		$sql_query = 'SELECT id, gname FROM groups WHERE uid = ' . $channelid;
+	}
+	else{
+		$sql_query = 'SELECT group_member.gid, groups.gname FROM groups LEFT JOIN group_member ON groups.id = group_member.gid LEFT JOIN channel ON group_member.xchan = channel.channel_hash WHERE channel.channel_id = ' . $channelid;
+	}
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
@@ -670,7 +696,7 @@ function get_ChannelGroups($channelid){
 }
 
 function is_ChannelMemberOfGroup($channelid, $groupids){
-	$channelgroups = get_ChannelGroups($channelid);
+	$channelgroups = get_ChannelGroups($channelid, false);
 	
 	foreach($channelgroups as $group){
 		if(in_array($group['gid'], $groupids))

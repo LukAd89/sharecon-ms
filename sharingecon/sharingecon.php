@@ -22,7 +22,7 @@ function sharingecon_post(&$a){
 					$filename = 'default.jpg';
 				
 				$data = array(
-					'owner' => App::$channel['channel_hash'],
+					'owner' => local_channel(),
 					'type' => $_POST['select-type'],
 					'title' => strip_tags($_POST['input-title']),
 					'description' => strip_tags($_POST['text-description']),
@@ -72,7 +72,7 @@ function sharingecon_post(&$a){
 				break;
 			
 			case 'add-enquiry':
-				add_Enquiry($_POST['id'], App::$channel['channel_hash']);
+				add_Enquiry($_POST['id'], local_channel());
 				break;
 				
 			case 'set-rating':
@@ -80,11 +80,11 @@ function sharingecon_post(&$a){
 				break;
 				
 			case 'set-location':
-				set_Location(App::$channel['channel_hash'], $_POST['adress']);
+				set_Location(local_channel(), $_POST['adress']);
 				break;
 				
 			case 'get-distance':
-				echo get_Distance(App::$channel['channel_hash'], $_POST['shareid']);
+				echo get_Distance(local_channel(), $_POST['shareid']);
 				break;
 		}
 		//header("Location: " . $_SERVER['REQUEST_URI']);
