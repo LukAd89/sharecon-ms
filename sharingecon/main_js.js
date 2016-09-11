@@ -146,6 +146,7 @@ function toggleFav(id, newstate){
 			"state" : newstate
 		},
 		success : function(msg){
+			$('#fav-toggle-button-' + id).css("background-color", "lightgreen");
 			//location.reload();
 		}
 	});

@@ -16,9 +16,9 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="btn-group">
-					<input type="checkbox" onchange="toggleFav({{$shareid}}, (this.checked ? 0 : 1))" {{$checked}} value="1" id="fav-toggle-{{$shareid}}" name="fav-toggle-{{$shareid}}">
+					<input type="checkbox" class="hidden" onchange="toggleFav({{$shareid}}, (this.checked ? 1 : 0))" value="1" id="fav-toggle-{{$shareid}}" name="fav-toggle-{{$shareid}}">
 						<label for="fav-toggle-{{$shareid}}">
-							<span class="btn btn-default glyphicon glyphicon-star{{$favstar}}"></span>
+							<span id="fav-toogle-btn-{{$shareid}}" class="btn btn-default glyphicon glyphicon-star{{$favstar}} {{$checked}}">Favorite</span>
 						</label>
 					
 					<a href="sharingecon/viewshare/{{$shareid}}" type="button" class="btn btn-default pull-right">
