@@ -125,7 +125,8 @@ function sharingecon_content(&$a) {
 		switch(argv(1)){
 			case 'myshares':
 				$pageContent = get_SharesList(array(
-					'ownerid' => App::$channel['channel_hash'],
+					//'ownerid' => App::$channel['channel_hash'],
+					'ownerid' => local_channel(),
 					'ownerview' => true,
 					'type' => 2
 					));
@@ -141,7 +142,7 @@ function sharingecon_content(&$a) {
 			case 'findshares':
 				$pageContent = get_SharesList(array(
 					'type' => 0,
-					'channel' => App::$channel['channel_hash'],
+					'channel' => local_channel,
 					'ownerview' => false,
 					'orderby' => $_GET['orderby'],
 					'filterfavs' => $_GET['filterfavs'],
@@ -151,7 +152,7 @@ function sharingecon_content(&$a) {
 					'$tab2' => 'active',
 					'$pagecontent' => $pageContent
 				));
-				$channellocation = get_Location(App::$channel['channel_hash']);
+				$channellocation = get_Location(local_channel());
 				if($channellocation == -1){
 					$channellocation = '';
 				}
@@ -199,7 +200,7 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'newshare':
-				$channelgroups = get_ChannelGroups(App::$channel['channel_hash']);
+				$channelgroups = get_ChannelGroups(local_channel());
 				
 				foreach($channelgroups as $item){
 					$groupselector .= '<option value="'. $item["gid"] .'">' . $item["gname"] . '</option>';
@@ -275,7 +276,7 @@ function sharingecon_content(&$a) {
 	
 	else{
 		$pageContent = get_SharesList(array(
-			'ownerid' => App::$channel['channel_hash'],
+			'ownerid' => local_channel(),
 			'ownerview' => true,
 			'type' => 2
 			));
