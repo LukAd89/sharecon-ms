@@ -128,7 +128,9 @@ function sharingecon_module() {}
 }*/
 
 function sharingecon_plugin_admin(&$a, &$o){
-	$o .= '<div>HALLO</div><div>' . $a . '</div>';
+	$o .= replace_macros(get_markup_template('admin_settings.tpl','addon/sharingecon/'), array(
+		'$tablebody' => '<tr><td>2</td><td>1</td><td>Tools</td><td>Hammer, Screwdriver</td>'
+	));
 }
 
 function sharingecon_content(&$a) {
