@@ -90,6 +90,10 @@ function sharingecon_post(&$a){
 			case 'get-distance':
 				echo get_Distance(local_channel(), $_POST['shareid']);
 				break;
+				
+			case 'edit-tag-branch':
+				edit_TagTreeBranch($_POST['branch'], $_POST['parent'], $_POST['title'], $_POST['tags']);
+				break;
 		}
 		//header("Location: " . $_SERVER['REQUEST_URI']);
 		exit();

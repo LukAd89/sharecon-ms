@@ -789,7 +789,7 @@ function get_TagTree(){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = 'SELECT tagTree.*, GROUP_CONCAT(tags.Tag) AS Tags FROM tagTree LEFT JOIN tags ON tagTree.ID = tags.TagTreeID GROUP BY ID';
+	$sql_query = 'SELECT tagTree.*, GROUP_CONCAT(tags.Tag) AS Tags FROM tagTree LEFT JOIN tags ON tagTree.ID = tags.BranchID GROUP BY ID';
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$resArray[] = $row;
@@ -799,5 +799,40 @@ function get_TagTree(){
 	}
 	$conn->close();
 	return null;
+}
+
+function add_TagTreeBranch($parent, $title, $tags){
+	
+}
+
+function edit_TagTreeBranch($branchid, $parent, $title, $tags){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	if($parent == '') $parent = 'NULL';
+	
+	$sql_query = 'UPDATE tagTree SET Parent = ' . $parent . ', Title = "' . $title . '" WHERE ID = ' . $branchid;
+	//$conn->query($sql_query);
+	Logger($sql_query);
+	
+	$sql_query = 'DELETE FROM tags WHERE BranchID = ' . $branchid;
+	//$conn->query($sql_query);
+	Logger($sql_query);
+	
+	$newtags = explode(',', $tags);
+	$sql_query = 'INSERT INTO tags (BranchID, Tag) VALUES ';
+	foreach($newtags as $newtag){
+		$sql_query .= '(' . $branchid . ',' . $newtag . '),';
+	}
+	$sql_query = substr($sql_query, 0, -1);
+	//$conn->query($sql_query);
+	Logger($sql_query);
+}
+
+function delete_TagTreeBranch($branchid){
+	
 }
 ?>
