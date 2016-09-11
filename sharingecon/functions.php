@@ -246,7 +246,7 @@ function load_Shares($args){
 				break;
 		}
 	}
-	
+	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
