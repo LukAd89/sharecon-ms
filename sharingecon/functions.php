@@ -220,7 +220,7 @@ function load_Shares($args){
 			$sql_query .= ' AND sharedObjects.OwnerID IN ( SELECT DISTINCT channel_id FROM ' . SERVER_HUB_DBNAME . '.channel RIGHT JOIN ' . SERVER_HUB_DBNAME . '.group_member ON channel_hash = xchan WHERE gid IN (SELECT DISTINCT id FROM ' . SERVER_HUB_DBNAME . '.groups WHERE uid = ' . $args['channel'] . '))';
 		}
 		
-		if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
+		if(isset($args['filterfavs']) && $args['filterfavs'] == 1){
 			$sql_query .= ' AND sharedObjects.ID IN (' . implode(',', get_ChannelFavorites($args['channel'])) . ')';
 		}
 		
