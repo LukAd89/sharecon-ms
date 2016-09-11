@@ -93,7 +93,7 @@ function sharingecon_post(&$a){
 				break;
 				
 			case 'edit-tag-branch':
-				//edit_TagTreeBranch($_POST['branch'], $_POST['parent'], $_POST['title'], $_POST['tags']);
+				edit_TagTreeBranch($_POST['branch'], $_POST['parent'], $_POST['title'], $_POST['tags']);
 				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 				break;
@@ -133,10 +133,6 @@ function sharingecon_module() {}
 	
 	return $content;
 }*/
-function sharingecon_plugin_admin_post(&$a){
-	header('Location:http://www.google.de');
-	exit();
-}
 
 function sharingecon_plugin_admin(&$a, &$o){
 	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/admin_js.js"></script>'."\r\n";
