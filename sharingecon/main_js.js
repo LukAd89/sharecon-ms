@@ -137,6 +137,7 @@ function toggleShare(id, newstate){
 }
 
 function toggleFav(id, newstate){
+	console.log("" + id + newstate);
 	$.ajax({
 		type : "POST",
 		url : "sharingecon",
