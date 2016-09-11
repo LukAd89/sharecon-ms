@@ -637,12 +637,13 @@ function get_MultipleDistances($customerid, $shareids){
 	
 	$sql_query = 'SELECT Location FROM sharedObjects WHERE id IN (';
 	foreach($shareids as $shareid){
-		Logger($shareid);
 		$sql_query .= $shareid . ',';
 	}
 	$sql_query = substr($sql_query, 0, -1);
 	$sql_query .= ')';
-
+	
+	Logger($sql_query);
+	
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$objectlocations[] = $row["Location"];
