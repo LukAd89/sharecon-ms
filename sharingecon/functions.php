@@ -22,6 +22,7 @@ if (isset($_POST['function'])) {
 
 function get_SharesList($args){
 	$data = load_Shares($args);
+	var_dump($data);
 	$maxResPerPage = 5;
 	$display = 'block';
 
@@ -245,7 +246,6 @@ function load_Shares($args){
 				break;
 		}
 	}
-	Logger($sql_query);
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
