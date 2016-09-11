@@ -815,12 +815,10 @@ function edit_TagTreeBranch($branchid, $parent, $title, $tags){
 	if($parent == '') $parent = 'NULL';
 	
 	$sql_query = 'UPDATE tagTree SET Parent = ' . $parent . ', Title = "' . $title . '" WHERE ID = ' . $branchid;
-	//$conn->query($sql_query);
-	Logger($sql_query);
+	$conn->query($sql_query);
 	
 	$sql_query = 'DELETE FROM tags WHERE BranchID = ' . $branchid;
-	//$conn->query($sql_query);
-	Logger($sql_query);
+	$conn->query($sql_query);
 	
 	$newtags = explode(',', $tags);
 	$sql_query = 'INSERT INTO tags (BranchID, Tag) VALUES ';
@@ -828,8 +826,7 @@ function edit_TagTreeBranch($branchid, $parent, $title, $tags){
 		$sql_query .= '(' . $branchid . ',' . $newtag . '),';
 	}
 	$sql_query = substr($sql_query, 0, -1);
-	//$conn->query($sql_query);
-	Logger($sql_query);
+	$conn->query($sql_query);
 }
 
 function delete_TagTreeBranch($branchid){
