@@ -92,7 +92,7 @@ function sharingecon_post(&$a){
 				break;
 				
 			case 'edit-tag-branch':
-				edit_TagTreeBranch($_GET['branch'], $_GET['parent'], $_GET['title'], $_GET['tags']);
+				edit_TagTreeBranch($_POST['branch'], $_POST['parent'], $_POST['title'], $_POST['tags']);
 				break;
 		}
 		//header("Location: " . $_SERVER['REQUEST_URI']);
