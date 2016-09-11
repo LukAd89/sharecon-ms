@@ -18,7 +18,7 @@
 				<div class="btn-group">
 					<input type="checkbox" class="hidden" onchange="toggleFav({{$shareid}}, (this.checked ? 1 : 0))" value="1" id="fav-toggle-{{$shareid}}" name="fav-toggle-{{$shareid}}">
 						<label for="fav-toggle-{{$shareid}}">
-							<span id="fav-toggle-btn-{{$shareid}}" class="btn btn-default glyphicon glyphicon-star{{$favstar}} {{$checked}}">Favorite</span>
+							<span id="fav-toggle-btn-{{$shareid}}" class="btn btn-default glyphicon glyphicon-star{{$favstar}}" {{$checked}}>Favorite</span>
 						</label>
 					
 					<a href="sharingecon/viewshare/{{$shareid}}" type="button" class="btn btn-default pull-right">

@@ -47,7 +47,7 @@ function get_SharesList($args){
 	}
 	
 	$favorites = get_ChannelFavorites($args['channel']);
-	var_dump($favorites);
+	
 	for($i=0; $i<count($data); $i++){
 		if($i == $maxResPerPage)
 			$display = 'none';
@@ -356,7 +356,7 @@ function toggle_Favorite($objectid, $state){
 	else{
 		$sql_query = 'DELETE FROM favorites WHERE ChannelID = ' . local_channel() . ' AND ObjectID = ' . $objectid;
 	}
-	Logger($sql_query);
+	
 	if ($conn->query($sql_query) === TRUE) {
 		return "Query successfull";
 	} else {
