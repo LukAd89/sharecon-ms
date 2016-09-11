@@ -206,7 +206,7 @@ function load_Shares($args){
 	}
 	
 	else{
-		$sql_query = "SELECT * FROM sharedObjects LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1";
+		$sql_query = "SELECT * FROM sharedObjects LEFT JOIN visibilityRange ON sharedObjects.ID = visibilityRange.ObjectID LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1";
 		
 		if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
 			//$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
@@ -228,7 +228,7 @@ function load_Shares($args){
 			$sql_query .= " AND OwnerID <> '" . $args['channel'] . "'";
 		}
 	
-		$sql_query .= 'AND (visibility = 0 OR visibility = 1 AND "' . $args['channel'] . '" IN (SELECT DISTINCT xchan from ' . SERVER_HUB_DBNAME . '.group_member WHERE gid IN (VisibleFor)))';
+		$sql_query .= 'AND (visibility = 0 OR visibility = 1 AND VisibleFor IN (SELECT DISTINCT gid from ' . SERVER_HUB_DBNAME . '.group_member LEFT JOIN ' . SERVER_HUB_DBNAME . '.channel ON ' . SERVER_HUB_DBNAME . '.group_member.xchan = ' . SERVER_HUB_DBNAME . '.channel.channel_hash WHERE ' . SERVER_HUB_DBNAME . '.channel.channel_id=' . $args['channel'] .'))';
 	}
 	
 	if(isset($args['orderby'])){
