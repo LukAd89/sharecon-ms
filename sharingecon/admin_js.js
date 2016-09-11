@@ -44,7 +44,7 @@ $(document).ready(function(){
 		$("#edit-branch-modal").modal('hide');
 		
 		$.ajax({
-			type : "POST",
+			type : "GET",
 			url : "sharingecon",
 			data : {action : "edit-tag-branch",
 				"branch" : branch,
