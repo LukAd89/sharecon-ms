@@ -95,13 +95,15 @@ function get_SharesList($args){
 				else{
 					$wellbody .= ($data[$i]['distance'] / 1000) . ' km';
 				}
+				$isfavorite = in_array($data[$i]['ID'], $favorites);
 				$result .= replace_macros(get_markup_template('share_min.tpl','addon/sharingecon/'), array(
 						'$display'		=> $display,
 						'$shareid' 		=> $data[$i]['ID'],
 						'$title' 		=> $data[$i]['Title'],
 						'$imagename'	=> $data[$i]['Imagename'],
 						'$wellbody'		=> $wellbody,
-						'$checked'		=> (in_array($data[$i]['ID'], $favorites)) ? 'style="background-color:lightgreen;"' : ''
+						'$checked'		=> ($isfavorite) ? 'checked="checked"' : '',
+						'$favstyle'		=> ($isfavorite) ? 'style="background-color:lightgreen;"' : ''
 				));
 			}
 	}
