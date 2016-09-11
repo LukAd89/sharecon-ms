@@ -22,14 +22,13 @@ if (isset($_POST['function'])) {
 
 function get_SharesList($args){
 	$data = load_Shares($args);
-	var_dump($data);
+	
 	$maxResPerPage = 5;
 	$display = 'block';
 
 	$result = "";
 
 	foreach($data as $dataval){
-		Logger($dataval['ID']);
 		$shareids[] = $dataval['ID'];
 	}
 	
@@ -136,7 +135,7 @@ function add_NewShare($data){
 		$sql_query .= '(' . $conn->insert_id . ', ' . $group . '),';
 	}
 	$sql_query = substr($sql_query, 0, -1);
-	Logger($sql_query);
+	
 	$conn->query($sql_query);
 	
 	//OLD. TAGS ARE NOW IN SHAREDOBJECTS TABLE
@@ -644,7 +643,7 @@ function get_MultipleDistances($customerid, $shareids){
 	}
 	$sql_query = substr($sql_query, 0, -1);
 	$sql_query .= ')';
-	Logger($sql_query);
+	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC))
 			$objectlocations[] = $row["Location"];
