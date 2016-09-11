@@ -132,7 +132,7 @@ function sharingecon_plugin_admin(&$a, &$o){
 	$tagTree = get_TagTree();
 	
 	foreach($tagTree as $row){
-		$tagTreeString .= '<tr><td>' . $row['ID'] . '</td><td>' . $row['Parent'] . '</td><td>' . $row['Title'] . '</td><td>' . $row['Tags'] . '</td>';
+		$tagTreeString .= '<tr id="tr_' . $row['ID'] . '"><td>' . $row['ID'] . '</td><td class="td_parent">' . $row['Parent'] . '</td><td class="td_title">' . $row['Title'] . '</td><td class="td_tags">' . $row['Tags'] . '</td>';
 		
 		$tagTreeString .= '<td><button type="button" title="Add Branch" class="btn btn-default btn-xs" data-toggle="modal" data-target="#new-branch-modal" data-branchid="' . $row['ID'] . '"><span class="glyphicon glyphicon-plus"></span></button>
 				<button type="button" title="Edit Tags" class="btn btn-default btn-xs" data-toggle="modal" data-target="#edit-branch-modal" data-branchid="' . $row['ID'] . '"><span class="glyphicon glyphicon-pencil"</span></button>
