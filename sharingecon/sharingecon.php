@@ -123,6 +123,10 @@ function sharingecon_module() {}
 	return $content;
 }*/
 
+function sharingecon_settings(&$a){
+	$s .= '<div>HALLO</div>';
+}
+
 function sharingecon_content(&$a) {
 
 	if(argc() > 1){
