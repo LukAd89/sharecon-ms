@@ -346,7 +346,7 @@ function toggle_Favorite($objectid, $state){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	if($sate == 1){
+	if($state == 1){
 		$sql_query = 'REPLACE INTO favorites (ChannelID, ObjectID) VALUES (' . local_channel() . ', ' . $objectid . ')';
 	}
 	else{
