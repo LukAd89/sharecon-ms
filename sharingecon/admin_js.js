@@ -37,7 +37,7 @@ $(document).ready(function(){
 	});
 	
 	$("#delete-branch-submit").click(function(){
-		var branch = $('#new-branch-modal #input-branch-id').text();
+		var branch = $('#new-branch-modal #input-branch-id').val();
 		console.log("Delete" + branch);
 		
 		$("#delete-branch-modal").modal('hide');
