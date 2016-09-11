@@ -781,4 +781,23 @@ function get_ChannelFavorites($channelid){
 	$conn->close();
 	return null;
 }
+
+function get_TagTree(){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql_query = 'SELECT tagTree.*, GROUP_CONCAT(tags.Tag) AS Tags FROM tagTree LEFT JOIN tags ON tagTree.ID = tags.TagTreeID GROUP BY ID';
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$resArray[] = $row;
+		}
+		$conn->close();
+		return $resArray;
+	}
+	$conn->close();
+	return null;
+}
 ?>

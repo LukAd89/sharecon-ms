@@ -128,8 +128,13 @@ function sharingecon_module() {}
 }*/
 
 function sharingecon_plugin_admin(&$a, &$o){
+	$tagTree = get_TagTree();
+	
+	foreach($tagTree as $row){
+		$tagTreeString .= '<tr><td>' . $row['ID'] . '</td><td>' . $row['Parent'] . '</td><td>' . $row['Title'] . '</td><td>' . $row['Tags'] . '</td></tr>';
+	}
 	$o .= replace_macros(get_markup_template('admin_settings.tpl','addon/sharingecon/'), array(
-		'$tablebody' => '<tr><td>2</td><td>1</td><td>Tools</td><td>Hammer, Screwdriver</td>'
+		'$tablebody' => $tagTreeString
 	));
 }
 
