@@ -357,7 +357,9 @@ function delete_Share($id){
 
 function write_Message($subject, $body){
 	require_once('include/message.php');
-	$recipient = get_ChannelHash(get_ShareOwner($_POST['input-message-shareid']));
+	$recipient = get_ShareOwner($_POST['input-message-shareid']);
+	Logger($recipient);
+	$recipient = get_ChannelHash($recipient);
 	Logger($recipient);
 	send_message(null, $recipient, $body, $subject);
 }
