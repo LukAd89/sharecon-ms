@@ -368,7 +368,7 @@ function load_Enquiries($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT enquiries.ID, Title, channel_name, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID AND sharedObjects.OwnerID = ' . $channelid . ' LEFT JOIN ' . SERVER_HUB_DBNAME . '.channel ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.channel.channel_id';
+	$sql_query = 'SELECT enquiries.ID, Title, channel_name, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.channel ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.channel.channel_id WHERE sharedObjects.OwnerID = ' . $channelid;
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
