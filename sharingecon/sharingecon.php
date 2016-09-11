@@ -12,8 +12,6 @@
 require_once('functions.php');
 
 function sharingecon_post(&$a){
-	header('Location:http://shareecomarketplace.uni-muenster.de/admin/plugins/sharingecon');
-	exit;
 	
 	if(isset($_POST['action'])){
 		
@@ -135,6 +133,10 @@ function sharingecon_module() {}
 	
 	return $content;
 }*/
+function sharingecon_plugin_admin_post(&$a){
+	header('Location:http://www.google.de');
+	exit();
+}
 
 function sharingecon_plugin_admin(&$a, &$o){
 	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/admin_js.js"></script>'."\r\n";
