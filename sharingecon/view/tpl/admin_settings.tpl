@@ -25,10 +25,15 @@
 				<h4 class="modal-title">Add New Branch</h4>
 			</div>
 			<div class="modal-body">
-				<label for="input-title">Title</label>
-				<input id="input-title" name="input-title" type="text">
-				<label for="input-tags">Tags</label>
-				<input id="input-tags" name="input-tags" type="text">
+				<input class="hidden" id="input-parent-branch" name="input-parent-branch">
+				<div class="form-group">
+					<label for="input-title" class="control-label">Title</label>
+					<input id="input-title" name="input-title" type="text" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="input-tags" class="control-label">Tags</label>
+					<input id="input-tags" name="input-tags" type="text" class="form-control">
+				</div>
 				<button type="button" class="btn btn-primary" id="add-branch-submit">Submit</button>
 			</div>
 			<div class="modal-footer">
