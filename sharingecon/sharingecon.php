@@ -326,5 +326,4 @@ function sharingecon_content(&$a) {
 	
 	return $siteContent;
 }
-
-
+?>
