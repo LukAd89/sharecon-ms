@@ -134,6 +134,7 @@ function add_NewShare($data){
 		$sql_query .= '(' . $conn->insert_id . ', ' . $group . '), ';
 	}
 	$sql_query = substr($sql_query, 0, -1);
+	Logger($sql_query);
 	$conn->query($sql_query);
 	
 	//OLD. TAGS ARE NOW IN SHAREDOBJECTS TABLE
