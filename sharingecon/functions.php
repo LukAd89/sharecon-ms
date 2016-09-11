@@ -28,6 +28,7 @@ function get_SharesList($args){
 	$result = "";
 
 	foreach($data as $dataval){
+		Logger($dataval['ID']);
 		$shareids[] = $dataval['ID'];
 	}
 	
