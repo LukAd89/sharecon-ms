@@ -131,7 +131,7 @@ function add_NewShare($data){
 	
 	$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES ';
 	foreach($data['groups'] as $group){
-		$sql_query .= '(' . $conn->insert_id . ', ' . $group . '), ';
+		$sql_query .= '(' . $conn->insert_id . ', ' . $group . '),';
 	}
 	$sql_query = substr($sql_query, 0, -1);
 	Logger($sql_query);
