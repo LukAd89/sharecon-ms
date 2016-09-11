@@ -128,12 +128,13 @@ function sharingecon_module() {}
 }*/
 
 function sharingecon_plugin_admin(&$a, &$o){
+	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/admin_js.js"></script>'."\r\n";
 	$tagTree = get_TagTree();
 	
 	foreach($tagTree as $row){
 		$tagTreeString .= '<tr><td>' . $row['ID'] . '</td><td>' . $row['Parent'] . '</td><td>' . $row['Title'] . '</td><td>' . $row['Tags'] . '</td>';
 		
-		$tagTreeString .= '<td><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus"</span></button><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"</span></button><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"</span></button></td></tr>';
+		$tagTreeString .= '<td><button type="button" title="Add Branch" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus"</span></button><button type="button" title="Edit Tags" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"</span></button><button type="button" title="Delete Branch" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"</span></button></td></tr>';
 	}
 	$o .= replace_macros(get_markup_template('admin_settings.tpl','addon/sharingecon/'), array(
 		'$tablebody' => $tagTreeString
