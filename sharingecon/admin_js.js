@@ -11,6 +11,11 @@ $(document).ready(function(){
 		$('#edit-branch-modal #input-title').val($('#tr_' + branchid + ' .td_title').text());
 		$('#edit-branch-modal #input-tags').val($('#tr_' + branchid + ' .td_tags').text());
 	});
+	
+	$('#delete-branch-modal').on('show.bs.modal', function (e) {
+		var branchid = $(e.relatedTarget).data('branchid');
+		$('#delete-branch-modal #input-branch-id').val(branchid);
+	});
 });
 
 function addNewBranch(parentid){
