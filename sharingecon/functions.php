@@ -199,33 +199,36 @@ function load_Shares($args){
 	}
 	
 	$resArray = array();
-	$sql_query = "SELECT * FROM sharedObjects LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1";
 	
-	if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
-		//$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
-		$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT channel_id FROM ' . SERVER_HUB_DBNAME . '.channel RIGHT JOIN ' . SERVER_HUB_DBNAME . '.group_member ON channel_hash = xchan WHERE WHERE gid IN (SELECT DISTINCT id FROM ' . SERVER_HUB_DBNAME . '.groups WHERE uid = ' . $args['channel'] . '))';
+	if(isset($args['ownerview']) && $args['ownerview'] == true){
+		$sql_query = 'SELECT * FROM sharedObjects WHERE OwnerID = ' . $args['ownerid'];
 	}
 	
-	if(isset($args['type'])){
-		if($args['type'] == 2){
-			$sql_query .= " AND (type = 0 OR type = 1)";
-		}
-		else
-			$sql_query .= " AND type = '" . $args['type'] . "'";
-	}
 	else{
-		$sql_query .= " AND type = '0'";
-	}
+		$sql_query = "SELECT * FROM sharedObjects LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1";
+		
+		if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
+			//$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
+			$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT channel_id FROM ' . SERVER_HUB_DBNAME . '.channel RIGHT JOIN ' . SERVER_HUB_DBNAME . '.group_member ON channel_hash = xchan WHERE WHERE gid IN (SELECT DISTINCT id FROM ' . SERVER_HUB_DBNAME . '.groups WHERE uid = ' . $args['channel'] . '))';
+		}
+		
+		if(isset($args['type'])){
+			if($args['type'] == 2){
+				$sql_query .= " AND (type = 0 OR type = 1)";
+			}
+			else
+				$sql_query .= " AND type = '" . $args['type'] . "'";
+		}
+		else{
+			$sql_query .= " AND type = '0'";
+		}
+		
+		if(isset($args['channel'])){
+			$sql_query .= " AND OwnerID <> '" . $args['channel'] . "'";
+		}
 	
-	if(isset($args['ownerid']) && isset($args['ownerview']) && $args['ownerview'] == true){
-		$sql_query .= " AND OwnerID = '" . $args['ownerid'] . "'";
+		$sql_query .= 'AND (visibility = 0 OR visibility = 1 AND "' . $args['channel'] . '" IN (SELECT DISTINCT xchan from ' . SERVER_HUB_DBNAME . '.group_member WHERE gid IN (VisibleFor)))';
 	}
-	
-	if(isset($args['ownerview']) && $args['ownerview']==false && isset($args['channel'])){
-		$sql_query .= " AND OwnerID <> '" . $args['channel'] . "'";
-	}
-	
-	$sql_query .= 'AND (visibility = 0 OR visibility = 1 AND "' . $args['channel'] . '" IN (SELECT DISTINCT xchan from ' . SERVER_HUB_DBNAME . '.group_member WHERE gid IN (VisibleFor)))';
 	
 	if(isset($args['orderby'])){
 		switch($args['orderby']){
