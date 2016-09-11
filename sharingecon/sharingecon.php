@@ -12,7 +12,7 @@
 require_once('functions.php');
 
 function sharingecon_post(&$a){
-	
+	Logger('POST');
 	if(isset($_POST['action'])){
 		
 		switch($_POST['action']){
@@ -135,6 +135,7 @@ function sharingecon_module() {}
 }*/
 
 function sharingecon_plugin_admin(&$a, &$o){
+	Logger('ADMIN');
 	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/admin_js.js"></script>'."\r\n";
 	$tagTree = get_TagTree();
 	
@@ -151,7 +152,7 @@ function sharingecon_plugin_admin(&$a, &$o){
 }
 
 function sharingecon_content(&$a) {
-
+	Logger('CONTENT');
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
