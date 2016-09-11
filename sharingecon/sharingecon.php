@@ -131,7 +131,7 @@ function sharingecon_plugin_admin_post(&$a){
 	switch($_POST['action']){
 		case 'edit-tag-branch':
 			edit_TagTreeBranch($_POST['branch'], $_POST['parent'], $_POST['title'], $_POST['tags']);
-			header("Location:/admin/plugins/sharingecon");
+			header("Location: " . $_SERVER['REQUEST_URI']);
 			exit();
 			break;
 	}
@@ -154,7 +154,6 @@ function sharingecon_plugin_admin(&$a, &$o){
 }
 
 function sharingecon_content(&$a) {
-	if(isset($_POST['action'])) exit();
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
