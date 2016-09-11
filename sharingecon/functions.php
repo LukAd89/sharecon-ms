@@ -30,7 +30,7 @@ function get_SharesList($args){
 	foreach($data as $dataval){
 		$shareids[] = $dataval['ID'];
 	}
-	var_dump($shareids);
+	
 	$distances = get_MultipleDistances(local_channel(), $shareids);
 	
 	for($i=0; $i<count($data); $i++){
@@ -637,6 +637,7 @@ function get_MultipleDistances($customerid, $shareids){
 	
 	$sql_query = 'SELECT Location FROM sharedObjects WHERE id IN (';
 	foreach($shareids as $shareid){
+		Logger($shareid);
 		$sql_query .= $shareid . ',';
 	}
 	$sql_query = substr($sql_query, 0, -1);
