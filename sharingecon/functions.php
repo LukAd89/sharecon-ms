@@ -22,7 +22,6 @@ if (isset($_POST['function'])) {
 
 function get_SharesList($args){
 	$data = load_Shares($args);
-	var_dump($data);
 	$maxResPerPage = 5;
 	$display = 'block';
 
@@ -31,6 +30,7 @@ function get_SharesList($args){
 	foreach($data as $dataval){
 		$shareids[] = $dataval['ID'];
 	}
+	var_dump($shareids);
 	$distances = get_MultipleDistances(local_channel(), $shareids);
 	
 	for($i=0; $i<count($data); $i++){
