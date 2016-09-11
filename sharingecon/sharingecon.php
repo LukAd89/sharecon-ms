@@ -200,7 +200,7 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'newshare':
-				$channelgroups = get_ChannelGroups(local_channel());
+				$channelgroups = get_ChannelGroups(local_channel(), true);
 				
 				foreach($channelgroups as $item){
 					$groupselector .= '<option value="'. $item["gid"] .'">' . $item["gname"] . '</option>';
