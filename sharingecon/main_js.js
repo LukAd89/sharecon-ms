@@ -137,7 +137,6 @@ function toggleShare(id, newstate){
 }
 
 function toggleFav(id, newstate){
-	console.log("" + id + newstate);
 	$.ajax({
 		type : "POST",
 		url : "sharingecon",
@@ -146,7 +145,10 @@ function toggleFav(id, newstate){
 			"state" : newstate
 		},
 		success : function(msg){
-			$('#fav-toggle-btn-' + id).css("background-color", "lightgreen");
+			if(newstate == 1)
+				$('#fav-toggle-btn-' + id).css("background-color", "lightgreen");
+			else
+				$('#fav-toggle-btn-' + id).css("background-color", "transparent");
 			//location.reload();
 		}
 	});

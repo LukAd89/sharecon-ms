@@ -86,6 +86,7 @@ function get_SharesList($args){
 				));
 			}
 			else{
+				$favorites = get_ChannelFavorites($args['channel']);
 				$wellbody = 'Rating: ' . get_AvgRating($data[$i]['ID']) . '<br>Distance: ';
 				if($distances == -1){
 					$wellbody .= 'You have to set your own location';
@@ -98,7 +99,8 @@ function get_SharesList($args){
 						'$shareid' 		=> $data[$i]['ID'],
 						'$title' 		=> $data[$i]['Title'],
 						'$imagename'	=> $data[$i]['Imagename'],
-						'$wellbody'		=> $wellbody
+						'$wellbody'		=> $wellbody,
+						'$checked'		=> (in_array($data[$i]['ID'], $favorites)) ? 'style="background-color:lightgreen;"' : ''
 				));
 			}
 	}
@@ -743,6 +745,25 @@ function is_ChannelAllowedToView($channelid, $shareid){
 	}
 	
 	$sql_query = 'SELECT Visibility, VisibleFor FROM sharedObjects WHERE ID = "' . $shareid . '"';
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$resArray[] = $row;
+		}
+		$conn->close();
+		return $resArray;
+	}
+	$conn->close();
+	return null;
+}
+
+function get_ChannelFavorites($channelid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'SELECT ObjectID FROM favorites WHERE channelID = ' . $channelid;
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$resArray[] = $row;
