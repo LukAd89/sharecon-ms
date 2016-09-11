@@ -18,25 +18,25 @@ $(document).ready(function(){
 	});
 	
 	$("#new-branch-submit").click(function(){
-		var parent = $('#new-branch-modal #input-branch-id').text();
-		var title = $('#new-branch-modal #input-title').text();
-		var tags = $('#new-branch-modal #input-tags').text();
+		var parent = $('#new-branch-modal #input-branch-id').val();
+		var title = $('#new-branch-modal #input-title').val();
+		var tags = $('#new-branch-modal #input-tags').val();
 		console.log("New: " + parent + "  :  " + title + "  :  " + tags);
 		
 		$("#new-branch-modal").modal('hide');
 	});
 	
 	$("#edit-branch-submit").click(function(){
-		var branch = $('#edit-branch-modal #input-branch-id').text();
-		var parent = $('#edit-branch-modal #input-parent').text();
-		var title = $('#edit-branch-modal #input-title').text();
-		var tags = $('#edit-branch-modal #input-tags').text();
+		var branch = $('#edit-branch-modal #input-branch-id').val();
+		var parent = $('#edit-branch-modal #input-parent').val();
+		var title = $('#edit-branch-modal #input-title').val();
+		var tags = $('#edit-branch-modal #input-tags').val();
 		console.log("Edit: " + branch + "  :  " + parent + "  :  " + title + "  :  " + tags);
 		
 		$("#edit-branch-modal").modal('hide');
 	});
 	
-	$("#new-branch-submit").click(function(){
+	$("#delete-branch-submit").click(function(){
 		var branch = $('#new-branch-modal #input-branch-id').text();
 		console.log("Delete" + branch);
 		
