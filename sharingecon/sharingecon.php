@@ -155,7 +155,7 @@ function sharingecon_content(&$a) {
 	Logger('CONTENT');
 	if(isset($_POST)){
 		Logger('CONTENT 2');
-		header("Location: " . $_SERVER['REQUEST_URI']);
+		header("Location:/admin/plugins/sharingecon");
 		exit();
 	}
 	Logger('CONTENT 3');
