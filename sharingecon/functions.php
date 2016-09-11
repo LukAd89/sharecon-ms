@@ -246,7 +246,7 @@ function load_Shares($args){
 				break;
 		}
 	}
-	Logger($sql_query);
+	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
@@ -358,6 +358,7 @@ function delete_Share($id){
 function write_Message($subject, $body){
 	require_once('include/message.php');
 	$recipient = get_ChannelHash(get_ShareOwner($_POST['input-message-shareid']));
+	Logger($recipient);
 	send_message(null, $recipient, $body, $subject);
 }
 
