@@ -12,7 +12,6 @@
 require_once('functions.php');
 
 function sharingecon_post(&$a){
-	Logger('POST');
 	if(isset($_POST['action'])){
 		
 		switch($_POST['action']){
@@ -151,7 +150,7 @@ function sharingecon_plugin_admin(&$a, &$o){
 }
 
 function sharingecon_content(&$a) {
-	if(isset($_POST)) exit();
+	if(isset($_POST['action'])) exit();
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
