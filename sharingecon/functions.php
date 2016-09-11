@@ -22,6 +22,7 @@ if (isset($_POST['function'])) {
 
 function get_SharesList($args){
 	$data = load_Shares($args);
+	var_dump($data);
 	$maxResPerPage = 5;
 	$display = 'block';
 
