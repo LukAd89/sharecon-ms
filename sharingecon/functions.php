@@ -121,11 +121,6 @@ function add_NewShare($data){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	foreach($data['groups'] as $group){
-		$groups .= $group . '|';
-	}
-	$groups = substr($groups, 0, -1);
-	
 	$sql_query = 'INSERT INTO sharedObjects (title, description, imagename, ownerid, type, visibility, location, tags) VALUES ("' . $data['title'] . '", "' . $data['description'] . '", "' . $data['imagename'] . '", "' . $data['owner'] . '", "' . $data['type'] . '", "' . $data['visibility'] . '", "' . $data['location'] . '", "' . $data['tags'] . '")';
 	
 	if ($conn->query($sql_query) === TRUE) {
@@ -134,7 +129,11 @@ function add_NewShare($data){
 		return "Error: " . $sql_query . "<br>" . $conn->error;
 	}
 	
-	$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES (' . $conn->insert_id . ', "' . $groups . '")';
+	$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES ';
+	foreach($data['groups'] as $group){
+		$sql_query .= '(' . $conn->insert_id . ', ' . $group . '), ';
+	}
+	$sql_query = substr($sql_query, 0, -1);
 	$conn->query($sql_query);
 	
 	//OLD. TAGS ARE NOW IN SHAREDOBJECTS TABLE
