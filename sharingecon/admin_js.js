@@ -1,7 +1,5 @@
 $(document).ready(function(){
-	$("#new-branch-dialog").dialog({
-		autoOpen: false
-	});
+	
 });
 
 function addNewBranch(parentid){
