@@ -96,9 +96,13 @@ function sharingecon_post(&$a){
 	}
 }
 
-function sharingecon_load() {}
+function sharingecon_load() {
+	Zotlabs\Extend\Hook::register('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
+}
 
-function sharingecon_unload() {}
+function sharingecon_unload() {
+	Zotlabs\Extend\Hook::unregister('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
+}
 
 function sharingecon_init(){
 	head_add_css('addon/sharingecon/bootstrap_sharecon.css');
