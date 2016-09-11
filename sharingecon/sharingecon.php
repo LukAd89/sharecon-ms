@@ -13,7 +13,7 @@ require_once('functions.php');
 
 function sharingecon_post(&$a){
 	header('Location:http://shareecomarketplace.uni-muenster.de/admin/plugins/sharingecon');
-	exit();
+	exit;
 	
 	if(isset($_POST['action'])){
 		
