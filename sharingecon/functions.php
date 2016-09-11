@@ -307,7 +307,7 @@ function get_ChannelHash($channelid){
 	}
 
 	$sql_query = "SELECT channel_hash FROM channel WHERE channel_id=" . $channelid;
-
+	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 
@@ -358,9 +358,7 @@ function delete_Share($id){
 function write_Message($subject, $body){
 	require_once('include/message.php');
 	$recipient = get_ShareOwner($_POST['input-message-shareid']);
-	Logger($recipient);
 	$recipient = get_ChannelHash($recipient);
-	Logger($recipient);
 	send_message(null, $recipient, $body, $subject);
 }
 
