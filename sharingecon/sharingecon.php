@@ -128,7 +128,7 @@ function sharingecon_module() {}
 }*/
 
 function sharingecon_plugin_admin(&$a, &$o){
-	$o .= '<div>HALLO</div>';
+	$o .= '<div>HALLO</div><div>' . $a . '</div>';
 }
 
 function sharingecon_content(&$a) {
