@@ -133,7 +133,7 @@ function sharingecon_plugin_admin(&$a, &$o){
 	foreach($tagTree as $row){
 		$tagTreeString .= '<tr><td>' . $row['ID'] . '</td><td>' . $row['Parent'] . '</td><td>' . $row['Title'] . '</td><td>' . $row['Tags'] . '</td>';
 		
-		$tagTreeString .= '<td><button type="button" class="btn btn-default btn-xs">Edit</button><button type="button" class="btn btn-default btn-xs">Delete</button></td></tr>';
+		$tagTreeString .= '<td><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit"</span></button><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"</span></button></td></tr>';
 	}
 	$o .= replace_macros(get_markup_template('admin_settings.tpl','addon/sharingecon/'), array(
 		'$tablebody' => $tagTreeString
