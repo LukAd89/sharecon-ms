@@ -229,11 +229,11 @@ function sharingecon_content(&$a) {
 				$tablebodyenq = "";
 				$tablebodypast = "";
 				
-				$dataenq = load_Enquiries();
-				$datapast = load_Transactions();
+				$dataenq = load_Enquiries(local_channel());
+				$datapast = load_Transactions(local_channel());
 				
 				foreach($dataenq as $row){
-					$tablebodyenq .= '<tr><td>' . get_ObjectTitle($row["ObjectID"]) . '</td>' . '<td>' . get_ChannelName($row["CustomerID"]) . '</td>';// . '<td>' . $row["Status"] . '</td>' . '<td>KLICK</td></tr>';
+					$tablebodyenq .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['channel_name'] . '</td>';// . '<td>' . $row["Status"] . '</td>' . '<td>KLICK</td></tr>';
 					switch($row["Status"]){
 						case 0:
 							$tablebodyenq .= '<td>Open</td><td><button class="btn btn-xs btn-primary" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
@@ -248,11 +248,11 @@ function sharingecon_content(&$a) {
 				}
 				
 				foreach($datapast as $row){
-					$tablebodypast .= '<tr><td>' . get_ObjectTitle($row["ObjectID"]) . '</td>' . '<td>' . get_ChannelName($row["OwnerID"]) . '</td>' . '<td>' . $row["LendingStart"] . '</td>' . '<td>' . $row["LendingEnd"] . '</td>' . '<td>' . $row["Rating"] . '</td>';
-					if($row["Rating"] > 0)
+					$tablebodypast .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['channel_name'] . '</td>' . '<td>' . $row['LendingStart'] . '</td>' . '<td>' . $row['LendingEnd'] . '</td>' . '<td>' . $row['Rating'] . '</td>';
+					if($row['Rating'] > 0)
 						$tablebodypast .= '<td><button class="btn btn-xs disabled">Rate</button></td></tr>';
 					else
-						$tablebodypast .= '<td><button class="btn btn-primary btn-xs" data-id="1" data-target="#modal-set-rating" data-toggle="modal">Rate</button></td></tr>';
+						$tablebodypast .= '<td><button class="btn btn-primary btn-xs" data-id="' . $row['ID'] . '" data-target="#modal-set-rating" data-toggle="modal">Rate</button></td></tr>';
 				}
 				
 				$siteContent .= replace_macros(get_markup_template('transactions.tpl','addon/sharingecon/'), array(

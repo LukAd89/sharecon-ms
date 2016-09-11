@@ -307,7 +307,7 @@ function get_ChannelHash($channelid){
 	}
 
 	$sql_query = "SELECT channel_hash FROM channel WHERE channel_id=" . $channelid;
-	Logger($sql_query);
+	
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 
@@ -357,20 +357,18 @@ function delete_Share($id){
 
 function write_Message($subject, $body){
 	require_once('include/message.php');
-	$recipient = get_ShareOwner($_POST['input-message-shareid']);
-	$recipient = get_ChannelHash($recipient);
-	Logger($recipient);
+	$recipient = get_ChannelHash(get_ShareOwner($_POST['input-message-shareid']));
 	send_message(null, $recipient, $body, $subject);
 }
 
-function load_Enquiries(){
+function load_Enquiries($channelid){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = "SELECT * FROM enquiries";
+	$sql_query = 'SELECT enquiries.ID, Title, channel_name, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID AND sharedObjects.OwnerID = ' . $channelid . ' LEFT JOIN ' . SERVER_HUB_DBNAME . '.channel ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.channel.channel_id';
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -383,14 +381,15 @@ function load_Enquiries(){
 	return [];
 }
 
-function load_Transactions(){
+function load_Transactions($channelid){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = "SELECT transactions.*, sharedObjects.OwnerID FROM transactions, sharedObjects WHERE transactions.ObjectID = sharedObjects.ID";
+	//$sql_query = "SELECT transactions.*, sharedObjects.OwnerID FROM transactions, sharedObjects WHERE transactions.ObjectID = sharedObjects.ID";
+	$sql_query = 'SELECT transactions.*, Title, channel_name FROM transactions LEFT JOIN sharedObjects ON transactions.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.channel ON sharedObjects.OwnerID = ' . SERVER_HUB_DBNAME . '.channel.channel_id WHERE transactions.CustomerID = ' . $channelid;
 
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
