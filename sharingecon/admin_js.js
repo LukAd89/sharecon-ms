@@ -17,6 +17,15 @@ $(document).ready(function(){
 		$('#delete-branch-modal #input-branch-id').val(branchid);
 	});
 	
+	$("#new-root-submit").click(function(){
+		var parent = $('#new-branch-modal #input-branch-id').val();
+		var title = $('#new-branch-modal #input-title').val();
+		var tags = $('#new-branch-modal #input-tags').val();
+		console.log("New: " + parent + "  :  " + title + "  :  " + tags);
+		
+		$("#new-branch-modal").modal('hide');
+	});
+	
 	$("#new-branch-submit").click(function(){
 		var parent = $('#new-branch-modal #input-branch-id').val();
 		var title = $('#new-branch-modal #input-title').val();

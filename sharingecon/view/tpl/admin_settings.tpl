@@ -1,6 +1,6 @@
 <h4>Tagtree</h4>
 <div class="btn-group btn-group-vertical">
-	<button type="button" class="btn btn-default btn-xs">Add Branch</button>
+	<button type="button" class="btn btn-default btn-xs" id="new-root-branch" name="new-root-branch" data-toggle="modal" data-target="#new-branch-modal" data-branchid="0">Add Branch to Root</button>
 </div>
 <table class="table">
    	<thead>
