@@ -311,7 +311,7 @@ function get_ChannelHash($channelid){
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 
-		return $row['channel_id'];
+		return $row['channel_hash'];
 	}
 	else { return "";}
 
