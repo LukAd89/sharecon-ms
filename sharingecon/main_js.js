@@ -131,7 +131,7 @@ function toggleShare(id, newstate){
 			"state" : newstate
 		},
 		success : function(msg){
-			location.reload();
+			//location.reload();
 		}
 	});
 }
@@ -145,7 +145,7 @@ function toggleFav(id, newstate){
 			"state" : newstate
 		},
 		success : function(msg){
-			location.reload();
+			//location.reload();
 		}
 	});
 }

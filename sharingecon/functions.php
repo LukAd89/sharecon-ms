@@ -326,7 +326,7 @@ function toggle_Share($id, $state){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = "UPDATE sharedObjects SET Status=" . $state . " WHERE ID=" . $id;
+	$sql_query = "UPDATE sharedObjects SET Status=" . $state . " WHERE ID=" . $id . ' AND OwnderID = ' . local_channel();
 	
 	if ($conn->query($sql_query) === TRUE) {
 		return "Query successfull";
