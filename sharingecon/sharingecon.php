@@ -134,9 +134,9 @@ function sharingecon_plugin_admin(&$a, &$o){
 	foreach($tagTree as $row){
 		$tagTreeString .= '<tr><td>' . $row['ID'] . '</td><td>' . $row['Parent'] . '</td><td>' . $row['Title'] . '</td><td>' . $row['Tags'] . '</td>';
 		
-		$tagTreeString .= '<td><button type="button" title="Add Branch" class="btn btn-default btn-xs" data-toggle="modal" data-target="#new-branch-modal" data-parentid="' . $row['Parent'] . '"><span class="glyphicon glyphicon-plus"></span></button>
-				<button type="button" title="Edit Tags" class="btn btn-default btn-xs" data-toggle="modal" data-target="#edit-branch-modal" data-branchid="' . $row['Parent'] . '"><span class="glyphicon glyphicon-pencil"</span></button>
-				<button type="button" title="Delete Branch" class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete-branch-modal" data-branchid="' . $row['Parent'] . '"><span class="glyphicon glyphicon-trash"</span></button></td></tr>';
+		$tagTreeString .= '<td><button type="button" title="Add Branch" class="btn btn-default btn-xs" data-toggle="modal" data-target="#new-branch-modal" data-branchid="' . $row['ID'] . '"><span class="glyphicon glyphicon-plus"></span></button>
+				<button type="button" title="Edit Tags" class="btn btn-default btn-xs" data-toggle="modal" data-target="#edit-branch-modal" data-branchid="' . $row['ID'] . '"><span class="glyphicon glyphicon-pencil"</span></button>
+				<button type="button" title="Delete Branch" class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete-branch-modal" data-branchid="' . $row['ID'] . '"><span class="glyphicon glyphicon-trash"</span></button></td></tr>';
 	}
 	$o .= replace_macros(get_markup_template('admin_settings.tpl','addon/sharingecon/'), array(
 		'$tablebody' => $tagTreeString

@@ -25,7 +25,7 @@
 				<h4 class="modal-title">Add New Branch</h4>
 			</div>
 			<div class="modal-body">
-				<input class="hidden" id="input-parent-branch" name="input-parent-branch">
+				<input class="hidden" id="input-branch-id" name="input-parent-branch">
 				<div class="form-group">
 					<label for="input-title" class="control-label">Title</label>
 					<input id="input-title" name="input-title" type="text" class="form-control">
