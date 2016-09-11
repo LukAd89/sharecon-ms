@@ -135,7 +135,6 @@ function sharingecon_module() {}
 }*/
 
 function sharingecon_plugin_admin(&$a, &$o){
-	Logger('ADMIN');
 	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/admin_js.js"></script>'."\r\n";
 	$tagTree = get_TagTree();
 	
@@ -152,14 +151,7 @@ function sharingecon_plugin_admin(&$a, &$o){
 }
 
 function sharingecon_content(&$a) {
-	Logger('CONTENT');
-	if(isset($_POST)){
-		Logger('CONTENT 2');
-		header("Location:/admin/plugins/sharingecon");
-		exit();
-	}
-	Logger('CONTENT 3');
-		
+	if(isset($_POST)) exit();
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
