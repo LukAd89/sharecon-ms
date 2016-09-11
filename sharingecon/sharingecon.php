@@ -63,6 +63,10 @@ function sharingecon_post(&$a){
 				toggle_Share($_POST['id'], $_POST['state']);
 				break;
 				
+			case 'toggle-fav':
+				toggle_Favorite($_POST['id'], $_POST['state']);
+				break;
+				
 			case 'delete-share':
 				delete_Share($_POST['id']);
 				break;

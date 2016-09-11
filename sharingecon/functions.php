@@ -338,6 +338,30 @@ function toggle_Share($id, $state){
 	$conn->close();
 }
 
+function toggle_Favorite($objectid, $state){
+
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	if($sate == 1){
+		$sql_query = 'REPLACE INTO favorites (ChannelID, ObjectID) VALUES (' . local_channel() . ', ' . $objectid . ')';
+	}
+	else{
+		$sql_query = 'DELETE FROM favorites WHERE ChannelID = ' . local_channel() . ' AND ObjectID = ' . $objectid;
+	}
+	
+	if ($conn->query($sql_query) === TRUE) {
+		return "Query successfull";
+	} else {
+		return "Error: " . $sql_query . "<br>" . $conn->error;
+	}
+
+	$conn->close();
+}
+
 function delete_Share($id){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
