@@ -97,11 +97,11 @@ function sharingecon_post(&$a){
 }
 
 function sharingecon_load() {
-	Zotlabs\Extend\Hook::register('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
+	//Zotlabs\Extend\Hook::register('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
 }
 
 function sharingecon_unload() {
-	Zotlabs\Extend\Hook::unregister('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
+	//Zotlabs\Extend\Hook::unregister('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
 }
 
 function sharingecon_init(){
@@ -127,8 +127,8 @@ function sharingecon_module() {}
 	return $content;
 }*/
 
-function sharingecon_settings(&$a){
-	$s .= '<div>HALLO</div>';
+function sharingecon_plugin_admin(&$a, &$o){
+	$o .= '<div>HALLO</div>';
 }
 
 function sharingecon_content(&$a) {
