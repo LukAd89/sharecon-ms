@@ -53,7 +53,7 @@ $(document).ready(function(){
 				"tags" : tags
 			},
 			success : function(msg){
-				location.reload();
+				//location.reload();
 			}
 		});
 	});
