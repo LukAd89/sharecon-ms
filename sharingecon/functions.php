@@ -823,7 +823,7 @@ function edit_TagTreeBranch($branchid, $parent, $title, $tags){
 	$newtags = explode(',', $tags);
 	$sql_query = 'INSERT INTO tags (BranchID, Tag) VALUES ';
 	foreach($newtags as $newtag){
-		$sql_query .= '(' . $branchid . ',' . $newtag . '),';
+		$sql_query .= '(' . $branchid . ',"' . $newtag . '"),';
 	}
 	$sql_query = substr($sql_query, 0, -1);
 	$conn->query($sql_query);
