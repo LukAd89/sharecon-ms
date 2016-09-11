@@ -767,7 +767,7 @@ function get_ChannelFavorites($channelid){
 	$sql_query = 'SELECT ObjectID FROM favorites WHERE channelID = ' . $channelid;
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-			$resArray[] = $row;
+			$resArray[] = $row['ObjectID'];
 		}
 		$conn->close();
 		return $resArray;
