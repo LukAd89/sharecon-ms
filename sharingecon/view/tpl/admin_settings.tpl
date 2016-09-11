@@ -16,3 +16,13 @@
 		{{$tablebody}}
 	</tbody>
 </table>
+
+<div id="new-branch-dialog" title="Add Branch">
+	<form action="" method="post">
+		<label for="input-title">Title</label>
+		<input id="input-title" name="input-title" type="text">
+		<label for="input-tags">Tags</label>
+		<input id="input-tags" name="input-tags" type="text">
+		<button type="button" class="btn btn-primary" id="add-branch-submit">Submit</button>
+	</form>
+</div>
