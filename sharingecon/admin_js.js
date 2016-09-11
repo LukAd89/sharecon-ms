@@ -40,7 +40,7 @@ $(document).ready(function(){
 		var parent = $('#edit-branch-modal #input-parent').val();
 		var title = $('#edit-branch-modal #input-title').val();
 		var tags = $('#edit-branch-modal #input-tags').val();
-		console.log("Edit: " + branch + "  :  " + parent + "  :  " + title + "  :  " + tags);
+		
 		$("#edit-branch-modal").modal('hide');
 		
 		$.ajax({
