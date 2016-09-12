@@ -128,14 +128,19 @@ function sharingecon_module() {}
 }*/
 
 function sharingecon_plugin_admin_post(&$a){
-	Logger("POST: " . $_POST['input-branch-id']);
 	switch($_POST['action']){
+		case 'new-tag-branch':
+			new_TagTreeBranch($_POST['input-branch-idbranch'], $_POST['title'], $_POST['tags']);
+			break;
 		case 'edit-tag-branch':
-			edit_TagTreeBranch($_POST['branch'], $_POST['parent'], $_POST['title'], $_POST['tags']);
-			header("Location: " . $_SERVER['REQUEST_URI']);
-			exit();
+			edit_TagTreeBranch($_POST['input-branch-idbranch'], $_POST['input-parent'], $_POST['title'], $_POST['tags']);
+			break;
+		case 'delete-tag-branch':
+			delete_TagTreeBranch($_POST['input-branch-idbranch']);
 			break;
 	}
+	header("Location: " . $_SERVER['REQUEST_URI']);
+	exit();
 }
 
 function sharingecon_plugin_admin(&$a, &$o){

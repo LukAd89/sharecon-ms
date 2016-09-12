@@ -26,7 +26,7 @@
 			</div>
 			<div class="modal-body">
 			<form class="form-horizontal" role="form" id="form-new-branch" action="admin/plugins/sharingecon" method="post">
-				<input type="hidden" name="action" value="add-tag-branch">
+				<input type="hidden" name="action" value="new-tag-branch">
 				<input class="hidden" id="input-branch-id" name="input-branch-id">
 				<div class="">
 					<label for="input-title" class="control-label">Title</label>
