@@ -128,7 +128,7 @@ function sharingecon_module() {}
 }*/
 
 function sharingecon_plugin_admin_post(&$a){
-	Logger("POST");
+	Logger("POST: " . $_POST['action']);
 	switch($_POST['action']){
 		case 'edit-tag-branch':
 			edit_TagTreeBranch($_POST['branch'], $_POST['parent'], $_POST['title'], $_POST['tags']);
