@@ -313,6 +313,9 @@ function sharingecon_content(&$a) {
 					));
 					if(count($data) == 0){
 						$siteContent .= 'You do not have any Shares';
+						App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+								'$filterhidden' => 'hidden'
+						));
 						break;
 					}
 					
@@ -327,6 +330,9 @@ function sharingecon_content(&$a) {
 				else if(argc()==3){
 					if(get_ShareOwner(argv(2)) != local_channel()){
 						$siteContent .= 'You are not the Owner of this Share';
+						App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+								'$filterhidden' => 'hidden'
+						));
 						break;
 					}
 					$data = get_MatchesForShare(argv(2));
