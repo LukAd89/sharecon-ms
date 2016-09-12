@@ -315,9 +315,9 @@ function sharingecon_content(&$a) {
 						$siteContent .= 'You do not have any Shares';
 						break;
 					}
-					var_dump($data);
+					var_dump($data[0]);
 					$siteContent .= replace_macros(get_markup_template('matches.tpl','addon/sharingecon/'), array(
-							'$tablebody' => $data[0]['ownerid']
+							'$tablebody' => $data[0]['OwnerID']
 					));
 				}
 				else if(argc()==3){
