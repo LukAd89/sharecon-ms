@@ -130,10 +130,10 @@ function sharingecon_module() {}
 function sharingecon_plugin_admin_post(&$a){
 	switch($_POST['action']){
 		case 'new-tag-branch':
-			new_TagTreeBranch($_POST['input-branch-idbranch'], $_POST['title'], $_POST['tags']);
+			new_TagTreeBranch($_POST['input-branch-idbranch'], $_POST['input-title'], $_POST['input-tags']);
 			break;
 		case 'edit-tag-branch':
-			edit_TagTreeBranch($_POST['input-branch-idbranch'], $_POST['input-parent'], $_POST['title'], $_POST['tags']);
+			edit_TagTreeBranch($_POST['input-branch-idbranch'], $_POST['input-parent'], $_POST['input-title'], $_POST['input-tags']);
 			break;
 		case 'delete-tag-branch':
 			delete_TagTreeBranch($_POST['input-branch-idbranch']);
