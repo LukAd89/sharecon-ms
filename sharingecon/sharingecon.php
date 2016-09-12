@@ -316,7 +316,7 @@ function sharingecon_content(&$a) {
 						break;
 					}
 					
-					$siteContent .= replace_macros(get_markup_template('transactions.tpl','addon/sharingecon/'), array(
+					$siteContent .= replace_macros(get_markup_template('matches.tpl','addon/sharingecon/'), array(
 							'$tablebody' => $data[0]['ownerid']
 					));
 				}
