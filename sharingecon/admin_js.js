@@ -32,6 +32,8 @@ $(document).ready(function(){
 		var tags = $('#new-branch-modal #input-tags').val();
 		console.log("New: " + parent + "  :  " + title + "  :  " + tags);
 		
+		$("#form-new-branch").submit();
+		
 		$("#new-branch-modal").modal('hide');
 	});
 	
@@ -67,5 +69,6 @@ $(document).ready(function(){
 		console.log("Delete: " + branch);
 		
 		$("#delete-branch-modal").modal('hide');
+		$("#form-delete-branch").submit();
 	});
 });
