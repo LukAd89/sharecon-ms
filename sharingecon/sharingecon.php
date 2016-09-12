@@ -305,7 +305,21 @@ function sharingecon_content(&$a) {
 				break;
 			
 			case 'matches':
-				$siteContent .= '' . argc();
+				if(argc()==2){
+					$data = load_Shares(array(
+						'ownerview' => true,
+						'ownerid'	=> local_channel(),
+						'type'		=> 2
+					));
+					var_dump($data);
+				}
+				else if(argc()==3){
+					
+				}
+				
+				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
+						'$filterhidden' => 'hidden'
+				));
 				break;
 				
 			default:
