@@ -303,6 +303,10 @@ function sharingecon_content(&$a) {
 						'$filterhidden' => 'hidden'
 				));
 				break;
+			
+			case 'matches':
+				$siteContent .= '' . argc();
+				break;
 				
 			default:
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array());

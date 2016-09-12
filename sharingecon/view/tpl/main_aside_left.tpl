@@ -5,7 +5,8 @@
 		<div class="btn-group btn-group-vertical btn-group-vertical-justified">
 			<a href="sharingecon" class="btn btn-default">Main Page</a>
 			<a href="sharingecon/newshare" class="btn btn-default">Add new Share</a>
-			<a href="sharingecon/enquiries" class="btn btn-default">See enquiries</a>
+			<a href="sharingecon/enquiries" class="btn btn-default">See Transactions</a>
+			<a href="sharingecon/matches" class="btn btn-default">See Matches</a>
 		</div>
 	</div>
 	<hr>
