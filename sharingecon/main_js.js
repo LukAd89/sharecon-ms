@@ -66,6 +66,10 @@ $(document).ready(function(){
 		setLocation();
 	});
 	
+	$("#btn-search").click(function(){
+		searchShares();
+	});
+	
 	$("#select-visibility").change(function() {
 		if($("#select-visibility").val() == 1){
 			$("#select-groups").parent().slideDown();
@@ -262,6 +266,19 @@ function setRating(){
 	});
 }
 
+function searchShares(){
+	$.ajax({
+		type : "POST",
+		url : "sharingecon",
+		data : {"action" : "set-location",
+			"adress" : $("#filter-location").val(),
+		},
+		success : function(msg){
+			location.href = "sharingecon/findshares";
+		}
+	});
+}
+
 function setLocation(){
 	$.ajax({
 		type : "POST",
@@ -289,38 +306,51 @@ function getDistance(shareid){
 }
 
 function orderBy(criteria){
+	/*
 	var newHref = window.location.pathname + "?orderby=" + criteria;
 	newHref += "&filterfavs=";
 	newHref += ($('#filter-favsonly').is(':checked')) ? "1" : "0";
 	newHref += "&filterfriends=";
 	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
-	
-	location.href = newHref;
+	*/
+	location.href = generateFilterParams(0, criteria);
 }
 
 function setFavoritesFilter(seton){
+	/*
 	var newHref = window.location.pathname;
-	
 	newHref += "?orderby=";
 	newHref += $('#currentorder').val();
 	newHref += "&filterfavs=";
 	newHref += (seton) ? "1" : "0";
 	newHref += "&filterfriends=";
 	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
-	
-	location.href = newHref;
+	*/
+	location.href = generateFilterParams();
 }
 
 function setFriendsFilter(seton){
-	
+	/*
 	var newHref = window.location.pathname;
-	
 	newHref += "?orderby=";
 	newHref += $('#currentorder').val();
 	newHref += "&filterfavs=";
 	newHref += ($('#filter-favsonly').is(':checked')) ? "1" : "0";
 	newHref += "&filterfriends="
 	newHref +=  (seton) ? "1" : "0";
+	*/
+	location.href = generateFilterParams();
+}
+
+function generateFilterParams(changedparam, value){
+	var newHref = window.location.pathname;
 	
-	location.href = newHref;
+	newHref += "?orderby=";
+	newHref += (changedparam == 0) ? value : $('#currentorder').val();
+	newHref += "&filterfavs=";
+	newHref += ($('#filter-favsonly').is(':checked')) ? "1" : "0";
+	newHref += "&filterfriends="
+	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
+	
+	return newHref;
 }
