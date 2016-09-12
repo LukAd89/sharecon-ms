@@ -198,6 +198,7 @@ function sharingecon_content(&$a) {
 				
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 					'$curlocation'	=> $channellocation,
+					'$cursearch'	=> $_GET['search'],
 					'$curorderby'	=> $_GET['orderby'],
 					'$filterfavschecked' => ($_GET['filterfavs']==1) ? 'checked="checked"' : '',
 					'$filterfriendschecked' => ($_GET['filterfriends']==1) ? 'checked="checked"' : '',
