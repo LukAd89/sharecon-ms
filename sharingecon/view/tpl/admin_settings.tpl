@@ -85,11 +85,11 @@
 				<h4 class="modal-title">Delete Branch</h4>
 			</div>
 			<div class="modal-body">
-				<form class="form-horizontal" role="form" id="form-delete-branch" action="admin/plugins/sharingecon" method="post">
+				<!--<form class="form-horizontal" role="form" id="form-delete-branch" action="admin/plugins/sharingecon" method="post"> -->
 					<input type="hidden" name="action" value="delete-tag-branch">
 					<input class="hidden" id="input-branch-id" name="input-branch-id">
 					Do You really want to delete this Branch?
-				</form>
+				
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
