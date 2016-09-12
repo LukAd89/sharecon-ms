@@ -317,7 +317,7 @@ function sharingecon_content(&$a) {
 					}
 					
 					foreach($data as $row){
-						$tablebodystring .= '<tr><td>' . $row['Title'] . '</td><td>' . $row['Type'] . '</td><td><a href="sharingecon/matches/' . $row['ID'] . '"><button type="button" class="btn btn-default btn-xs">Select</button></a></td></tr>';
+						$tablebodystring .= '<tr><td>' . $row['Title'] . '</td><td>' . ($row['Type']==0) ? 'Offer' : 'Request' . '</td><td><a href="sharingecon/matches/' . $row['ID'] . '"><button type="button" class="btn btn-default btn-xs">Select</button></a></td></tr>';
 					}
 						
 					$siteContent .= replace_macros(get_markup_template('matches.tpl','addon/sharingecon/'), array(
