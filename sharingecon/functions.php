@@ -811,6 +811,7 @@ function new_TagTreeBranch($parent, $title, $tags){
 	if($parent == '') $parent = 'NULL';
 	
 	$sql_query = 'INSERT INTO tagTree (Parent, Title) VALUES (' . $parent . ', "' . $title . '"';
+	Logger($sql_query);
 	$conn->query($sql_query);
 	
 	
@@ -820,6 +821,7 @@ function new_TagTreeBranch($parent, $title, $tags){
 		$sql_query .= '(' . $conn->insert_id . ',"' . $newtag . '"),';
 	}
 	$sql_query = substr($sql_query, 0, -1);
+	Logger($sql_query);
 	$conn->query($sql_query);
 	
 	$conn->close();
