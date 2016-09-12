@@ -25,7 +25,7 @@
 				<h4 class="modal-title">Add New Branch</h4>
 			</div>
 			<div class="modal-body">
-				<form class="form-horizontal" role="form" id="form-new-branch" action="admin/plugins/sharingecon" method="post">
+				<!--<form class="form-horizontal" role="form" id="form-new-branch" action="admin/plugins/sharingecon" method="post"> -->
 					<input type="hidden" name="action" value="new-tag-branch">
 					<input class="hidden" id="input-branch-id" name="input-branch-id">
 					<div class="">
@@ -36,7 +36,7 @@
 						<label for="input-tags" class="control-label">Tags</label>
 						<input id="input-tags" name="input-tags" type="text" class="form-control">
 					</div>
-				</form>
+				
 			</div>
 			<div class="modal-footer">
 	        	<button type="button" class="btn btn-primary" id="new-branch-submit">Submit</button>
@@ -53,7 +53,7 @@
 				<h4 class="modal-title">Edit Branch</h4>
 			</div>
 			<div class="modal-body">
-				<form class="form-horizontal" role="form" id="form-edit-branch" action="admin/plugins/sharingecon" method="post">
+				<!--  <form class="form-horizontal" role="form" id="form-edit-branch" action="admin/plugins/sharingecon" method="post"> -->
 					<input type="hidden" name="action" value="edit-tag-branch">
 					<input class="hidden" id="input-branch-id" name="input-branch-id">
 					<div class="">
@@ -68,7 +68,7 @@
 						<label for="input-tags" class="control-label">Tags</label>
 						<input id="input-tags" name="input-tags" type="text" class="form-control">
 					</div>
-				</form>
+				
 			</div>
 			<div class="modal-footer">
 	        	<button type="button" class="btn btn-primary" id="edit-branch-submit">Submit</button>
