@@ -315,9 +315,13 @@ function sharingecon_content(&$a) {
 						$siteContent .= 'You do not have any Shares';
 						break;
 					}
-					var_dump($data[0]);
+					
+					foreach($data as $row){
+						$tablebodystring = '<tr><td>' . $row['Title'] . '</td><td>' . $row['Type'] . '</td><td><a href="sharingecon/matches/' . $row['ID'] . '"><button type="button" class="btn btn-default btn-xs">Select</button></a></td></tr>';
+					}
+						
 					$siteContent .= replace_macros(get_markup_template('matches.tpl','addon/sharingecon/'), array(
-							'$tablebody' => $data[0]['OwnerID']
+							'$tablebody' => $tablebodystring
 					));
 				}
 				else if(argc()==3){
