@@ -64,7 +64,7 @@
 						<label for="input-title" class="control-label">Title</label>
 						<input id="input-title" name="input-title" type="text" class="form-control">
 					</div>
-					<div class="form-group">
+					<div class="">
 						<label for="input-tags" class="control-label">Tags</label>
 						<input id="input-tags" name="input-tags" type="text" class="form-control">
 					</div>
