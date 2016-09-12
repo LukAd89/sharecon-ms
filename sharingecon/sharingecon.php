@@ -311,7 +311,14 @@ function sharingecon_content(&$a) {
 						'ownerid'	=> local_channel(),
 						'type'		=> 2
 					));
-					var_dump($data);
+					if(count($data) == 0){
+						$siteContent .= 'You do not have any Shares';
+						break;
+					}
+					
+					$siteContent .= replace_macros(get_markup_template('transactions.tpl','addon/sharingecon/'), array(
+							'$tablebody' => $data[0]['ownerid']
+					));
 				}
 				else if(argc()==3){
 					
