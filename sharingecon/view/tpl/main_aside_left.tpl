@@ -11,18 +11,19 @@
 	</div>
 	<hr>
 	<div class="widget {{$filterhidden}}">
-		<div class="input-group">
-			<input type="text" id="filter-search" name="filter-search" placeholder="Search..." class="form-control">
-			<span class="input-group-btn">
-				<button type="button" class="btn btn-default" id="btn-search">Go</button>
-			</span>
-		</div>
-		<br>
-		<label for="filter-location">Enter you Location</label>
+		<h4>Your Location</h4>h4>
 		<div class="input-group">
 			<input type="text" id="filter-location" name="filter-location" placeholder="Enter Adress" class="form-control" value="{{$curlocation}}">
 			<span class="input-group-btn">
 				<button type="button" class="btn btn-default" id="btn-set-location">Go</button>
+			</span>
+		</div>
+		<hr>
+		<h4>Filters</h4>
+		<div class="input-group">
+			<input type="text" id="filter-search" name="filter-search" placeholder="Search..." class="form-control">
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default" id="btn-search">Go</button>
 			</span>
 		</div>
 		<br>
