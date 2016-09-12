@@ -325,7 +325,19 @@ function sharingecon_content(&$a) {
 					));
 				}
 				else if(argc()==3){
+					if(get_ShareOwner(argv(2)) != local_channel()){
+						$siteContent .= 'You are not the Owner of this Share';
+						break;
+					}
+					$data = get_MatchesForShare(argv(2));
 					
+					foreach($data as $row){
+						$tablebodystring .= '<tr><td>' . $row['Title'] . '</td><td>0</td><td><a href="sharingecon/viewshare/' . $row['ID'] . '"><button type="button" class="btn btn-default btn-xs">View Details</button></a></td></tr>';
+					}
+					
+					$siteContent .= replace_macros(get_markup_template('matches_detail.tpl','addon/sharingecon/'), array(
+							'$tablebody' => $tablebodystring
+					));
 				}
 				
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(

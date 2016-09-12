@@ -867,3 +867,22 @@ function delete_TagTreeBranch($branchid){
 	
 	$conn->close();
 }
+
+function get_MatchesForShare($shareid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'SELECT * FROM sharedObjects';
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$resArray[] = $row;
+		}
+		$conn->close();
+		return $resArray;
+	}
+	$conn->close();
+	return null;
+}
