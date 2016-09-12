@@ -41,7 +41,11 @@ $(document).ready(function(){
 		var title = $('#edit-branch-modal #input-title').val();
 		var tags = $('#edit-branch-modal #input-tags').val();
 		
+		$("#form-edit-branch").submit();
+		
+		/*
 		$("#edit-branch-modal").modal('hide');
+		
 		
 		$.ajax({
 			type : "POST",
@@ -55,7 +59,7 @@ $(document).ready(function(){
 			success : function(msg){
 				//location.reload();
 			}
-		});
+		});*/
 	});
 	
 	$("#delete-branch-submit").click(function(){

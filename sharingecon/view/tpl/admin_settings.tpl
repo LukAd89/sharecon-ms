@@ -25,6 +25,8 @@
 				<h4 class="modal-title">Add New Branch</h4>
 			</div>
 			<div class="modal-body">
+			<form class="form-horizontal" role="form" id="form-new-branch" action="admin/plugins/sharingecon" method="post">
+				<input type="hidden" name="action" value="add-tag-branch">
 				<input class="hidden" id="input-branch-id" name="input-branch-id">
 				<div class="form-group">
 					<label for="input-title" class="control-label">Title</label>
@@ -34,6 +36,7 @@
 					<label for="input-tags" class="control-label">Tags</label>
 					<input id="input-tags" name="input-tags" type="text" class="form-control">
 				</div>
+			</form>
 			</div>
 			<div class="modal-footer">
 	        	<button type="button" class="btn btn-primary" id="new-branch-submit">Submit</button>
@@ -50,19 +53,22 @@
 				<h4 class="modal-title">Edit Branch</h4>
 			</div>
 			<div class="modal-body">
-				<input class="hidden" id="input-branch-id" name="input-branch-id">
-				<div class="form-group">
-					<label for="input-parent" class="control-label">Parent</label>
-					<input id="input-parent" name="input-parent" type="text" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="input-title" class="control-label">Title</label>
-					<input id="input-title" name="input-title" type="text" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="input-tags" class="control-label">Tags</label>
-					<input id="input-tags" name="input-tags" type="text" class="form-control">
-				</div>
+				<form class="form-horizontal" role="form" id="form-new-branch" action="admin/plugins/sharingecon" method="post">
+					<input type="hidden" name="action" value="edit-tag-branch">
+					<input class="hidden" id="input-branch-id" name="input-branch-id">
+					<div class="form-group">
+						<label for="input-parent" class="control-label">Parent</label>
+						<input id="input-parent" name="input-parent" type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="input-title" class="control-label">Title</label>
+						<input id="input-title" name="input-title" type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="input-tags" class="control-label">Tags</label>
+						<input id="input-tags" name="input-tags" type="text" class="form-control">
+					</div>
+				</form>
 			</div>
 			<div class="modal-footer">
 	        	<button type="button" class="btn btn-primary" id="edit-branch-submit">Submit</button>
@@ -79,8 +85,11 @@
 				<h4 class="modal-title">Delete Branch</h4>
 			</div>
 			<div class="modal-body">
-				<input class="hidden" id="input-branch-id" name="input-branch-id">
-				Do You really want to delete this Branch?
+				<form class="form-horizontal" role="form" id="form-new-branch" action="admin/plugins/sharingecon" method="post">
+					<input type="hidden" name="action" value="delete-tag-branch">
+					<input class="hidden" id="input-branch-id" name="input-branch-id">
+					Do You really want to delete this Branch?
+				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
