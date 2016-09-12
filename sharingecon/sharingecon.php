@@ -128,7 +128,6 @@ function sharingecon_module() {}
 }*/
 
 function sharingecon_plugin_admin_post(&$a){
-	Logger($_POST['action']);
 	switch($_POST['action']){
 		case 'new-tag-branch':
 			new_TagTreeBranch($_POST['input-branch-idbranch'], $_POST['title'], $_POST['tags']);
