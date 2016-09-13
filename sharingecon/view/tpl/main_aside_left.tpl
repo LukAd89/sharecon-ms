@@ -22,7 +22,7 @@
 		<h4>Filters</h4>
 		<div class="input-group">
 			<input type="hidden" value="{{$cursearch}}" id="currentsearch">
-			<input type="text" id="filter-search" name="filter-search" placeholder="Search..." class="form-control">
+			<input type="text" id="filter-search" name="filter-search" placeholder="Search..." class="form-control" value="{{$cursearch}}">
 			<span class="input-group-btn">
 				<button type="button" class="btn btn-default" id="btn-search">Go</button>
 			</span>

@@ -167,7 +167,11 @@ function edit_Share($data){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'UPDATE sharedObjects SET Title = "' . $data["title"] . '", Description = "' . $data["description"] . '", Visibility = ' . $data["visibility"];
+	$sql_query = 'UPDATE sharedObjects SET Title = "' . $data["title"] . '", Description = "' . $data["description"] . '", Visibility = ' . $data["visibility"] . ', Location = "' . $data["location"] . '", Tags = "' . $data["tags"] . '"';
+	
+	if($data['imagename'] != ''){
+		$sql_query .= ' Imagename = "' . $data['imagename'] . '"';
+	}
 	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";
@@ -193,8 +197,8 @@ function upload_Image($file){
 		return false;
 	
 	$filename = uniqid();
-	if(move_uploaded_file($file['tmp_name'], SITE_ROOT . '/uploads/images/' . $filename))
-		return $filename;
+	if(move_uploaded_file($file['tmp_name'], SITE_ROOT . '/uploads/images/' . $filename . '.jpg'))
+		return $filename . '.jpg';
 	else
 		return false;
 }

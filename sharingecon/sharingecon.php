@@ -38,6 +38,11 @@ function sharingecon_post(&$a){
 				break;
 				
 			case 'edit-share':
+				$filename = upload_Image($_FILES['input-image']);
+				
+				if(!$filename)
+					$filename = '';
+				
 				$data = array(
 					'shareid' => strip_tags($_POST['shareid']),
 					'title' => strip_tags($_POST['input-title']),
@@ -230,6 +235,7 @@ function sharingecon_content(&$a) {
 						'$title'		=> $share_data['Title'],
 						'$sharebody'	=> $share_data['Description'],
 						'$shareid'		=> argv(2),
+						'$imagename'	=> $share_data['Imagename'],
 						'$ratingavg'	=> 'Overall Average Rating: ' . $ratingavg . ' / 5',
 						'$ratinglatest'	=> 'Latest Ratings:<br>' . $ratinglatesttable
 				));
