@@ -173,7 +173,6 @@ function edit_Share($data){
 		
 		$result = $conn->query('SELECT Imagename FROM sharedObjects WHERE ID=' . $data['shareid']);
 		$row = $result->fetch_array(MYSQLI_ASSOC);
-		Logger(strval($row['Imagename']) . '  :  ' . $row['Imagename'] . '  :  ' . implode(',',$row));
 		$currentimage = $row['Imagename'];
 		unlink('addon/sharingecon/uploads/images/' . $currentimage);
 		$sql_query .= ', Imagename = "' . $data['imagename'] . '"';
