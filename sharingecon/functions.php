@@ -171,7 +171,7 @@ function edit_Share($data){
 	
 	if(strcmp($data['imagename'], '') != 0){
 		
-		$result = $conn->query('SELECT Imagename FROM sharedObjects WHERE ID=');
+		$result = $conn->query('SELECT Imagename FROM sharedObjects WHERE ID=' . $data['shareid']);
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$currentimage = $row[0]['Imagename'];
 		Logger($currentimage);
