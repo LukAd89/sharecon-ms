@@ -9,7 +9,7 @@
 		
 			<div class="panel-body">
 				<div>
-					<img src="addon/sharingecon/{{$imagename}}" class="img-responsive center-block" alt="Responsive image">
+					<img src="addon/sharingecon/uploads/images/{{$imagename}}" class="img-responsive center-block" alt="Responsive image">
 				</div>
 				<hr>
 				<div>
