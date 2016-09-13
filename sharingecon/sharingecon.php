@@ -39,7 +39,7 @@ function sharingecon_post(&$a){
 				
 			case 'edit-share':
 				$filename = upload_Image($_FILES['input-image']);
-				
+				Logger('sh.php : ' . $filename);
 				if(!$filename)
 					$filename = '';
 				
