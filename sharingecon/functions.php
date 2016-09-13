@@ -170,6 +170,12 @@ function edit_Share($data){
 	$sql_query = 'UPDATE sharedObjects SET Title = "' . $data["title"] . '", Description = "' . $data["description"] . '", Visibility = ' . $data["visibility"] . ', Location = "' . $data["location"] . '", Tags = "' . $data["tags"] . '"';
 	
 	if(strcmp($data['imagename'], '') != 0){
+		
+		$result = $conn->query('SELECT Imagename FROM sharedObjects WHERE ID=');
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$currentimage = $row[0]['Imagename'];
+		Logger($currentimage);
+		unlink('addon/sharingecon/uploads/images/' . $currentimage);
 		$sql_query .= ', Imagename = "' . $data['imagename'] . '"';
 	}
 	
@@ -182,6 +188,7 @@ function edit_Share($data){
 	}
 	
 	$conn->close();
+	return;
 }
 
 function upload_Image($file){
