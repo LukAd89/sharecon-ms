@@ -173,6 +173,8 @@ function edit_Share($data){
 		$sql_query .= ' Imagename = "' . $data['imagename'] . '"';
 	}
 	
+	$sql_query .= ' WHERE ID = ' . $data['shareid'];
+	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";
 	} else {
