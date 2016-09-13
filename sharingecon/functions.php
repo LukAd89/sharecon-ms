@@ -168,13 +168,13 @@ function edit_Share($data){
 	}
 	
 	$sql_query = 'UPDATE sharedObjects SET Title = "' . $data["title"] . '", Description = "' . $data["description"] . '", Visibility = ' . $data["visibility"] . ', Location = "' . $data["location"] . '", Tags = "' . $data["tags"] . '"';
-	Logger($data['imagename'] . '  :  ' . strcmp($data['imagename'], ''));
+	
 	if(strcmp($data['imagename'], '') != 0){
-		$sql_query .= ' Imagename = "' . $data['imagename'] . '"';
+		$sql_query .= ', Imagename = "' . $data['imagename'] . '"';
 	}
 	
 	$sql_query .= ' WHERE ID = ' . $data['shareid'];
-	Logger($sql_query);
+	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";
 	} else {
