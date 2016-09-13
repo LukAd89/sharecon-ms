@@ -168,8 +168,8 @@ function edit_Share($data){
 	}
 	
 	$sql_query = 'UPDATE sharedObjects SET Title = "' . $data["title"] . '", Description = "' . $data["description"] . '", Visibility = ' . $data["visibility"] . ', Location = "' . $data["location"] . '", Tags = "' . $data["tags"] . '"';
-	
-	if($data['imagename'] != ''){
+	Logger($data['imagename']);
+	if(strcmp($data['imagename'], '') != 0){
 		$sql_query .= ' Imagename = "' . $data['imagename'] . '"';
 	}
 	
