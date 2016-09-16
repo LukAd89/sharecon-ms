@@ -110,9 +110,9 @@ function sharingecon_unload() {
 }
 
 function sharingecon_init(){
-	head_add_css('addon/sharingecon/bootstrap_sharecon.css');
-	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/main_js.js"></script>'."\r\n";
-	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/nlp_compromise.js"></script>'."\r\n";
+	head_add_css('addon/sharingecon/css/bootstrap_sharecon.css');
+	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/js/main_js.js"></script>'."\r\n";
+	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/js/nlp_compromise.js"></script>'."\r\n";
 }
 
 function sharingecon_module() {}
@@ -149,7 +149,7 @@ function sharingecon_plugin_admin_post(&$a){
 }
 
 function sharingecon_plugin_admin(&$a, &$o){
-	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/admin_js.js"></script>'."\r\n";
+	App::$page['htmlhead'] .= '<script type="text/javascript" src="' . z_root() . '/addon/sharingecon/js/admin_js.js"></script>'."\r\n";
 	$tagTree = get_TagTree();
 	
 	foreach($tagTree as $row){

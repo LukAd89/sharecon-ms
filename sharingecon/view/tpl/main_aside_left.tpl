@@ -1,5 +1,5 @@
 <div class="col-md-12">
-	<a href="sharingecon"><img src="addon/sharingecon/ercis.png" class="img-responsive"></a>
+	<a href="sharingecon"><img src="addon/sharingecon/img/ercis.png" class="img-responsive"></a>
 	<hr>
 	<div class="widget">
 		<div class="btn-group btn-group-vertical btn-group-vertical-justified">
