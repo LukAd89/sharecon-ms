@@ -25,11 +25,13 @@ class TagTree{
 	}
 	
 	function get_NearestBranch(){
+		$string = '';
 		$objecttags = array('hammer');
 		foreach($this->tagtree as $branch){
+			$string .= $branch['tags'][0];
 			$intersection = array_intersect($objecttags, $branch['tags']);
 			if(count($intersection) > 0) return $intersection;
 		}
-		return -1;
+		return $string;
 	}
 }
