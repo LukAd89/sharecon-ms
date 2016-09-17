@@ -1,5 +1,5 @@
 <?php
-/*
+
 class TagTree{
 	var $tagtree = array();
 	
@@ -24,4 +24,3 @@ class TagTree{
 		}
 	}
 }
-*/
