@@ -28,7 +28,7 @@ class TagTree{
 		$currentmaxcount = 0;
 		$currentbranch;
 		
-		$objecttags = array('hammer');
+		$objecttags = array('vacuum cleaner');
 		foreach($this->tagtree as $branch){
 			$intersection = array_intersect($objecttags, $branch['tags']);
 			if(count($intersection) > $currentmaxcount){
