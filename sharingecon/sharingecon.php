@@ -9,7 +9,7 @@
  */
 
 
-include('sharingecon_config.php');
+include_once('sharingecon_config.php');
 require_once('functions.php');
 require_once('tagtree.php');
 
