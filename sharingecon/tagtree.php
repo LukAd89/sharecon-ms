@@ -26,7 +26,7 @@ class TagTree{
 	
 	function get_NearestBranch(){
 		$string = '';
-		$objecttags = array('hammer');
+		$objecttags = array('Hammer');
 		foreach($this->tagtree as $branch){
 			$string .= $branch['tags'][0];
 			$intersection = array_intersect($objecttags, $branch['tags']);
