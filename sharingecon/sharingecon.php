@@ -10,6 +10,7 @@
 
 
 include('sharingecon_config.php');
+require_once('tagtree.php');
 require_once('functions.php');
 
 function sharingecon_post(&$a){

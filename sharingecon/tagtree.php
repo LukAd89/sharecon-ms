@@ -1,7 +1,5 @@
 <?php
 
-include('config.php');
-
 class TagTree{
 	var $tagtree = array();
 	
