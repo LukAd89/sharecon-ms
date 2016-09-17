@@ -25,13 +25,17 @@ class TagTree{
 	}
 	
 	function get_NearestBranch(){
-		$string = '';
-		$objecttags = array('Hammer');
+		$currentmaxcount = 0;
+		$currentbranch;
+		
+		$objecttags = array('hammer');
 		foreach($this->tagtree as $branch){
-			$string .= $branch['tags'][0];
 			$intersection = array_intersect($objecttags, $branch['tags']);
-			if(count($intersection) > 0) return $intersection;
+			if(count($intersection) > $currentmaxcount){
+				$currentmaxcount = count($intersection);
+				$currentbranch = $branch['ID'];
+			}
 		}
-		return $string;
+		return $currentbranch;
 	}
 }
