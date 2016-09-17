@@ -11,7 +11,7 @@
 
 include_once('sharingecon_config.php');
 require_once('functions.php');
-//require_once('tagtree.php');
+include_once('tagtree.php');
 
 function sharingecon_post(&$a){
 	if(isset($_POST['action'])){
