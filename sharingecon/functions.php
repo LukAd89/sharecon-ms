@@ -801,7 +801,7 @@ function get_TagTree(){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = 'SELECT tagTree.*, GROUP_CONCAT(tags.Tag) AS Tags FROM tagTree LEFT JOIN tags ON tagTree.ID = tags.BranchID GROUP BY ID';
+	$sql_query = 'SELECT tagBranches.*, GROUP_CONCAT(tags.Tag) AS Tags FROM tagBranches LEFT JOIN tags ON tagBranches.ID = tags.BranchID GROUP BY ID';
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$resArray[] = $row;
@@ -822,7 +822,7 @@ function new_TagTreeBranch($parent, $title, $tags){
 	
 	if($parent == '') $parent = 'NULL';
 	
-	$sql_query = 'INSERT INTO tagTree (Parent, Title) VALUES (' . $parent . ', "' . $title . '")';
+	$sql_query = 'INSERT INTO tagBranches (Parent, Title) VALUES (' . $parent . ', "' . $title . '")';
 	$conn->query($sql_query);
 	
 	
@@ -846,7 +846,7 @@ function edit_TagTreeBranch($branchid, $parent, $title, $tags){
 	
 	if($parent == '') $parent = 'NULL';
 	
-	$sql_query = 'UPDATE tagTree SET Parent = ' . $parent . ', Title = "' . $title . '" WHERE ID = ' . $branchid;
+	$sql_query = 'UPDATE tagBranches SET Parent = ' . $parent . ', Title = "' . $title . '" WHERE ID = ' . $branchid;
 	$conn->query($sql_query);
 	
 	$sql_query = 'DELETE FROM tags WHERE BranchID = ' . $branchid;
@@ -870,9 +870,9 @@ function delete_TagTreeBranch($branchid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'DELETE FROM tagTree WHERE ID = ' . $branchid;
+	$sql_query = 'DELETE FROM tagBranches WHERE ID = ' . $branchid;
 	$conn->query($sql_query);
-	$sql_query = 'UPDATE tagTree SET Parent = NULL WHERE Parent = ' . $branchid;
+	$sql_query = 'UPDATE tagBranches SET Parent = NULL WHERE Parent = ' . $branchid;
 	$conn->query($sql_query);
 	$sql_query = 'DELETE FROM tags WHERE BranchID = ' . $branchid;
 	$conn->query($sql_query);
