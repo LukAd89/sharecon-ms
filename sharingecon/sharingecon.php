@@ -7,6 +7,8 @@
  * Author: Lukas Adrian
  * Maintainer: none
  */
+
+
 include('sharingecon_config.php');
 require_once('functions.php');
 
@@ -164,6 +166,13 @@ function sharingecon_plugin_admin(&$a, &$o){
 }
 
 function sharingecon_content(&$a) {
+	
+	//TESTING TAGTREE
+	$tree = new TagTree();
+	var_dump($tree);
+	return;
+	
+	//TEST END
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
