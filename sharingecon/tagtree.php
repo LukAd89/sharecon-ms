@@ -23,4 +23,13 @@ class TagTree{
 			}
 		}
 	}
+	
+	function get_NearestBranch(){
+		$objecttags = array('hammer');
+		foreach($this->tagtree as $branch){
+			$intersection = array_intersect($objecttags, $branch['tags']);
+			if(count($intersection) > 0) return $intersection;
+		}
+		return -1;
+	}
 }
