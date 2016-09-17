@@ -8,7 +8,6 @@
  * Maintainer: none
  */
 
-include('config.php'); 
 require_once('functions.php');
 
 function sharingecon_post(&$a){
