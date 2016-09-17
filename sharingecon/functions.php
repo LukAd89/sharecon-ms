@@ -1,5 +1,5 @@
 <?php
-include('sharingecon_config.php');
+
 /*
 define('SERVER_NAME', "localhost");
 define('SERVER_USER', "root");

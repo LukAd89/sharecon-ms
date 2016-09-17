@@ -7,7 +7,7 @@
  * Author: Lukas Adrian
  * Maintainer: none
  */
-
+include('sharingecon_config.php');
 require_once('functions.php');
 
 function sharingecon_post(&$a){
