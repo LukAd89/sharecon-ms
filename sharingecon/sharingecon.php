@@ -163,7 +163,8 @@ function sharingecon_plugin_admin(&$a, &$o){
 				<button type="button" title="Delete Branch" class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete-branch-modal" data-branchid="' . $row['ID'] . '"><span class="glyphicon glyphicon-trash"</span></button></td></tr>';
 	}
 	$o .= replace_macros(get_markup_template('admin_settings.tpl','addon/sharingecon/'), array(
-		'$tablebody' => $tagTreeString
+		'$tablebody' => $tagTreeString,
+		'$unusedtags' => implode(',', get_UnusedTags())
 	));
 }
 

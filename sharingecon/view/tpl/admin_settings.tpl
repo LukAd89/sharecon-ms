@@ -18,6 +18,14 @@
 	</tbody>
 </table>
 
+<br>
+<div>
+	<h4>Unused Tags</h4>
+	<div class="well">
+		{{$unusedtags}}
+	</div>
+</div>
+
 <div id="new-branch-modal" class="modal fade" role="dialog" title="Add Branch">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
