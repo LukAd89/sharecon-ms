@@ -172,8 +172,8 @@ function sharingecon_content(&$a) {
 	
 	//var_dump($tree);
 	//var_dump(calc_NearestBranch());
-	set_NearestBranches();
-	return;
+	//set_NearestBranches();
+	//return;
 	
 	//TEST END
 	if(argc() > 1){
