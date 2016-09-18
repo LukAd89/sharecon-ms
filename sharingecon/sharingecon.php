@@ -34,7 +34,8 @@ function sharingecon_post(&$a){
 					'location'	=> $_POST['input-location'],
 					'tags' => strip_tags($_POST['input-tags'])
 				);
-				add_NewShare($data);
+				$newid = add_NewShare($data);
+				set_NearestBranch($newid, strip_tags($_POST['input-tags']));
 				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
 				break;

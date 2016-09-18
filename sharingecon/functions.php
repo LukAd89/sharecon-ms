@@ -116,9 +116,12 @@ function add_NewShare($data){
 		return "Error: " . $sql_query . "<br>" . $conn->error;
 	}
 	
+	$id = $conn->insert_id;
+	
 	$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES ';
+	
 	foreach($data['groups'] as $group){
-		$sql_query .= '(' . $conn->insert_id . ', ' . $group . '),';
+		$sql_query .= '(' . $id . ', ' . $group . '),';
 	}
 	$sql_query = substr($sql_query, 0, -1);
 	
@@ -137,7 +140,7 @@ function add_NewShare($data){
 	}
 	*/
 	$conn->close();
-	return;
+	return $id;
 }
 
 function edit_Share($data){

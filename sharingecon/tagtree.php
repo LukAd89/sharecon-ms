@@ -53,10 +53,7 @@ function set_NearestBranches(){
 		$conn->close();
 		
 		foreach($resArray as $resRow){
-			if(strlen($resRow['Tags']) > 0)
-				set_NearestBranch($resRow['ID'], calc_NearestBranch(explode(',', $resRow['Tags'])));
-			else
-				set_NearestBranch($resRow['ID'], 0);
+			set_NearestBranch($resRow['ID'], $resRow['Tags']);
 		}
 	}
 	else{
@@ -64,7 +61,11 @@ function set_NearestBranches(){
 	}
 }
 
-function set_NearestBranch($id, $branch){
+function set_NearestBranch($id, $tags){
+	$branch = 0;
+	if(strlen($tags) > 0)
+		$branch = calc_NearestBranch(explode(',', $tags));
+	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	$sql_query = 'UPDATE sharedObjects SET TagBranch = ' . $branch . ' WHERE ID = ' . $id;
 	$conn->query($sql_query);
