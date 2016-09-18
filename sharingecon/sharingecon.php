@@ -170,9 +170,8 @@ function sharingecon_content(&$a) {
 	
 	//TESTING TAGTREE
 	
-	$tree = new TagTree();
 	//var_dump($tree);
-	var_dump($tree->get_NearestBranch());
+	var_dump(calc_NearestBranch());
 	return;
 	
 	//TEST END
