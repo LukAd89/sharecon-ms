@@ -201,7 +201,7 @@ function get_UnusedTags(){
 	}
 	
 	$conn->close();
-	Logger(implode(',', array_unique($tagsobjects)) . '  :  ' . implode(',', array_unique($tagsbranches)));
+	Logger(implode(',',$tagsbranches) . '  :  ' . implode(',', array_unique($tagsbranches)));
 	$unusedtags = array_diff(array_unique($tagsobjects), array_unique($tagsbranches));
 	
 	return $unusedtags;
