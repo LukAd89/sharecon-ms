@@ -24,16 +24,16 @@ function get_CurrentTagTree(){
 	return $tagtree;
 }
 
-function calc_NearestBranch(){
+function calc_NearestBranch($tagarray){
 	$currentmaxcount = 0;
 	$currentbranch;
 	
 	$tagtree = get_CurrentTagTree();
 	
-	$objecttags = array('vacuum cleaner');
+	//$objecttags = array('vacuum cleaner');
 	
 	foreach($tagtree as $branch){
-		$intersection = array_intersect($objecttags, $branch['tags']);
+		$intersection = array_intersect($tagarray, $branch['tags']);
 		if(count($intersection) > $currentmaxcount){
 			$currentmaxcount = count($intersection);
 			$currentbranch = $branch['ID'];
@@ -43,9 +43,25 @@ function calc_NearestBranch(){
 }
 
 function set_NearestBranches(){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	$sql_query = 'SELECT ID, Tags FROM sharedObjects';
 	
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$resArray[] = $row;
+		}
+		$conn->close();
+		
+		foreach($resArray as $resRow){
+			set_NearestBranch($resRow['ID'], calc_NearestBranch(explode(',', $resRow['Tags'])));
+		}
+	}
+	else{
+		return;
+	}
 }
 
-function set_NearestBranch(){
-	
+function set_NearestBranch($id, $branch){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	$sql_query = 'UPDATE sharedObjects SET TagBranch = ' . $branch . 'WHERE ID = ' . $id;
 }
