@@ -196,7 +196,7 @@ function get_UnusedTags(){
 	$sql_query = 'SELECT Tag FROM tags';
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-			$tagsbranches[] = $row['Tags'];
+			$tagsbranches[] = $row['Tag'];
 		}
 	}
 	
