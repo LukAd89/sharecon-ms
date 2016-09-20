@@ -104,12 +104,23 @@ function sharingecon_post(&$a){
 	}
 }
 
+function sharingecon_install() {
+	//Zotlabs\Extend\Hook::register('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
+	Logger('install');
+}
+function sharingecon_uninstall() {
+	//Zotlabs\Extend\Hook::register('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
+	Logger('uninstall');
+}
+
 function sharingecon_load() {
 	//Zotlabs\Extend\Hook::register('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
+	Logger('load');
 }
 
 function sharingecon_unload() {
 	//Zotlabs\Extend\Hook::unregister('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
+	Logger('unload');
 }
 
 function sharingecon_init(){

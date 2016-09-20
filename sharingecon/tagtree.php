@@ -1,6 +1,25 @@
 <?php
 
-function get_CurrentTagTree(){
+function get_TagTree(){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql_query = 'SELECT tagBranches.*, GROUP_CONCAT(tags.Tag) AS Tags FROM tagBranches LEFT JOIN tags ON tagBranches.ID = tags.BranchID GROUP BY ID';
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$resArray[] = $row;
+		}
+		$conn->close();
+		return $resArray;
+	}
+	$conn->close();
+	return null;
+}
+
+function get_TagTreeExt(){
 	$tagtree = array();
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
@@ -13,22 +32,51 @@ function get_CurrentTagTree(){
 			$tagtree[$row['ID']] = $row;
 		}
 		$conn->close();
-	}
-	
-	foreach($tagtree as $branch){
-		if($branch['Parent'] != 0){
-			$tagtree[$branch['Parent']]['subbranches'][] = $branch['ID'];
+		
+		foreach($tagtree as $branch){
+			if($branch['Parent'] != 0){
+				$tagtree[$branch['Parent']]['subbranches'][] = $branch['ID'];
+			}
 		}
+		
+		return $tagtree;
 	}
 	
-	return $tagtree;
+	$conn->close();
+	return;
+}
+
+function get_TagTreeMin(){
+	$tagtree = array();
+	
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	$sql_query = 'SELECT ID, Parent FROM tagBranches ORDER BY Parent';
+	
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$row['subbranches'] = array();
+			$tagtree[$row['ID']] = $row;
+		}
+		$conn->close();
+	
+		foreach($tagtree as $branch){
+			if($branch['Parent'] != 0){
+				$tagtree[$branch['Parent']]['subbranches'][] = $branch['ID'];
+			}
+		}
+	
+		return $tagtree;
+	}
+	
+	$conn->close();
+	return;
 }
 
 function calc_NearestBranch($tagarray){
 	$currentmaxcount = 0;
 	$currentbranch = 0;
 	
-	$tagtree = get_CurrentTagTree();
+	$tagtree = get_TagTreeExt();
 	
 	//$objecttags = array('vacuum cleaner');
 	
@@ -70,25 +118,6 @@ function set_NearestBranch($id, $tags){
 	$sql_query = 'UPDATE sharedObjects SET TagBranch = ' . $branch . ' WHERE ID = ' . $id;
 	$conn->query($sql_query);
 	$conn->close();
-}
-
-function get_TagTree(){
-	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
-
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-
-	$sql_query = 'SELECT tagBranches.*, GROUP_CONCAT(tags.Tag) AS Tags FROM tagBranches LEFT JOIN tags ON tagBranches.ID = tags.BranchID GROUP BY ID';
-	if($result = $conn->query($sql_query)){
-		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-			$resArray[] = $row;
-		}
-		$conn->close();
-		return $resArray;
-	}
-	$conn->close();
-	return null;
 }
 
 function new_TagTreeBranch($parent, $title, $tags){
@@ -201,8 +230,44 @@ function get_UnusedTags(){
 	}
 	
 	$conn->close();
-	Logger(implode(',',$tagsbranches) . '  :  ' . implode(',', array_unique($tagsbranches)));
 	$unusedtags = array_diff(array_unique($tagsobjects), array_unique($tagsbranches));
 	
 	return $unusedtags;
+}
+
+function get_BranchDistance($start, $end, $type){
+	if($start == $end) return 0;
+
+	if($type == 1){
+		$tmp = $start;
+		$start = $end;
+		$end = $tmp;
+	}
+
+	$tree = get_TagTreeMin();
+
+	$distancedown = 0;
+	$distanceup = -1;
+
+	while($distancedown == 0){
+		$distancedown = get_BranchDistanceRec($start, $end, $tree, 0);
+		$start = $tree[$start]['parent'];
+		$distanceup += 1;
+	}
+	return ($distancedown*TREE_WEIGHT_SPECIAL) + ($distanceup*TREE_WEIGHT_GENERAL)	;
+}
+
+function get_BranchDistanceRec($start, $end, $tree, $count){
+
+	if(in_array($end, $tree[$start]['relatives']))
+		return $count+1;
+
+
+	if(count($tree[$start]['relatives']) > 0){
+		foreach($tree[$start]['relatives'] as $relative){
+			$subcount = get_BranchDistanceRec($relative, $end, $tree, $count+1);
+			if($subcount > 0) return $subcount;
+		}
+	}
+	return 0;
 }
