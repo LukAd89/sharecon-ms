@@ -24,7 +24,7 @@ function sharingecon_post(&$a){
 					$filename = 'default.jpg';
 				
 				$data = array(
-					'owner' => local_channel(),
+					'owner' => (local_channel()) ? App::$channel['channel_hash'] : remote_channel(),
 					'type' => $_POST['select-type'],
 					'title' => strip_tags($_POST['input-title']),
 					'description' => strip_tags($_POST['text-description']),
@@ -105,11 +105,11 @@ function sharingecon_post(&$a){
 }
 
 function sharingecon_install() {
-	//Zotlabs\Extend\Hook::register('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
+		
 	Logger('install');
 }
 function sharingecon_uninstall() {
-	//Zotlabs\Extend\Hook::register('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
+	//Zotlabs\Extend\Hook::unregister('logged_in', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
 	Logger('uninstall');
 }
 
