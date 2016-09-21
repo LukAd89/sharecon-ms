@@ -412,12 +412,36 @@ function delete_Share($id){
 	$conn->close();
 }
 
+function get_XchanAdress($channelid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_HUB_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'SELECT xchan_addr FROM xchan WHERE xchan_hash	= "' . $channelid . '"';
+	
+	if($result = $conn->query($sql_query)){
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+
+		return $row['xchan_addr'];
+	}
+	else { return "";}
+	
+	$conn->close();
+}
+
 function write_Message($subject, $body){
 	require_once('include/message.php');
 	$recipient = get_ShareOwner($_POST['input-message-shareid']);
 	
-	
-	$sender = (local_channel()) ? local_channel() : 1;
+	If(local_channel()){
+		$sender = local_channel();
+	}
+	else{
+		$sender = 1;
+		$body = 'THIS MESSAGE IS FROM THE REMOTE CHANNEL\n' . get_XchanAdress(remote_channel()) . '\n\n ' . $body;
+	}
 	
 	Logger('SENDER: ' . $sender .  'REC: ' . $recipient);
 	send_message($sender, $recipient, $body, $subject);
