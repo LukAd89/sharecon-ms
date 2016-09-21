@@ -416,7 +416,9 @@ function write_Message($subject, $body){
 	require_once('include/message.php');
 	$recipient = get_ShareOwner($_POST['input-message-shareid']);
 	Logger('REC: ' . $recipient);
-	send_message(null, $recipient, $body, $subject);
+	
+	$sender = (local_channel()) ? local_channel() : 0;
+	send_message($sender, $recipient, $body, $subject);
 }
 
 function load_Enquiries($channelid){
@@ -515,7 +517,7 @@ function add_Enquiry($id, $customerid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT * FROM enquiries WHERE ObjectID = ' . $id . ' AND CustomerID = ' . $customerid . '';
+	$sql_query = 'SELECT * FROM enquiries WHERE ObjectID = ' . $id . ' AND CustomerID = "' . $customerid . '"';
 	if($result = $conn->query($sql_query)){
 		if($result->num_rows > 0){
 			$conn->close();
@@ -523,7 +525,7 @@ function add_Enquiry($id, $customerid){
 		}
 	}
 	
-	$sql_query = 'INSERT INTO enquiries (ObjectID, CustomerID, Status) VALUES (' . $id . ', ' . $customerid . ', 0)';
+	$sql_query = 'INSERT INTO enquiries (ObjectID, CustomerID, Status) VALUES (' . $id . ', "' . $customerid . '", 0)';
 	$conn->query($sql_query);
 	
 	$conn->close();
