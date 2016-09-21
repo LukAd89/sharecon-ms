@@ -217,6 +217,8 @@ function load_Shares($args){
 			$sql_query .= ' AND sharedObjects.OwnerID IN ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE uid = ' . local_channel() . '))';
 		}
 		
+		Logger($sql_query);
+		
 		if(isset($args['filterfavs']) && $args['filterfavs'] == 1){
 			$sql_query .= ' AND sharedObjects.ID IN (' . implode(',', get_ChannelFavorites($args['channel'])) . ')';
 		}
@@ -356,7 +358,7 @@ function toggle_Share($id, $state){
 	$ownerid = (local_channel()) ? App::$channel["channel_hash"] : remote_channel();
 	
 	$sql_query = 'UPDATE sharedObjects SET Status = ' . $state . ' WHERE ID = ' . $id . ' AND OwnerID = "' . $ownerid . '"';
-	Logger($sql_query);
+	
 	if ($conn->query($sql_query) === TRUE) {
 		return "Query successfull";
 	} else {
@@ -444,7 +446,6 @@ function write_Message($subject, $body){
 		$body = "THIS MESSAGE IS FROM THE REMOTE CHANNEL\r\n" . $sender_addr . "\r\n \r\n" . $body;
 	}
 	
-	Logger('SENDER: ' . $sender .  'REC: ' . $recipient);
 	send_message($sender, $recipient, $body, $subject);
 }
 
