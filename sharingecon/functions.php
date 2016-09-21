@@ -204,7 +204,7 @@ function load_Shares($args){
 	$resArray = array();
 	
 	if(isset($args['ownerview']) && $args['ownerview'] == true){
-		$sql_query = 'SELECT * FROM sharedObjects WHERE OwnerID = ' . $args['ownerid'];
+		$sql_query = 'SELECT * FROM sharedObjects WHERE OwnerID = "' . $args['ownerid'] . '"';
 	}
 	
 	else{
