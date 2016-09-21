@@ -285,10 +285,19 @@ function sharingecon_content(&$a) {
 			
 			case 'editshare':
 				$data = load_ShareDetails(argv(2));
+				
+				$channelgroups = get_ChannelGroups((local_channel()) ? App::$channel['channel_hash'] : remote_channel(), true);
+				
+				foreach($channelgroups as $item){
+					$groupselector .= '<option value="'. $item['id'] .'">' . $item['gname'] . '</option>';
+				}
+				
 				$siteContent .= replace_macros(get_markup_template('edit_share.tpl','addon/sharingecon/'), array(
 					'$additional' => '<input type="hidden" name="shareid" value="'. argv(2) . '">',
 					'$titlevalue' => $data['Title'],
-					'$descvalue' => $data['Description']
+					'$descvalue' => $data['Description'],
+					'$location' => $data['Location'],
+					'$groups'	=> $groupselector
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 					'$filterhidden' => 'hidden'
