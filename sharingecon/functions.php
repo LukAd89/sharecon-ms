@@ -352,7 +352,7 @@ function toggle_Share($id, $state){
 	}
 	
 	$sql_query = "UPDATE sharedObjects SET Status=" . $state . " WHERE ID=" . $id . ' AND OwnerID = "' . (local_channel()) ? App::$channel['channel_hash'] : remote_channel() . '"';
-	
+	Logger($sql_query);
 	if ($conn->query($sql_query) === TRUE) {
 		return "Query successfull";
 	} else {
