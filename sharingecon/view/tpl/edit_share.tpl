@@ -26,7 +26,7 @@
 				
 				<hr>
 				
-				<div class="form-group">
+				<div class="form-group" style="{{$groupstyle}}">
 					<label for="select-range" class="control-label">Make Object visible by</label>
 					<select class="form-control" name="select-visibility" id="select-visibility">
 						<option value="0">Everybody</option>

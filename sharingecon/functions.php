@@ -108,6 +108,10 @@ function add_NewShare($data){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
+	if($data['visibility'] == 1 && !local_channel()){
+		$data['visibility'] = 0;
+	}
+	
 	$sql_query = 'INSERT INTO sharedObjects (title, description, imagename, ownerid, type, visibility, location, tags) VALUES ("' . $data['title'] . '", "' . $data['description'] . '", "' . $data['imagename'] . '", "' . $data['owner'] . '", "' . $data['type'] . '", "' . $data['visibility'] . '", "' . $data['location'] . '", "' . $data['tags'] . '")';
 	
 	if ($conn->query($sql_query) === TRUE) {
@@ -116,16 +120,18 @@ function add_NewShare($data){
 		return "Error: " . $sql_query . "<br>" . $conn->error;
 	}
 	
-	$id = $conn->insert_id;
+	if($data['visibility'] == 1){
+		$id = $conn->insert_id;
 	
-	$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES ';
+		$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES ';
 	
-	foreach($data['groups'] as $group){
-		$sql_query .= '(' . $id . ', ' . $group . '),';
+		foreach($data['groups'] as $group){
+			$sql_query .= '(' . $id . ', ' . $group . '),';
+		}
+		$sql_query = substr($sql_query, 0, -1);
+		
+		$conn->query($sql_query);
 	}
-	$sql_query = substr($sql_query, 0, -1);
-	
-	$conn->query($sql_query);
 	
 	//OLD. TAGS ARE NOW IN SHAREDOBJECTS TABLE
 	/*
@@ -236,7 +242,6 @@ function load_Shares($args){
 			$sql_query .= ' AND OwnerID <> "' . $args["channel"] . '"';
 		}
 		$sql_query .= ' AND (visibility = 0 OR (visibility = 1 AND VisibleFor IN (SELECT DISTINCT gid from ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan ="' . $args['channel'] .'")))';
-		Logger($sql_query);
 	}
 	
 	if(isset($args['orderby'])){
