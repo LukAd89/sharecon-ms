@@ -278,7 +278,7 @@ function sharingecon_content(&$a) {
 				}
 				$siteContent .= replace_macros(get_markup_template('new_share.tpl','addon/sharingecon/'), array(
 					'$groups'	=> $groupselector,
-					'$groupstyle' => (local_channel) ? '' : 'display:none'
+					'$groupstyle' => (local_channel()) ? '' : 'display:none'
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 					'$filterhidden' => 'hidden'
@@ -299,7 +299,7 @@ function sharingecon_content(&$a) {
 					'$titlevalue' => $data['Title'],
 					'$descvalue' => $data['Description'],
 					'$location' => $data['Location'],
-					'$groupstyle' => (local_channel) ? '' : 'display:none',
+					'$groupstyle' => (local_channel()) ? '' : 'display:none',
 					'$groups'	=> $groupselector
 				));
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
