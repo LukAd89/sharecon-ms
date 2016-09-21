@@ -161,7 +161,9 @@ function edit_Share($data){
 		$sql_query .= ', Imagename = "' . $data['imagename'] . '"';
 	}
 	
-	$sql_query .= ' WHERE ID = ' . $data['shareid'];
+	$ownerid = (local_channel()) ? App::$channel["channel_hash"] : remote_channel();
+	
+	$sql_query .= ' WHERE ID = ' . $data['shareid'] . ' AND OwnerID = "' . $ownerid . '"';
 	
 	if ($conn->query($sql_query) === TRUE) {
 		echo "New record created successfully";
