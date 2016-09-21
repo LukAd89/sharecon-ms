@@ -237,8 +237,9 @@ function load_Shares($args){
 		if(isset($args['channel'])){
 			$sql_query .= " AND OwnerID <> '" . $args['channel'] . "'";
 		}
-	
-		$sql_query .= 'AND (visibility = 0 OR visibility = 1 AND VisibleFor IN (SELECT DISTINCT gid from ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan ="' . $args['channel'] .'"))';
+		Logger($sql_query);
+		$sql_query .= 'AND (visibility = 0 OR (visibility = 1 AND VisibleFor IN (SELECT DISTINCT gid from ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan ="' . $args['channel'] .'")))';
+		Logger($sql_query);
 	}
 	
 	if(isset($args['orderby'])){
