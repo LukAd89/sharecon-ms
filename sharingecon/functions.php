@@ -214,7 +214,7 @@ function load_Shares($args){
 		
 		if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
 			//$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
-			$sql_query .= ' AND sharedObjects.OwnerID IN ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE uid = ' . local_channel() . '))';
+			$sql_query .= ' AND sharedObjects.OwnerID IN ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE uid = ' . local_channel() . ')';
 		}
 		
 		if(isset($args['filterfavs']) && $args['filterfavs'] == 1){
@@ -233,7 +233,7 @@ function load_Shares($args){
 		}
 		
 		if(isset($args['channel'])){
-			$sql_query .= " AND OwnerID <> '" . $args['channel'] . "'";
+			$sql_query .= ' AND OwnerID <> "' . $args["channel"] . '"';
 		}
 		$sql_query .= ' AND (visibility = 0 OR (visibility = 1 AND VisibleFor IN (SELECT DISTINCT gid from ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan ="' . $args['channel'] .'")))';
 		Logger($sql_query);
