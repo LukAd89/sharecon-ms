@@ -377,10 +377,10 @@ function toggle_Favorite($objectid, $state){
 	$channelid = (local_channel()) ? App::$channel["channel_hash"] : remote_channel();
 	
 	if($state == 1){
-		$sql_query = 'REPLACE INTO favorites (ChannelID, ObjectID) VALUES (' . $channelid . ', ' . $objectid . ')';
+		$sql_query = 'REPLACE INTO favorites (ChannelID, ObjectID) VALUES ("' . $channelid . '", ' . $objectid . ')';
 	}
 	else{
-		$sql_query = 'DELETE FROM favorites WHERE ChannelID = ' . $channelid . ' AND ObjectID = ' . $objectid;
+		$sql_query = 'DELETE FROM favorites WHERE ChannelID = "' . $channelid . '" AND ObjectID = ' . $objectid;
 	}
 	
 	if ($conn->query($sql_query) === TRUE) {
@@ -612,7 +612,7 @@ function get_Location($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = 'SELECT Address FROM locations WHERE ChannelID = ' . $channelid;
+	$sql_query = 'SELECT Address FROM locations WHERE ChannelID = "' . $channelid . '"';
 
 	if($result = $conn->query($sql_query)){
 		if($result->num_rows > 0){
