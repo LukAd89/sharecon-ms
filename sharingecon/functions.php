@@ -415,9 +415,11 @@ function delete_Share($id){
 function write_Message($subject, $body){
 	require_once('include/message.php');
 	$recipient = get_ShareOwner($_POST['input-message-shareid']);
-	Logger('REC: ' . $recipient);
+	
 	
 	$sender = (local_channel()) ? local_channel() : 0;
+	
+	Logger('SENDER: ' . $sender .  'REC: ' . $recipient);
 	send_message($sender, $recipient, $body, $subject);
 }
 
