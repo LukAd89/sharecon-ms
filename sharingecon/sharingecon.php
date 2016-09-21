@@ -84,7 +84,7 @@ function sharingecon_post(&$a){
 				break;
 			
 			case 'add-enquiry':
-				add_Enquiry($_POST['id'], local_channel());
+				add_Enquiry($_POST['id'], (local_channel()) ? App::$channel['channel_hash'] : remote_channel());
 				break;
 				
 			case 'set-rating':
@@ -92,11 +92,11 @@ function sharingecon_post(&$a){
 				break;
 				
 			case 'set-location':
-				set_Location(local_channel(), $_POST['adress']);
+				set_Location((local_channel()) ? App::$channel['channel_hash'] : remote_channel(), $_POST['adress']);
 				break;
 				
 			case 'get-distance':
-				echo get_Distance(local_channel(), $_POST['shareid']);
+				echo get_Distance((local_channel()) ? App::$channel['channel_hash'] : remote_channel(), $_POST['shareid']);
 				break;
 		}
 		//header("Location: " . $_SERVER['REQUEST_URI']);
@@ -194,7 +194,7 @@ function sharingecon_content(&$a) {
 			case 'myshares':
 				$pageContent = get_SharesList(array(
 					//'ownerid' => App::$channel['channel_hash'],
-					'ownerid' => local_channel(),
+					'ownerid' => (local_channel()) ? App::$channel['channel_hash'] : remote_channel(),
 					'ownerview' => true,
 					'type' => 2
 					));
@@ -210,7 +210,7 @@ function sharingecon_content(&$a) {
 			case 'findshares':
 				$pageContent = get_SharesList(array(
 					'type' => 0,
-					'channel' => local_channel(),
+					'channel' => (local_channel()) ? App::$channel['channel_hash'] : remote_channel(),
 					'ownerview' => false,
 					'orderby' => $_GET['orderby'],
 					'filterfavs' => $_GET['filterfavs'],
@@ -220,7 +220,7 @@ function sharingecon_content(&$a) {
 					'$tab2' => 'active',
 					'$pagecontent' => $pageContent
 				));
-				$channellocation = get_Location(local_channel());
+				$channellocation = get_Location((local_channel()) ? App::$channel['channel_hash'] : remote_channel());
 				if($channellocation == -1){
 					$channellocation = '';
 				}
@@ -270,7 +270,7 @@ function sharingecon_content(&$a) {
 				break;
 				
 			case 'newshare':
-				$channelgroups = get_ChannelGroups(local_channel(), true);
+				$channelgroups = get_ChannelGroups((local_channel()) ? App::$channel['channel_hash'] : remote_channel(), true);
 				
 				foreach($channelgroups as $item){
 					$groupselector .= '<option value="'. $item['id'] .'">' . $item['gname'] . '</option>';
@@ -299,8 +299,8 @@ function sharingecon_content(&$a) {
 				$tablebodyenq = "";
 				$tablebodypast = "";
 				
-				$dataenq = load_Enquiries(local_channel());
-				$datapast = load_Transactions(local_channel());
+				$dataenq = load_Enquiries((local_channel()) ? App::$channel['channel_hash'] : remote_channel());
+				$datapast = load_Transactions((local_channel()) ? App::$channel['channel_hash'] : remote_channel());
 				
 				foreach($dataenq as $row){
 					$tablebodyenq .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['channel_name'] . '</td>';// . '<td>' . $row["Status"] . '</td>' . '<td>KLICK</td></tr>';
@@ -339,7 +339,7 @@ function sharingecon_content(&$a) {
 				if(argc()==2){
 					$data = load_Shares(array(
 						'ownerview' => true,
-						'ownerid'	=> local_channel(),
+						'ownerid'	=> (local_channel()) ? App::$channel['channel_hash'] : remote_channel(),
 						'type'		=> 2
 					));
 					if(count($data) == 0){
@@ -359,7 +359,7 @@ function sharingecon_content(&$a) {
 					));
 				}
 				else if(argc()==3){
-					if(get_ShareOwner(argv(2)) != local_channel()){
+					if(get_ShareOwner(argv(2)) != (local_channel()) ? App::$channel['channel_hash'] : remote_channel()){
 						$siteContent .= 'You are not the Owner of this Share';
 						App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 								'$filterhidden' => 'hidden'
@@ -393,7 +393,7 @@ function sharingecon_content(&$a) {
 	
 	else{
 		$pageContent = get_SharesList(array(
-			'ownerid' => local_channel(),
+			'ownerid' => (local_channel()) ? App::$channel['channel_hash'] : remote_channel(),
 			'ownerview' => true,
 			'type' => 2
 			));

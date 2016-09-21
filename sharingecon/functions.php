@@ -212,7 +212,7 @@ function load_Shares($args){
 		
 		if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
 			//$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
-			$sql_query .= ' AND sharedObjects.OwnerID IN ( SELECT DISTINCT channel_id FROM ' . SERVER_HUB_DBNAME . '.channel RIGHT JOIN ' . SERVER_HUB_DBNAME . '.group_member ON channel_hash = xchan WHERE gid IN (SELECT DISTINCT id FROM ' . SERVER_HUB_DBNAME . '.groups WHERE uid = ' . $args['channel'] . '))';
+			$sql_query .= ' AND sharedObjects.OwnerID IN ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE WHERE uid = ' . local_channel() . '))';
 		}
 		
 		if(isset($args['filterfavs']) && $args['filterfavs'] == 1){
@@ -234,7 +234,7 @@ function load_Shares($args){
 			$sql_query .= " AND OwnerID <> '" . $args['channel'] . "'";
 		}
 	
-		$sql_query .= 'AND (visibility = 0 OR visibility = 1 AND VisibleFor IN (SELECT DISTINCT gid from ' . SERVER_HUB_DBNAME . '.group_member LEFT JOIN ' . SERVER_HUB_DBNAME . '.channel ON ' . SERVER_HUB_DBNAME . '.group_member.xchan = ' . SERVER_HUB_DBNAME . '.channel.channel_hash WHERE ' . SERVER_HUB_DBNAME . '.channel.channel_id=' . $args['channel'] .'))';
+		$sql_query .= 'AND (visibility = 0 OR visibility = 1 AND VisibleFor IN (SELECT DISTINCT gid from ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan ="' . $args['channel'] .'"))';
 	}
 	
 	if(isset($args['orderby'])){
@@ -305,7 +305,7 @@ function get_ShareOwner($shareid){
 	$conn->close();
 }
 
-function get_ChannelHash($channelid){
+function get_ChannelHashByID($channelid){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_HUB_DBNAME);
 
 	if ($conn->connect_error) {
@@ -324,6 +324,25 @@ function get_ChannelHash($channelid){
 	$conn->close();
 }
 
+function get_ChannelIDByHash($channelhash){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_HUB_DBNAME);
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql_query = "SELECT channel_id FROM channel WHERE channel_hash=" . $channelhash;
+
+	if($result = $conn->query($sql_query)){
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+
+		return $row['channel_hash'];
+	}
+	else { return "";}
+
+	$conn->close();
+}
+
 function toggle_Share($id, $state){
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
@@ -332,7 +351,7 @@ function toggle_Share($id, $state){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = "UPDATE sharedObjects SET Status=" . $state . " WHERE ID=" . $id . ' AND OwnerID = ' . local_channel();
+	$sql_query = "UPDATE sharedObjects SET Status=" . $state . " WHERE ID=" . $id . ' AND OwnerID = ' . (local_channel()) ? App::$channel['channel_hash'] : remote_channel();
 	
 	if ($conn->query($sql_query) === TRUE) {
 		return "Query successfull";
@@ -352,10 +371,10 @@ function toggle_Favorite($objectid, $state){
 	}
 	
 	if($state == 1){
-		$sql_query = 'REPLACE INTO favorites (ChannelID, ObjectID) VALUES (' . local_channel() . ', ' . $objectid . ')';
+		$sql_query = 'REPLACE INTO favorites (ChannelID, ObjectID) VALUES (' . (local_channel()) ? App::$channel['channel_hash'] : remote_channel() . ', ' . $objectid . ')';
 	}
 	else{
-		$sql_query = 'DELETE FROM favorites WHERE ChannelID = ' . local_channel() . ' AND ObjectID = ' . $objectid;
+		$sql_query = 'DELETE FROM favorites WHERE ChannelID = ' . (local_channel()) ? App::$channel['channel_hash'] : remote_channel() . ' AND ObjectID = ' . $objectid;
 	}
 	
 	if ($conn->query($sql_query) === TRUE) {
@@ -387,7 +406,7 @@ function delete_Share($id){
 
 function write_Message($subject, $body){
 	require_once('include/message.php');
-	$recipient = get_ChannelHash(get_ShareOwner($_POST['input-message-shareid']));
+	$recipient = get_ShareOwner($_POST['input-message-shareid']);
 	send_message(null, $recipient, $body, $subject);
 }
 
@@ -398,7 +417,7 @@ function load_Enquiries($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT enquiries.ID, Title, channel_name, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.channel ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.channel.channel_id WHERE sharedObjects.OwnerID = ' . $channelid;
+	$sql_query = 'SELECT enquiries.ID, Title, xchan_name, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash WHERE sharedObjects.OwnerID = ' . $channelid;
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -419,7 +438,7 @@ function load_Transactions($channelid){
 	}
 
 	//$sql_query = "SELECT transactions.*, sharedObjects.OwnerID FROM transactions, sharedObjects WHERE transactions.ObjectID = sharedObjects.ID";
-	$sql_query = 'SELECT transactions.*, Title, channel_name FROM transactions LEFT JOIN sharedObjects ON transactions.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.channel ON sharedObjects.OwnerID = ' . SERVER_HUB_DBNAME . '.channel.channel_id WHERE transactions.CustomerID = ' . $channelid;
+	$sql_query = 'SELECT transactions.*, Title, xchan_name FROM transactions LEFT JOIN sharedObjects ON transactions.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON sharedObjects.OwnerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash_id WHERE transactions.CustomerID = ' . $channelid;
 
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -508,7 +527,7 @@ function get_ChannelName($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT channel_name FROM channel WHERE channel_id = "' . $channelid . '"';
+	$sql_query = 'SELECT channel_name FROM channel WHERE channel_hash = "' . $channelid . '"';
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$conn->close();
@@ -587,7 +606,7 @@ function get_Location($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql_query = 'SELECT Adress FROM locations WHERE ChannelID = ' . $channelid;
+	$sql_query = 'SELECT Address FROM locations WHERE ChannelID = ' . $channelid;
 
 	if($result = $conn->query($sql_query)){
 		if($result->num_rows > 0){
@@ -608,10 +627,10 @@ function set_Location($channelid, $adress){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	if(get_Location($channelid) == -1){
-		$sql_query = 'INSERT INTO locations (ChannelID, Adress) VALUES ("' . $channelid . '","' . $adress . '")';
+		$sql_query = 'INSERT INTO locations (ChannelID, Address) VALUES ("' . $channelid . '","' . $adress . '")';
 	}
 	else{
-		$sql_query = 'UPDATE locations SET Adress ="' . $adress . '" WHERE ChannelID = "' . $channelid . '"';
+		$sql_query = 'UPDATE locations SET Address ="' . $adress . '" WHERE ChannelID = "' . $channelid . '"';
 	}
 	
 	$conn->query($sql_query);
@@ -716,7 +735,7 @@ function get_ChannelGroups($channelid, $isowner){
 		$sql_query = 'SELECT id, gname FROM groups WHERE uid = ' . $channelid;
 	}
 	else{
-		$sql_query = 'SELECT group_member.gid, groups.gname FROM groups LEFT JOIN group_member ON groups.id = group_member.gid LEFT JOIN channel ON group_member.xchan = channel.channel_hash WHERE channel.channel_id = ' . $channelid;
+		$sql_query = 'SELECT group_member.gid, groups.gname FROM groups LEFT JOIN group_member ON groups.id = group_member.gid WHERE group_member.xchan = ' . $channelid;
 	}
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -746,16 +765,24 @@ function is_ChannelAllowedToView($channelid, $shareid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT Visibility, VisibleFor FROM sharedObjects WHERE ID = "' . $shareid . '"';
+	$sql_query = 'SELECT Visibility FROM sharedObjects WHERE ID = "' . $shareid . '"';
 	if($result = $conn->query($sql_query)){
-		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-			$resArray[] = $row;
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$conn->close();
+		
+		if($row['visibility'] == 0) return true;
+	}
+	
+	$sql_query = 'SELECT VisibleFor FROM visibilityRange WHERE ID = "' . $shareid . '"';
+	if($result = $conn->query($sql_query)){
+		while($row = $result->fetch_array(MYSQLI_ASSOC)){
+			$groupids[] = $row['VisibleFor'];
 		}
 		$conn->close();
-		return $resArray;
+		return is_ChannelMemberOfGroup($channelid, $groupids);
 	}
 	$conn->close();
-	return null;
+	return false;
 }
 
 function get_ChannelFavorites($channelid){
