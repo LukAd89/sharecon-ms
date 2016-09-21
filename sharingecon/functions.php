@@ -618,7 +618,7 @@ function get_Location($channelid){
 		if($result->num_rows > 0){
 			$row = $result->fetch_array(MYSQLI_ASSOC);
 			$conn->close();
-			return $row['Adress'];
+			return $row['Address'];
 		}
 		
 		$conn->close();
@@ -798,7 +798,7 @@ function get_ChannelFavorites($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT ObjectID FROM favorites WHERE channelID = ' . $channelid;
+	$sql_query = 'SELECT ObjectID FROM favorites WHERE channelID = "' . $channelid . '"';
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$resArray[] = $row['ObjectID'];
