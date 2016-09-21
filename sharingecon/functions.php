@@ -372,11 +372,13 @@ function toggle_Favorite($objectid, $state){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
+	$channelid = (local_channel()) ? App::$channel["channel_hash"] : remote_channel();
+	
 	if($state == 1){
-		$sql_query = 'REPLACE INTO favorites (ChannelID, ObjectID) VALUES (' . (local_channel()) ? App::$channel['channel_hash'] : remote_channel() . ', ' . $objectid . ')';
+		$sql_query = 'REPLACE INTO favorites (ChannelID, ObjectID) VALUES (' . $channelid . ', ' . $objectid . ')';
 	}
 	else{
-		$sql_query = 'DELETE FROM favorites WHERE ChannelID = ' . (local_channel()) ? App::$channel['channel_hash'] : remote_channel() . ' AND ObjectID = ' . $objectid;
+		$sql_query = 'DELETE FROM favorites WHERE ChannelID = ' . $channelid . ' AND ObjectID = ' . $objectid;
 	}
 	
 	if ($conn->query($sql_query) === TRUE) {
