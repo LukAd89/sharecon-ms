@@ -441,7 +441,7 @@ function write_Message($subject, $body){
 	else{
 		$sender = 1;
 		$sender_addr =  get_XchanAdress(remote_channel());
-		$body = "THIS MESSAGE IS FROM THE REMOTE CHANNEL\r\n" . $sender_addr . "\r\n" . $body;
+		$body = "THIS MESSAGE IS FROM THE REMOTE CHANNEL\r\n" . $sender_addr . "\r\n \r\n" . $body;
 	}
 	
 	Logger('SENDER: ' . $sender .  'REC: ' . $recipient);
@@ -770,7 +770,7 @@ function get_ChannelGroups($channelid, $isowner){
 
 	//$sql_query = 'SELECT group_member.gid, groups.gname FROM group_member, groups WHERE group_member.xchan = "' . $channelid . '" AND group_member.gid = groups.id';
 	if($isowner){
-		$sql_query = 'SELECT id, gname FROM groups WHERE uid = ' . $channelid;
+		$sql_query = 'SELECT id, gname FROM groups WHERE uid = ' . local_channel();
 	}
 	else{
 		$sql_query = 'SELECT group_member.gid, groups.gname FROM groups LEFT JOIN group_member ON groups.id = group_member.gid WHERE group_member.xchan = ' . $channelid;
