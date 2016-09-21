@@ -440,7 +440,8 @@ function write_Message($subject, $body){
 	}
 	else{
 		$sender = 1;
-		$body = 'THIS MESSAGE IS FROM THE REMOTE CHANNEL\n' . get_XchanAdress(remote_channel()) . '\n\n ' . $body;
+		$sender_addr =  get_XchanAdress(remote_channel());
+		$body = 'THIS MESSAGE IS FROM THE REMOTE CHANNEL\n' . $sender_addr . '\n\n ' . $body;
 	}
 	
 	Logger('SENDER: ' . $sender .  'REC: ' . $recipient);
