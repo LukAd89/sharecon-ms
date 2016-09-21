@@ -417,7 +417,7 @@ function write_Message($subject, $body){
 	$recipient = get_ShareOwner($_POST['input-message-shareid']);
 	
 	
-	$sender = (local_channel()) ? local_channel() : 0;
+	$sender = (local_channel()) ? local_channel() : 1;
 	
 	Logger('SENDER: ' . $sender .  'REC: ' . $recipient);
 	send_message($sender, $recipient, $body, $subject);
