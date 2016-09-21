@@ -52,6 +52,7 @@ function sharingecon_post(&$a){
 					'description' => strip_tags($_POST['text-description']),
 					'imagename' => $filename,
 					'visibility' => strip_tags($_POST['select-visibility']),
+					'location' => strip_tags($_POST['input-location']),
 					'tags' => strip_tags($_POST['input-tags'])
 				);
 				edit_Share($data);
