@@ -399,7 +399,9 @@ function delete_Share($id){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = "DELETE FROM sharedObjects WHERE ID=" . $id;
+	$ownerid = (local_channel()) ? App::$channel["channel_hash"] : remote_channel();
+	
+	$sql_query = 'DELETE FROM sharedObjects WHERE ID=' . $id . ' AND OwnerID = "' . $ownerid;
 	
 	if ($conn->query($sql_query) === TRUE) {
 		return "Query successfull";
