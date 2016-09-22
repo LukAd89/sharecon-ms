@@ -432,13 +432,30 @@ function get_XchanAddress($channelid){
 		return $row['xchan_addr'];
 	}
 	else { return "";}
-	
-	$conn->close();
 }
 
-function write_Message($subject, $body){
+function get_ShareTitle($shareid){
+	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$sql_query = 'SELECT Title FROM sharedObjects WHERE ID	= "' . $shareid . '"';
+	
+	if($result = $conn->query($sql_query)){
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+	
+		return $row['Title'];
+	}
+	else { return "";}
+}
+
+function write_Message($subject, $body, $shareid){
 	require_once('include/message.php');
 	$recipient = get_ShareOwner($_POST['input-message-shareid']);
+	
+	$subject = get_ShareTitle($shareid) . ' : ' . $subject;
 	
 	If(local_channel()){
 		$sender = local_channel();

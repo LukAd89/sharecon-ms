@@ -65,7 +65,7 @@ function sharingecon_post(&$a){
 				break;
 			
 			case 'write-message':
-				write_Message($_POST['input-message-subject'], $_POST['input-message-body']);
+				write_Message($_POST['input-message-subject'], $_POST['input-message-body'], $_POST['input-message-shareid']);
 				break;
 				
 			case 'toggle-share':
