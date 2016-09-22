@@ -417,7 +417,7 @@ function delete_Share($id){
 	$conn->close();
 }
 
-function get_XchanAdress($channelid){
+function get_XchanAddress($channelid){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_HUB_DBNAME);
 	
 	if ($conn->connect_error) {
@@ -445,7 +445,7 @@ function write_Message($subject, $body){
 	}
 	else{
 		$sender = 1;
-		$sender_addr =  get_XchanAdress(remote_channel());
+		$sender_addr =  get_XchanAddress(remote_channel());
 		$body = "THIS MESSAGE IS FROM THE REMOTE CHANNEL\r\n" . $sender_addr . "\r\n \r\n" . $body;
 	}
 	
@@ -662,17 +662,17 @@ function get_Location($channelid){
 	return -1;
 }
 
-function set_Location($channelid, $adress){
+function set_Location($channelid, $address){
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 	if(get_Location($channelid) == -1){
-		$sql_query = 'INSERT INTO locations (ChannelID, Address) VALUES ("' . $channelid . '","' . $adress . '")';
+		$sql_query = 'INSERT INTO locations (ChannelID, Address) VALUES ("' . $channelid . '","' . $address . '")';
 	}
 	else{
-		$sql_query = 'UPDATE locations SET Address ="' . $adress . '" WHERE ChannelID = "' . $channelid . '"';
+		$sql_query = 'UPDATE locations SET Address ="' . $address . '" WHERE ChannelID = "' . $channelid . '"';
 	}
 	
 	$conn->query($sql_query);

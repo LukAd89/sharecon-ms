@@ -44,7 +44,7 @@
 				<hr>
 				
 				<div class="form-group">
-					<label for="input-location" class="control-label">Adress</label>
+					<label for="input-location" class="control-label">Address</label>
 					<input type="text" class="form-control" name="input-location" id="input-location" value="{{$location}}">
 				</div>
 				
