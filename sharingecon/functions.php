@@ -477,7 +477,7 @@ function load_Enquiries($channelid){
 	}
 	
 	$sql_query = 'SELECT enquiries.ID, Title, xchan_name, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash WHERE sharedObjects.OwnerID = "' . $channelid . '"';
-	
+	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
