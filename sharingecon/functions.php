@@ -13,10 +13,10 @@ function get_SharesList($args){
 	}
 	
 	//DEACTIVATED BECAUSE 2500 MAX PER DAY 
-	//$distances = get_MultipleDistances(local_channel(), $shareids);
+	$distances = get_MultipleDistances(local_channel(), $shareids);
 	
 	for($i=0; $i<count($data); $i++){
-		$data[$i]['distance'] = 0.123;//$distances[$i];
+		$data[$i]['distance'] = $distances[$i];
 	}
 	
 	//ORDER BY DISTANCE IF WANTED
@@ -706,7 +706,7 @@ function get_Distance($customerid, $shareid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT Location FROM sharedObjects WHERE ID = ' . $shareid;
+	$sql_query = 'SELECT Location FROM sharedObjects WHERE ID = ?';
 	
 	$prep = $conn->prepare($sql_query);
 	$prep->bind_param('i', $shareid);
