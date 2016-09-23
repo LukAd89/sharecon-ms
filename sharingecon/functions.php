@@ -112,25 +112,25 @@ function add_NewShare($data){
 		$data['visibility'] = 0;
 	}
 	
-	$sql_query = 'INSERT INTO sharedObjects (title, description, imagename, ownerid, type, visibility, location, tags) VALUES ("' . $data['title'] . '", "' . $data['description'] . '", "' . $data['imagename'] . '", "' . $data['owner'] . '", "' . $data['type'] . '", "' . $data['visibility'] . '", "' . $data['location'] . '", "' . $data['tags'] . '")';
+	$sql_query = 'INSERT INTO sharedObjects (title, description, imagename, ownerid, type, visibility, location, tags) VALUES (?,?,?,?,?,?,?,?)';
 	
-	if ($conn->query($sql_query) === TRUE) {
-		echo "New record created successfully";
-	} else {
-		return "Error: " . $sql_query . "<br>" . $conn->error;
-	}
+	$prep = $conn->prepare($sql_query);
+	$prep->bind_param('ssssiiss', $data['title'], $data['description'], $data['imagename'], $data['owner'], $data['type'], $data['visibility'], $data['location'], $data['tags']);
+	$prep->execute();
+	$prep->close();
 	
 	if($data['visibility'] == 1){
 		$id = $conn->insert_id;
-	
-		$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES ';
+		
+		$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES (?,?)';
+		
+		$prep = $conn->prepare($sql_query);
+		$prep->bind_param('ii', $id, $group);
 	
 		foreach($data['groups'] as $group){
-			$sql_query .= '(' . $id . ', ' . $group . '),';
+			$prep->execute();
 		}
-		$sql_query = substr($sql_query, 0, -1);
-		
-		$conn->query($sql_query);
+		$prep->close();
 	}
 	
 	//OLD. TAGS ARE NOW IN SHAREDOBJECTS TABLE
@@ -216,10 +216,9 @@ function load_Shares($args){
 	}
 	
 	else{
-		$sql_query = "SELECT sharedObjects.*, visibilityRange.VisibleFor, T.avgrating FROM sharedObjects LEFT JOIN visibilityRange ON sharedObjects.ID = visibilityRange.ObjectID LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1";
+		$sql_query = 'SELECT sharedObjects.*, visibilityRange.VisibleFor, T.avgrating FROM sharedObjects LEFT JOIN visibilityRange ON sharedObjects.ID = visibilityRange.ObjectID LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1';
 		
 		if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
-			//$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
 			$sql_query .= ' AND sharedObjects.OwnerID IN ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE uid = ' . local_channel() . ')';
 		}
 		
@@ -229,13 +228,14 @@ function load_Shares($args){
 		
 		if(isset($args['type'])){
 			if($args['type'] == 2){
-				$sql_query .= " AND (type = 0 OR type = 1)";
+				$sql_query .= ' AND (type = 0 OR type = 1)';
 			}
-			else
-				$sql_query .= " AND type = '" . $args['type'] . "'";
+			else if($args['type'] == 1){
+				$sql_query .= ' AND type = 1';
+			}
 		}
 		else{
-			$sql_query .= " AND type = '0'";
+			$sql_query .= ' AND type = 0';
 		}
 		
 		if(isset($args['channel'])){
