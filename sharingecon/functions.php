@@ -252,23 +252,21 @@ function load_Shares($args){
 			case 1:
 				$sql_query .= ' ORDER BY avgrating DESC';
 				break;
-			case 2:
-				//$sql_query .= ' ORDER BY title';
-				break;
 			default:
 				break;
 		}
 	}
 	
-	if($result = $conn->query($sql_query)){
-		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-				$resArray[] = $row;
-		}
-		return $resArray;
+	$prep = $conn->prepare($sql_query);
+	$prep->execute();
+	
+	$result = $prep->get_result();
+	while($row = $result->fetch_assoc()) {
+		$resArray[] = $row;
 	}
-	else return null;
-
+	$prep->close();
 	$conn->close();
+	return $resArray;
 }
 
 function load_ShareDetails($shareid){
@@ -710,11 +708,14 @@ function get_Distance($customerid, $shareid){
 	
 	$sql_query = 'SELECT Location FROM sharedObjects WHERE ID = ' . $shareid;
 	
-	if($result = $conn->query($sql_query)){
-		$row = $result->fetch_array(MYSQLI_ASSOC);
-		$objectlocation = $row["Location"];
-		$conn->close();
-	}
+	$prep = $conn->prepare($sql_query);
+	$prep->bind_param('i', $shareid);
+	$prep->execute();
+	
+	$result = $prep->get_result();
+	$row = $result->fetch_assoc();
+	$objectlocation = $row['Location'];
+	$prep->close();
 	
 	$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . urlencode($customerlocation) . '&destinations=' . urlencode($objectlocation) . '&key=' . GOOGLEAPI_KEY;
 	
