@@ -765,7 +765,7 @@ function get_MultipleDistances($customerid, $shareids){
 		$url .= urlencode($objectlocation) . '|';
 	}
 	$url .= '&key=' . GOOGLEAPI_KEY;
-	
+	Logger($url);
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
