@@ -315,7 +315,7 @@ function sharingecon_content(&$a) {
 				$datapast = load_Transactions((local_channel()) ? App::$channel['channel_hash'] : remote_channel());
 				
 				foreach($dataenq as $row){
-					$tablebodyenq .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['xchan_name'] . '</td>';
+					$tablebodyenq .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['xchan_addr'] . '</td>';
 					switch($row["Status"]){
 						case 0:
 							$tablebodyenq .= '<td>Open</td><td><button class="btn btn-xs btn-primary" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
@@ -330,7 +330,7 @@ function sharingecon_content(&$a) {
 				}
 				
 				foreach($datapast as $row){
-					$tablebodypast .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['xchan_name'] . '</td>' . '<td>' . $row['LendingStart'] . '</td>' . '<td>' . $row['LendingEnd'] . '</td>' . '<td>' . $row['Rating'] . '</td>';
+					$tablebodypast .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['xchan_addr'] . '</td>' . '<td>' . $row['LendingStart'] . '</td>' . '<td>' . $row['LendingEnd'] . '</td>' . '<td>' . $row['Rating'] . '</td>';
 					if($row['Rating'] > 0)
 						$tablebodypast .= '<td><button class="btn btn-xs disabled">Rate</button></td></tr>';
 					else

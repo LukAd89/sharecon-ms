@@ -476,7 +476,7 @@ function load_Enquiries($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT enquiries.ID, Title, xchan_name, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash WHERE sharedObjects.OwnerID = "' . $channelid . '"';
+	$sql_query = 'SELECT enquiries.ID, Title, xchan_addr, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash WHERE sharedObjects.OwnerID = "' . $channelid . '"';
 	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -497,7 +497,7 @@ function load_Transactions($channelid){
 	}
 
 	//$sql_query = "SELECT transactions.*, sharedObjects.OwnerID FROM transactions, sharedObjects WHERE transactions.ObjectID = sharedObjects.ID";
-	$sql_query = 'SELECT transactions.*, Title, xchan_name FROM transactions LEFT JOIN sharedObjects ON transactions.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON sharedObjects.OwnerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash_id WHERE transactions.CustomerID = "' . $channelid . '"';
+	$sql_query = 'SELECT transactions.*, Title, xchan_addr FROM transactions LEFT JOIN sharedObjects ON transactions.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON sharedObjects.OwnerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash_id WHERE transactions.CustomerID = "' . $channelid . '"';
 
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
