@@ -321,10 +321,10 @@ function sharingecon_content(&$a) {
 							$tablebodyenq .= '<td>Open</td><td><button class="btn btn-xs btn-primary" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
 							break;
 						case 1:
-							$tablebodyenq .= '<td>Lend to customer</td><td><button class="btn btn-xs btn-success" onclick="manageEnquiry(' . $row["ID"] . ')">Got Back</td></tr>';
+							$tablebodyenq .= '<td>Lent to customer</td><td><button class="btn btn-xs btn-success" onclick="manageEnquiry(' . $row["ID"] . ')">Got Back</td></tr>';
 							break;
 						case 2:
-							$tablebodyenq .= '<td>Lend to someone</td><td><button class="btn btn-xs btn-danger disabled" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
+							$tablebodyenq .= '<td>Lent to someone</td><td><button class="btn btn-xs btn-danger disabled" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
 							break;
 					}
 				}
