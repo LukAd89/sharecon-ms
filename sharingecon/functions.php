@@ -497,8 +497,8 @@ function load_Transactions($channelid){
 	}
 
 	//$sql_query = "SELECT transactions.*, sharedObjects.OwnerID FROM transactions, sharedObjects WHERE transactions.ObjectID = sharedObjects.ID";
-	$sql_query = 'SELECT transactions.*, Title, xchan_addr FROM transactions LEFT JOIN sharedObjects ON transactions.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON sharedObjects.OwnerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash_id WHERE transactions.CustomerID = "' . $channelid . '" OR sharedObjects.OwnerID = "' . $channelid . '"';
-	Logger($sql_query);
+	$sql_query = 'SELECT transactions.*, Title, xchan_addr FROM transactions LEFT JOIN sharedObjects ON transactions.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON sharedObjects.OwnerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash WHERE transactions.CustomerID = "' . $channelid . '" OR sharedObjects.OwnerID = "' . $channelid . '"';
+	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$resArray[] = $row;
