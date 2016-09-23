@@ -311,8 +311,10 @@ function sharingecon_content(&$a) {
 				$tablebodyenq = "";
 				$tablebodypast = "";
 				
-				$dataenq = load_Enquiries((local_channel()) ? App::$channel['channel_hash'] : remote_channel());
-				$datapast = load_Transactions((local_channel()) ? App::$channel['channel_hash'] : remote_channel());
+				$curchannel = (local_channel()) ? App::$channel['channel_hash'] : remote_channel();
+				
+				$dataenq = load_Enquiries($curchannel);
+				$datapast = load_Transactions($curchannel);
 				
 				foreach($dataenq as $row){
 					$tablebodyenq .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['xchan_addr'] . '</td>';
@@ -331,7 +333,7 @@ function sharingecon_content(&$a) {
 				
 				foreach($datapast as $row){
 					$tablebodypast .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['xchan_addr'] . '</td>' . '<td>' . $row['LendingStart'] . '</td>' . '<td>' . $row['LendingEnd'] . '</td>' . '<td>' . $row['Rating'] . '</td>';
-					if($row['Rating'] > 0)
+					if($row['Rating'] > 0 || $row['xchan_hash'] == $curchannel)
 						$tablebodypast .= '<td><button class="btn btn-xs disabled">Rate</button></td></tr>';
 					else
 						$tablebodypast .= '<td><button class="btn btn-primary btn-xs" data-id="' . $row['ID'] . '" data-target="#modal-set-rating" data-toggle="modal">Rate</button></td></tr>';
