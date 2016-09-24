@@ -14,7 +14,6 @@ function get_SharesList($args){
 	
 	//DEACTIVATED BECAUSE 2500 MAX PER DAY 
 	//$distances = get_MultipleDistances(local_channel(), $shareids);
-	
 	for($i=0; $i<count($data); $i++){
 		$data[$i]['distance'] = 0.123;//$distances[$i];
 	}

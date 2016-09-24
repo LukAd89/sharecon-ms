@@ -249,7 +249,7 @@ function get_BranchDistance($start, $end, $type){
 	$distancedown = 0;
 	$distanceup = -1;
 
-	while($distancedown == 0){
+	while($distancedown == 0 && !is_null($start)){
 		$distancedown = get_BranchDistanceRec($start, $end, $tree, 0);
 		$start = $tree[$start]['parent'];
 		$distanceup += 1;
