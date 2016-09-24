@@ -311,27 +311,29 @@ function sharingecon_content(&$a) {
 				$tablebodyenq = "";
 				$tablebodypast = "";
 				
-				$dataenq = load_Enquiries((local_channel()) ? App::$channel['channel_hash'] : remote_channel());
-				$datapast = load_Transactions((local_channel()) ? App::$channel['channel_hash'] : remote_channel());
+				$curchannel = (local_channel()) ? App::$channel['channel_hash'] : remote_channel();
+				
+				$dataenq = load_Enquiries($curchannel);
+				$datapast = load_Transactions($curchannel);
 				
 				foreach($dataenq as $row){
-					$tablebodyenq .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['channel_name'] . '</td>';// . '<td>' . $row["Status"] . '</td>' . '<td>KLICK</td></tr>';
+					$tablebodyenq .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['xchan_addr'] . '</td>';
 					switch($row["Status"]){
 						case 0:
 							$tablebodyenq .= '<td>Open</td><td><button class="btn btn-xs btn-primary" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
 							break;
 						case 1:
-							$tablebodyenq .= '<td>Lend to customer</td><td><button class="btn btn-xs btn-success" onclick="manageEnquiry(' . $row["ID"] . ')">Got Back</td></tr>';
+							$tablebodyenq .= '<td>Lent to customer</td><td><button class="btn btn-xs btn-success" onclick="manageEnquiry(' . $row["ID"] . ')">Got Back</td></tr>';
 							break;
 						case 2:
-							$tablebodyenq .= '<td>Lend to other one</td><td><button class="btn btn-xs btn-danger disabled" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
+							$tablebodyenq .= '<td>Lent to someone</td><td><button class="btn btn-xs btn-danger disabled" onclick="manageEnquiry(' . $row["ID"] . ')">Accept</td></tr>';
 							break;
 					}
 				}
 				
 				foreach($datapast as $row){
-					$tablebodypast .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['channel_name'] . '</td>' . '<td>' . $row['LendingStart'] . '</td>' . '<td>' . $row['LendingEnd'] . '</td>' . '<td>' . $row['Rating'] . '</td>';
-					if($row['Rating'] > 0)
+					$tablebodypast .= '<tr><td>' . $row['Title'] . '</td>' . '<td>' . $row['xchan_addr'] . '</td>' . '<td>' . $row['LendingStart'] . '</td>' . '<td>' . $row['LendingEnd'] . '</td>' . '<td>' . $row['Rating'] . '</td>';
+					if($row['Rating'] > 0 || $row['xchan_hash'] == $curchannel)
 						$tablebodypast .= '<td><button class="btn btn-xs disabled">Rate</button></td></tr>';
 					else
 						$tablebodypast .= '<td><button class="btn btn-primary btn-xs" data-id="' . $row['ID'] . '" data-target="#modal-set-rating" data-toggle="modal">Rate</button></td></tr>';

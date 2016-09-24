@@ -14,8 +14,9 @@ function get_SharesList($args){
 	
 	//DEACTIVATED BECAUSE 2500 MAX PER DAY 
 	//$distances = get_MultipleDistances(local_channel(), $shareids);
+	$distances = get_MultipleDistances($args['channel'], $shareids);
 	for($i=0; $i<count($data); $i++){
-		$data[$i]['distance'] = 0.123;//$distances[$i];
+		$data[$i]['distance'] = $distances[$i];
 	}
 	
 	//ORDER BY DISTANCE IF WANTED
@@ -111,25 +112,25 @@ function add_NewShare($data){
 		$data['visibility'] = 0;
 	}
 	
-	$sql_query = 'INSERT INTO sharedObjects (title, description, imagename, ownerid, type, visibility, location, tags) VALUES ("' . $data['title'] . '", "' . $data['description'] . '", "' . $data['imagename'] . '", "' . $data['owner'] . '", "' . $data['type'] . '", "' . $data['visibility'] . '", "' . $data['location'] . '", "' . $data['tags'] . '")';
+	$sql_query = 'INSERT INTO sharedObjects (title, description, imagename, ownerid, type, visibility, location, tags) VALUES (?,?,?,?,?,?,?,?)';
 	
-	if ($conn->query($sql_query) === TRUE) {
-		echo "New record created successfully";
-	} else {
-		return "Error: " . $sql_query . "<br>" . $conn->error;
-	}
+	$prep = $conn->prepare($sql_query);
+	$prep->bind_param('ssssiiss', $data['title'], $data['description'], $data['imagename'], $data['owner'], $data['type'], $data['visibility'], $data['location'], $data['tags']);
+	$prep->execute();
+	$prep->close();
 	
 	if($data['visibility'] == 1){
 		$id = $conn->insert_id;
-	
-		$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES ';
+		
+		$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES (?,?)';
+		
+		$prep = $conn->prepare($sql_query);
+		$prep->bind_param('ii', $id, $group);
 	
 		foreach($data['groups'] as $group){
-			$sql_query .= '(' . $id . ', ' . $group . '),';
+			$prep->execute();
 		}
-		$sql_query = substr($sql_query, 0, -1);
-		
-		$conn->query($sql_query);
+		$prep->close();
 	}
 	
 	//OLD. TAGS ARE NOW IN SHAREDOBJECTS TABLE
@@ -215,10 +216,9 @@ function load_Shares($args){
 	}
 	
 	else{
-		$sql_query = "SELECT sharedObjects.*, visibilityRange.VisibleFor, T.avgrating FROM sharedObjects LEFT JOIN visibilityRange ON sharedObjects.ID = visibilityRange.ObjectID LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1";
+		$sql_query = 'SELECT sharedObjects.*, visibilityRange.VisibleFor, T.avgrating FROM sharedObjects LEFT JOIN visibilityRange ON sharedObjects.ID = visibilityRange.ObjectID LEFT JOIN (SELECT ObjectID, AVG(Rating) as avgrating from transactions GROUP BY ObjectID) AS T ON sharedObjects.ID = T.ObjectID WHERE 1';
 		
 		if(isset($args['filterfriends']) && $args['filterfriends'] == 1){
-			//$sql_query .= ' AND sharedObjects.OwnerID in ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE gid in (SELECT gid FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE xchan = "' . $args['channel'] . '"))';
 			$sql_query .= ' AND sharedObjects.OwnerID IN ( SELECT DISTINCT xchan FROM ' . SERVER_HUB_DBNAME . '.group_member WHERE uid = ' . local_channel() . ')';
 		}
 		
@@ -228,13 +228,14 @@ function load_Shares($args){
 		
 		if(isset($args['type'])){
 			if($args['type'] == 2){
-				$sql_query .= " AND (type = 0 OR type = 1)";
+				$sql_query .= ' AND (type = 0 OR type = 1)';
 			}
-			else
-				$sql_query .= " AND type = '" . $args['type'] . "'";
+			else if($args['type'] == 1){
+				$sql_query .= ' AND type = 1';
+			}
 		}
 		else{
-			$sql_query .= " AND type = '0'";
+			$sql_query .= ' AND type = 0';
 		}
 		
 		if(isset($args['channel'])){
@@ -251,23 +252,21 @@ function load_Shares($args){
 			case 1:
 				$sql_query .= ' ORDER BY avgrating DESC';
 				break;
-			case 2:
-				//$sql_query .= ' ORDER BY title';
-				break;
 			default:
 				break;
 		}
 	}
 	
-	if($result = $conn->query($sql_query)){
-		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-				$resArray[] = $row;
-		}
-		return $resArray;
+	$prep = $conn->prepare($sql_query);
+	$prep->execute();
+	
+	$result = $prep->get_result();
+	while($row = $result->fetch_assoc()) {
+		$resArray[] = $row;
 	}
-	else return null;
-
+	$prep->close();
 	$conn->close();
+	return $resArray;
 }
 
 function load_ShareDetails($shareid){
@@ -475,8 +474,8 @@ function load_Enquiries($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT enquiries.ID, Title, xchan_name, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash WHERE sharedObjects.OwnerID = "' . $channelid . '"';
-	
+	$sql_query = 'SELECT enquiries.ID, Title, xchan_addr, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash WHERE sharedObjects.OwnerID = "' . $channelid . '"';
+	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
@@ -496,8 +495,8 @@ function load_Transactions($channelid){
 	}
 
 	//$sql_query = "SELECT transactions.*, sharedObjects.OwnerID FROM transactions, sharedObjects WHERE transactions.ObjectID = sharedObjects.ID";
-	$sql_query = 'SELECT transactions.*, Title, xchan_name FROM transactions LEFT JOIN sharedObjects ON transactions.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON sharedObjects.OwnerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash_id WHERE transactions.CustomerID = "' . $channelid . '"';
-
+	$sql_query = 'SELECT transactions.*, Title, xchan_addr, xchan_hash FROM transactions LEFT JOIN sharedObjects ON transactions.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON sharedObjects.OwnerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash WHERE transactions.CustomerID = "' . $channelid . '" OR sharedObjects.OwnerID = "' . $channelid . '"';
+	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$resArray[] = $row;
@@ -665,7 +664,7 @@ function get_Location($channelid){
 	}
 
 	$sql_query = 'SELECT Address FROM locations WHERE ChannelID = "' . $channelid . '"';
-
+	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		if($result->num_rows > 0){
 			$row = $result->fetch_array(MYSQLI_ASSOC);
@@ -707,16 +706,19 @@ function get_Distance($customerid, $shareid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT Location FROM sharedObjects WHERE ID = ' . $shareid;
+	$sql_query = 'SELECT Location FROM sharedObjects WHERE ID = ?';
 	
-	if($result = $conn->query($sql_query)){
-		$row = $result->fetch_array(MYSQLI_ASSOC);
-		$objectlocation = $row["Location"];
-		$conn->close();
-	}
+	$prep = $conn->prepare($sql_query);
+	$prep->bind_param('i', $shareid);
+	$prep->execute();
+	
+	$result = $prep->get_result();
+	$row = $result->fetch_assoc();
+	$objectlocation = $row['Location'];
+	$prep->close();
 	
 	$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . urlencode($customerlocation) . '&destinations=' . urlencode($objectlocation) . '&key=' . GOOGLEAPI_KEY;
-	
+	Logger($url);
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
@@ -763,7 +765,7 @@ function get_MultipleDistances($customerid, $shareids){
 		$url .= urlencode($objectlocation) . '|';
 	}
 	$url .= '&key=' . GOOGLEAPI_KEY;
-	
+	Logger($url);
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,

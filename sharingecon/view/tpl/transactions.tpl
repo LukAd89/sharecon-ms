@@ -23,9 +23,9 @@
     	<thead>
 			<tr>
 				<th>Share Object</th>
-				<th>Owner</th>
-				<th>Lend on</th>
-				<th>Lend until</th>
+				<th>Customer</th>
+				<th>Lent on</th>
+				<th>Lent until</th>
 				<th>Rating</th>
 				<th>Action</th>
 			</tr>
