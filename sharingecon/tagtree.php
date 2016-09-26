@@ -250,8 +250,6 @@ function get_UnusedTags(){
 
 function get_BranchDistance($start, $end, $type){
 	
-	Logger('START: ' . $start . ' END: ' . $end);
-	
 	if($start == $end) return 0;
 
 	if($type == 1){
@@ -261,7 +259,7 @@ function get_BranchDistance($start, $end, $type){
 	}
 
 	$tree = get_TagTreeMin();
-
+	var_dump($tree);
 	$distancedown = 0;
 	$distanceup = -1;
 
