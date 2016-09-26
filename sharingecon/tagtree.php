@@ -214,8 +214,8 @@ function get_MatchesForShare($shareid){
 	$data = load_Shares($args);
 	
 	foreach($data as $match){
-		Logger('DIST: ' . get_BranchDistance($startBranch, $match['TagBranch'], 0));
 		$match['Distance'] = get_BranchDistance($startBranch, $match['TagBranch'], 0);
+		Logger('DIST: ' . $match['Distance']);
 	}
 	return $data;
 }
