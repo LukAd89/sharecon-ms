@@ -373,7 +373,7 @@ function sharingecon_content(&$a) {
 					));
 				}
 				else if(argc()==3){
-					if(get_ShareOwner(argv(2)) != (local_channel()) ? App::$channel['channel_hash'] : remote_channel()){
+					if(get_ShareOwner(argv(2)) != ((local_channel()) ? App::$channel['channel_hash'] : remote_channel())){
 						$siteContent .= 'You are not the Owner of this Share';
 						App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(
 								'$filterhidden' => 'hidden'
