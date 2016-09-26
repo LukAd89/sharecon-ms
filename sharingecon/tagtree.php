@@ -61,7 +61,7 @@ function get_TagTreeMin(){
 	
 		foreach($tagtree as $branch){
 			if($branch['Parent'] != 0){
-				$tagtree[$branch['Parent']]['subbranches'][] = $branch['ID'];
+				$tagtree[$branch['Parent']]['relatives'][] = $branch['ID'];
 			}
 		}
 	
