@@ -222,7 +222,6 @@ function get_MatchesForShare($shareid){
 		
 		$returndata[] = $tmp;
 	}
-	Logger('DIST: ' . $returndata[0]['Title']. $returndata[0]['Distance']);
 	return $returndata;
 }
 
@@ -256,7 +255,7 @@ function get_UnusedTags(){
 }
 
 function get_BranchDistance($start, $end, $type){
-	
+	Logger($start, $end);
 	if($start == $end) return 0;
 
 	if($type == 1){
@@ -269,7 +268,7 @@ function get_BranchDistance($start, $end, $type){
 	
 	$distancedown = 0;
 	$distanceup = -1;
-	Logger($start, $end);
+	
 	while($distancedown == 0 && !is_null($start)){
 		$distancedown = get_BranchDistanceRec($start, $end, $tree, 0);
 		$start = $tree[$start]['parent'];
