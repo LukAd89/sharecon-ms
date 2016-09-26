@@ -194,13 +194,14 @@ function get_MatchesForShare($shareid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql_query = 'SELECT Type FROM sharedObjects WHERE ID = ?';
+	$sql_query = 'SELECT Type, TagBranch FROM sharedObjects WHERE ID = ?';
 	$prep = $conn->prepare($sql_query);
 	$prep->bind_param('s', $shareid);
 	$prep->execute();
 	$result = $prep->get_result();
 	$row = $result->fetch_assoc();
 	$type = $row['Type'];
+	$startBranch = $row['TagBranch'];
 	$prep->close();
 	
 	$type = ($type == 0) ? 1 : 0;
@@ -209,7 +210,13 @@ function get_MatchesForShare($shareid){
 		'type' => $type,
 		'channel' => (local_channel()) ? App::$channel['channel_hash'] : remote_channel()
 	);
-	return load_Shares($args);
+	
+	$data = load_Shares($args);
+	
+	foreach($data as $match){
+		$match['Distance'] = get_BranchDistance($startBranch, $match['TagBranch'], 0);
+	}
+	return $data;
 }
 
 function get_UnusedTags(){
