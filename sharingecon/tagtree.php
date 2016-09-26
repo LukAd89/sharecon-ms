@@ -193,17 +193,23 @@ function get_MatchesForShare($shareid){
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-
-	$sql_query = 'SELECT * FROM sharedObjects';
-	if($result = $conn->query($sql_query)){
-		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-			$resArray[] = $row;
-		}
-		$conn->close();
-		return $resArray;
-	}
-	$conn->close();
-	return null;
+	
+	$sql_query = 'SELECT Type FROM sharedObjects WHERE ID = ?';
+	$prep = $conn->prepare($sql_query);
+	$prep->bind_param('s', $shareid);
+	$prep->execute();
+	$result = $prep->get_result();
+	$row = $result->fetch_assoc();
+	$type = $row['Type'];
+	$prep->close();
+	
+	$type = ($type == 0) ? 1 : 0;
+	
+	$args = array(
+		'type' => $type,
+		'channel' => (local_channel()) ? App::$channel['channel_hash'] : remote_channel()
+	);
+	return load_Shares($args);
 }
 
 function get_UnusedTags(){
