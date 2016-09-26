@@ -214,6 +214,7 @@ function get_MatchesForShare($shareid){
 	$data = load_Shares($args);
 	
 	foreach($data as $match){
+		Logger('DIST: ' . get_BranchDistance($startBranch, $match['TagBranch'], 0));
 		$match['Distance'] = get_BranchDistance($startBranch, $match['TagBranch'], 0);
 	}
 	return $data;
@@ -265,11 +266,10 @@ function get_BranchDistance($start, $end, $type){
 
 	while($distancedown == 0 && !is_null($start)){
 		$distancedown = get_BranchDistanceRec($start, $end, $tree, 0);
-		Logger('DIST: ' . $distancedown);
 		$start = $tree[$start]['parent'];
 		$distanceup += 1;
 	}
-	return ($distancedown*TREE_WEIGHT_SPECIAL) + ($distanceup*TREE_WEIGHT_GENERAL)	;
+	return ($distancedown*TREE_WEIGHT_SPECIAL) + ($distanceup*TREE_WEIGHT_GENERAL);
 }
 
 function get_BranchDistanceRec($start, $end, $tree, $count){
