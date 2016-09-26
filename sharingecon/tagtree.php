@@ -255,7 +255,7 @@ function get_UnusedTags(){
 }
 
 function get_BranchDistance($start, $end, $type){
-	Logger($start, $end);
+	Logger($start . $end);
 	if($start == $end) return 0;
 
 	if($type == 1){
