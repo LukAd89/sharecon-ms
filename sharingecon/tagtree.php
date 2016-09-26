@@ -212,12 +212,13 @@ function get_MatchesForShare($shareid){
 	);
 	
 	$data = load_Shares($args);
+	$returndata = array();
 	
 	foreach($data as $match){
-		$match['Distance'] = get_BranchDistance($startBranch, $match['TagBranch'], 0);
+		$returndata[] = array($match['Title'], $match['ID'], get_BranchDistance($startBranch, $match['TagBranch'], 0));
 	}
-	Logger('DIST: ' . $data[0]['Title']. $data[0]['Distance']);
-	return $data;
+	Logger('DIST: ' . $returndata[0]['Title']. $returndata[0]['Distance']);
+	return $returndata;
 }
 
 function get_UnusedTags(){
