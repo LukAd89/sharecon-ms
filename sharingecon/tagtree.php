@@ -256,7 +256,7 @@ function get_UnusedTags(){
 }
 
 function get_BranchDistance($start, $end, $type){
-	if($start == 0 || $end == 0) return -1;
+	if($start == 0 || $end == 0) return 'n/a';
 	if($start == $end) return 0;
 
 	if($type == 1){
@@ -277,7 +277,7 @@ function get_BranchDistance($start, $end, $type){
 	}
 	$distancesum = ($distancedown*TREE_WEIGHT_SPECIAL) + ($distanceup*TREE_WEIGHT_GENERAL);
 	if($distancesum == 0)
-		return -1;
+		return 'n/a';
 	return $distancesum;
 }
 
