@@ -119,8 +119,10 @@ function add_NewShare($data){
 	$prep->execute();
 	$prep->close();
 	
+	$id = $conn->insert_id;
+	
 	if($data['visibility'] == 1){
-		$id = $conn->insert_id;
+		
 		
 		$sql_query = 'INSERT INTO visibilityRange (ObjectID, VisibleFor) VALUES (?,?)';
 		
