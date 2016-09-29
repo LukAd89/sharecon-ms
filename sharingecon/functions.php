@@ -266,7 +266,7 @@ function load_Shares($args){
 				break;
 		}
 	}
-	
+	Logger($sql_query);
 	$prep = $conn->prepare($sql_query);
 	$prep->execute();
 	
