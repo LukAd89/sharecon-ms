@@ -77,7 +77,7 @@ function calc_NearestBranch($tagarray){
 	$currentbranch = 0;
 	
 	$tagtree = get_TagTreeExt();
-	Logger(count($tagtree));
+	
 	//$objecttags = array('vacuum cleaner');
 	
 	foreach($tagtree as $branch){
@@ -87,6 +87,7 @@ function calc_NearestBranch($tagarray){
 			$currentbranch = $branch['ID'];
 		}
 	}
+	Logger($currentbranch);
 	return $currentbranch;
 }
 
