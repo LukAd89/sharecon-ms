@@ -205,8 +205,6 @@ function get_MatchesForShare($shareid){
 	$startBranch = $row['TagBranch'];
 	$prep->close();
 	
-	$type = ($type == 0) ? 1 : 0;
-	
 	$args = array(
 		'type' => $type,
 		'channel' => (local_channel()) ? App::$channel['channel_hash'] : remote_channel()
@@ -219,7 +217,7 @@ function get_MatchesForShare($shareid){
 		$tmp = array();
 		$tmp['Title'] = $match['Title'];
 		$tmp['ID'] = $match['ID'];
-		$tmp['Distance'] = 0; //get_BranchDistance($startBranch, $match['TagBranch'], 0);
+		$tmp['Distance'] = get_BranchDistance($startBranch, $match['TagBranch'], 0);
 		
 		$returndata[] = $tmp;
 	}
@@ -271,6 +269,7 @@ function get_BranchDistance($start, $end, $type){
 	
 	while($distancedown == 0 && !is_null($start)){
 		$distancedown = get_BranchDistanceRec($start, $end, $tree, 0);
+		$start = $tree[$start]['parent'];
 		$distanceup += 1;
 	}
 	return ($distancedown*TREE_WEIGHT_SPECIAL) + ($distanceup*TREE_WEIGHT_GENERAL);
