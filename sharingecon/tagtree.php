@@ -216,7 +216,7 @@ function get_MatchesForShare($shareid){
 	$returndata = array();
 	
 	foreach($data as $match){
-		Logger('XX: ' . $match['Title'] . '  :  ' . $match['ID']);
+		Logger('XX: ' . $match['Title'] . '  :  ' . $match['TagBranch']);
 		$tmp = array();
 		$tmp['Title'] = $match['Title'];
 		$tmp['ID'] = $match['ID'];
