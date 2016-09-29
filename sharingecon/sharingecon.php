@@ -246,9 +246,22 @@ function sharingecon_content(&$a) {
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
 				break;
 			case 'viewshare':
+				$customerid = (local_channel()) ? local_channel() : remote_channel();
+				
+				if(!is_ChannelAllowedToView($customerid, argv(2)))
+					return;
+				
 				$share_data = load_ShareDetails(argv(2));
 				$ratingavg = get_AvgRating(argv(2));
 				$ratinglatest = get_LatestRatings(argv(2));
+				$distance = get_Distance($customerid, argv(2));
+				
+				if($distance == -1){
+					$wellbody .= 'You have to set your own location';
+				}
+				else{
+					$wellbody .= ($distance / 1000) . ' km';
+				}
 				
 				$ratinglatesttable = '<table class="table"><thead><tr><th>Lend On</th><th>Brought Back On</th><th>Days of Lending</th><th>Rating</th></tr></thead><tbody>';
 				foreach($ratinglatest as $entry){
