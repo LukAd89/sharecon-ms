@@ -233,6 +233,9 @@ function load_Shares($args){
 			else if($args['type'] == 1){
 				$sql_query .= ' AND type = 1';
 			}
+			else if($args['type'] == 0){
+				$sql_query .= ' AND type = 0';
+			}
 		}
 		else{
 			$sql_query .= ' AND type = 0';
