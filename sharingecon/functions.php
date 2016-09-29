@@ -629,6 +629,7 @@ function set_Rating($transid, $rating){
 	}
 	
 	$sql_query = 'UPDATE transactions SET Rating = ' . $rating . ' WHERE ObjectID = ' . $transid  . ' AND Rating IS NULL';
+	Logger($sql_query);
 	$conn->query($sql_query);
 	$conn->close();
 }
