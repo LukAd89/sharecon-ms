@@ -699,6 +699,7 @@ function set_Location($channelid, $address){
 
 function get_Distance($customerid, $shareid){
 	$customerlocation = get_Location($customerid);
+	Logger($customerlocation);
 	if($customerlocation == -1){
 		return -1;
 	}
