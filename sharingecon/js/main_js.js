@@ -318,7 +318,7 @@ function generateFilterParams(changedparam, value){
 	newHref += "&filterfriends="
 	newHref += ($('#filter-friendsonly').is(':checked')) ? "1" : "0";
 	newHref += "&search="
-	newHref += (changedparam == 4) ? value : $('#currentsearch').val();
+	newHref += (changedparam == 4) ? encodeURI(value) : encodeURI($('#currentsearch').val());
 	
 	return newHref;
 }

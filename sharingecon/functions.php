@@ -226,6 +226,10 @@ function load_Shares($args){
 			$sql_query .= ' AND sharedObjects.ID IN (' . implode(',', get_ChannelFavorites($args['channel'])) . ')';
 		}
 		
+		if(isset($args['search'])){
+			$sql_query .= ' AND sharedObjects.Title IN (' . urldecode($args['search']) . ')';
+		}
+		
 		if(isset($args['type'])){
 			if($args['type'] == 2){
 				$sql_query .= ' AND (type = 0 OR type = 1)';
@@ -478,7 +482,7 @@ function load_Enquiries($channelid){
 	}
 	
 	$sql_query = 'SELECT enquiries.ID, Title, xchan_addr, enquiries.Status FROM enquiries LEFT JOIN sharedObjects ON enquiries.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON enquiries.CustomerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash WHERE sharedObjects.OwnerID = "' . $channelid . '"';
-	Logger($sql_query);
+	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				$resArray[] = $row;
@@ -721,7 +725,7 @@ function get_Distance($customerid, $shareid){
 	$prep->close();
 	
 	$url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . urlencode($customerlocation) . '&destinations=' . urlencode($objectlocation) . '&key=' . GOOGLEAPI_KEY;
-	Logger($url);
+	
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
@@ -768,7 +772,7 @@ function get_MultipleDistances($customerid, $shareids){
 		$url .= urlencode($objectlocation) . '|';
 	}
 	$url .= '&key=' . GOOGLEAPI_KEY;
-	Logger($url);
+	
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
@@ -829,7 +833,7 @@ function is_ChannelAllowedToView($channelid, $shareid){
 	}
 	
 	$sql_query = 'SELECT Visibility FROM sharedObjects WHERE ID = "' . $shareid . '"';
-	Logger($sql_query);
+	
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$conn->close();
@@ -839,13 +843,13 @@ function is_ChannelAllowedToView($channelid, $shareid){
 	}
 	
 	$sql_query = 'SELECT VisibleFor FROM visibilityRange WHERE ID = "' . $shareid . '"';
-	Logger($sql_query);
+	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)){
 			$groupids[] = $row['VisibleFor'];
 		}
 		$conn->close();
-		Logger($channelid);
+		
 		return is_ChannelMemberOfGroup($channelid, $groupids);
 	}
 	$conn->close();
