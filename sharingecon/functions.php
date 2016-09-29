@@ -833,7 +833,7 @@ function is_ChannelAllowedToView($channelid, $shareid){
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$conn->close();
-		
+		Logger($row['Visibility']);
 		if($row['Visibility'] == 0) return true;
 	}
 	
