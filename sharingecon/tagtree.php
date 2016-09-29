@@ -54,7 +54,7 @@ function get_TagTreeMin(){
 	
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-			$row['subbranches'] = array();
+			$row['relatives'] = array();
 			$tagtree[$row['ID']] = $row;
 		}
 		$conn->close();
