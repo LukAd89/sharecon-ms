@@ -367,8 +367,6 @@ function sharingecon_content(&$a) {
 				break;
 			
 			case 'matches':
-				//DEBUGGIGN
-				set_NearestBranches();
 				if(argc()==2){
 					$data = load_Shares(array(
 						'ownerview' => true,

@@ -219,7 +219,7 @@ function get_MatchesForShare($shareid){
 		$tmp = array();
 		$tmp['Title'] = $match['Title'];
 		$tmp['ID'] = $match['ID'];
-		$tmp['Distance'] = get_BranchDistance($startBranch, $match['TagBranch'], 0);
+		$tmp['Distance'] = 0; //get_BranchDistance($startBranch, $match['TagBranch'], 0);
 		
 		$returndata[] = $tmp;
 	}
