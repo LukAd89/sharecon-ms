@@ -227,7 +227,8 @@ function load_Shares($args){
 		}
 		
 		if(isset($args['filtersearch'])){
-			$sql_query .= ' AND sharedObjects.Title LIKE "%' . urldecode($args['filtersearch']) . '%"';
+			$regexp = implode('|', explode(',', urldecode($args['filtersearch'])));
+			$sql_query .= ' AND sharedObjects.Title REGEXP "' . $regexp . '"';
 		}
 		
 		Logger($sql_query);
