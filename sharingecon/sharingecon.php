@@ -246,7 +246,7 @@ function sharingecon_content(&$a) {
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array());
 				break;
 			case 'viewshare':
-				$customerid = (local_channel()) ? local_channel() : remote_channel();
+				$customerid = (local_channel()) ? App::$channel['channel_hash'] : remote_channel();
 				
 				if(!is_ChannelAllowedToView($customerid, argv(2)))
 					return;

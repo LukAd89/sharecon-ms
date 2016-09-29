@@ -667,7 +667,7 @@ function get_Location($channelid){
 	}
 
 	$sql_query = 'SELECT Address FROM locations WHERE ChannelID = "' . $channelid . '"';
-	Logger($sql_query);
+	
 	if($result = $conn->query($sql_query)){
 		if($result->num_rows > 0){
 			$row = $result->fetch_array(MYSQLI_ASSOC);
@@ -699,7 +699,6 @@ function set_Location($channelid, $address){
 
 function get_Distance($customerid, $shareid){
 	$customerlocation = get_Location($customerid);
-	Logger($customerlocation);
 	if($customerlocation == -1){
 		return -1;
 	}
