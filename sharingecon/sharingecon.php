@@ -35,7 +35,6 @@ function sharingecon_post(&$a){
 					'tags' => strip_tags($_POST['input-tags'])
 				);
 				$newid = add_NewShare($data);
-				Logger('NEW ID: ' . $newid);
 				set_NearestBranch($newid, strip_tags($_POST['input-tags']));
 				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();
@@ -101,28 +100,23 @@ function sharingecon_post(&$a){
 				echo get_Distance((local_channel()) ? App::$channel['channel_hash'] : remote_channel(), $_POST['shareid']);
 				break;
 		}
-		//header("Location: " . $_SERVER['REQUEST_URI']);
 		exit();
 	}
 }
 
 function sharingecon_install() {
 		
-	Logger('install');
 }
 function sharingecon_uninstall() {
-	//Zotlabs\Extend\Hook::unregister('logged_in', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
-	Logger('uninstall');
+
 }
 
 function sharingecon_load() {
-	//Zotlabs\Extend\Hook::register('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
-	Logger('load');
+
 }
 
 function sharingecon_unload() {
-	//Zotlabs\Extend\Hook::unregister('feature_settings', 'addon/sharingecon/sharingecon.php', 'sharingecon_settings');
-	Logger('unload');
+
 }
 
 function sharingecon_init(){
@@ -132,21 +126,6 @@ function sharingecon_init(){
 }
 
 function sharingecon_module() {}
-
-
-
-/*function view_share_details($shareid){
-	
-	$share_data = load_ShareDetails($shareid);
-	
-	$content = replace_macros(get_markup_template('share_details.tpl', 'addon/sharingecon/'), array(
-		'$title'		=> $share_data['Title'],
-		'$sharebody'	=> $share_data['LongDesc'],
-		'$shareid'		=> $shareid
-		));
-	
-	return $content;
-}*/
 
 function sharingecon_plugin_admin_post(&$a){
 	switch($_POST['action']){
@@ -160,6 +139,7 @@ function sharingecon_plugin_admin_post(&$a){
 			delete_TagTreeBranch($_POST['input-branch-id']);
 			break;
 	}
+	set_NearestBranches();
 	header("Location: " . $_SERVER['REQUEST_URI']);
 	exit();
 }
