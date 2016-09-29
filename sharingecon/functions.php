@@ -226,8 +226,8 @@ function load_Shares($args){
 			$sql_query .= ' AND sharedObjects.ID IN (' . implode(',', get_ChannelFavorites($args['channel'])) . ')';
 		}
 		
-		if(isset($args['search'])){
-			$sql_query .= ' AND sharedObjects.Title IN (' . urldecode($args['search']) . ')';
+		if(isset($args['filtersearch'])){
+			$sql_query .= ' AND sharedObjects.Title IN (' . urldecode($args['filtersearch']) . ')';
 		}
 		
 		Logger($sql_query);

@@ -210,7 +210,8 @@ function sharingecon_content(&$a) {
 					'ownerview' => false,
 					'orderby' => $_GET['orderby'],
 					'filterfavs' => $_GET['filterfavs'],
-					'filterfriends' => $_GET['filterfriends']
+					'filterfriends' => $_GET['filterfriends'],
+					'filtersearch' => $_GET['search']
 				));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 					'$tab2' => 'active',
@@ -237,7 +238,8 @@ function sharingecon_content(&$a) {
 					'ownerview' => false,
 					'orderby' => $_GET['orderby'],
 					'filterfavs' => $_GET['filterfavs'],
-					'filterfriends' => $_GET['filterfriends']
+					'filterfriends' => $_GET['filterfriends'],
+					'filtersearch' => $_GET['search']
 				));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 						'$tab3' => 'active',
