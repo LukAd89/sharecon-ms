@@ -78,8 +78,6 @@ function calc_NearestBranch($tagarray){
 	
 	$tagtree = get_TagTreeExt();
 	
-	//$objecttags = array('vacuum cleaner');
-	
 	foreach($tagtree as $branch){
 		$intersection = array_intersect($tagarray, $branch['tags']);
 		if(count($intersection) > $currentmaxcount){

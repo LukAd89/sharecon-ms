@@ -44,24 +44,6 @@ $(document).ready(function(){
 		var tags = $('#edit-branch-modal #input-tags').val();
 		
 		$("#form-edit-branch").submit();
-		
-		/*
-		$("#edit-branch-modal").modal('hide');
-		
-		
-		$.ajax({
-			type : "POST",
-			url : "admin/plugins/sharingecon",
-			data : {action : "edit-tag-branch",
-				"branch" : branch,
-				"parent" : parent,
-				"title" : title,
-				"tags" : tags
-			},
-			success : function(msg){
-				//location.reload();
-			}
-		});*/
 	});
 	
 	$("#delete-branch-submit").click(function(){

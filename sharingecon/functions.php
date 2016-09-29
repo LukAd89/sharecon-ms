@@ -11,15 +11,12 @@ function get_SharesList($args){
 	foreach($data as $dataval){
 		$shareids[] = $dataval['ID'];
 	}
-	
-	//DEACTIVATED BECAUSE 2500 MAX PER DAY 
-	//$distances = get_MultipleDistances(local_channel(), $shareids);
+
 	$distances = get_MultipleDistances($args['channel'], $shareids);
 	for($i=0; $i<count($data); $i++){
 		$data[$i]['distance'] = $distances[$i];
 	}
-	
-	//ORDER BY DISTANCE IF WANTED
+
 	if(isset($args['orderby']) && $args['orderby'] == 2){
 		usort($data, function($a, $b){
 			return ($a['distance'] < $b['distance']) ? -1 : 1;
@@ -88,7 +85,6 @@ function get_SharesList($args){
 			}
 	}
 
-	//ADD PAGINATION NAV
 	if(!$args['ownerview']){
 		$result .=  '<ul class="pagination" id="pager">';
 		for($k=0; ($k*$maxResPerPage)<count($data); $k++){
@@ -135,18 +131,6 @@ function add_NewShare($data){
 		$prep->close();
 	}
 	
-	//OLD. TAGS ARE NOW IN SHAREDOBJECTS TABLE
-	/*
-	$share_id = $conn->insert_id;
-	
-	$sql_query = "INSERT INTO shareTags (shareID, tags) VALUES (" . $share_id . ", '" . $data['tags'] . "')";
-	
-	if ($conn->query($sql_query) === TRUE) {
-		echo "New record created successfully";
-	} else {
-		return "Error: " . $sql_query . "<br>" . $conn->error;
-	}
-	*/
 	$conn->close();
 	return $id;
 }
@@ -511,7 +495,6 @@ function load_Transactions($channelid){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	//$sql_query = "SELECT transactions.*, sharedObjects.OwnerID FROM transactions, sharedObjects WHERE transactions.ObjectID = sharedObjects.ID";
 	$sql_query = 'SELECT transactions.*, Title, xchan_addr, xchan_hash FROM transactions LEFT JOIN sharedObjects ON transactions.ObjectID = sharedObjects.ID LEFT JOIN ' . SERVER_HUB_DBNAME . '.xchan ON sharedObjects.OwnerID = ' . SERVER_HUB_DBNAME . '.xchan.xchan_hash WHERE transactions.CustomerID = "' . $channelid . '" OR sharedObjects.OwnerID = "' . $channelid . '"';
 	
 	if($result = $conn->query($sql_query)){
@@ -807,7 +790,6 @@ function get_ChannelGroups($channelid, $isowner){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	//$sql_query = 'SELECT group_member.gid, groups.gname FROM group_member, groups WHERE group_member.xchan = "' . $channelid . '" AND group_member.gid = groups.id';
 	if($isowner){
 		$sql_query = 'SELECT id, gname FROM groups WHERE uid = ' . local_channel();
 	}

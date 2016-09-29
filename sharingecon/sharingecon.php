@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Name: Sharing Economy
- * Description: Desc will follow
- * Version: 0.2
+ * Name: Sharing Economy Marketplace
+ * Description: A plugin supporting the Sharing Economy. Part of a Master Thesis on WWU Münster
+ * Version: 1.0
  * Author: Lukas Adrian
  * Maintainer: none
  */
