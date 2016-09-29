@@ -226,8 +226,8 @@ function load_Shares($args){
 			$sql_query .= ' AND sharedObjects.ID IN (' . implode(',', get_ChannelFavorites($args['channel'])) . ')';
 		}
 		
-		if(isset($args['filtersearch'])){
-			$regexp = implode('|', explode(',', urldecode($args['filtersearch'])));
+		if(isset($args['filtersearch']) && $args['filtersearch'] != ''){
+			$regexp = implode('|', array_map('trim', explode(',', urldecode($args['filtersearch']))));
 			$sql_query .= ' AND sharedObjects.Title REGEXP "' . $regexp . '"';
 		}
 		
