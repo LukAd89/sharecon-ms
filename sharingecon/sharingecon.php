@@ -260,7 +260,7 @@ function sharingecon_content(&$a) {
 					$distance = 'You have to set your own location';
 				}
 				else{
-					$distance .= ($distance / 1000) . ' km';
+					$distance = ($distance / 1000) . ' km';
 				}
 				
 				$ratinglatesttable = '<table class="table"><thead><tr><th>Lend On</th><th>Brought Back On</th><th>Days of Lending</th><th>Rating</th></tr></thead><tbody>';
