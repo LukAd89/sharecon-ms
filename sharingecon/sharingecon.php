@@ -182,14 +182,9 @@ function sharingecon_plugin_admin(&$a, &$o){
 
 function sharingecon_content(&$a) {
 	
-	//TESTING TAGTREE
+	if(!local_channel() && !remote_channel())
+		return;
 	
-	//var_dump($tree);
-	//var_dump(calc_NearestBranch());
-	//set_NearestBranches();
-	//return;
-	
-	//TEST END
 	if(argc() > 1){
 		switch(argv(1)){
 			case 'myshares':
@@ -237,7 +232,12 @@ function sharingecon_content(&$a) {
 				
 			case 'requests':
 				$pageContent = get_SharesList(array(
-					'type' => 1
+					'type' => 1,
+					'channel' => (local_channel()) ? App::$channel['channel_hash'] : remote_channel(),
+					'ownerview' => false,
+					'orderby' => $_GET['orderby'],
+					'filterfavs' => $_GET['filterfavs'],
+					'filterfriends' => $_GET['filterfriends']
 				));
 				$siteContent .= replace_macros(get_markup_template('main_page.tpl','addon/sharingecon/'), array(
 						'$tab3' => 'active',

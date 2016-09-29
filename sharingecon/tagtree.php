@@ -255,7 +255,6 @@ function get_UnusedTags(){
 }
 
 function get_BranchDistance($start, $end, $type){
-	Logger($start . $end);
 	if($start == $end) return 0;
 
 	if($type == 1){
@@ -271,8 +270,6 @@ function get_BranchDistance($start, $end, $type){
 	
 	while($distancedown == 0 && !is_null($start)){
 		$distancedown = get_BranchDistanceRec($start, $end, $tree, 0);
-		$start = $tree[$start]['Parent'];
-		Logger('Down: ' . $distancedown . ' Newstart: ' . $start);
 		$distanceup += 1;
 	}
 	return ($distancedown*TREE_WEIGHT_SPECIAL) + ($distanceup*TREE_WEIGHT_GENERAL);

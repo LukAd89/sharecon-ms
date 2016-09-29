@@ -55,7 +55,7 @@ function get_SharesList($args){
 					$wellbody .= 'Everybody';
 				}
 				else{
-					$wellbody .= $data[$i]['visiblefor'];
+					$wellbody .= 'Groups';
 				}
 				$wellbody .= '<br>Location: ' . $data[$i]['Location'];
 					
