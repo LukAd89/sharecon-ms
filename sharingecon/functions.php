@@ -230,7 +230,7 @@ function load_Shares($args){
 			if(!is_null($favslist))
 				$favslist = implode(',', $favslist);
 			else
-				$favslist = '';
+				$favslist = '-1';
 			
 			$sql_query .= ' AND sharedObjects.ID IN (' . $favslist . ')';
 		}
