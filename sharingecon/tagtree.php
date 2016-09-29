@@ -265,13 +265,12 @@ function get_BranchDistance($start, $end, $type){
 	}
 
 	$tree = get_TagTreeMin();
-	Logger('TREE: ' . count($tree));
+	
 	$distancedown = 0;
 	$distanceup = -1;
-	Logger('ST: ' . $start . '  :  ' . ' EN: ' . $end);
+	
 	while($distancedown == 0 && !is_null($start)){
 		$distancedown = get_BranchDistanceRec($start, $end, $tree, 0);
-		Logger('nSt: ' . $tree[$start]['Parent']);
 		$start = $tree[$start]['Parent'];
 		$distanceup += 1;
 	}

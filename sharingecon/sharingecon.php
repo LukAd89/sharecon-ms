@@ -398,6 +398,9 @@ function sharingecon_content(&$a) {
 						break;
 					}
 					$data = get_MatchesForShare(argv(2));
+					usort($data, function($a, $b){
+						return ($a['TagBranch'] < $b['TagBranch']) ? -1 : 1;
+					});
 					
 					foreach($data as $row){
 						$tablebodystring .= '<tr><td>' . $row['Title'] . '</td><td>' . $row['Distance'] . '</td><td><a href="sharingecon/viewshare/' . $row['ID'] . '"><button type="button" class="btn btn-default btn-xs">View Details</button></a></td></tr>';
