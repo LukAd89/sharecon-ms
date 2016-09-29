@@ -834,7 +834,7 @@ function is_ChannelAllowedToView($channelid, $shareid){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$conn->close();
 		
-		if($row['visibility'] == 0) return true;
+		if($row['Visibility'] == 0) return true;
 	}
 	
 	$sql_query = 'SELECT VisibleFor FROM visibilityRange WHERE ID = "' . $shareid . '"';
