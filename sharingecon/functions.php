@@ -227,7 +227,7 @@ function load_Shares($args){
 		}
 		
 		if(isset($args['filtersearch'])){
-			$sql_query .= ' AND sharedObjects.Title LIKE ("' . urldecode($args['filtersearch']) . '")';
+			$sql_query .= ' AND sharedObjects.Title LIKE "%' . urldecode($args['filtersearch']) . '%"';
 		}
 		
 		Logger($sql_query);
