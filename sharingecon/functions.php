@@ -258,7 +258,7 @@ function load_Shares($args){
 				$sql_query .= ' ORDER BY title ASC';
 				break;
 			case 1:
-				$sql_query .= ' ORDER BY avgrating ASC';
+				$sql_query .= ' ORDER BY avgrating DESC';
 				break;
 			default:
 				break;
