@@ -257,10 +257,10 @@ function sharingecon_content(&$a) {
 				$distance = get_Distance($customerid, argv(2));
 				
 				if($distance == -1){
-					$wellbody .= 'You have to set your own location';
+					$distance = 'You have to set your own location';
 				}
 				else{
-					$wellbody .= ($distance / 1000) . ' km';
+					$distance .= ($distance / 1000) . ' km';
 				}
 				
 				$ratinglatesttable = '<table class="table"><thead><tr><th>Lend On</th><th>Brought Back On</th><th>Days of Lending</th><th>Rating</th></tr></thead><tbody>';
@@ -275,7 +275,8 @@ function sharingecon_content(&$a) {
 						'$shareid'		=> argv(2),
 						'$imagename'	=> $share_data['Imagename'],
 						'$ratingavg'	=> 'Overall Average Rating: ' . $ratingavg . ' / 5',
-						'$ratinglatest'	=> 'Latest Ratings:<br>' . $ratinglatesttable
+						'$ratinglatest'	=> 'Latest Ratings:<br>' . $ratinglatesttable,
+						'$distance'		=> $distance
 				));
 				
 				App::$layout['region_aside'] = replace_macros(get_markup_template('main_aside_left.tpl', 'addon/sharingecon/'), array(

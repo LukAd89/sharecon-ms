@@ -25,12 +25,7 @@
 				<hr>
 				<div>
 					<span>Distance to you:</span>
-					<span id="distance"></span>
-					<script>
-					$(function() {
-						getDistance({{$shareid}});
-					});
-					</script>
+					<span id="distance">{{$distance}}</span>
 				</div>
 			</div>
 			<div class="panel-footer">
