@@ -230,6 +230,8 @@ function load_Shares($args){
 			$sql_query .= ' AND sharedObjects.Title IN (' . urldecode($args['search']) . ')';
 		}
 		
+		Logger($sql_query);
+		
 		if(isset($args['type'])){
 			if($args['type'] == 2){
 				$sql_query .= ' AND (type = 0 OR type = 1)';
