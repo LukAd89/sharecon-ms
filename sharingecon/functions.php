@@ -231,8 +231,6 @@ function load_Shares($args){
 			$sql_query .= ' AND sharedObjects.Title REGEXP "' . $regexp . '"';
 		}
 		
-		Logger($sql_query);
-		
 		if(isset($args['type'])){
 			if($args['type'] == 2){
 				$sql_query .= ' AND (type = 0 OR type = 1)';
@@ -260,13 +258,13 @@ function load_Shares($args){
 				$sql_query .= ' ORDER BY title ASC';
 				break;
 			case 1:
-				$sql_query .= ' ORDER BY avgrating DESC';
+				$sql_query .= ' ORDER BY avgrating ASC';
 				break;
 			default:
 				break;
 		}
 	}
-	Logger($sql_query);
+	
 	$prep = $conn->prepare($sql_query);
 	$prep->execute();
 	
