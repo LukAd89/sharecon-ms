@@ -225,9 +225,13 @@ function load_Shares($args){
 		}
 		
 		if(isset($args['filterfavs']) && $args['filterfavs'] == 1){
-			$favslist =implode(',', get_ChannelFavorites($args['channel']));
+			$favslist = get_ChannelFavorites($args['channel']);
+			
 			if(!is_null($favslist))
+				$favslist = implode(',', $favslist);
+			else
 				$favslist = '';
+			
 			$sql_query .= ' AND sharedObjects.ID IN (' . $favslist . ')';
 		}
 		
