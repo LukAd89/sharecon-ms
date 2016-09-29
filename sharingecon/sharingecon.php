@@ -35,6 +35,7 @@ function sharingecon_post(&$a){
 					'tags' => strip_tags($_POST['input-tags'])
 				);
 				$newid = add_NewShare($data);
+				Logger('NEW ID: ' . $newid);
 				set_NearestBranch($newid, strip_tags($_POST['input-tags']));
 				header("Location: " . $_SERVER['REQUEST_URI']);
 				exit();

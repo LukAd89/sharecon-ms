@@ -116,7 +116,7 @@ function set_NearestBranch($id, $tags){
 	
 	$conn = new mysqli(SERVER_NAME, SERVER_USER, SERVER_PASSWORD, SERVER_DBNAME);
 	$sql_query = 'UPDATE sharedObjects SET TagBranch = ' . $branch . ' WHERE ID = ' . $id;
-	Logger($sql_query);
+	
 	$conn->query($sql_query);
 	$conn->close();
 }
