@@ -399,7 +399,7 @@ function sharingecon_content(&$a) {
 					}
 					$data = get_MatchesForShare(argv(2));
 					usort($data, function($a, $b){
-						return ($a['TagBranch'] < $b['TagBranch']) ? -1 : 1;
+						return ($a['Distance'] < $b['Distance']) ? -1 : 1;
 					});
 					
 					foreach($data as $row){
