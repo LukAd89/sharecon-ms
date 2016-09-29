@@ -829,6 +829,7 @@ function is_ChannelAllowedToView($channelid, $shareid){
 	}
 	
 	$sql_query = 'SELECT Visibility FROM sharedObjects WHERE ID = "' . $shareid . '"';
+	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$conn->close();
@@ -837,11 +838,13 @@ function is_ChannelAllowedToView($channelid, $shareid){
 	}
 	
 	$sql_query = 'SELECT VisibleFor FROM visibilityRange WHERE ID = "' . $shareid . '"';
+	Logger($sql_query);
 	if($result = $conn->query($sql_query)){
 		while($row = $result->fetch_array(MYSQLI_ASSOC)){
 			$groupids[] = $row['VisibleFor'];
 		}
 		$conn->close();
+		Logger($channelid);
 		return is_ChannelMemberOfGroup($channelid, $groupids);
 	}
 	$conn->close();
