@@ -205,6 +205,8 @@ function get_MatchesForShare($shareid){
 	$startBranch = $row['TagBranch'];
 	$prep->close();
 	
+	$type = ($type == 0) ? 1 : 0;
+	
 	$args = array(
 		'type' => $type,
 		'channel' => (local_channel()) ? App::$channel['channel_hash'] : remote_channel()
