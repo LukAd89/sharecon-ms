@@ -265,7 +265,7 @@ function get_BranchDistance($start, $end, $type){
 	}
 
 	$tree = get_TagTreeMin();
-	
+	var_dump($tree);
 	$distancedown = 0;
 	$distanceup = -1;
 	Logger('ST: ' . $start . '  :  ' . ' EN: ' . $end);
