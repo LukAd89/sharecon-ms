@@ -2,7 +2,7 @@
 
 /**
  * Name: Sharing Economy Marketplace
- * Description: A plugin supporting the Sharing Economy. Part of a Master Thesis on WWU Münster
+ * Description: A plugin supporting the Sharing Economy. Part of a Master Thesis on WWU M&uuml;nster
  * Version: 1.0
  * Author: Lukas Adrian
  * Maintainer: none
